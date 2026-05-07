@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.content.res.XmlResourceParser
 import android.util.Log
 import android.util.TypedValue
+import android.util.Xml
 import kotlin.math.min
 
 class SimpleKeyboard(
@@ -123,6 +124,12 @@ class SimpleKeyboard(
                                 }
                                 "Key" -> {
                                     currentRow?.let { row ->
+                                        // Use TypedArray to read custom attributes from attrs-keyboard.xml
+                                        val a = context.obtainStyledAttributes(
+                                            Xml.asAttributeSet(parser),
+                                            R.styleable.Keyboard_Key
+                                        )
+                                        
                                         val keyWidthAttr = getAttrValue(parser, "keyWidth")
                                         val keyWidth = if (keyWidthAttr != null) {
                                             parseDimension(keyWidthAttr, screenWidth, keyboardDefaultWidth)
@@ -136,17 +143,20 @@ class SimpleKeyboard(
                                             keyboardHorizontalGap
                                         }
                                         
-                                        // CRITICAL FIX: Use getAttributeIntValue for codes attribute
-                                        // This automatically resolves @integer/key_* references to their values
-                                        val codeFromXml = parser.getAttributeIntValue(null, "codes", Int.MIN_VALUE)
+                                        // Read codes using TypedArray (resolves @integer/key_* references)
+                                        val codeFromXml = a.getInt(R.styleable.Keyboard_Key_codes, Int.MIN_VALUE)
                                         
-                                        val labelAttr = getAttrValue(parser, "keyLabel")
-                                        val shiftLabelAttr = getAttrValue(parser, "shiftLabel")
-                                        val outputTextAttr = getAttrValue(parser, "keyOutputText")
-                                        val isModifier = parser.getAttributeBooleanValue(null, "isModifier", false)
-                                        val isSticky = parser.getAttributeBooleanValue(null, "isSticky", false)
-                                        val isRepeatable = parser.getAttributeBooleanValue(null, "isRepeatable", false)
-                                        val edgeFlags = parser.getAttributeIntValue(null, "keyEdgeFlags", 0)
+                                        val labelAttr = a.getString(R.styleable.Keyboard_Key_keyLabel)
+                                        val shiftLabelAttr = a.getString(R.styleable.Keyboard_Key_shiftLabel)
+                                        val outputTextAttr = a.getString(R.styleable.Keyboard_Key_keyOutputText)
+                                        
+                                        // Read custom boolean attributes (isModifier, isSticky, isRepeatable)
+                                        val isModifier = a.getBoolean(R.styleable.Keyboard_Key_isModifier, false)
+                                        val isSticky = a.getBoolean(R.styleable.Keyboard_Key_isSticky, false)
+                                        val isRepeatable = a.getBoolean(R.styleable.Keyboard_Key_isRepeatable, false)
+                                        val edgeFlags = a.getInt(R.styleable.Keyboard_Key_keyEdgeFlags, 0)
+                                        
+                                        a.recycle()
 
                                         var code: Int
                                         if (codeFromXml != Int.MIN_VALUE) {
