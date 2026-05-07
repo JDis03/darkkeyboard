@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 class DarkIME2 : InputMethodService() {
     
     private var keyboardView: SimpleKeyboardView? = null
+    private var isSymbolsMode = false
     
     companion object {
         private const val TAG = "DarkIME2"
@@ -27,9 +28,9 @@ class DarkIME2 : InputMethodService() {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null) as LinearLayout
         keyboardView = layout.findViewById(R.id.keyboard)
         
-        // Crear teclado desde XML - usar kbd_qwerty.xml (5 filas estándar de HackersKeyboard)
+        // Crear teclado desde XML - usar kbd_pc.xml (custom 5 filas con Ctrl/Tab)
         val dm = resources.displayMetrics
-        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_qwerty, dm.widthPixels, dm.heightPixels)
+        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_pc, dm.widthPixels, dm.heightPixels)
         keyboardView?.setKeyboard(keyboard)
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -65,6 +66,10 @@ class DarkIME2 : InputMethodService() {
             }
             KEYCODE_SHIFT -> {
                 // Shift se maneja en el View
+            }
+            Key.CODE_MODE_CHANGE -> {
+                // Cambiar entre alfabético y símbolos
+                switchLayout()
             }
             KEYCODE_ENTER -> {
                 sendKeyEvent(KeyEvent.KEYCODE_ENTER, metaState)
@@ -166,5 +171,17 @@ class DarkIME2 : InputMethodService() {
         if (deleteCount > 0) {
             ic.deleteSurroundingText(deleteCount, 0)
         }
+    }
+    
+    private fun switchLayout() {
+        isSymbolsMode = !isSymbolsMode
+        val dm = resources.displayMetrics
+        val keyboard = if (isSymbolsMode) {
+            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols, dm.widthPixels, dm.heightPixels)
+        } else {
+            SimpleKeyboard.fromXml(this, R.xml.kbd_pc, dm.widthPixels, dm.heightPixels)
+        }
+        keyboardView?.setKeyboard(keyboard)
+        Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
     }
 }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+    xmlns:android="http://schemas.android.com/apk/res-auto"
+    android:keyWidth="10%p"
+    android:horizontalGap="0px"
+    android:verticalGap="@dimen/key_bottom_gap"
+>
+    <!-- Row 1: Números -->
+    <Row android:extension="true">
+        <Key android:keyLabel="1" android:shiftLabel="!" />
+        <Key android:keyLabel="2" android:shiftLabel="@" />
+        <Key android:keyLabel="3" android:shiftLabel="#" />
+        <Key android:keyLabel="4" android:shiftLabel="$" />
+        <Key android:keyLabel="5" android:shiftLabel="%" />
+        <Key android:keyLabel="6" android:shiftLabel="^" />
+        <Key android:keyLabel="7" android:shiftLabel="&amp;" />
+        <Key android:keyLabel="8" android:shiftLabel="*" />
+        <Key android:keyLabel="9" android:shiftLabel="(" />
+        <Key android:keyLabel="0" android:shiftLabel=")" />
+    </Row>    
+    
+    <!-- Row 2: QWERTY -->
+    <Row>
+        <Key android:keyLabel="q" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="w" />
+        <Key android:keyLabel="e" />
+        <Key android:keyLabel="r" />
+        <Key android:keyLabel="t" />
+        <Key android:keyLabel="y" />
+        <Key android:keyLabel="u" />
+        <Key android:keyLabel="i" />
+        <Key android:keyLabel="o" />
+        <Key android:keyLabel="p" android:keyEdgeFlags="right" />
+    </Row>
+    
+    <!-- Row 3: ASDFGH -->
+    <Row>
+        <Key android:keyLabel="a" android:horizontalGap="5%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="s" />
+        <Key android:keyLabel="d" />
+        <Key android:keyLabel="f" />
+        <Key android:keyLabel="g" />
+        <Key android:keyLabel="h" />
+        <Key android:keyLabel="j" />
+        <Key android:keyLabel="k" />
+        <Key android:keyLabel="l" android:keyEdgeFlags="right" />
+    </Row>
+    
+    <!-- Row 4: ZXCVBN + Shift + Delete -->
+    <Row>
+        <Key
+            android:codes="@integer/key_shift"
+            android:keyIcon="@drawable/sym_keyboard_shift"
+            android:keyWidth="15%p"
+            android:isModifier="true"
+            android:isSticky="true"
+            android:keyEdgeFlags="left" />
+        <Key android:keyLabel="z" />
+        <Key android:keyLabel="x" />
+        <Key android:keyLabel="c" />
+        <Key android:keyLabel="v" />
+        <Key android:keyLabel="b" />
+        <Key android:keyLabel="n" />
+        <Key android:keyLabel="m" />
+        <Key
+            android:codes="@integer/key_delete"
+            android:keyIcon="@drawable/sym_keyboard_delete"
+            android:keyWidth="15%p"
+            android:isModifier="true"
+            android:isRepeatable="true"
+            android:keyEdgeFlags="right" />
+    </Row>
+    
+    <!-- Row 5: Bottom row con Ctrl, Tab, Space, símbolos, Enter -->
+    <Row android:rowEdgeFlags="bottom">
+        <Key
+            android:codes="@integer/key_ctrl_left"
+            android:keyLabel="Ctrl"
+            android:keyWidth="15%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="left" />
+        <Key
+            android:codes="@integer/key_tab"
+            android:keyLabel="Tab"
+            android:keyWidth="10%p"
+            android:isModifier="true" />
+        <Key
+            android:codes="@integer/key_symbol"
+            android:keyLabel="\?123"
+            android:keyWidth="15%p"
+            android:isModifier="true" />
+        <Key
+            android:codes="@integer/key_space"
+            android:keyLabel=" "
+            android:keyWidth="25%p"
+            android:isModifier="true" />
+        <Key
+            android:keyLabel="."
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="@integer/key_return"
+            android:keyLabel="↵"
+            android:keyWidth="15%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="right" />
+    </Row>
+</Keyboard>
