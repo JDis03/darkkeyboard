@@ -67,28 +67,8 @@ class DarkIME2 : InputMethodService() {
     
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
-        
-        val mInputView = inputViewContainer ?: return
-        val keyboardView = keyboardView ?: return
-        if (!keyboardView.isShown) return
-        
-        // Use inputView height like HeliBoard
-        val inputHeight = mInputView.height
-        val visibleTopY = inputHeight - keyboardView.height
-        
-        // Set touchable region para el área del teclado
-        outInsets.touchableInsets = Insets.TOUCHABLE_INSETS_REGION
-        outInsets.touchableRegion.set(
-            0,                      // left
-            visibleTopY,            // top
-            keyboardView.width,     // right
-            inputHeight             // bottom
-        )
-        
-        outInsets.contentTopInsets = visibleTopY
-        outInsets.visibleTopInsets = visibleTopY
-        
-        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, keyboardHeight=${keyboardView.height}, visibleTopY=$visibleTopY")
+        // Let Android handle insets automatically
+        Log.d(TAG, "onComputeInsets: contentTop=${outInsets.contentTopInsets}, visibleTop=${outInsets.visibleTopInsets}")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {

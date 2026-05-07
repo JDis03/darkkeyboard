@@ -102,28 +102,14 @@ class SimpleKeyboard(
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
-                                    // Si ya tenemos 5 filas O ya tomamos una bottom row con mode, ignorar
-                                    if (rowCount >= 5 || (hasKeyboardMode && hasBottomRowWithMode)) {
-                                        Log.d(TAG, "Skipping row: rowCount=$rowCount, hasBottomRowWithMode=$hasBottomRowWithMode")
+                                    // Skip rows con keyboardMode - son alternativas que Android debería filtrar
+                                    // Pero nuestro parser simple no soporta modes, entonces skip
+                                    if (hasKeyboardMode) {
+                                        Log.d(TAG, "Skipping row with keyboardMode=$keyboardModeValue")
                                         currentRow = null
-                                    } else if (hasKeyboardMode && rowCount >= 3) {
-                                        // Si es la 4ta+ fila y tiene keyboardMode, tomar solo la PRIMERA
-                                        if (!hasBottomRowWithMode) {
-                                            currentRow = KeyboardRow(
-                                                keys = rowKeys,
-                                                isExtension = isExtension,
-                                                keyboardMode = 0
-                                            )
-                                            currentX = 0
-                                            currentRow!!.defaultKeyHeight = bottomRowHeight
-                                            currentRow!!.defaultKeyWidth = keyboardDefaultWidth
-                                            currentRow!!.y = currentY
-                                            hasBottomRowWithMode = true
-                                            Log.d(TAG, "Taking first bottom row with keyboardMode")
-                                        } else {
-                                            Log.d(TAG, "Skipping additional bottom row with keyboardMode")
-                                            currentRow = null // Ignorar filas bottom adicionales
-                                        }
+                                    } else if (rowCount >= 5) {
+                                        Log.d(TAG, "Skipping row: already have 5 rows")
+                                        currentRow = null
                                     } else {
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
