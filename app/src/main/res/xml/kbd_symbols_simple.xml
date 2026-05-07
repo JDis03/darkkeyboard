@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="10%p"
+    android:horizontalGap="0px"
+    android:verticalGap="@dimen/key_bottom_gap"
+    android:keyHeight="@dimen/key_height"
+>
+    <!-- Row 1: Numbers -->
+    <Row android:rowEdgeFlags="top">
+        <Key android:keyLabel="1" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="2" />
+        <Key android:keyLabel="3" />
+        <Key android:keyLabel="4" />
+        <Key android:keyLabel="5" />
+        <Key android:keyLabel="6" />
+        <Key android:keyLabel="7" />
+        <Key android:keyLabel="8" />
+        <Key android:keyLabel="9" />
+        <Key android:keyLabel="0" android:keyEdgeFlags="right" />
+    </Row>
+
+    <!-- Row 2: Symbols -->
+    <Row>
+        <Key android:keyLabel="@" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="#" />
+        <Key android:keyLabel="$" />
+        <Key android:keyLabel="%" />
+        <Key android:keyLabel="&amp;" />
+        <Key android:keyLabel="*" />
+        <Key android:keyLabel="-" />
+        <Key android:keyLabel="+" />
+        <Key android:keyLabel="(" />
+        <Key android:keyLabel=")" android:keyEdgeFlags="right" />
+    </Row>
+
+    <!-- Row 3: More symbols -->
+    <Row>
+        <Key android:keyLabel="!" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="&quot;" />
+        <Key android:keyLabel="'" />
+        <Key android:keyLabel=":" />
+        <Key android:keyLabel=";" />
+        <Key android:keyLabel="/" />
+        <Key android:keyLabel="?" />
+        <Key android:keyLabel="=" />
+        <Key android:keyLabel="_" android:keyEdgeFlags="right" />
+    </Row>
+
+    <!-- Row 4: Bottom -->
+    <Row android:rowEdgeFlags="bottom">
+        <Key
+            android:codes="@integer/key_symbol"
+            android:keyLabel="ABC"
+            android:keyWidth="20%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="left" />
+        <Key
+            android:codes="@integer/key_space"
+            android:keyLabel=" "
+            android:keyWidth="50%p"
+            android:isModifier="true" />
+        <Key
+            android:keyLabel="."
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="@integer/key_return"
+            android:keyLabel="↵"
+            android:keyWidth="20%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="right" />
+    </Row>
+</Keyboard>

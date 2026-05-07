@@ -224,7 +224,7 @@ class DarkIME2 : InputMethodService() {
         isSymbolsMode = !isSymbolsMode
         val dm = resources.displayMetrics
         val keyboard = if (isSymbolsMode) {
-            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols, dm.widthPixels, dm.heightPixels)
+            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels)
         } else {
             SimpleKeyboard.fromXml(this, R.xml.kbd_pc, dm.widthPixels, dm.heightPixels)
         }
