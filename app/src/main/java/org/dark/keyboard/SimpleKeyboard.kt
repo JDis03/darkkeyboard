@@ -26,19 +26,19 @@ class SimpleKeyboard(
         ): SimpleKeyboard {
             val density = context.resources.displayMetrics.density
             
-            // USAR ALTURA FIJA EN DP EN LUGAR DE PORCENTAJE
-            // 240dp es suficiente para 5 filas sin cubrir botones del sistema
-            val keyboardHeightDp = 240f
-            val keyboardHeight = (keyboardHeightDp * density).toInt()
+            // Fórmula original de HeliBoard
+            val defaultHeightDp = 205.6f * 1.33f
+            val defaultHeightPx = defaultHeightDp * density
+            val maxHeight = screenHeight * 0.46f
+            val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
-            Log.d(TAG, "Keyboard height calculation:")
-            Log.d(TAG, "  screenHeight: $screenHeight px (${screenHeight / density} dp)")
-            Log.d(TAG, "  density: $density")
-            Log.d(TAG, "  FINAL keyboardHeight: $keyboardHeight px ($keyboardHeightDp dp)")
+            Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
             val verticalGapPx = (1.5f * density).toInt()
 
-            val numberRowHeight = (keyboardHeight * 0.17f).toInt()
-            val rowHeight = (keyboardHeight * 0.22f).toInt()
+            // Distribución: 5 filas = 100%
+            // Extension: 18%, Normal: 21% x3, Bottom: 19% = 18+21+21+21+19 = 100%
+            val numberRowHeight = (keyboardHeight * 0.18f).toInt()
+            val rowHeight = (keyboardHeight * 0.21f).toInt()
             val bottomRowHeight = (keyboardHeight * 0.19f).toInt()
             val defaultKeyWidth = screenWidth / 10
 
@@ -48,6 +48,7 @@ class SimpleKeyboard(
             var currentX = 0
             var currentY = 0
             var rowCount = 0
+            var hasBottomRowWithMode = false  // Flag para solo tomar 1 row bottom con keyboardMode
             var keyboardDefaultWidth = defaultKeyWidth
             var keyboardHorizontalGap = 0
             var keyboardKeyHeight = rowHeight
@@ -98,8 +99,8 @@ class SimpleKeyboard(
                                         Log.d(TAG, "Skipping row: already have 5 rows")
                                         currentRow = null
                                     } else if (hasKeyboardMode && rowCount >= 4) {
-                                        // Si es la 5ta fila y tiene keyboardMode, tomar solo la primera
-                                        if (currentRow == null) {
+                                        // Si es la 5ta fila y tiene keyboardMode, tomar solo la PRIMERA
+                                        if (!hasBottomRowWithMode) {
                                             currentRow = KeyboardRow(
                                                 keys = rowKeys,
                                                 isExtension = isExtension,
@@ -109,7 +110,10 @@ class SimpleKeyboard(
                                             currentRow!!.defaultKeyHeight = bottomRowHeight
                                             currentRow!!.defaultKeyWidth = keyboardDefaultWidth
                                             currentRow!!.y = currentY
+                                            hasBottomRowWithMode = true
+                                            Log.d(TAG, "Taking first bottom row with keyboardMode")
                                         } else {
+                                            Log.d(TAG, "Skipping additional bottom row with keyboardMode")
                                             currentRow = null // Ignorar filas bottom adicionales
                                         }
                                     } else {
