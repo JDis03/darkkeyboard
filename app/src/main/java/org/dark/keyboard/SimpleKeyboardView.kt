@@ -88,6 +88,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var popupPreview: PopupPreview? = null
     private var longPressHandler = Handler(Looper.getMainLooper())
     private var longPressRunnable: Runnable? = null
+    private var isPopupShowing = false
+    private var selectedPopupChar: Char? = null
 
     var onKeyListener: OnKeyListener? = null
     var onModifierChangeListener: OnModifierChangeListener? = null
@@ -249,6 +251,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 return true
             }
             MotionEvent.ACTION_MOVE -> {
+                // If popup is showing, track finger movement across options
+                if (isPopupShowing) {
+                    selectedPopupChar = popupPreview?.handleMove(event.rawX, event.rawY)
+                    return true
+                }
+                
                 val key = findKey(event.x.toInt(), event.y.toInt())
                 if (key != pressedKey) {
                     cancelRepeat()
@@ -262,8 +270,16 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 cancelRepeat()
                 cancelLongPressInternal()
                 
-                // Only handle key press if popup is not showing
-                if (popupPreview?.isShowing() != true) {
+                // If popup was showing, insert the selected character
+                if (isPopupShowing) {
+                    selectedPopupChar?.let { char ->
+                        onKeyListener?.onText(char.toString())
+                    }
+                    popupPreview?.dismiss()
+                    isPopupShowing = false
+                    selectedPopupChar = null
+                } else {
+                    // Normal key press
                     pressedKey?.let { key ->
                         handleKeyPress(key)
                     }
@@ -277,6 +293,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 cancelRepeat()
                 cancelLongPressInternal()
                 popupPreview?.dismiss()
+                isPopupShowing = false
+                selectedPopupChar = null
                 pressedKey = null
                 invalidate()
                 return true
@@ -400,10 +418,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
         
         longPressRunnable = Runnable {
             popupPreview?.showPunctuationPopup(this, key) { char ->
-                onKeyListener?.onText(char.toString())
+                // This callback won't be used anymore, we handle selection on ACTION_UP
             }
+            isPopupShowing = true
+            selectedPopupChar = null  // Will be set by handleMove
         }
-        longPressHandler.postDelayed(longPressRunnable!!, 500L)
+        longPressHandler.postDelayed(longPressRunnable!!, 300L)  // Reduced to 300ms for faster response
     }
     
     private fun cancelLongPressInternal() {

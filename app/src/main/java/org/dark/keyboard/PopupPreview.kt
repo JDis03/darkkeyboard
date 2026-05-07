@@ -13,9 +13,12 @@ class PopupPreview(private val context: Context) {
     
     private var popupWindow: PopupWindow? = null
     
+    private var currentOptions: List<Char> = emptyList()
+    private var optionViews: MutableList<TextView> = mutableListOf()
+    
     fun showPunctuationPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         // Define punctuation options based on the key
-        val options = when {
+        currentOptions = when {
             key.label == "." -> listOf('.', ',', '?', '!', ':', ';')
             key.label == "," -> listOf(',', '.', '?', '!', ':', ';')
             key.label == "?" -> listOf('?', '!', '.', ',', ':', ';')
@@ -24,6 +27,7 @@ class PopupPreview(private val context: Context) {
         }
         
         dismiss()
+        optionViews.clear()
         
         val density = context.resources.displayMetrics.density
         
@@ -40,16 +44,17 @@ class PopupPreview(private val context: Context) {
         val paddingH = (16 * density).toInt()
         val paddingV = (12 * density).toInt()
         
-        options.forEach { char ->
+        currentOptions.forEachIndexed { index, char ->
             val textView = TextView(context).apply {
                 text = char.toString()
                 textSize = 24f
                 setTextColor(Color.WHITE)
                 setPadding(paddingH, paddingV, paddingH, paddingV)
                 gravity = Gravity.CENTER
+                minWidth = (48 * density).toInt()
                 
                 // Highlight if it's the main character
-                if (char == options[0]) {
+                if (index == 0) {
                     background = createSelectedBackground()
                 }
                 
@@ -58,28 +63,84 @@ class PopupPreview(private val context: Context) {
                     dismiss()
                 }
             }
+            optionViews.add(textView)
             layout.addView(textView)
         }
+        
+        // Measure popup to center it
+        layout.measure(
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        )
         
         // Create and show popup
         popupWindow = PopupWindow(
             layout,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
-            true
+            false  // Not focusable so we can track finger movement
         ).apply {
             elevation = 8f * density
             
-            // Show above the key
+            // Calculate position to center popup above the key
             val location = IntArray(2)
-            anchorView.getLocationOnScreen(location)
-            showAtLocation(
-                anchorView,
-                Gravity.NO_GRAVITY,
-                location[0] - (50 * density).toInt(),
-                location[1] - (80 * density).toInt()
-            )
+            key.x.let { keyX ->
+                key.y.let { keyY ->
+                    // Center popup horizontally on the key
+                    val popupWidth = layout.measuredWidth
+                    val keyWidth = key.width
+                    val x = keyX + (keyWidth - popupWidth) / 2
+                    
+                    // Position popup above the key with some margin
+                    val popupHeight = layout.measuredHeight
+                    val y = keyY - popupHeight - (8 * density).toInt()
+                    
+                    showAtLocation(anchorView, Gravity.NO_GRAVITY, x, y)
+                }
+            }
         }
+    }
+    
+    fun handleMove(rawX: Float, rawY: Float): Char? {
+        val popup = popupWindow ?: return null
+        if (!popup.isShowing) return null
+        
+        val contentView = popup.contentView as? LinearLayout ?: return null
+        
+        // Get popup location on screen
+        val location = IntArray(2)
+        contentView.getLocationOnScreen(location)
+        val popupX = location[0].toFloat()
+        val popupY = location[1].toFloat()
+        
+        // Convert raw coordinates to popup-relative coordinates
+        val localX = rawX - popupX
+        val localY = rawY - popupY
+        
+        // Check which option is under the finger
+        var selectedIndex = -1
+        optionViews.forEachIndexed { index, view ->
+            val viewLeft = view.left.toFloat()
+            val viewRight = view.right.toFloat()
+            val viewTop = view.top.toFloat()
+            val viewBottom = view.bottom.toFloat()
+            
+            if (localX >= viewLeft && localX <= viewRight &&
+                localY >= viewTop && localY <= viewBottom) {
+                selectedIndex = index
+            }
+        }
+        
+        // Update highlights
+        optionViews.forEachIndexed { index, view ->
+            view.background = if (index == selectedIndex) {
+                createSelectedBackground()
+            } else {
+                null
+            }
+        }
+        
+        return if (selectedIndex >= 0) currentOptions[selectedIndex] else null
     }
     
     fun dismiss() {
