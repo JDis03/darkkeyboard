@@ -148,6 +148,7 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
             onLayoutSelected = { layout ->
                 currentLayout = layout
                 prefs.edit().putString("keyboard_layout", layout).apply()
+                android.util.Log.i("SettingsActivity", "Layout changed to: $layout")
                 showLayoutDialog = false
             }
         )

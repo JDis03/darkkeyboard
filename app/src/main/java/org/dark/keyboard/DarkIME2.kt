@@ -30,12 +30,26 @@ class DarkIME2 : InputMethodService() {
     override fun onCreate() {
         super.onCreate()
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        
+        // Listen for preference changes
+        prefs.registerOnSharedPreferenceChangeListener { _, key ->
+            if (key == "keyboard_layout") {
+                Log.i(TAG, "Layout preference changed, reloading keyboard...")
+                reloadKeyboard()
+            }
+        }
+        
         Log.e(TAG, "=== onCreate() CALLED ===")
     }
     
     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
+        
+        // Reload keyboard if layout preference changed
+        if (!isSymbolsMode) {
+            reloadKeyboard()
+        }
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
@@ -266,10 +280,24 @@ class DarkIME2 : InputMethodService() {
     
     private fun getLayoutResourceId(): Int {
         val layout = prefs.getString("keyboard_layout", "compact")
-        return when (layout) {
+        Log.i(TAG, ">>> getLayoutResourceId: layout preference = '$layout'")
+        val resourceId = when (layout) {
             "pc" -> R.xml.kbd_pc
             "compact" -> R.xml.kbd_compact
             else -> R.xml.kbd_compact
+        }
+        Log.i(TAG, ">>> returning resource ID: ${if (resourceId == R.xml.kbd_pc) "kbd_pc" else "kbd_compact"}")
+        return resourceId
+    }
+    
+    private fun reloadKeyboard() {
+        // Reload the keyboard with new layout
+        if (keyboardView != null) {
+            val dm = resources.displayMetrics
+            val layoutId = getLayoutResourceId()
+            val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
+            keyboardView?.setKeyboard(keyboard)
+            Log.i(TAG, "Keyboard reloaded with new layout")
         }
     }
 }
