@@ -26,7 +26,9 @@
     <dimen name="key_vertical_pad">0.025in</dimen>
     <dimen name="key_vertical_pad_compact">0.000in</dimen>
     <dimen name="popup_key_height">0.325in</dimen>
+    <!-- HeliBoard usa 4.669%p del alto de pantalla como bottom padding -->
     <dimen name="keyboard_bottom_padding">0.06in</dimen>
+    <dimen name="config_default_keyboard_height">205.6dp</dimen>
     <dimen name="bubble_pointer_offset">22dip</dimen>
     <dimen name="candidate_strip_height">42dip</dimen>
     <dimen name="candidate_strip_fading_edge_length">63dip</dimen>

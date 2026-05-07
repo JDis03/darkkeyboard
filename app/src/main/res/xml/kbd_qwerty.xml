@@ -168,7 +168,6 @@
             android:keyEdgeFlags="right" />
     </Row>
     <Row
-        android:keyboardMode="@+id/mode_normal"
         android:rowEdgeFlags="bottom"
     >
         <Key

@@ -21,8 +21,26 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
     @Override public View onCreateInputView() {
         Log.e("DK", "onCreateInputView START");
         try {
+            // Log dimensiones de pantalla
+            android.util.DisplayMetrics dm = getResources().getDisplayMetrics();
+            Log.e("DK", "Display: " + dm.widthPixels + "x" + dm.heightPixels + " density=" + dm.density);
+            
+            // Calcular altura del teclado como HeliBoard:
+            // Base: 205.6dp * 1.33 (con number row) = 273.4dp
+            float defaultHeightDp = 205.6f * 1.33f;
+            float defaultHeightPx = defaultHeightDp * dm.density;
+            // Max: 46% de la altura de pantalla
+            float maxHeight = dm.heightPixels * 0.46f;
+            // Usar el menor de los dos
+            float keyboardHeightPx = Math.min(defaultHeightPx, maxHeight);
+            // Convertir a porcentaje para el constructor
+            float heightPercent = (keyboardHeightPx / dm.heightPixels) * 100f;
+            
+            Log.e("DK", "Keyboard height calculation: default=" + defaultHeightPx + "px, max=" + maxHeight + "px, final=" + keyboardHeightPx + "px (" + heightPercent + "%)");
+            
             // Crear el teclado desde XML
-            kbd = new LatinKeyboard(this, R.xml.kbd_qwerty, 0, 35f);
+            kbd = new LatinKeyboard(this, R.xml.kbd_qwerty, 0, heightPercent);
+            Log.e("DK", "Keyboard created: height=" + kbd.getHeight() + "px, total keys=" + kbd.getKeys().size() + ", layoutRows=" + kbd.mLayoutRows);
             
             // Inflar el layout COMPLETO (igual que HeliBoard - no extraer vista)
             android.view.ViewGroup root = (android.view.ViewGroup) getLayoutInflater()
@@ -32,6 +50,25 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
             kv = root.findViewById(R.id.LatinkeyboardBaseView);
             kv.setKeyboard(kbd);
             kv.setOnKeyboardActionListener(this);
+            
+            // Aplicar window insets listener para detectar navigation bar
+            root.setOnApplyWindowInsetsListener((v, insets) -> {
+                android.view.WindowInsets windowInsets = insets;
+                int navBarHeight = windowInsets.getSystemWindowInsetBottom();
+                Log.e("DK", "WindowInsets: navBar=" + navBarHeight + "px");
+                
+                // Aplicar padding adicional si hay navigation bar
+                if (navBarHeight > 0) {
+                    kv.setPadding(
+                        kv.getPaddingLeft(),
+                        kv.getPaddingTop(),
+                        kv.getPaddingRight(),
+                        kv.getPaddingBottom() + navBarHeight
+                    );
+                    Log.e("DK", "Applied navBar padding: " + navBarHeight + "px");
+                }
+                return insets;
+            });
             
             Log.e("DK", "onCreateInputView OK - returning ROOT layout");
             // Devolver el layout COMPLETO, no solo el keyboard view
@@ -64,7 +101,8 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
             altActive = !altActive; kv.setAltIndicator(altActive);
         } else if (primaryCode == LatinKeyboardView.KEYCODE_FN) {
             fnActive = !fnActive;
-            kbd = new LatinKeyboard(this, fnActive ? R.xml.kbd_symbols : R.xml.kbd_qwerty, 0, 35f);
+            // TODO: calcular heightPercent dinámicamente (por ahora usar 30% conservador)
+            kbd = new LatinKeyboard(this, fnActive ? R.xml.kbd_symbols : R.xml.kbd_qwerty, 0, 30f);
             kv.setKeyboard(kbd);
         } else if (primaryCode == '\t') {
             ic.commitText("\t", 1);
@@ -72,7 +110,7 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
             ic.commitText("\n", 1);
             shiftState = false; kv.setShiftState(Keyboard.SHIFT_OFF);
         } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
-            kbd = new LatinKeyboard(this, R.xml.kbd_symbols, 0, 35f);
+            kbd = new LatinKeyboard(this, R.xml.kbd_symbols, 0, 30f);
             kv.setKeyboard(kbd);
         } else if (ctrlActive && primaryCode >= 'A' && primaryCode <= 'Z') {
             // Ctrl shortcuts
