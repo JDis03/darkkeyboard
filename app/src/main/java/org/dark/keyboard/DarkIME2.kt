@@ -279,12 +279,12 @@ class DarkIME2 : InputMethodService() {
     }
     
     private fun getLayoutResourceId(): Int {
-        val layout = prefs.getString("keyboard_layout", "compact")
+        val layout = prefs.getString("keyboard_layout", "pc")
         Log.i(TAG, ">>> getLayoutResourceId: layout preference = '$layout'")
         val resourceId = when (layout) {
             "pc" -> R.xml.kbd_pc
             "compact" -> R.xml.kbd_compact
-            else -> R.xml.kbd_compact
+            else -> R.xml.kbd_pc  // Default to QWERTY Standard
         }
         Log.i(TAG, ">>> returning resource ID: ${if (resourceId == R.xml.kbd_pc) "kbd_pc" else "kbd_compact"}")
         return resourceId

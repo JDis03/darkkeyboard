@@ -43,7 +43,7 @@ class SettingsActivity : ComponentActivity() {
 @Composable
 fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
     var currentLayout by remember { 
-        mutableStateOf(prefs.getString("keyboard_layout", "compact") ?: "compact") 
+        mutableStateOf(prefs.getString("keyboard_layout", "pc") ?: "pc") 
     }
     var showModifierStatus by remember { 
         mutableStateOf(prefs.getBoolean("show_modifier_status", true)) 
@@ -82,9 +82,9 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                         icon = Icons.Default.Settings,
                         title = "Layout",
                         subtitle = when (currentLayout) {
-                            "compact" -> "Compact (5-row with arrows)"
-                            "pc" -> "PC Layout (5-row expanded)"
-                            else -> "Compact"
+                            "pc" -> "QWERTY Standard"
+                            "compact" -> "PC Compact"
+                            else -> "QWERTY Standard"
                         },
                         onClick = { showLayoutDialog = true }
                     )
@@ -287,19 +287,19 @@ fun LayoutSelectionDialog(
         text = {
             Column {
                 LayoutOption(
-                    title = "Compact",
-                    description = "5-row layout with arrows in bottom row. Tab beside 'a', navigation arrows, perfect for mobile.",
-                    icon = Icons.Default.Star,
-                    selected = currentLayout == "compact",
-                    onClick = { onLayoutSelected("compact") }
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-                LayoutOption(
-                    title = "PC Layout",
-                    description = "5-row expanded layout. Tab beside 'a', Alt in bottom row, more traditional PC keyboard feel.",
+                    title = "QWERTY Standard",
+                    description = "Standard 5-row layout with proper proportions. Numbers, QWERTY, Tab beside 'a', and bottom row with modifiers. Most similar to traditional keyboards.",
                     icon = Icons.Default.Star,
                     selected = currentLayout == "pc",
                     onClick = { onLayoutSelected("pc") }
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                LayoutOption(
+                    title = "PC Compact",
+                    description = "Compact 6-row layout with navigation arrows. Extension row, Tab beside 'a', Fn/Ctrl/Alt/?123 in bottom row with arrows. More features in less space.",
+                    icon = Icons.Default.Star,
+                    selected = currentLayout == "compact",
+                    onClick = { onLayoutSelected("compact") }
                 )
             }
         },
