@@ -33,17 +33,23 @@
         <Key android:codes="41" android:keyLabel=")" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 3: More symbols with explicit codes -->
+    <!-- Row 3: More symbols + Delete -->
     <Row>
-        <Key android:codes="33" android:keyLabel="!" android:keyEdgeFlags="left" />
-        <Key android:codes="34" android:keyLabel="&quot;" />
-        <Key android:codes="39" android:keyLabel="'" />
-        <Key android:codes="58" android:keyLabel=":" />
-        <Key android:codes="59" android:keyLabel=";" />
-        <Key android:codes="47" android:keyLabel="/" />
-        <Key android:codes="63" android:keyLabel="?" />
-        <Key android:codes="61" android:keyLabel="=" />
-        <Key android:codes="95" android:keyLabel="_" android:keyEdgeFlags="right" />
+        <Key android:codes="33" android:keyLabel="!" android:keyWidth="9%p" android:keyEdgeFlags="left" />
+        <Key android:codes="34" android:keyLabel="&quot;" android:keyWidth="9%p" />
+        <Key android:codes="39" android:keyLabel="'" android:keyWidth="9%p" />
+        <Key android:codes="58" android:keyLabel=":" android:keyWidth="9%p" />
+        <Key android:codes="59" android:keyLabel=";" android:keyWidth="9%p" />
+        <Key android:codes="47" android:keyLabel="/" android:keyWidth="9%p" />
+        <Key android:codes="63" android:keyLabel="?" android:keyWidth="9%p" />
+        <Key android:codes="61" android:keyLabel="=" android:keyWidth="9%p" />
+        <Key android:codes="95" android:keyLabel="_" android:keyWidth="9%p" />
+        <Key
+            android:codes="@integer/key_delete"
+            android:keyLabel="⌫"
+            android:keyWidth="19%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 4: Bottom -->
