@@ -33,9 +33,9 @@
         <Key android:keyLabel="p" android:keyEdgeFlags="right" />
     </Row>
     
-    <!-- Row 3: ASDFGH -->
+    <!-- Row 3: ASDFGHJKL (sin gap para usar ancho completo) -->
     <Row>
-        <Key android:keyLabel="a" android:horizontalGap="5%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="a" android:keyEdgeFlags="left" />
         <Key android:keyLabel="s" />
         <Key android:keyLabel="d" />
         <Key android:keyLabel="f" />
