@@ -135,7 +135,11 @@ class SimpleKeyboard(
                                         } else {
                                             keyboardHorizontalGap
                                         }
-                                        val codesAttr = getAttrValue(parser, "codes")
+                                        
+                                        // CRITICAL FIX: Use getAttributeIntValue for codes attribute
+                                        // This automatically resolves @integer/key_* references to their values
+                                        val codeFromXml = parser.getAttributeIntValue(null, "codes", Int.MIN_VALUE)
+                                        
                                         val labelAttr = getAttrValue(parser, "keyLabel")
                                         val shiftLabelAttr = getAttrValue(parser, "shiftLabel")
                                         val outputTextAttr = getAttrValue(parser, "keyOutputText")
@@ -145,8 +149,8 @@ class SimpleKeyboard(
                                         val edgeFlags = parser.getAttributeIntValue(null, "keyEdgeFlags", 0)
 
                                         var code: Int
-                                        if (codesAttr != null) {
-                                            code = resolveKeyCode(context, codesAttr)
+                                        if (codeFromXml != Int.MIN_VALUE) {
+                                            code = codeFromXml
                                         } else if (labelAttr != null && labelAttr.length == 1) {
                                             code = labelAttr[0].code
                                         } else {
@@ -257,21 +261,6 @@ class SimpleKeyboard(
             return null
         }
 
-        private fun resolveKeyCode(context: Context, codeStr: String): Int {
-            return try {
-                codeStr.toInt()
-            } catch (e: NumberFormatException) {
-                if (codeStr.startsWith("@")) {
-                    try {
-                        val resId = codeStr.substring(1).toInt()
-                        context.resources.getInteger(resId)
-                    } catch (ex: Exception) {
-                        0
-                    }
-                } else {
-                    0
-                }
-            }
-        }
+
     }
 }
