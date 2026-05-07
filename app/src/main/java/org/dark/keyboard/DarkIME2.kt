@@ -49,19 +49,18 @@ class DarkIME2 : InputMethodService() {
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
         
-        // Agregar padding inferior para que botones del sistema no cubran el teclado
-        val paddingBottom = (48 * resources.displayMetrics.density).toInt() // 48dp de espacio
-        
+        // Calcular igual que HeliBoard
+        val inputView = window?.window?.decorView ?: return
         val keyboardView = keyboardView ?: return
-        val location = IntArray(2)
-        keyboardView.getLocationInWindow(location)
-        val keyboardTop = location[1]
+        
+        val inputHeight = inputView.height
         val keyboardHeight = keyboardView.height
+        val visibleTopY = inputHeight - keyboardHeight
         
-        outInsets.contentTopInsets = keyboardTop
-        outInsets.visibleTopInsets = keyboardTop - paddingBottom
+        outInsets.contentTopInsets = visibleTopY
+        outInsets.visibleTopInsets = visibleTopY
         
-        Log.d(TAG, "onComputeInsets: contentTop=$keyboardTop, visibleTop=${keyboardTop - paddingBottom}, padding=${paddingBottom}px")
+        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, keyboardHeight=$keyboardHeight, visibleTopY=$visibleTopY")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {

@@ -35,11 +35,12 @@ class SimpleKeyboard(
             Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
             val verticalGapPx = (1.5f * density).toInt()
 
-            // Distribución: 5 filas = 100%
-            // Extension: 18%, Normal: 21% x3, Bottom: 19% = 18+21+21+21+19 = 100%
-            val numberRowHeight = (keyboardHeight * 0.18f).toInt()
-            val rowHeight = (keyboardHeight * 0.21f).toInt()
-            val bottomRowHeight = (keyboardHeight * 0.19f).toInt()
+            // Distribución: 5 filas + 4 gaps
+            // Gaps ocupan: 4 * 1.5dp ≈ 6dp del total
+            // Ajustar porcentajes para compensar gaps
+            val numberRowHeight = (keyboardHeight * 0.19f).toInt()
+            val rowHeight = (keyboardHeight * 0.205f).toInt()  
+            val bottomRowHeight = (keyboardHeight * 0.195f).toInt()
             val defaultKeyWidth = screenWidth / 10
 
             val parser = context.resources.getXml(xmlResId)
