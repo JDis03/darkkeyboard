@@ -25,10 +25,16 @@ class SimpleKeyboard(
             screenHeight: Int
         ): SimpleKeyboard {
             val density = context.resources.displayMetrics.density
-            val defaultHeightDp = 205.6f * 1.33f
-            val defaultHeightPx = defaultHeightDp * density
-            val maxHeight = screenHeight * 0.35f  // Reducido a 0.35 para dejar espacio a botones del sistema
-            val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
+            
+            // USAR ALTURA FIJA EN DP EN LUGAR DE PORCENTAJE
+            // 240dp es suficiente para 5 filas sin cubrir botones del sistema
+            val keyboardHeightDp = 240f
+            val keyboardHeight = (keyboardHeightDp * density).toInt()
+            
+            Log.d(TAG, "Keyboard height calculation:")
+            Log.d(TAG, "  screenHeight: $screenHeight px (${screenHeight / density} dp)")
+            Log.d(TAG, "  density: $density")
+            Log.d(TAG, "  FINAL keyboardHeight: $keyboardHeight px ($keyboardHeightDp dp)")
             val verticalGapPx = (1.5f * density).toInt()
 
             val numberRowHeight = (keyboardHeight * 0.17f).toInt()
@@ -89,6 +95,7 @@ class SimpleKeyboard(
                                     
                                     // Si ya tenemos 5 filas, ignorar el resto
                                     if (rowCount >= 5) {
+                                        Log.d(TAG, "Skipping row: already have 5 rows")
                                         currentRow = null
                                     } else if (hasKeyboardMode && rowCount >= 4) {
                                         // Si es la 5ta fila y tiene keyboardMode, tomar solo la primera
