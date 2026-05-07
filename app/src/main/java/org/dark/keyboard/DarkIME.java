@@ -22,7 +22,7 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
         Log.e("DK", "onCreateInputView START");
         try {
             // Crear el teclado desde XML
-            kbd = new LatinKeyboard(this, R.xml.kbd_qwerty, 0, 0.35f);
+            kbd = new LatinKeyboard(this, R.xml.kbd_qwerty, 0, 35f);
             
             // Inflar el layout COMPLETO (igual que HeliBoard - no extraer vista)
             android.view.ViewGroup root = (android.view.ViewGroup) getLayoutInflater()
@@ -64,7 +64,7 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
             altActive = !altActive; kv.setAltIndicator(altActive);
         } else if (primaryCode == LatinKeyboardView.KEYCODE_FN) {
             fnActive = !fnActive;
-            kbd = new LatinKeyboard(this, fnActive ? R.xml.kbd_symbols : R.xml.kbd_qwerty, 0, 0.35f);
+            kbd = new LatinKeyboard(this, fnActive ? R.xml.kbd_symbols : R.xml.kbd_qwerty, 0, 35f);
             kv.setKeyboard(kbd);
         } else if (primaryCode == '\t') {
             ic.commitText("\t", 1);
@@ -72,7 +72,7 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
             ic.commitText("\n", 1);
             shiftState = false; kv.setShiftState(Keyboard.SHIFT_OFF);
         } else if (primaryCode == Keyboard.KEYCODE_MODE_CHANGE) {
-            kbd = new LatinKeyboard(this, R.xml.kbd_symbols, 0, 0.35f);
+            kbd = new LatinKeyboard(this, R.xml.kbd_symbols, 0, 35f);
             kv.setKeyboard(kbd);
         } else if (ctrlActive && primaryCode >= 'A' && primaryCode <= 'Z') {
             // Ctrl shortcuts
