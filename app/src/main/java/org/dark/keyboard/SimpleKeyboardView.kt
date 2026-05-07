@@ -177,17 +177,24 @@ class SimpleKeyboardView @JvmOverloads constructor(
         return when (key.code) {
             Key.CODE_SHIFT -> shiftActive
             Key.CODE_CTRL_LEFT -> ctrlActive
+            KEYCODE_ALT_LEFT -> altActive
+            KEYCODE_FN -> fnActive
             else -> false
         }
     }
 
     private fun getDisplayLabel(key: Key): String? {
+        // First check if we have a label
         val label = key.label
         if (label != null && label.isNotEmpty()) {
-            Log.d("SimpleKeyboardView", "getDisplayLabel: label=$label")
+            // If shift is active and this is a letter key, show uppercase
+            if (shiftActive && label.length == 1 && label[0].isLetter()) {
+                return label.uppercase()
+            }
             return label
         }
 
+        // Map special keycodes to symbols
         val result = when (key.code) {
             Key.CODE_SHIFT -> "⇧"
             Key.CODE_DELETE -> "⌫"
@@ -199,10 +206,17 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_F1 -> "F1"
             Key.CODE_CTRL_LEFT -> "Ctrl"
             Key.CODE_FN -> "Fn"
+            KEYCODE_ALT_LEFT -> "Alt"
             else -> {
                 // If no label and no special code, try to use the code as char
                 if (key.code > 0 && key.code < 128) {
-                    key.code.toChar().toString()
+                    val char = key.code.toChar().toString()
+                    // Apply shift for letters
+                    if (shiftActive && char.length == 1 && char[0].isLetter()) {
+                        char.uppercase()
+                    } else {
+                        char
+                    }
                 } else {
                     Log.e("SimpleKeyboardView", "No label for key: code=${key.code}")
                     null
@@ -283,6 +297,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
             }
             KEYCODE_ALT_LEFT -> {
                 altActive = !altActive
+                invalidate()
+            }
+            KEYCODE_FN -> {
+                fnActive = !fnActive
                 invalidate()
             }
             KEYCODE_META_LEFT -> {
