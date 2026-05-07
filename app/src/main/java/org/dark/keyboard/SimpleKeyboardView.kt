@@ -244,6 +244,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun handleKeyPress(key: Key) {
+        Log.d("SimpleKeyboardView", "handleKeyPress: code=${key.code}, label=${key.label}")
         when (key.code) {
             Key.CODE_SHIFT -> {
                 shiftActive = !shiftActive

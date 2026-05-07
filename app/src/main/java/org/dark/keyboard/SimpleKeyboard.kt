@@ -36,11 +36,14 @@ class SimpleKeyboard(
             val verticalGapPx = (1.5f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
-            // Gaps ocupan: 4 * 1.5dp ≈ 6dp del total
-            // Ajustar porcentajes para compensar gaps
-            val numberRowHeight = (keyboardHeight * 0.19f).toInt()
-            val rowHeight = (keyboardHeight * 0.205f).toInt()  
-            val bottomRowHeight = (keyboardHeight * 0.195f).toInt()
+            // Restar gaps del total antes de calcular alturas de filas
+            val totalGapSpace = verticalGapPx * 4
+            val availableHeightForRows = keyboardHeight - totalGapSpace
+            
+            // Distribución de altura disponible: 18%, 21%, 21%, 21%, 19%
+            val numberRowHeight = (availableHeightForRows * 0.18f).toInt()
+            val rowHeight = (availableHeightForRows * 0.21f).toInt()  
+            val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
             val defaultKeyWidth = screenWidth / 10
 
             val parser = context.resources.getXml(xmlResId)
@@ -95,9 +98,9 @@ class SimpleKeyboard(
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
-                                    // Si ya tenemos 5 filas, ignorar el resto
-                                    if (rowCount >= 5) {
-                                        Log.d(TAG, "Skipping row: already have 5 rows")
+                                    // Si ya tenemos 5 filas O ya tomamos una bottom row con mode, ignorar
+                                    if (rowCount >= 5 || (hasKeyboardMode && hasBottomRowWithMode)) {
+                                        Log.d(TAG, "Skipping row: rowCount=$rowCount, hasBottomRowWithMode=$hasBottomRowWithMode")
                                         currentRow = null
                                     } else if (hasKeyboardMode && rowCount >= 4) {
                                         // Si es la 5ta fila y tiene keyboardMode, tomar solo la PRIMERA

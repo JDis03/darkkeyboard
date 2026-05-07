@@ -68,27 +68,30 @@ class DarkIME2 : InputMethodService() {
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
         
-        // Calcular igual que HeliBoard (LatinIME.java:1173-1217)
-        val mInputView = inputViewContainer ?: return
-        val visibleKeyboardView = keyboardView ?: return
+        val keyboardView = keyboardView ?: return
+        if (!keyboardView.isShown) return
         
-        val inputHeight = mInputView.height
-        val visibleTopY = inputHeight - visibleKeyboardView.height
+        // Calcular visibleTopY basado en la altura de la pantalla y el teclado
+        val dm = resources.displayMetrics
+        val screenHeight = dm.heightPixels
+        val keyboardHeight = keyboardView.height
         
-        // Need to set expanded touchable region only if keyboard is shown
-        if (visibleKeyboardView.isShown) {
-            val touchLeft = 0
-            val touchTop = visibleTopY
-            val touchRight = visibleKeyboardView.width
-            val touchBottom = inputHeight
-            outInsets.touchableInsets = Insets.TOUCHABLE_INSETS_REGION
-            outInsets.touchableRegion.set(touchLeft, touchTop, touchRight, touchBottom)
-        }
+        // El teclado debe estar en la parte inferior, dejando espacio arriba
+        val visibleTopY = screenHeight - keyboardHeight
+        
+        // Set touchable region para el área del teclado
+        outInsets.touchableInsets = Insets.TOUCHABLE_INSETS_REGION
+        outInsets.touchableRegion.set(
+            0,                  // left
+            visibleTopY,        // top
+            dm.widthPixels,     // right
+            screenHeight        // bottom
+        )
         
         outInsets.contentTopInsets = visibleTopY
         outInsets.visibleTopInsets = visibleTopY
         
-        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, visibleTopY=$visibleTopY")
+        Log.d(TAG, "onComputeInsets: screenHeight=$screenHeight, keyboardHeight=$keyboardHeight, visibleTopY=$visibleTopY")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
