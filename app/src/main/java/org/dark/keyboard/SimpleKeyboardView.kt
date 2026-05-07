@@ -174,11 +174,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun isModifierActive(key: Key): Boolean {
+        // Solo pintar Shift cuando está activo
+        // Ctrl, Alt, Fn no se pintan (para mantener UI limpia)
         return when (key.code) {
             Key.CODE_SHIFT -> shiftActive
-            Key.CODE_CTRL_LEFT -> ctrlActive
-            KEYCODE_ALT_LEFT -> altActive
-            KEYCODE_FN -> fnActive
             else -> false
         }
     }
