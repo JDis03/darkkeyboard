@@ -211,6 +211,7 @@ class SimpleKeyboard(
                                         )
                                         row.keys.add(key)
                                         currentX += keyWidth
+                                        Log.d(TAG, "Added key: label=$labelAttr, code=$code, x=${key.x}, width=${key.width}")
                                     }
                                 }
                             }

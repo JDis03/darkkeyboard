@@ -183,9 +183,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
 
     private fun getDisplayLabel(key: Key): String? {
         val label = key.label
-        if (label != null && label.isNotEmpty()) return label
+        if (label != null && label.isNotEmpty()) {
+            Log.d("SimpleKeyboardView", "getDisplayLabel: label=$label")
+            return label
+        }
 
-        return when (key.code) {
+        val result = when (key.code) {
             Key.CODE_SHIFT -> "⇧"
             Key.CODE_DELETE -> "⌫"
             Key.CODE_ENTER -> "↵"
@@ -196,8 +199,17 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_F1 -> "F1"
             Key.CODE_CTRL_LEFT -> "Ctrl"
             Key.CODE_FN -> "Fn"
-            else -> null
+            else -> {
+                // If no label and no special code, try to use the code as char
+                if (key.code > 0 && key.code < 128) {
+                    key.code.toChar().toString()
+                } else {
+                    Log.e("SimpleKeyboardView", "No label for key: code=${key.code}")
+                    null
+                }
+            }
         }
+        return result
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
