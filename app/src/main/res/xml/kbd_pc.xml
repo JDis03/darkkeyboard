@@ -98,6 +98,16 @@
             android:keyLabel="."
             android:keyWidth="10%p" />
         <Key
+            android:codes="@integer/key_switch_input"
+            android:keyLabel="🌐"
+            android:keyWidth="8%p"
+            android:isModifier="true" />
+        <Key
+            android:codes="@integer/key_close"
+            android:keyLabel="⬇"
+            android:keyWidth="7%p"
+            android:isModifier="true" />
+        <Key
             android:codes="@integer/key_return"
             android:keyLabel="↵"
             android:keyWidth="15%p"

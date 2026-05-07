@@ -25,6 +25,8 @@ data class Key(
         const val CODE_SHIFT = -1
         const val CODE_MODE_CHANGE = -2
         const val CODE_CANCEL = -3
+        const val CODE_CLOSE = -3          // Same as CANCEL - close keyboard
+        const val CODE_SWITCH_INPUT = -4   // Switch to another IME
         const val CODE_DELETE = -5
         const val CODE_ALT_LEFT = -57
         const val CODE_ESCAPE = -111

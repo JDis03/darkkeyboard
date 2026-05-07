@@ -63,4 +63,8 @@
     <integer name="key_fkey_f11">-141</integer>
     <integer name="key_fkey_f12">-142</integer>
     <integer name="key_num_lock">-143</integer>
+    
+    <!-- IME control keys -->
+    <integer name="key_close">-3</integer>
+    <integer name="key_switch_input">-4</integer>
 </resources>

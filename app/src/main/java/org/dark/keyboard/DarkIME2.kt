@@ -68,30 +68,27 @@ class DarkIME2 : InputMethodService() {
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
         
+        val mInputView = inputViewContainer ?: return
         val keyboardView = keyboardView ?: return
         if (!keyboardView.isShown) return
         
-        // Calcular visibleTopY basado en la altura de la pantalla y el teclado
-        val dm = resources.displayMetrics
-        val screenHeight = dm.heightPixels
-        val keyboardHeight = keyboardView.height
-        
-        // El teclado debe estar en la parte inferior, dejando espacio arriba
-        val visibleTopY = screenHeight - keyboardHeight
+        // Use inputView height like HeliBoard
+        val inputHeight = mInputView.height
+        val visibleTopY = inputHeight - keyboardView.height
         
         // Set touchable region para el área del teclado
         outInsets.touchableInsets = Insets.TOUCHABLE_INSETS_REGION
         outInsets.touchableRegion.set(
-            0,                  // left
-            visibleTopY,        // top
-            dm.widthPixels,     // right
-            screenHeight        // bottom
+            0,                      // left
+            visibleTopY,            // top
+            keyboardView.width,     // right
+            inputHeight             // bottom
         )
         
         outInsets.contentTopInsets = visibleTopY
         outInsets.visibleTopInsets = visibleTopY
         
-        Log.d(TAG, "onComputeInsets: screenHeight=$screenHeight, keyboardHeight=$keyboardHeight, visibleTopY=$visibleTopY")
+        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, keyboardHeight=${keyboardView.height}, visibleTopY=$visibleTopY")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -165,6 +162,17 @@ class DarkIME2 : InputMethodService() {
             }
             Key.CODE_DPAD_RIGHT -> {
                 sendKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT, metaState)
+            }
+            Key.CODE_CLOSE -> {
+                // Close/hide the keyboard
+                requestHideSelf(0)
+                Log.d(TAG, "Closing keyboard")
+            }
+            Key.CODE_SWITCH_INPUT -> {
+                // Switch to next IME
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
+                imm.showInputMethodPicker()
+                Log.d(TAG, "Showing IME picker")
             }
             in SimpleKeyboardView.KEYCODE_FKEY_F1..SimpleKeyboardView.KEYCODE_FKEY_F12 -> {
                 // Map F1-F12 to Android keycodes

@@ -280,6 +280,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_SETTINGS -> {
                 onKeyListener?.onKey(Key.CODE_SETTINGS, shiftActive, ctrlActive, altActive, fnActive)
             }
+            Key.CODE_CLOSE -> {
+                onKeyListener?.onKey(Key.CODE_CLOSE, shiftActive, ctrlActive, altActive, fnActive)
+            }
+            Key.CODE_SWITCH_INPUT -> {
+                onKeyListener?.onKey(Key.CODE_SWITCH_INPUT, shiftActive, ctrlActive, altActive, fnActive)
+            }
             Key.CODE_F1 -> {
                 onKeyListener?.onKey(Key.CODE_F1, shiftActive, ctrlActive, altActive, fnActive)
             }

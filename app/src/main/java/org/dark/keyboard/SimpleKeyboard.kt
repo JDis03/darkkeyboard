@@ -26,10 +26,11 @@ class SimpleKeyboard(
         ): SimpleKeyboard {
             val density = context.resources.displayMetrics.density
             
-            // Fórmula original de HeliBoard
+            // Fórmula original de HeliBoard, pero reducida para dejar espacio para botones
             val defaultHeightDp = 205.6f * 1.33f
             val defaultHeightPx = defaultHeightDp * density
-            val maxHeight = screenHeight * 0.46f
+            // Reducir de 46% a 38% para dejar ~8% para botones del sistema
+            val maxHeight = screenHeight * 0.38f
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
             Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
@@ -44,6 +45,9 @@ class SimpleKeyboard(
             val numberRowHeight = (availableHeightForRows * 0.18f).toInt()
             val rowHeight = (availableHeightForRows * 0.21f).toInt()  
             val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
+            
+            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, gaps=$totalGapSpace, available=$availableHeightForRows")
+            Log.d(TAG, "Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
             val defaultKeyWidth = screenWidth / 10
 
             val parser = context.resources.getXml(xmlResId)
@@ -102,8 +106,8 @@ class SimpleKeyboard(
                                     if (rowCount >= 5 || (hasKeyboardMode && hasBottomRowWithMode)) {
                                         Log.d(TAG, "Skipping row: rowCount=$rowCount, hasBottomRowWithMode=$hasBottomRowWithMode")
                                         currentRow = null
-                                    } else if (hasKeyboardMode && rowCount >= 4) {
-                                        // Si es la 5ta fila y tiene keyboardMode, tomar solo la PRIMERA
+                                    } else if (hasKeyboardMode && rowCount >= 3) {
+                                        // Si es la 4ta+ fila y tiene keyboardMode, tomar solo la PRIMERA
                                         if (!hasBottomRowWithMode) {
                                             currentRow = KeyboardRow(
                                                 keys = rowKeys,

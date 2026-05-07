@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#FF1A1A1A">
+    android:background="#FF1A1A1A"
+    android:paddingBottom="48dp">
 
     <org.dark.keyboard.SimpleKeyboardView
         android:id="@+id/keyboard"
