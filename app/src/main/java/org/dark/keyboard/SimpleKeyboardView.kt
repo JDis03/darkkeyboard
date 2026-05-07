@@ -85,6 +85,9 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var pressedKey: Key? = null
     private var repeatHandler = Handler(Looper.getMainLooper())
     private var repeatRunnable: Runnable? = null
+    private var popupPreview: PopupPreview? = null
+    private var longPressHandler = Handler(Looper.getMainLooper())
+    private var longPressRunnable: Runnable? = null
 
     var onKeyListener: OnKeyListener? = null
     var onModifierChangeListener: OnModifierChangeListener? = null
@@ -235,8 +238,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
             MotionEvent.ACTION_DOWN -> {
                 val key = findKey(event.x.toInt(), event.y.toInt())
                 pressedKey = key
-                if (key?.isRepeatable == true) {
-                    scheduleRepeat(key)
+                if (key != null) {
+                    if (key.isRepeatable) {
+                        scheduleRepeat(key)
+                    } else if (isPunctuationKey(key)) {
+                        scheduleLongPress(key)
+                    }
                 }
                 invalidate()
                 return true
@@ -245,6 +252,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 val key = findKey(event.x.toInt(), event.y.toInt())
                 if (key != pressedKey) {
                     cancelRepeat()
+                    cancelLongPressInternal()
                     pressedKey = key
                     invalidate()
                 }
@@ -252,15 +260,23 @@ class SimpleKeyboardView @JvmOverloads constructor(
             }
             MotionEvent.ACTION_UP -> {
                 cancelRepeat()
-                pressedKey?.let { key ->
-                    handleKeyPress(key)
+                cancelLongPressInternal()
+                
+                // Only handle key press if popup is not showing
+                if (popupPreview?.isShowing() != true) {
+                    pressedKey?.let { key ->
+                        handleKeyPress(key)
+                    }
                 }
+                
                 pressedKey = null
                 invalidate()
                 return true
             }
             MotionEvent.ACTION_CANCEL -> {
                 cancelRepeat()
+                cancelLongPressInternal()
+                popupPreview?.dismiss()
                 pressedKey = null
                 invalidate()
                 return true
@@ -369,6 +385,31 @@ class SimpleKeyboardView @JvmOverloads constructor(
         repeatRunnable?.let {
             repeatHandler.removeCallbacks(it)
             repeatRunnable = null
+        }
+    }
+    
+    private fun isPunctuationKey(key: Key?): Boolean {
+        return key?.label in listOf(".", ",", "?", "!")
+    }
+    
+    private fun scheduleLongPress(key: Key) {
+        cancelLongPressInternal()
+        if (popupPreview == null) {
+            popupPreview = PopupPreview(context)
+        }
+        
+        longPressRunnable = Runnable {
+            popupPreview?.showPunctuationPopup(this, key) { char ->
+                onKeyListener?.onText(char.toString())
+            }
+        }
+        longPressHandler.postDelayed(longPressRunnable!!, 500L)
+    }
+    
+    private fun cancelLongPressInternal() {
+        longPressRunnable?.let {
+            longPressHandler.removeCallbacks(it)
+            longPressRunnable = null
         }
     }
 }
