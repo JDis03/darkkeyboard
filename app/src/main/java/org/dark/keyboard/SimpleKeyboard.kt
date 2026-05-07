@@ -82,15 +82,33 @@ class SimpleKeyboard(
                                     val isExtension = parser.getAttributeBooleanValue(
                                         null, "extension", false
                                     )
-                                    val keyboardMode = parseKeyboardMode(parser)
+                                    // IGNORAR keyboardMode completamente - solo tomar primeras 5 filas
+                                    val hasKeyboardMode = hasAttribute(parser, "keyboardMode")
                                     val rowKeys = mutableListOf<Key>()
-                                    if (keyboardMode != -1 && keyboardMode != 0) {
+                                    
+                                    // Si ya tenemos 5 filas, ignorar el resto
+                                    if (rowCount >= 5) {
                                         currentRow = null
+                                    } else if (hasKeyboardMode && rowCount >= 4) {
+                                        // Si es la 5ta fila y tiene keyboardMode, tomar solo la primera
+                                        if (currentRow == null) {
+                                            currentRow = KeyboardRow(
+                                                keys = rowKeys,
+                                                isExtension = isExtension,
+                                                keyboardMode = 0
+                                            )
+                                            currentX = 0
+                                            currentRow!!.defaultKeyHeight = bottomRowHeight
+                                            currentRow!!.defaultKeyWidth = keyboardDefaultWidth
+                                            currentRow!!.y = currentY
+                                        } else {
+                                            currentRow = null // Ignorar filas bottom adicionales
+                                        }
                                     } else {
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
                                             isExtension = isExtension,
-                                            keyboardMode = keyboardMode
+                                            keyboardMode = 0
                                         )
                                         currentX = 0
                                         val thisRowHeight = when {
@@ -221,18 +239,13 @@ class SimpleKeyboard(
             }
         }
 
-        private fun parseKeyboardMode(parser: XmlResourceParser): Int {
+        private fun hasAttribute(parser: XmlResourceParser, attrName: String): Boolean {
             for (i in 0 until parser.attributeCount) {
-                if (parser.getAttributeName(i) == "keyboardMode") {
-                    val value = parser.getAttributeValue(i)
-                    return try {
-                        value.toInt()
-                    } catch (e: Exception) {
-                        -1
-                    }
+                if (parser.getAttributeName(i) == attrName) {
+                    return true
                 }
             }
-            return -1
+            return false
         }
 
         private fun getAttrValue(parser: XmlResourceParser, attrName: String): String? {

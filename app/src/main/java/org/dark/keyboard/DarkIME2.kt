@@ -9,7 +9,7 @@ import android.widget.LinearLayout
  * InputMethodService simple y funcional
  * Sin complejidad innecesaria - solo mostrar teclado y escribir
  */
-class DarkIME2 : InputMethodService(), SimpleKeyboardView.OnKeyListener {
+class DarkIME2 : InputMethodService() {
     
     private var keyboardView: SimpleKeyboardView? = null
     
@@ -27,16 +27,24 @@ class DarkIME2 : InputMethodService(), SimpleKeyboardView.OnKeyListener {
         keyboardView = layout.findViewById(R.id.keyboard)
         
         // Crear teclado desde XML
-        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_qwerty)
+        val dm = resources.displayMetrics
+        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_qwerty, dm.widthPixels, dm.heightPixels)
         keyboardView?.setKeyboard(keyboard)
-        keyboardView?.setOnKeyListener(this)
+        keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
+            override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
+                handleKey(code, shift, ctrl, alt, fn)
+            }
+            override fun onText(text: CharSequence) {
+                currentInputConnection?.commitText(text, 1)
+            }
+        }
         
         Log.i(TAG, "Keyboard created: ${keyboard.allKeys.size} keys, ${keyboard.rows.size} rows")
         
         return layout
     }
     
-    override fun onKey(code: Int, label: String?) {
+    private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         
         when (code) {
@@ -44,18 +52,14 @@ class DarkIME2 : InputMethodService(), SimpleKeyboardView.OnKeyListener {
                 ic.deleteSurroundingText(1, 0)
             }
             KEYCODE_SHIFT -> {
-                // TODO: Implementar shift
+                // Shift se maneja en el View
             }
             KEYCODE_ENTER -> {
                 ic.commitText("\n", 1)
             }
             else -> {
-                // Escribir la letra
-                val char = if (label != null && label.isNotEmpty()) {
-                    label
-                } else {
-                    code.toChar().toString()
-                }
+                // Escribir la tecla
+                val char = code.toChar().toString()
                 ic.commitText(char, 1)
             }
         }
