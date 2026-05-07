@@ -7,6 +7,19 @@
     android:background="#FF1A1A1A"
     android:paddingBottom="48dp">
 
+    <!-- Modifier status bar -->
+    <TextView
+        android:id="@+id/modifier_status"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="#263238"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#B0BEC5"
+        android:textSize="12sp"
+        android:fontFamily="monospace"
+        android:visibility="gone" />
+
     <org.dark.keyboard.SimpleKeyboardView
         android:id="@+id/keyboard"
         android:layout_width="match_parent"

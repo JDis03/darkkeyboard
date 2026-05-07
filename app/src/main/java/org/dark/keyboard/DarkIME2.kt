@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 
 /**
  * InputMethodService simple y funcional
@@ -13,6 +14,7 @@ import android.widget.LinearLayout
 class DarkIME2 : InputMethodService() {
     
     private var keyboardView: SimpleKeyboardView? = null
+    private var modifierStatusView: TextView? = null
     private var isSymbolsMode = false
     
     companion object {
@@ -46,6 +48,7 @@ class DarkIME2 : InputMethodService() {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null) as LinearLayout
         inputViewContainer = layout
         keyboardView = layout.findViewById(R.id.keyboard)
+        modifierStatusView = layout.findViewById(R.id.modifier_status)
         
         // Crear teclado desde XML - usar kbd_pc.xml (custom 5 filas con Ctrl/Tab)
         val dm = resources.displayMetrics
@@ -57,6 +60,11 @@ class DarkIME2 : InputMethodService() {
             }
             override fun onText(text: CharSequence) {
                 currentInputConnection?.commitText(text, 1)
+            }
+        }
+        keyboardView?.onModifierChangeListener = object : SimpleKeyboardView.OnModifierChangeListener {
+            override fun onModifierChanged(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
+                updateModifierStatus(shift, ctrl, alt, fn)
             }
         }
         
@@ -74,13 +82,14 @@ class DarkIME2 : InputMethodService() {
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         
-        Log.d(TAG, "handleKey: code=$code, shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn")
-        
         // Build meta state based on active modifiers
         var metaState = 0
         if (shift) metaState = metaState or KeyEvent.META_SHIFT_ON
         if (ctrl) metaState = metaState or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
         if (alt) metaState = metaState or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
+        
+        val charLabel = if (code > 0 && code < 128) code.toChar().toString() else "?"
+        Log.i(TAG, ">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
         
         when (code) {
             KEYCODE_DELETE -> {
@@ -230,5 +239,21 @@ class DarkIME2 : InputMethodService() {
         }
         keyboardView?.setKeyboard(keyboard)
         Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
+    }
+    
+    private fun updateModifierStatus(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
+        val statusParts = mutableListOf<String>()
+        if (ctrl) statusParts.add("Ctrl")
+        if (shift) statusParts.add("Shift")
+        if (alt) statusParts.add("Alt")
+        if (fn) statusParts.add("Fn")
+        
+        if (statusParts.isNotEmpty()) {
+            modifierStatusView?.text = "[ ${statusParts.joinToString(" + ")} ]"
+            modifierStatusView?.visibility = View.VISIBLE
+            Log.i(TAG, "Modifiers active: ${statusParts.joinToString(" + ")}")
+        } else {
+            modifierStatusView?.visibility = View.GONE
+        }
     }
 }

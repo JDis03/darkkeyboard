@@ -87,10 +87,15 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var repeatRunnable: Runnable? = null
 
     var onKeyListener: OnKeyListener? = null
+    var onModifierChangeListener: OnModifierChangeListener? = null
 
     interface OnKeyListener {
         fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean)
         fun onText(text: CharSequence)
+    }
+
+    interface OnModifierChangeListener {
+        fun onModifierChanged(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean)
     }
 
     fun setKeyboard(kb: SimpleKeyboard) {
@@ -274,6 +279,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_SHIFT -> {
                 shiftActive = !shiftActive
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             Key.CODE_DELETE -> {
                 onKeyListener?.onKey(Key.CODE_DELETE, shiftActive, ctrlActive, altActive, fnActive)
@@ -286,6 +292,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 onKeyListener?.onKey(Key.CODE_ENTER, shiftActive, ctrlActive, altActive, fnActive)
                 shiftActive = false
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             Key.CODE_TAB -> {
                 onKeyListener?.onKey(Key.CODE_TAB, shiftActive, ctrlActive, altActive, fnActive)
@@ -293,14 +300,17 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_CTRL_LEFT -> {
                 ctrlActive = !ctrlActive
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             KEYCODE_ALT_LEFT -> {
                 altActive = !altActive
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             KEYCODE_FN -> {
                 fnActive = !fnActive
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             KEYCODE_META_LEFT -> {
                 // Meta key (no specific action for now, could add metaActive state)
@@ -322,6 +332,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 onKeyListener?.onKey(Key.CODE_SPACE, shiftActive, ctrlActive, altActive, fnActive)
                 shiftActive = false
                 invalidate()
+                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
             }
             else -> {
                 val label = if (shiftActive && key.shiftLabel != null) {
@@ -337,6 +348,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 if (!key.isSticky && !key.isModifier) {
                     shiftActive = false
                     invalidate()
+                    onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
                 }
             }
         }
