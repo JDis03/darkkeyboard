@@ -100,20 +100,20 @@ class SimpleKeyboard(
                                     }
                                 }
                                 "Row" -> {
-                                    val isExtension = parser.getAttributeBooleanValue(null, "extension", false)
-                                    val rowEdgeFlags = parser.getAttributeIntValue(null, "rowEdgeFlags", 0)
+                                    // Use TypedArray to read Row attributes properly
+                                    val rowAttrs = context.obtainStyledAttributes(
+                                        Xml.asAttributeSet(parser),
+                                        R.styleable.Keyboard_Row
+                                    )
                                     
-                                    // Check if any attribute is named "keyboardMode"
-                                    var hasKeyboardMode = false
-                                    val attrCount = parser.attributeCount
-                                    for (i in 0 until attrCount) {
-                                        if (parser.getAttributeName(i) == "keyboardMode") {
-                                            hasKeyboardMode = true
-                                            break
-                                        }
-                                    }
+                                    val keyboardModeId = rowAttrs.getResourceId(R.styleable.Keyboard_Row_keyboardMode, 0)
+                                    val isExtension = rowAttrs.getBoolean(R.styleable.Keyboard_Row_extension, false)
+                                    val rowEdgeFlags = rowAttrs.getInt(R.styleable.Keyboard_Row_rowEdgeFlags, 0)
+                                    val hasKeyboardMode = keyboardModeId != 0
                                     
-                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode")
+                                    rowAttrs.recycle()
+                                    
+                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode, modeId=$keyboardModeId")
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
