@@ -80,17 +80,17 @@ class SimpleKeyboard(
                                     }
                                 }
                                 "Row" -> {
-                                    val isExtension = parser.getAttributeBooleanValue(
-                                        null, "extension", false
-                                    )
-                                    // IGNORAR keyboardMode completamente - solo tomar primeras 5 filas
-                                    val hasKeyboardMode = hasAttribute(parser, "keyboardMode")
+                                    val isExtension = parser.getAttributeBooleanValue(null, "extension", false)
+                                    val rowEdgeFlags = parser.getAttributeIntValue(null, "rowEdgeFlags", 0)
+                                    val keyboardModeValue = parser.getAttributeValue(null, "keyboardMode")
+                                    val hasKeyboardMode = keyboardModeValue != null
+                                    
                                     val rowKeys = mutableListOf<Key>()
                                     
-                                    // Si ya tenemos 6 filas, ignorar el resto (aumentado de 5 a 6 para incluir Tab/Enter)
-                                    if (rowCount >= 6) {
+                                    // Si ya tenemos 5 filas, ignorar el resto
+                                    if (rowCount >= 5) {
                                         currentRow = null
-                                    } else if (hasKeyboardMode && rowCount >= 5) {
+                                    } else if (hasKeyboardMode && rowCount >= 4) {
                                         // Si es la 5ta fila y tiene keyboardMode, tomar solo la primera
                                         if (currentRow == null) {
                                             currentRow = KeyboardRow(

@@ -27,9 +27,9 @@ class DarkIME2 : InputMethodService() {
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null) as LinearLayout
         keyboardView = layout.findViewById(R.id.keyboard)
         
-        // Crear teclado desde XML - usar kbd_full.xml para layout PC completo con Ctrl/Alt/Esc
+        // Crear teclado desde XML - usar kbd_qwerty.xml (5 filas estándar de HackersKeyboard)
         val dm = resources.displayMetrics
-        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_full, dm.widthPixels, dm.heightPixels)
+        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_qwerty, dm.widthPixels, dm.heightPixels)
         keyboardView?.setKeyboard(keyboard)
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
