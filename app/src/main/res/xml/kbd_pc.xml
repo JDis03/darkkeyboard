@@ -33,17 +33,23 @@
         <Key android:keyLabel="p" android:keyEdgeFlags="right" />
     </Row>
     
-    <!-- Row 3: ASDFGHJKL (sin gap para usar ancho completo) -->
+    <!-- Row 3: ASDFGHJKL + Tab -->
     <Row>
-        <Key android:keyLabel="a" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="s" />
-        <Key android:keyLabel="d" />
-        <Key android:keyLabel="f" />
-        <Key android:keyLabel="g" />
-        <Key android:keyLabel="h" />
-        <Key android:keyLabel="j" />
-        <Key android:keyLabel="k" />
-        <Key android:keyLabel="l" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="a" android:keyWidth="9%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="s" android:keyWidth="9%p" />
+        <Key android:keyLabel="d" android:keyWidth="9%p" />
+        <Key android:keyLabel="f" android:keyWidth="9%p" />
+        <Key android:keyLabel="g" android:keyWidth="9%p" />
+        <Key android:keyLabel="h" android:keyWidth="9%p" />
+        <Key android:keyLabel="j" android:keyWidth="9%p" />
+        <Key android:keyLabel="k" android:keyWidth="9%p" />
+        <Key android:keyLabel="l" android:keyWidth="9%p" />
+        <Key
+            android:codes="@integer/key_tab"
+            android:keyLabel="Tab"
+            android:keyWidth="19%p"
+            android:isModifier="true"
+            android:keyEdgeFlags="right" />
     </Row>
     
     <!-- Row 4: ZXCVBN + Shift + Delete -->
@@ -71,7 +77,7 @@
             android:keyEdgeFlags="right" />
     </Row>
     
-    <!-- Row 5: Bottom row con Ctrl, Tab, Space, símbolos, Enter -->
+    <!-- Row 5: Bottom row con Ctrl, Alt, ?123, Space, ., Enter -->
     <Row android:rowEdgeFlags="bottom">
         <Key
             android:codes="@integer/key_ctrl_left"
@@ -80,8 +86,8 @@
             android:isModifier="true"
             android:keyEdgeFlags="left" />
         <Key
-            android:codes="@integer/key_tab"
-            android:keyLabel="Tab"
+            android:codes="@integer/key_alt_left"
+            android:keyLabel="Alt"
             android:keyWidth="10%p"
             android:isModifier="true" />
         <Key
