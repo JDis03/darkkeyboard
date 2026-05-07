@@ -97,20 +97,24 @@ class SimpleKeyboard(
                                 "Row" -> {
                                     val isExtension = parser.getAttributeBooleanValue(null, "extension", false)
                                     val rowEdgeFlags = parser.getAttributeIntValue(null, "rowEdgeFlags", 0)
-                                    val keyboardModeValue = parser.getAttributeValue(null, "keyboardMode")
+                                    // Try with android namespace
+                                    val keyboardModeValue = parser.getAttributeValue("http://schemas.android.com/apk/res/android", "keyboardMode")
                                     val hasKeyboardMode = keyboardModeValue != null
+                                    
+                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode, mode=$keyboardModeValue")
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
                                     // Skip rows con keyboardMode - son alternativas que Android debería filtrar
                                     // Pero nuestro parser simple no soporta modes, entonces skip
                                     if (hasKeyboardMode) {
-                                        Log.d(TAG, "Skipping row with keyboardMode=$keyboardModeValue")
+                                        Log.d(TAG, "  -> WILL SKIP this row (has keyboardMode)")
                                         currentRow = null
                                     } else if (rowCount >= 5) {
-                                        Log.d(TAG, "Skipping row: already have 5 rows")
+                                        Log.d(TAG, "  -> WILL SKIP: already have 5 rows")
                                         currentRow = null
                                     } else {
+                                        Log.d(TAG, "  -> WILL CREATE row")
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
                                             isExtension = isExtension,
