@@ -21,15 +21,21 @@ public class DarkIME extends InputMethodService implements LatinKeyboardBaseView
     @Override public View onCreateInputView() {
         Log.e("DK", "onCreateInputView START");
         try {
+            // Crear el teclado desde XML
             kbd = new LatinKeyboard(this, R.xml.kbd_qwerty, 0, 0.35f);
-            kv = (LatinKeyboardView) getLayoutInflater().inflate(R.layout.input_ics, null)
-                .findViewById(R.id.LatinkeyboardBaseView);
+            
+            // Inflar el layout COMPLETO (igual que HeliBoard - no extraer vista)
+            android.view.ViewGroup root = (android.view.ViewGroup) getLayoutInflater()
+                .inflate(R.layout.input_ics, null);
+            
+            // Encontrar el LatinKeyboardView DENTRO del layout inflado
+            kv = root.findViewById(R.id.LatinkeyboardBaseView);
             kv.setKeyboard(kbd);
             kv.setOnKeyboardActionListener(this);
-            kv.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            Log.e("DK", "onCreateInputView OK");
-            return kv;
+            
+            Log.e("DK", "onCreateInputView OK - returning ROOT layout");
+            // Devolver el layout COMPLETO, no solo el keyboard view
+            return root;
         } catch (Exception e) {
             Log.e("DK", "ERROR: " + e.getMessage(), e);
             android.widget.TextView tv = new android.widget.TextView(this);
