@@ -253,8 +253,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 onKeyListener?.onKey(Key.CODE_DELETE, shiftActive, ctrlActive, altActive, fnActive)
             }
             Key.CODE_MODE_CHANGE -> {
-                fnActive = !fnActive
-                invalidate()
+                // Notificar al IME para cambiar de layout
+                onKeyListener?.onKey(Key.CODE_MODE_CHANGE, shiftActive, ctrlActive, altActive, fnActive)
             }
             Key.CODE_ENTER -> {
                 onKeyListener?.onKey(Key.CODE_ENTER, shiftActive, ctrlActive, altActive, fnActive)

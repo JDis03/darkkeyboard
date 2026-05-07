@@ -49,6 +49,8 @@ class DarkIME2 : InputMethodService() {
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         
+        Log.d(TAG, "handleKey: code=$code, shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn")
+        
         // Build meta state based on active modifiers
         var metaState = 0
         if (shift) metaState = metaState or KeyEvent.META_SHIFT_ON
@@ -67,8 +69,17 @@ class DarkIME2 : InputMethodService() {
             KEYCODE_SHIFT -> {
                 // Shift se maneja en el View
             }
+            Key.CODE_CTRL_LEFT -> {
+                // Ctrl se maneja en el View como toggle
+                Log.d(TAG, "Ctrl toggle")
+            }
+            Key.CODE_ALT_LEFT -> {
+                // Alt se maneja en el View como toggle
+                Log.d(TAG, "Alt toggle")
+            }
             Key.CODE_MODE_CHANGE -> {
                 // Cambiar entre alfabético y símbolos
+                Log.i(TAG, "MODE_CHANGE pressed, switching layout...")
                 switchLayout()
             }
             KEYCODE_ENTER -> {

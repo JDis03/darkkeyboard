@@ -27,7 +27,7 @@ class SimpleKeyboard(
             val density = context.resources.displayMetrics.density
             val defaultHeightDp = 205.6f * 1.33f
             val defaultHeightPx = defaultHeightDp * density
-            val maxHeight = screenHeight * 0.40f  // Reducido de 0.46 a 0.40 para no cubrir botones del sistema
+            val maxHeight = screenHeight * 0.35f  // Reducido a 0.35 para dejar espacio a botones del sistema
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             val verticalGapPx = (1.5f * density).toInt()
 
