@@ -87,10 +87,10 @@ class SimpleKeyboard(
                                     val hasKeyboardMode = hasAttribute(parser, "keyboardMode")
                                     val rowKeys = mutableListOf<Key>()
                                     
-                                    // Si ya tenemos 5 filas, ignorar el resto
-                                    if (rowCount >= 5) {
+                                    // Si ya tenemos 6 filas, ignorar el resto (aumentado de 5 a 6 para incluir Tab/Enter)
+                                    if (rowCount >= 6) {
                                         currentRow = null
-                                    } else if (hasKeyboardMode && rowCount >= 4) {
+                                    } else if (hasKeyboardMode && rowCount >= 5) {
                                         // Si es la 5ta fila y tiene keyboardMode, tomar solo la primera
                                         if (currentRow == null) {
                                             currentRow = KeyboardRow(
@@ -169,6 +169,11 @@ class SimpleKeyboard(
                                         if (outputTextAttr != null && code == 0) {
                                             code = 0
                                         }
+                                        
+                                        // Debug log for special keys
+                                        if (code == 9 || code == 10) {
+                                            Log.d(TAG, "Parsed special key: label=$labelAttr code=$code")
+                                        }
 
                                         val key = Key(
                                             label = labelAttr,
@@ -193,10 +198,14 @@ class SimpleKeyboard(
                             when (parser.name) {
                                 "Row" -> {
                                     currentRow?.let { row ->
+                                        Log.d(TAG, "Closing Row: keyboardMode=${row.keyboardMode}, keys=${row.keys.size}, rowCount=$rowCount")
                                         if (row.keyboardMode == -1 || row.keyboardMode == 0) {
                                             rows.add(row)
                                             currentY += row.defaultKeyHeight + keyboardVerticalGap
                                             rowCount++
+                                            Log.d(TAG, "  -> Added row #$rowCount with ${row.keys.size} keys")
+                                        } else {
+                                            Log.d(TAG, "  -> SKIPPED row (keyboardMode=${row.keyboardMode})")
                                         }
                                     }
                                     currentRow = null
