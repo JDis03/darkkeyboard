@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/org.pocketworkstation.pckeyboard"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- <string name="english_ime_name" msgid="7252517407088836577">"صفحه کلید Android"</string> -->
+    <!-- <string name="english_ime_settings" msgid="6661589557206947774">"تنظیمات صفحه کلید Android"</string> -->
+    <string name="english_ime_input_options" msgid="3909945612939668554">"گزینه های ورودی"</string>
+    <string name="vibrate_on_keypress" msgid="5258079494276955460">"لرزش با فشار کلید"</string>
+    <string name="sound_on_keypress" msgid="6093592297198243644">"صدا با فشار کلید"</string>
+    <string name="popup_on_keypress" msgid="123894815723512944">"بازشو با فشار کلید"</string>
+    <string name="prediction_category" msgid="7027100625580696660">"تنظیمات پیشنهاد کلمه"</string>
+    <string name="auto_cap" msgid="1719746674854628252">"نوشتن با حروف بزرگ خودکار"</string>
+    <string name="quick_fixes" msgid="5353213327680897927">"راه حل های سریع"</string>
+    <string name="quick_fixes_summary" msgid="3405028402510332373">"تصحیح خطاهای تایپی رایج"</string>
+    <string name="show_suggestions" msgid="507074425254289133">"نمایش پیشنهادات"</string>
+    <string name="show_suggestions_summary" msgid="1989672863935759654">"نمایش واژه های پیشنهادی در حین تایپ"</string>
+    <string name="auto_complete" msgid="1103196318775486023">"تکمیل خودکار"</string>
+    <string name="auto_complete_summary" msgid="6113149638718274624">"کلید خط فاصله و علائم نگارشی به صورت خودکار کلمه برجسته شده را وارد می کنند."</string>
+    <string name="prefs_settings_key" msgid="4623341240804046498">"نمایش کلید تنظیمات"</string>
+    <string name="settings_key_mode_auto_name" msgid="2993460277873684680">"خودکار"</string>
+    <string name="settings_key_mode_always_show_name" msgid="3047567041784760575">"همیشه نمایش"</string>
+    <string name="settings_key_mode_always_hide_name" msgid="7833948046716923994">"همیشه پنهان"</string>
+    <!-- no translation found for settings_key_modes:0 (8549888726962891527) -->
+    <!-- no translation found for settings_key_modes:1 (881280041213210923) -->
+    <!-- no translation found for settings_key_modes:2 (7317310620171067848) -->
+    <string name="added_word" msgid="8993883354622484372">"<xliff:g id="WORD">%s</xliff:g> : ذخیره شد"</string>
+    <string name="label_go_key" msgid="1635148082137219148">"برو"</string>
+    <string name="label_next_key" msgid="362972844525672568">"بعدی"</string>
+    <string name="label_done_key" msgid="2441578748772529288">"انجام شد"</string>
+    <string name="label_send_key" msgid="2815056534433717444">"ارسال"</string>
+    <string name="label_symbol_key" msgid="6175820506864489453">"?123"</string>
+    <string name="label_phone_key" msgid="4275497665515080551">"123"</string>
+    <string name="label_alpha_key" msgid="8864943487292437456">"ABC"</string>
+    <string name="label_alt_key" msgid="2846315350346694811">"ALT"</string>
+    <string name="voice_input" msgid="2466640768843347841">"ورودی صوتی"</string>
+  <string-array name="voice_input_modes">
+    <item msgid="1349082139076086774">"در صفحه کلید اصلی"</item>
+    <item msgid="8529385602829095903">"در صفحه کلید نمادها"</item>
+    <item msgid="7283103513488381103">"خاموش"</item>
+  </string-array>
+  <string-array name="voice_input_modes_summary">
+    <item msgid="554248625705084903">"میکروفن در صفحه کلید اصلی"</item>
+    <item msgid="6907837061058876770">"میکروفن در صفحه کلید نمادها"</item>
+    <item msgid="3664304608587798036">"ورودی صوتی غیر فعال شده است"</item>
+  </string-array>
+    <string name="popular_domain_1" msgid="1370572248164278467">".net"</string>
+    <string name="popular_domain_2" msgid="3036812463748402878">".org"</string>
+    <string name="popular_domain_3" msgid="8718639560809452028">".gov"</string>
+    <string name="popular_domain_4" msgid="35359437471311470">".edu"</string>
+    <string name="selectInputMethod" msgid="315076553378705821">"انتخاب روش ورودی"</string>
+    <string name="language_selection_title" msgid="1651299598555326750">"زبان های ورودی"</string>
+    <string name="language_selection_summary" msgid="187110938289512256">"برای تغییر زبان انگشت را روی کلید فاصله بلغزانید"</string>
+    <string name="hint_add_to_dictionary" msgid="9006292060636342317">"← جهت ذخیره دوباره لمس کنید"</string>
+    <string name="has_dictionary" msgid="6071847973466625007">"دیکشنری موجود است"</string>
+    <string name="prefs_enable_recorrection" msgid="4588408906649533582">"برای تصحیح کلمات لمس کنید"</string>
+    <string name="prefs_enable_recorrection_summary" msgid="1056068922330206170">"برای تصحیح کلمات وارد شده آنها را لمس کنید"</string>
+    <string name="keyboard_layout" msgid="437433231038683666">"طرح زمینه صفحه کلید"</string>
+</resources>

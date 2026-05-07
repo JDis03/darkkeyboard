@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/org.pocketworkstation.pckeyboard"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- <string name="english_ime_name" msgid="7252517407088836577">"Skjermtastatur"</string> -->
+    <!-- <string name="english_ime_settings" msgid="6661589557206947774">"Innstillinger for skjermtastatur"</string> -->
+    <string name="english_ime_input_options" msgid="3909945612939668554">"Inndataalternativer"</string>
+    <string name="vibrate_on_keypress" msgid="5258079494276955460">"Vibrer ved tastetrykk"</string>
+    <string name="sound_on_keypress" msgid="6093592297198243644">"Lyd ved tastetrykk"</string>
+    <string name="popup_on_keypress" msgid="123894815723512944">"Hurtigvindu ved tastetrykk"</string>
+    <string name="prediction_category" msgid="7027100625580696660">"Innstillinger for ordforslag"</string>
+    <string name="auto_cap" msgid="1719746674854628252">"Stor forbokstav"</string>
+    <string name="quick_fixes" msgid="5353213327680897927">"Autokorrektur"</string>
+    <string name="quick_fixes_summary" msgid="3405028402510332373">"Retter vanlige stavefeil"</string>
+    <string name="show_suggestions" msgid="507074425254289133">"Vis forslag"</string>
+    <string name="show_suggestions_summary" msgid="1989672863935759654">"Vis foreslåtte ord under skriving"</string>
+    <string name="auto_complete" msgid="1103196318775486023">"Autofullføring"</string>
+    <string name="auto_complete_summary" msgid="6113149638718274624">"Mellomrom og punktum setter automatisk inn valgt ord"</string>
+    <string name="prefs_settings_key" msgid="4623341240804046498">"Vis innstillingsnøkkel"</string>
+    <string name="settings_key_mode_auto_name" msgid="2993460277873684680">"Automatisk"</string>
+    <string name="settings_key_mode_always_show_name" msgid="3047567041784760575">"Vis alltid"</string>
+    <string name="settings_key_mode_always_hide_name" msgid="7833948046716923994">"Skjul alltid"</string>
+    <!-- no translation found for settings_key_modes:0 (8549888726962891527) -->
+    <!-- no translation found for settings_key_modes:1 (881280041213210923) -->
+    <!-- no translation found for settings_key_modes:2 (7317310620171067848) -->
+    <string name="added_word" msgid="8993883354622484372">"<xliff:g id="WORD">%s</xliff:g>: Lagret"</string>
+    <string name="label_go_key" msgid="1635148082137219148">"Gå"</string>
+    <string name="label_next_key" msgid="362972844525672568">"Neste"</string>
+    <string name="label_done_key" msgid="2441578748772529288">"Utfør"</string>
+    <string name="label_send_key" msgid="2815056534433717444">"Send"</string>
+    <string name="label_symbol_key" msgid="6175820506864489453">"?123"</string>
+    <string name="label_phone_key" msgid="4275497665515080551">"123"</string>
+    <string name="label_alpha_key" msgid="8864943487292437456">"ABC"</string>
+    <string name="label_alt_key" msgid="2846315350346694811">"ALT"</string>
+    <string name="voice_input" msgid="2466640768843347841">"Talekommando"</string>
+  <string-array name="voice_input_modes">
+    <item msgid="1349082139076086774">"På hovedtastatur"</item>
+    <item msgid="8529385602829095903">"På talltastatur"</item>
+    <item msgid="7283103513488381103">"Av"</item>
+  </string-array>
+  <string-array name="voice_input_modes_summary">
+    <item msgid="554248625705084903">"Mikrofon på hovedtastatur"</item>
+    <item msgid="6907837061058876770">"Mikrofon på talltastatur"</item>
+    <item msgid="3664304608587798036">"Talekommando er deaktivert"</item>
+  </string-array>
+    <string name="popular_domain_1" msgid="1370572248164278467">".com"</string>
+    <string name="popular_domain_2" msgid="3036812463748402878">".net"</string>
+    <string name="popular_domain_3" msgid="8718639560809452028">".org"</string>
+    <string name="popular_domain_4" msgid="35359437471311470">".info"</string>
+    <string name="selectInputMethod" msgid="315076553378705821">"Velg inndatametode"</string>
+    <string name="language_selection_title" msgid="1651299598555326750">"Inndataspråk"</string>
+    <string name="language_selection_summary" msgid="187110938289512256">"Dra fingeren på mellomromstasten for å endre språk"</string>
+    <string name="hint_add_to_dictionary" msgid="9006292060636342317">"Trykk på nytt for å lagre"</string>
+    <string name="has_dictionary" msgid="6071847973466625007">"Ordbok tilgjengelig"</string>
+    <string name="prefs_enable_recorrection" msgid="4588408906649533582">"Trykk for å endre ord"</string>
+    <string name="prefs_enable_recorrection_summary" msgid="1056068922330206170">"Trykk på ord du har skrevet inn, for å endre dem"</string>
+    <string name="keyboard_layout" msgid="437433231038683666">"Tastaturtema"</string>
+</resources>

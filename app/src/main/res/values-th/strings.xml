@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/org.pocketworkstation.pckeyboard"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- <string name="english_ime_name" msgid="7252517407088836577">"แป้นพิมพ์ Android"</string> -->
+    <!-- <string name="english_ime_settings" msgid="6661589557206947774">"การตั้งค่าแป้นพิมพ์ Android"</string> -->
+    <string name="english_ime_input_options" msgid="3909945612939668554">"ตัวเลือกการป้อนข้อมูล"</string>
+    <string name="vibrate_on_keypress" msgid="5258079494276955460">"สั่นเมื่อกดปุ่ม"</string>
+    <string name="sound_on_keypress" msgid="6093592297198243644">"ส่งเสียงเมื่อกดปุ่ม"</string>
+    <string name="popup_on_keypress" msgid="123894815723512944">"ป๊อปอัปเมื่อกดแป้น"</string>
+    <string name="prediction_category" msgid="7027100625580696660">"การตั้งค่าการแนะนำคำ"</string>
+    <string name="auto_cap" msgid="1719746674854628252">"ปรับเป็นตัวพิมพ์ใหญ่อัตโนมัติ"</string>
+    <string name="quick_fixes" msgid="5353213327680897927">"แก้ไขด่วน"</string>
+    <string name="quick_fixes_summary" msgid="3405028402510332373">"แก้ไขข้อผิดพลาดในการพิมพ์ที่พบบ่อย"</string>
+    <string name="show_suggestions" msgid="507074425254289133">"แสดงคำแนะนำ"</string>
+    <string name="show_suggestions_summary" msgid="1989672863935759654">"แสดงคำที่แนะนำขณะพิมพ์"</string>
+    <string name="auto_complete" msgid="1103196318775486023">"เติมคำอัตโนมัติ"</string>
+    <string name="auto_complete_summary" msgid="6113149638718274624">"ใช้แป้นเคาะวรรคและเครื่องหมายวรรคตอนเพื่อแทรกคำที่ไฮไลต์โดยอัตโนมัติ"</string>
+    <string name="prefs_settings_key" msgid="4623341240804046498">"แสดงแป้นการตั้งค่า"</string>
+    <string name="settings_key_mode_auto_name" msgid="2993460277873684680">"อัตโนมัติ"</string>
+    <string name="settings_key_mode_always_show_name" msgid="3047567041784760575">"แสดงตลอดเวลา"</string>
+    <string name="settings_key_mode_always_hide_name" msgid="7833948046716923994">"ซ่อนตลอดเวลา"</string>
+    <!-- no translation found for settings_key_modes:0 (8549888726962891527) -->
+    <!-- no translation found for settings_key_modes:1 (881280041213210923) -->
+    <!-- no translation found for settings_key_modes:2 (7317310620171067848) -->
+    <string name="added_word" msgid="8993883354622484372">"<xliff:g id="WORD">%s</xliff:g> : บันทึกแล้ว"</string>
+    <string name="label_go_key" msgid="1635148082137219148">"ไป"</string>
+    <string name="label_next_key" msgid="362972844525672568">"ถัดไป"</string>
+    <string name="label_done_key" msgid="2441578748772529288">"เสร็จสิ้น"</string>
+    <string name="label_send_key" msgid="2815056534433717444">"ส่ง"</string>
+    <string name="label_symbol_key" msgid="6175820506864489453">"?123"</string>
+    <string name="label_phone_key" msgid="4275497665515080551">"123"</string>
+    <string name="label_alpha_key" msgid="8864943487292437456">"ABC"</string>
+    <string name="label_alt_key" msgid="2846315350346694811">"ALT"</string>
+    <string name="voice_input" msgid="2466640768843347841">"การป้อนข้อมูลด้วยเสียง"</string>
+  <string-array name="voice_input_modes">
+    <item msgid="1349082139076086774">"บนแป้นพิมพ์หลัก"</item>
+    <item msgid="8529385602829095903">"บนแป้นพิมพ์สัญลักษณ์"</item>
+    <item msgid="7283103513488381103">"ปิด"</item>
+  </string-array>
+  <string-array name="voice_input_modes_summary">
+    <item msgid="554248625705084903">"ไมโครโฟนบนแป้นพิมพ์หลัก"</item>
+    <item msgid="6907837061058876770">"ไมโครโฟนบนแป้นพิมพ์สัญลักษณ์"</item>
+    <item msgid="3664304608587798036">"การป้อนข้อมูลด้วยเสียงถูกปิดการใช้งาน"</item>
+  </string-array>
+    <string name="popular_domain_1" msgid="1370572248164278467">".net"</string>
+    <string name="popular_domain_2" msgid="3036812463748402878">".org"</string>
+    <string name="popular_domain_3" msgid="8718639560809452028">".gov"</string>
+    <string name="popular_domain_4" msgid="35359437471311470">".edu"</string>
+    <string name="selectInputMethod" msgid="315076553378705821">"เลือกวิธีการป้อนข้อมูล"</string>
+    <string name="language_selection_title" msgid="1651299598555326750">"ภาษาในการป้อนข้อมูล"</string>
+    <string name="language_selection_summary" msgid="187110938289512256">"เลื่อนนิ้วไปบนแป้นเคาะวรรคเพื่อเปลี่ยนภาษา"</string>
+    <string name="hint_add_to_dictionary" msgid="9006292060636342317">"← แตะอีกครั้งเพื่อบันทึก"</string>
+    <string name="has_dictionary" msgid="6071847973466625007">"มีพจนานุกรมให้ใช้งาน"</string>
+    <string name="prefs_enable_recorrection" msgid="4588408906649533582">"แตะเพื่อแก้ไขคำ"</string>
+    <string name="prefs_enable_recorrection_summary" msgid="1056068922330206170">"แตะคำที่ป้อนไว้เพื่อแก้ไข"</string>
+    <string name="keyboard_layout" msgid="437433231038683666">"ชุดรูปแบบแป้นพิมพ์"</string>
+</resources>

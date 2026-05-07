@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material 3 Themes for Hacker's Keyboard -->
+<resources>
+    <!-- Base Material 3 Theme -->
+    <style name="Theme.Material3.DayNight.NoActionBar" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+    
+    <!-- Hacker's Keyboard Material 3 Theme -->
+    <style name="Theme.HackersKeyboard" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+</resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clipboard History View - Estilo HeliBoard moderno -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1A1A1A">
+
+    <!-- Toolbar superior con título y acciones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="#2D2D2D"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📋 Portapapeles"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/clipboard_pin_toggle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Fijados"
+            android:src="@drawable/ic_clipboard_pin_holo_dark"
+            android:tint="#AAAAAA"
+            android:layout_marginEnd="8dp" />
+
+        <ImageButton
+            android:id="@+id/clipboard_clear_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Borrar todo"
+            android:src="@drawable/sym_keyboard_clear_clipboard_holo"
+            android:tint="#FF5252" />
+
+        <ImageButton
+            android:id="@+id/clipboard_close_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Cerrar"
+            android:src="@drawable/sym_keyboard_clipboard_holo"
+            android:tint="#AAAAAA" />
+    </LinearLayout>
+
+    <!-- Contador de clips -->
+    <TextView
+        android:id="@+id/clipboard_count_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="0 clips"
+        android:textColor="#888888"
+        android:textSize="12sp"
+        android:background="#252525" />
+
+    <!-- RecyclerView con clips -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/clipboard_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@+id/clipboard_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="¯\\_(ツ)_/¯\nSin clips guardados"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Sugerencia rápida del último clip -->
+    <LinearLayout
+        android:id="@+id/clipboard_quick_paste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#252525"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📋 Último:"
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/clipboard_last_clip_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="..."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <ImageButton
+            android:id="@+id/clipboard_quick_paste_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Pegar último"
+            android:src="@drawable/sym_keyboard_clipboard_holo"
+            android:tint="#4CAF50" />
+    </LinearLayout>
+
+</LinearLayout>

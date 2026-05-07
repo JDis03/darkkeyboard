@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/clipboard_entry_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/darker_gray"
+        android:maxLines="5"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/clipboard_entry_pinned_icon"
+        android:layout_width="@dimen/config_clipboard_pinned_icon_size"
+        android:layout_height="@dimen/config_clipboard_pinned_icon_size"
+        android:layout_gravity="top|end"
+        android:layout_margin="4dp"
+        android:contentDescription="@string/clipboard_pinned"
+        android:src="@drawable/ic_clipboard_pin_holo_dark"
+        android:visibility="gone" />
+
+</FrameLayout>

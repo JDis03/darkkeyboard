@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="setup_step_background">#FFD1E3FA</color>
+    <color name="setup_text_title">#FF1767CF</color>
+    <color name="setup_text_action">#FF1767CF</color>
+</resources>
