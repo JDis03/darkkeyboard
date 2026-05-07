@@ -22,10 +22,29 @@ class DarkIME2 : InputMethodService() {
         private const val KEYCODE_ENTER = 10
     }
     
-    override fun onCreateInputView(): View {
-        Log.i(TAG, "onCreateInputView")
+    override fun onCreate() {
+        super.onCreate()
+        Log.e(TAG, "=== onCreate() CALLED ===")
+    }
+    
+    override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
+        super.onStartInput(attribute, restarting)
+        Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
+    }
+    
+    override fun onEvaluateFullscreenMode(): Boolean {
+        val result = super.onEvaluateFullscreenMode()
+        Log.e(TAG, "=== onEvaluateFullscreenMode() = $result ===")
+        return false  // Force non-fullscreen mode
+    }
+    
+    private var inputViewContainer: View? = null
+    
+    override fun onCreateInputView(): View? {
+        Log.e(TAG, "=== onCreateInputView CALLED ===")
         
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null) as LinearLayout
+        inputViewContainer = layout
         keyboardView = layout.findViewById(R.id.keyboard)
         
         // Crear teclado desde XML - usar kbd_pc.xml (custom 5 filas con Ctrl/Tab)
@@ -49,18 +68,27 @@ class DarkIME2 : InputMethodService() {
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
         
-        // Calcular igual que HeliBoard
-        val inputView = window?.window?.decorView ?: return
-        val keyboardView = keyboardView ?: return
+        // Calcular igual que HeliBoard (LatinIME.java:1173-1217)
+        val mInputView = inputViewContainer ?: return
+        val visibleKeyboardView = keyboardView ?: return
         
-        val inputHeight = inputView.height
-        val keyboardHeight = keyboardView.height
-        val visibleTopY = inputHeight - keyboardHeight
+        val inputHeight = mInputView.height
+        val visibleTopY = inputHeight - visibleKeyboardView.height
+        
+        // Need to set expanded touchable region only if keyboard is shown
+        if (visibleKeyboardView.isShown) {
+            val touchLeft = 0
+            val touchTop = visibleTopY
+            val touchRight = visibleKeyboardView.width
+            val touchBottom = inputHeight
+            outInsets.touchableInsets = Insets.TOUCHABLE_INSETS_REGION
+            outInsets.touchableRegion.set(touchLeft, touchTop, touchRight, touchBottom)
+        }
         
         outInsets.contentTopInsets = visibleTopY
         outInsets.visibleTopInsets = visibleTopY
         
-        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, keyboardHeight=$keyboardHeight, visibleTopY=$visibleTopY")
+        Log.d(TAG, "onComputeInsets: inputHeight=$inputHeight, visibleTopY=$visibleTopY")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
