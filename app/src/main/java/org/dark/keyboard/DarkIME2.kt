@@ -2,6 +2,7 @@ package org.dark.keyboard
 
 import android.inputmethodservice.InputMethodService
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
 
@@ -47,21 +48,123 @@ class DarkIME2 : InputMethodService() {
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         
+        // Build meta state based on active modifiers
+        var metaState = 0
+        if (shift) metaState = metaState or KeyEvent.META_SHIFT_ON
+        if (ctrl) metaState = metaState or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
+        if (alt) metaState = metaState or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
+        
         when (code) {
             KEYCODE_DELETE -> {
-                ic.deleteSurroundingText(1, 0)
+                if (ctrl) {
+                    // Ctrl+Backspace: delete word
+                    deleteWord(ic)
+                } else {
+                    ic.deleteSurroundingText(1, 0)
+                }
             }
             KEYCODE_SHIFT -> {
                 // Shift se maneja en el View
             }
             KEYCODE_ENTER -> {
-                ic.commitText("\n", 1)
+                sendKeyEvent(KeyEvent.KEYCODE_ENTER, metaState)
+            }
+            Key.CODE_TAB -> {
+                sendKeyEvent(KeyEvent.KEYCODE_TAB, metaState)
+            }
+            Key.CODE_ESCAPE -> {
+                sendKeyEvent(KeyEvent.KEYCODE_ESCAPE, metaState)
+            }
+            Key.CODE_FORWARD_DEL -> {
+                sendKeyEvent(KeyEvent.KEYCODE_FORWARD_DEL, metaState)
+            }
+            Key.CODE_HOME -> {
+                sendKeyEvent(KeyEvent.KEYCODE_MOVE_HOME, metaState)
+            }
+            Key.CODE_END -> {
+                sendKeyEvent(KeyEvent.KEYCODE_MOVE_END, metaState)
+            }
+            Key.CODE_PAGE_UP -> {
+                sendKeyEvent(KeyEvent.KEYCODE_PAGE_UP, metaState)
+            }
+            Key.CODE_PAGE_DOWN -> {
+                sendKeyEvent(KeyEvent.KEYCODE_PAGE_DOWN, metaState)
+            }
+            Key.CODE_DPAD_UP -> {
+                sendKeyEvent(KeyEvent.KEYCODE_DPAD_UP, metaState)
+            }
+            Key.CODE_DPAD_DOWN -> {
+                sendKeyEvent(KeyEvent.KEYCODE_DPAD_DOWN, metaState)
+            }
+            Key.CODE_DPAD_LEFT -> {
+                sendKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT, metaState)
+            }
+            Key.CODE_DPAD_RIGHT -> {
+                sendKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT, metaState)
+            }
+            in SimpleKeyboardView.KEYCODE_FKEY_F1..SimpleKeyboardView.KEYCODE_FKEY_F12 -> {
+                // Map F1-F12 to Android keycodes
+                val fKeyNumber = SimpleKeyboardView.KEYCODE_FKEY_F1 - code + 1
+                val keycode = KeyEvent.KEYCODE_F1 + (fKeyNumber - 1)
+                sendKeyEvent(keycode, metaState)
             }
             else -> {
-                // Escribir la tecla
-                val char = code.toChar().toString()
-                ic.commitText(char, 1)
+                if (code > 0 && code < 127) {
+                    // Regular character - handle with modifiers
+                    if (ctrl || alt) {
+                        // Send as KeyEvent to preserve modifiers
+                        val keycode = when (code.toChar().lowercaseChar()) {
+                            in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
+                            ' ' -> KeyEvent.KEYCODE_SPACE
+                            else -> {
+                                // For other chars, commit text directly
+                                var char = code.toChar().toString()
+                                if (shift && code in 'a'.code..'z'.code) {
+                                    char = char.uppercase()
+                                }
+                                ic.commitText(char, 1)
+                                return
+                            }
+                        }
+                        sendKeyEvent(keycode, metaState)
+                    } else {
+                        // No modifiers - commit text directly
+                        var char = code.toChar().toString()
+                        if (shift && code in 'a'.code..'z'.code) {
+                            char = char.uppercase()
+                        }
+                        ic.commitText(char, 1)
+                    }
+                }
             }
+        }
+    }
+    
+    private fun sendKeyEvent(keycode: Int, metaState: Int) {
+        val ic = currentInputConnection ?: return
+        val eventTime = System.currentTimeMillis()
+        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, metaState))
+        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, metaState))
+    }
+    
+    private fun deleteWord(ic: android.view.inputmethod.InputConnection) {
+        // Delete word to the left of cursor
+        val textBeforeCursor = ic.getTextBeforeCursor(100, 0) ?: return
+        var deleteCount = 0
+        var foundNonSpace = false
+        
+        for (i in textBeforeCursor.length - 1 downTo 0) {
+            val c = textBeforeCursor[i]
+            if (c.isWhitespace()) {
+                if (foundNonSpace) break
+            } else {
+                foundNonSpace = true
+            }
+            deleteCount++
+        }
+        
+        if (deleteCount > 0) {
+            ic.deleteSurroundingText(deleteCount, 0)
         }
     }
 }

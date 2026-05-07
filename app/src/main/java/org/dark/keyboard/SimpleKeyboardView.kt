@@ -19,6 +19,43 @@ class SimpleKeyboardView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
+    companion object {
+        // Special keycodes from HackersKeyboard (negative to avoid conflicts)
+        const val KEYCODE_ALT_LEFT = -57
+        const val KEYCODE_PAGE_UP = -92
+        const val KEYCODE_PAGE_DOWN = -93
+        const val KEYCODE_ESCAPE = -111
+        const val KEYCODE_FORWARD_DEL = -112
+        const val KEYCODE_CTRL_LEFT = -113
+        const val KEYCODE_CAPS_LOCK = -115
+        const val KEYCODE_SCROLL_LOCK = -116
+        const val KEYCODE_META_LEFT = -117
+        const val KEYCODE_FN = -119
+        const val KEYCODE_SYSRQ = -120
+        const val KEYCODE_BREAK = -121
+        const val KEYCODE_HOME = -122
+        const val KEYCODE_END = -123
+        const val KEYCODE_INSERT = -124
+        const val KEYCODE_FKEY_F1 = -131
+        const val KEYCODE_FKEY_F2 = -132
+        const val KEYCODE_FKEY_F3 = -133
+        const val KEYCODE_FKEY_F4 = -134
+        const val KEYCODE_FKEY_F5 = -135
+        const val KEYCODE_FKEY_F6 = -136
+        const val KEYCODE_FKEY_F7 = -137
+        const val KEYCODE_FKEY_F8 = -138
+        const val KEYCODE_FKEY_F9 = -139
+        const val KEYCODE_FKEY_F10 = -140
+        const val KEYCODE_FKEY_F11 = -141
+        const val KEYCODE_FKEY_F12 = -142
+        const val KEYCODE_NUM_LOCK = -143
+        const val KEYCODE_DPAD_UP = -19
+        const val KEYCODE_DPAD_DOWN = -20
+        const val KEYCODE_DPAD_LEFT = -21
+        const val KEYCODE_DPAD_RIGHT = -22
+        const val KEYCODE_DPAD_CENTER = -23
+    }
+
     private var keyboard: SimpleKeyboard? = null
     private var shiftActive = false
     private var ctrlActive = false
@@ -230,6 +267,14 @@ class SimpleKeyboardView @JvmOverloads constructor(
             Key.CODE_CTRL_LEFT -> {
                 ctrlActive = !ctrlActive
                 invalidate()
+            }
+            KEYCODE_ALT_LEFT -> {
+                altActive = !altActive
+                invalidate()
+            }
+            KEYCODE_META_LEFT -> {
+                // Meta key (no specific action for now, could add metaActive state)
+                onKeyListener?.onKey(KEYCODE_META_LEFT, shiftActive, ctrlActive, altActive, fnActive)
             }
             Key.CODE_SETTINGS -> {
                 onKeyListener?.onKey(Key.CODE_SETTINGS, shiftActive, ctrlActive, altActive, fnActive)
