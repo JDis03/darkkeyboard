@@ -1,11 +1,13 @@
 package org.dark.keyboard
 
+import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.preference.PreferenceManager
 
 /**
  * InputMethodService simple y funcional
@@ -16,6 +18,7 @@ class DarkIME2 : InputMethodService() {
     private var keyboardView: SimpleKeyboardView? = null
     private var modifierStatusView: TextView? = null
     private var isSymbolsMode = false
+    private lateinit var prefs: SharedPreferences
     
     companion object {
         private const val TAG = "DarkIME2"
@@ -26,6 +29,7 @@ class DarkIME2 : InputMethodService() {
     
     override fun onCreate() {
         super.onCreate()
+        prefs = PreferenceManager.getDefaultSharedPreferences(this)
         Log.e(TAG, "=== onCreate() CALLED ===")
     }
     
@@ -50,9 +54,10 @@ class DarkIME2 : InputMethodService() {
         keyboardView = layout.findViewById(R.id.keyboard)
         modifierStatusView = layout.findViewById(R.id.modifier_status)
         
-        // Crear teclado desde XML - usar kbd_pc.xml (custom 5 filas con Ctrl/Tab)
+        // Crear teclado desde XML - usar layout desde preferences
         val dm = resources.displayMetrics
-        val keyboard = SimpleKeyboard.fromXml(this, R.xml.kbd_pc, dm.widthPixels, dm.heightPixels)
+        val layoutId = getLayoutResourceId()
+        val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
         keyboardView?.setKeyboard(keyboard)
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -235,7 +240,8 @@ class DarkIME2 : InputMethodService() {
         val keyboard = if (isSymbolsMode) {
             SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels)
         } else {
-            SimpleKeyboard.fromXml(this, R.xml.kbd_pc, dm.widthPixels, dm.heightPixels)
+            val layoutId = getLayoutResourceId()
+            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
         }
         keyboardView?.setKeyboard(keyboard)
         Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
@@ -248,12 +254,22 @@ class DarkIME2 : InputMethodService() {
         if (alt) statusParts.add("Alt")
         if (fn) statusParts.add("Fn")
         
-        if (statusParts.isNotEmpty()) {
+        val showStatus = prefs.getBoolean("show_modifier_status", true)
+        if (statusParts.isNotEmpty() && showStatus) {
             modifierStatusView?.text = "[ ${statusParts.joinToString(" + ")} ]"
             modifierStatusView?.visibility = View.VISIBLE
             Log.i(TAG, "Modifiers active: ${statusParts.joinToString(" + ")}")
         } else {
             modifierStatusView?.visibility = View.GONE
+        }
+    }
+    
+    private fun getLayoutResourceId(): Int {
+        val layout = prefs.getString("keyboard_layout", "compact")
+        return when (layout) {
+            "pc" -> R.xml.kbd_pc
+            "compact" -> R.xml.kbd_compact
+            else -> R.xml.kbd_compact
         }
     }
 }

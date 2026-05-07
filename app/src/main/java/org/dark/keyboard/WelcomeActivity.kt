@@ -144,12 +144,46 @@ fun SelectStep(onNext: () -> Unit) {
 
 @Composable
 fun FinishStep(onFinish: () -> Unit) {
-    StepCard(
-        title = "All Set!",
-        instruction = "Dark Keyboard is ready to use. You can now type with full PC keyboard support including Ctrl, Alt, Tab, and function keys.",
-        actionText = "Finish"
+    val ctx = LocalContext.current
+    
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
     ) {
-        onFinish()
+        Column(
+            modifier = Modifier.padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "All Set!",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+            Text(
+                text = "Dark Keyboard is ready to use. You can now type with full PC keyboard support including Ctrl, Alt, Tab, and function keys.",
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 24.dp)
+            )
+            Button(
+                onClick = {
+                    val intent = Intent(ctx, SettingsActivity::class.java)
+                    ctx.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 12.dp)
+            ) {
+                Text("Open Settings")
+            }
+            OutlinedButton(
+                onClick = onFinish,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Finish")
+            }
+        }
     }
 }
 

@@ -122,8 +122,8 @@ class SimpleKeyboard(
                                     if (hasKeyboardMode) {
                                         Log.d(TAG, "  -> WILL SKIP this row (has keyboardMode)")
                                         currentRow = null
-                                    } else if (rowCount >= 5) {
-                                        Log.d(TAG, "  -> WILL SKIP: already have 5 rows")
+                                    } else if (rowCount >= 6) {
+                                        Log.d(TAG, "  -> WILL SKIP: already have 6 rows")
                                         currentRow = null
                                     } else {
                                         Log.d(TAG, "  -> WILL CREATE row")

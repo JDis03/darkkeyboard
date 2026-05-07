@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Layout"
+        android:summary="Choose your keyboard layout">
+
+        <ListPreference
+            android:key="keyboard_layout"
+            android:title="Keyboard Layout"
+            android:summary="%s"
+            android:entries="@array/layout_names"
+            android:entryValues="@array/layout_values"
+            android:defaultValue="compact"
+            android:icon="@android:drawable/ic_menu_view" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Appearance"
+        android:summary="Visual settings">
+
+        <SwitchPreference
+            android:key="show_modifier_status"
+            android:title="Show modifier status bar"
+            android:summary="Display active modifiers (Ctrl, Shift, Alt, Fn)"
+            android:defaultValue="true"
+            android:icon="@android:drawable/ic_menu_info_details" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About"
+        android:summary="App information">
+
+        <Preference
+            android:key="about_version"
+            android:title="DarkKeyboard"
+            android:summary="Version 1.0.0 - Modern keyboard with PC layout"
+            android:selectable="false"
+            android:icon="@android:drawable/ic_menu_info_details" />
+
+        <Preference
+            android:key="about_credits"
+            android:title="Credits"
+            android:summary="Based on Hacker's Keyboard by Klaus Weidner"
+            android:selectable="false"
+            android:icon="@android:drawable/ic_menu_myplaces" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

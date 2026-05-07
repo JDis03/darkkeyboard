@@ -637,4 +637,15 @@
     <string name="setup_step3_action">Configure the keyboard</string>
     <string name="setup_start_action">Get started</string>
     <string name="setup_finish_action">Open settings</string>
+    
+    <!-- DarkKeyboard Layout Options -->
+    <string-array name="layout_names">
+        <item>Compact (5-row with arrows)</item>
+        <item>PC Layout (5-row expanded)</item>
+    </string-array>
+    
+    <string-array name="layout_values">
+        <item>compact</item>
+        <item>pc</item>
+    </string-array>
 </resources>
