@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <org.pocketworkstation.pckeyboard.LatinKeyboardView
+        <org.dark.keyboard.LatinKeyboardView
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:latin="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/LatinkeyboardBaseView"

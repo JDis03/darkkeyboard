@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <org.pocketworkstation.pckeyboard.SuggestionStripView
+        <org.dark.keyboard.SuggestionStripView
                 android:id="@+id/suggestion_strip_view"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="#FF1A1A1A" />
 
-        <org.pocketworkstation.pckeyboard.LatinKeyboardView
+        <org.dark.keyboard.LatinKeyboardView
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:latin="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/LatinkeyboardBaseView"
