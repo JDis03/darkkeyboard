@@ -97,11 +97,18 @@ class SimpleKeyboard(
                                 "Row" -> {
                                     val isExtension = parser.getAttributeBooleanValue(null, "extension", false)
                                     val rowEdgeFlags = parser.getAttributeIntValue(null, "rowEdgeFlags", 0)
-                                    // Try with android namespace
-                                    val keyboardModeValue = parser.getAttributeValue("http://schemas.android.com/apk/res/android", "keyboardMode")
-                                    val hasKeyboardMode = keyboardModeValue != null
                                     
-                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode, mode=$keyboardModeValue")
+                                    // Check if any attribute is named "keyboardMode"
+                                    var hasKeyboardMode = false
+                                    val attrCount = parser.attributeCount
+                                    for (i in 0 until attrCount) {
+                                        if (parser.getAttributeName(i) == "keyboardMode") {
+                                            hasKeyboardMode = true
+                                            break
+                                        }
+                                    }
+                                    
+                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode")
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
