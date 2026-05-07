@@ -20,7 +20,7 @@
         </activity>
 
         <service
-            android:name=".DarkIME"
+            android:name=".DarkIME2"
             android:label="Dark Keyboard"
             android:exported="true"
             android:directBootAware="true"
