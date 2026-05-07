@@ -64,7 +64,12 @@ class SimpleKeyboard(
 
             try {
                 var eventType = parser.eventType
+                var tagCount = 0
                 while (eventType != XmlResourceParser.END_DOCUMENT) {
+                    if (eventType == XmlResourceParser.START_TAG && parser.name == "Row") {
+                        tagCount++
+                        Log.d(TAG, "Parser saw Row START_TAG #$tagCount")
+                    }
                     when (eventType) {
                         XmlResourceParser.START_TAG -> {
                             when (parser.name) {
