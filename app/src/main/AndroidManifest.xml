@@ -20,11 +20,10 @@
         </activity>
 
         <service
-            android:name=".DarkIME"
-            android:label="Dark Keyboard"
+            android:name=".DarkIME2"
+            android:label="Dark Keyboard v2"
             android:exported="true"
             android:directBootAware="true"
-            android:theme="@style/InputMethodServiceTheme"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
