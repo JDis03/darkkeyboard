@@ -9,7 +9,7 @@
         android:icon="@mipmap/ic_launcher">
 
         <service
-            android:name=".DarkKeyboard"
+            android:name=".DarkIME"
             android:label="Dark Keyboard"
             android:exported="true"
             android:directBootAware="true"
