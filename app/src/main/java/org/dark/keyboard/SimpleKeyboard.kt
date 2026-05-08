@@ -222,6 +222,16 @@ class SimpleKeyboard(
                                     currentRow?.let { row ->
                                         Log.d(TAG, "Closing Row: keyboardMode=${row.keyboardMode}, keys=${row.keys.size}, rowCount=$rowCount")
                                         if (row.keyboardMode == -1 || row.keyboardMode == 0) {
+                                            // Centrar row si no usa todo el ancho
+                                            val totalRowWidth = row.keys.sumOf { it.width + keyboardHorizontalGap }
+                                            if (totalRowWidth < screenWidth) {
+                                                val offset = (screenWidth - totalRowWidth) / 2
+                                                Log.d(TAG, "  -> Centering row: totalWidth=$totalRowWidth, offset=$offset")
+                                                row.keys.forEach { key ->
+                                                    key.x += offset
+                                                }
+                                            }
+                                            
                                             rows.add(row)
                                             currentY += row.defaultKeyHeight + keyboardVerticalGap
                                             rowCount++

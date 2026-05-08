@@ -37,17 +37,17 @@ Proporciones estilo Gboard móvil estándar
         <Key android:keyLabel="p" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 3: ASDFGHJKL (centrado con espacios laterales) -->
+    <!-- Row 3: ASDFGHJKL (centrado - 9 teclas @ 10% = 90%, auto-centrado con 5% a cada lado) -->
     <Row>
-        <Key android:keyLabel="a" android:keyWidth="11.11%p" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="s" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="d" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="f" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="g" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="h" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="j" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="k" android:keyWidth="11.11%p" />
-        <Key android:keyLabel="l" android:keyWidth="11.11%p" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="a" android:keyWidth="10%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="s" android:keyWidth="10%p" />
+        <Key android:keyLabel="d" android:keyWidth="10%p" />
+        <Key android:keyLabel="f" android:keyWidth="10%p" />
+        <Key android:keyLabel="g" android:keyWidth="10%p" />
+        <Key android:keyLabel="h" android:keyWidth="10%p" />
+        <Key android:keyLabel="j" android:keyWidth="10%p" />
+        <Key android:keyLabel="k" android:keyWidth="10%p" />
+        <Key android:keyLabel="l" android:keyWidth="10%p" android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 4: Shift + ZXCVBNM + Delete (estilo Gboard) -->
