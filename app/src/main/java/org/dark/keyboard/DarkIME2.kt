@@ -55,11 +55,13 @@ class DarkIME2 : InputMethodService() {
     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
-        
-        // Reload keyboard if layout preference changed
+
+        // Reload keyboard and re-apply theme from preferences each time
+        // (SharedPreferences listeners don't work reliably across processes)
         if (!isSymbolsMode) {
             reloadKeyboard()
         }
+        applyTheme()
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
