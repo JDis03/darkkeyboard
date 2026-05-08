@@ -211,16 +211,18 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun drawIcon(canvas: Canvas, icon: String, cx: Float, cy: Float, size: Float, key: Key) {
-        val paint = if (key.isModifier) keyModifierPaint else keyTextPaint
-        paint.textSize = size
         val active = isModifierActive(key)
         val iconColor = when {
             active -> keyboardTheme.textActive
             key.isModifier -> keyboardTheme.textModifier
             else -> keyboardTheme.textNormal
         }
-        paint.color = iconColor
-        paint.style = Paint.Style.FILL
+        // Clone paint per call — don't mutate shared paints
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = iconColor
+            textSize = size
+            isFakeBoldText = true
+        }
 
         val s = size * 0.5f
         when (icon) {
@@ -300,16 +302,16 @@ class SimpleKeyboardView @JvmOverloads constructor(
 
     private fun drawSpaceIndicator(canvas: Canvas, cx: Float, cy: Float, s: Float) {
         val density = resources.displayMetrics.density
-        val indicatorPaint = keyBorderPaint
-        indicatorPaint.style = Paint.Style.FILL
-        indicatorPaint.color = keyboardTheme.textNormal.copyAlpha(40)
         val indicatorW = s * 1.6f
         val indicatorH = 2f * density
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = keyboardTheme.textNormal.copyAlpha(40)
+        }
         canvas.drawRoundRect(
             cx - indicatorW / 2, cy + s * 0.7f,
             cx + indicatorW / 2, cy + s * 0.7f + indicatorH,
             indicatorH / 2, indicatorH / 2,
-            indicatorPaint
+            paint
         )
     }
 
