@@ -1,30 +1,59 @@
 # DarkKeyboard ⌨️
 
-**A modern Android IME with full PC keyboard layout**
+**A modern Android IME with Gboard-style proportions and PC functionality**
 
-Complete 5-row keyboard with dedicated number row, function keys, modifiers (Ctrl, Alt, Fn), and navigation keys - all optimized for mobile devices.
+Mobile-optimized keyboard layouts with consistent letter sizes, smart auto-centering, sticky modifiers, and modern Material Design 3 settings - the perfect balance between mobile usability and desktop power.
 
 ---
 
 ## ✨ Features
 
-### Layout & Design
-- **5-row PC layout** - Numbers, QWERTY, ASDFGHJKL, ZXCVBNM+Shift, Control row
-- **Symbol mode** - Quick access to @#$%&*-+()!"':;/?=_
-- **Clean UI** - Minimal design with rounded keys and proper spacing
-- **Adaptive height** - Automatically adjusts to screen size (max 38% screen height)
+### 🎨 Two Professional Layouts
 
-### Functionality
-- **Modifier keys** - Ctrl, Alt, Shift with sticky state support
-- **Special keys** - Esc, Tab, Enter, Backspace, Space
-- **Layout switching** - ?123 button toggles between alphabetic and symbol modes
-- **Touch detection** - Accurate multitouch support
+**QWERTY Standard** - Mobile-optimized with Gboard proportions
+- Row 1: Numbers 1-0 @ 10% each (toggleable extension row)
+- Row 2: QWERTY @ 10% each
+- Row 3: ASDFGHJKL @ 10% each (auto-centered with 5% padding)
+- Row 4: Shift (15%) + ZXCVBNM @ 10% each + Delete (15%)
+- Row 5: Ctrl (15%) + ?123 (15%) + Space (35%) + . (15%) + Enter (20%)
+- **All letters same size (10%)** - Consistent muscle memory
 
-### Technical
-- **Custom XML parser** - TypedArray-based parser for keyboard layouts
-- **Lightweight** - ~900 lines of code vs 6,000+ in similar projects
-- **Modern Kotlin** - Clean architecture with data classes
-- **No dependencies** - Pure Android SDK implementation
+**PC Compact** - 6-row layout with navigation
+- Extension row for numbers
+- Tab key beside 'a'
+- Arrow keys in bottom row
+- Fn/Ctrl/Alt modifiers
+- Perfect for terminal work and coding
+
+### 🎯 Smart Features
+
+**Auto-Centering System**
+- Rows that don't use 100% width are automatically centered
+- ASDFGHJKL perfectly centered with equal padding
+- Future-proof for custom layouts
+
+**Sticky Modifiers**
+- Ctrl, Alt, Fn remain active after press
+- Visual status bar showing active modifiers: `[ Ctrl + Shift + Alt + Fn ]`
+- Shift changes letters to uppercase in real-time
+- Ctrl+Backspace deletes entire word
+
+**Punctuation Popup**
+- Long press on . , ? ! for quick access
+- Swipe to select without lifting finger
+- Visual highlighting of selected option
+
+**Modern Settings (Material Design 3)**
+- Layout selector with visual cards
+- Number row toggle (show/hide extension row)
+- Modifier status bar toggle
+- Instant keyboard reload on changes
+
+### ⚙️ Technical Excellence
+- **Custom XML parser** - TypedArray-based with support for 6 rows
+- **Lightweight** - Clean Kotlin architecture
+- **Modern Compose UI** - Settings built with Jetpack Compose
+- **Pure Android** - No external dependencies
 
 ---
 
@@ -193,17 +222,41 @@ DarkKeyboard (2026) - Modern Kotlin rewrite
 
 ---
 
-## 🔮 Future Ideas
+## 🗺️ Roadmap
 
-- [ ] Visual feedback for active modifiers (Ctrl/Alt/Shift)
-- [ ] Customizable key heights and widths
-- [ ] Haptic feedback option
-- [ ] Sound on keypress
-- [ ] Additional symbol layouts
-- [ ] Arrow keys layout
-- [ ] Function key row toggle
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history and full feature list.
 
-**Note:** This is a learning/experimental project. Pull requests welcome but no guarantee of maintenance.
+### v1.1.0 (Next Release)
+- [ ] Theme system (dark/light/custom colors)
+- [ ] Improved symbol layout with more punctuation
+- [ ] Emoji keyboard
+- [ ] Clipboard manager integration
+- [ ] Haptic feedback settings
+- [ ] Sound on keypress option
+
+### v1.2.0
+- [ ] Word suggestions/autocorrect
+- [ ] Swipe typing
+- [ ] Custom keyboard height slider
+- [ ] Customizable key colors per row
+- [ ] Export/import settings
+
+### v2.0.0 (Major Release)
+- [ ] Full customization system
+- [ ] User-defined layouts (XML editor)
+- [ ] Cloud sync for settings
+- [ ] Multi-language support
+- [ ] Advanced gesture controls
+
+**Completed Features (v1.0.0):**
+- ✅ QWERTY Standard layout with Gboard proportions
+- ✅ PC Compact layout with 6 rows
+- ✅ Auto-centering system
+- ✅ Number row toggle
+- ✅ Punctuation popup with swipe
+- ✅ Sticky modifiers with status bar
+- ✅ Modern Compose settings UI
+- ✅ Consistent 10% letter sizes
 
 ---
 
