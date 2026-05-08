@@ -50,26 +50,27 @@ Proporciones estilo Gboard móvil estándar
         <Key android:keyLabel="l" android:keyWidth="10%p" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 4: Shift + ZXCVBNM + Delete (estilo Gboard) -->
+    <!-- Row 4: Shift + ZXCVBNM + Delete -->
+    <!-- 7 letras @ 10% = 70%, sobran 30% para Shift + Delete = 15% cada uno -->
     <Row>
         <Key
             android:codes="@integer/key_shift"
             android:keyLabel="⇧"
-            android:keyWidth="20%p"
+            android:keyWidth="15%p"
             android:isModifier="true"
             android:isSticky="true"
             android:keyEdgeFlags="left" />
-        <Key android:keyLabel="z" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="x" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="c" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="v" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="b" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="n" android:keyWidth="8.57%p" />
-        <Key android:keyLabel="m" android:keyWidth="8.57%p" />
+        <Key android:keyLabel="z" android:keyWidth="10%p" />
+        <Key android:keyLabel="x" android:keyWidth="10%p" />
+        <Key android:keyLabel="c" android:keyWidth="10%p" />
+        <Key android:keyLabel="v" android:keyWidth="10%p" />
+        <Key android:keyLabel="b" android:keyWidth="10%p" />
+        <Key android:keyLabel="n" android:keyWidth="10%p" />
+        <Key android:keyLabel="m" android:keyWidth="10%p" />
         <Key
             android:codes="@integer/key_delete"
             android:keyLabel="⌫"
-            android:keyWidth="20%p"
+            android:keyWidth="15%p"
             android:isModifier="true"
             android:isRepeatable="true"
             android:keyEdgeFlags="right" />
