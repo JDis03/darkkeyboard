@@ -48,6 +48,9 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
     var showModifierStatus by remember { 
         mutableStateOf(prefs.getBoolean("show_modifier_status", true)) 
     }
+    var showNumberRow by remember { 
+        mutableStateOf(prefs.getBoolean("show_number_row", true)) 
+    }
     var showLayoutDialog by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -87,6 +90,21 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                             else -> "QWERTY Standard"
                         },
                         onClick = { showLayoutDialog = true }
+                    )
+                }
+            }
+
+            item {
+                SettingCard {
+                    SettingSwitchItem(
+                        icon = Icons.Default.AccountBox,
+                        title = "Number row",
+                        subtitle = "Show dedicated row for numbers 1-9 and 0",
+                        checked = showNumberRow,
+                        onCheckedChange = { checked ->
+                            showNumberRow = checked
+                            prefs.edit().putBoolean("show_number_row", checked).apply()
+                        }
                     )
                 }
             }

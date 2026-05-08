@@ -22,7 +22,8 @@ class SimpleKeyboard(
             context: Context,
             xmlResId: Int,
             screenWidth: Int,
-            screenHeight: Int
+            screenHeight: Int,
+            showExtensionRow: Boolean = true
         ): SimpleKeyboard {
             val density = context.resources.displayMetrics.density
             
@@ -121,6 +122,9 @@ class SimpleKeyboard(
                                     // Pero nuestro parser simple no soporta modes, entonces skip
                                     if (hasKeyboardMode) {
                                         Log.d(TAG, "  -> WILL SKIP this row (has keyboardMode)")
+                                        currentRow = null
+                                    } else if (isExtension && !showExtensionRow) {
+                                        Log.d(TAG, "  -> WILL SKIP extension row (user preference)")
                                         currentRow = null
                                     } else if (rowCount >= 6) {
                                         Log.d(TAG, "  -> WILL SKIP: already have 6 rows")

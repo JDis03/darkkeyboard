@@ -33,8 +33,8 @@ class DarkIME2 : InputMethodService() {
         
         // Listen for preference changes
         prefs.registerOnSharedPreferenceChangeListener { _, key ->
-            if (key == "keyboard_layout") {
-                Log.i(TAG, "Layout preference changed, reloading keyboard...")
+            if (key == "keyboard_layout" || key == "show_number_row") {
+                Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
                 reloadKeyboard()
             }
         }
@@ -71,7 +71,8 @@ class DarkIME2 : InputMethodService() {
         // Crear teclado desde XML - usar layout desde preferences
         val dm = resources.displayMetrics
         val layoutId = getLayoutResourceId()
-        val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
+        val showNumberRow = prefs.getBoolean("show_number_row", true)
+        val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
         keyboardView?.setKeyboard(keyboard)
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -251,11 +252,12 @@ class DarkIME2 : InputMethodService() {
     private fun switchLayout() {
         isSymbolsMode = !isSymbolsMode
         val dm = resources.displayMetrics
+        val showNumberRow = prefs.getBoolean("show_number_row", true)
         val keyboard = if (isSymbolsMode) {
-            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels)
+            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels, showNumberRow)
         } else {
             val layoutId = getLayoutResourceId()
-            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
+            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
         }
         keyboardView?.setKeyboard(keyboard)
         Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
@@ -295,7 +297,8 @@ class DarkIME2 : InputMethodService() {
         if (keyboardView != null) {
             val dm = resources.displayMetrics
             val layoutId = getLayoutResourceId()
-            val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels)
+            val showNumberRow = prefs.getBoolean("show_number_row", true)
+            val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
             keyboardView?.setKeyboard(keyboard)
             Log.i(TAG, "Keyboard reloaded with new layout")
         }
