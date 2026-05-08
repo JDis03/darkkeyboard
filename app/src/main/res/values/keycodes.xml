@@ -42,6 +42,7 @@
     <integer name="key_escape">-111</integer>
     <integer name="key_forward_del">-112</integer>
     <integer name="key_ctrl_left">-113</integer>
+    <integer name="key_ctrl">-113</integer> <!-- Alias for key_ctrl_left -->
     <integer name="key_scroll_lock">-116</integer>
     <integer name="key_meta_left">-117</integer>
     <integer name="key_fn">-119</integer>
