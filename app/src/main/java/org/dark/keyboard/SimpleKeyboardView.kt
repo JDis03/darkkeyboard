@@ -2,7 +2,6 @@ package org.dark.keyboard
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Typeface
@@ -162,7 +161,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
         labelFontSize: Float,
         rowHeight: Float
     ) {
-        val pad = 2f * resources.displayMetrics.density
+        val density = resources.displayMetrics.density
+        val pad = 2f * density
         val rect = RectF(
             key.x.toFloat() + pad,
             key.y.toFloat() + pad,
@@ -170,20 +170,24 @@ class SimpleKeyboardView @JvmOverloads constructor(
             (key.y + key.height).toFloat() - pad
         )
 
-        if (isPressed || (key.isSticky && isModifierActive(key))) {
-            keyBgPaint.color = Color.parseColor("#1565C0")
-        } else if (key.isModifier) {
-            keyBgPaint.color = Color.parseColor("#37474F")
-        } else {
-            keyBgPaint.color = Color.parseColor("#455A64")
+        keyBgPaint.color = when {
+            isPressed || (key.isSticky && isModifierActive(key)) -> keyboardTheme.keyActive
+            key.isModifier -> keyboardTheme.keyModifier
+            else -> keyboardTheme.keyNormal
         }
 
-        val radius = 4f * resources.displayMetrics.density
+        val radius = 4f * density
         canvas.drawRoundRect(rect, radius, radius, keyBgPaint)
         canvas.drawRoundRect(rect, radius, radius, keyBorderPaint)
 
         val cx = rect.centerX()
         val cy = rect.centerY()
+
+        val icon = getDisplayIcon(key)
+        if (icon != null) {
+            drawIcon(canvas, icon, cx, cy, fontSize, key)
+            return
+        }
 
         val label = getDisplayLabel(key) ?: return
 
@@ -197,13 +201,97 @@ class SimpleKeyboardView @JvmOverloads constructor(
         canvas.drawText(label, 0, label.length, cx, textY, paint)
     }
 
-    private fun isModifierActive(key: Key): Boolean {
-        // Solo pintar Shift cuando está activo
-        // Ctrl, Alt, Fn no se pintan (para mantener UI limpia)
-        return when (key.code) {
-            Key.CODE_SHIFT -> shiftActive
-            else -> false
+    private fun getDisplayIcon(key: Key): String? = when (key.code) {
+        Key.CODE_SHIFT -> "shift"
+        Key.CODE_DELETE -> "delete"
+        Key.CODE_ENTER -> "enter"
+        Key.CODE_SPACE -> null
+        else -> null
+    }
+
+    private fun drawIcon(canvas: Canvas, icon: String, cx: Float, cy: Float, size: Float, key: Key) {
+        val paint = if (key.isModifier) keyModifierPaint else keyTextPaint
+        paint.textSize = size
+        val active = isModifierActive(key)
+        val iconColor = when {
+            active -> keyboardTheme.textActive
+            key.isModifier -> keyboardTheme.textModifier
+            else -> keyboardTheme.textNormal
         }
+        paint.color = iconColor
+
+        val s = size * 0.5f
+        when (icon) {
+            "shift" -> drawShiftIcon(canvas, cx, cy, s, paint)
+            "delete" -> drawDeleteIcon(canvas, cx, cy, s, paint)
+            "enter" -> drawEnterIcon(canvas, cx, cy, s, paint)
+        }
+    }
+
+    private fun drawShiftIcon(canvas: Canvas, cx: Float, cy: Float, s: Float, paint: Paint) {
+        val path = android.graphics.Path()
+        // Upward arrow with outline (Gboard style)
+        path.moveTo(cx, cy - s)
+        path.lineTo(cx + s * 0.8f, cy + s * 0.3f)
+        path.lineTo(cx + s * 0.3f, cy + s * 0.3f)
+        path.lineTo(cx + s * 0.3f, cy + s * 0.9f)
+        path.lineTo(cx - s * 0.3f, cy + s * 0.9f)
+        path.lineTo(cx - s * 0.3f, cy + s * 0.3f)
+        path.lineTo(cx - s * 0.8f, cy + s * 0.3f)
+        path.close()
+        paint.style = Paint.Style.FILL
+        canvas.drawPath(path, paint)
+    }
+
+    private fun drawDeleteIcon(canvas: Canvas, cx: Float, cy: Float, s: Float, paint: Paint) {
+        val path = android.graphics.Path()
+        // Backspace arrow (Gboard style: right-pointing arrow with x)
+        val arrowSize = s * 0.6f
+        // Arrow pointing right with angled left side
+        path.moveTo(cx - s * 0.3f, cy - arrowSize)
+        path.lineTo(cx + s * 0.7f, cy - arrowSize)
+        path.lineTo(cx + s * 0.7f, cy + arrowSize)
+        path.lineTo(cx - s * 0.3f, cy + arrowSize)
+        path.lineTo(cx - s * 0.6f, cy)
+        path.close()
+        paint.style = Paint.Style.FILL
+        canvas.drawPath(path, paint)
+
+        // X mark inside
+        paint.strokeWidth = s * 0.2f
+        paint.style = Paint.Style.STROKE
+        paint.color = keyboardTheme.background
+        val x = cx + s * 0.2f
+        val y = cy
+        val xs = s * 0.25f
+        canvas.drawLine(x - xs, y - xs, x + xs, y + xs, paint)
+        canvas.drawLine(x + xs, y - xs, x - xs, y + xs, paint)
+    }
+
+    private fun drawEnterIcon(canvas: Canvas, cx: Float, cy: Float, s: Float, paint: Paint) {
+        val path = android.graphics.Path()
+        // Return arrow: down then left (Gboard style)
+        val strokeW = s * 0.25f
+        paint.strokeWidth = strokeW
+        paint.style = Paint.Style.STROKE
+        paint.strokeCap = Paint.Cap.ROUND
+        paint.strokeJoin = Paint.Join.ROUND
+
+        // Horizontal line going left
+        canvas.drawLine(cx + s * 0.6f, cy - s * 0.3f, cx - s * 0.3f, cy - s * 0.3f, paint)
+        // Vertical line going down
+        canvas.drawLine(cx - s * 0.3f, cy - s * 0.3f, cx - s * 0.3f, cy + s * 0.5f, paint)
+        // Arrow tip (down-left)
+        canvas.drawLine(cx - s * 0.3f, cy + s * 0.5f, cx - s * 0.05f, cy + s * 0.2f, paint)
+        canvas.drawLine(cx - s * 0.3f, cy + s * 0.5f, cx - s * 0.55f, cy + s * 0.2f, paint)
+    }
+
+    private fun isModifierActive(key: Key): Boolean = when (key.code) {
+        Key.CODE_SHIFT -> shiftActive
+        Key.CODE_CTRL_LEFT -> ctrlActive
+        Key.CODE_ALT_LEFT -> altActive
+        Key.CODE_FN -> fnActive
+        else -> false
     }
 
     private fun getDisplayLabel(key: Key): String? {
