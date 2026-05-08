@@ -51,7 +51,11 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
     var showNumberRow by remember { 
         mutableStateOf(prefs.getBoolean("show_number_row", true)) 
     }
+    var currentTheme by remember {
+        mutableStateOf(prefs.getString("keyboard_theme", "Dark (Default)") ?: "Dark (Default)")
+    }
     var showLayoutDialog by remember { mutableStateOf(false) }
+    var showThemeDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -116,6 +120,17 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
 
             item {
                 SettingCard {
+                    SettingItem(
+                        icon = Icons.Default.Palette,
+                        title = "Keyboard theme",
+                        subtitle = currentTheme,
+                        onClick = { showThemeDialog = true }
+                    )
+                }
+            }
+
+            item {
+                SettingCard {
                     SettingSwitchItem(
                         icon = Icons.Default.Info,
                         title = "Modifier status bar",
@@ -168,6 +183,20 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                 prefs.edit().putString("keyboard_layout", layout).apply()
                 android.util.Log.i("SettingsActivity", "Layout changed to: $layout")
                 showLayoutDialog = false
+            }
+        )
+    }
+
+    // Theme Selection Dialog
+    if (showThemeDialog) {
+        ThemeSelectionDialog(
+            currentTheme = currentTheme,
+            onDismiss = { showThemeDialog = false },
+            onThemeSelected = { theme ->
+                currentTheme = theme
+                prefs.edit().putString("keyboard_theme", theme).apply()
+                android.util.Log.i("SettingsActivity", "Theme changed to: $theme")
+                showThemeDialog = false
             }
         )
     }
@@ -327,6 +356,113 @@ fun LayoutSelectionDialog(
             }
         }
     )
+}
+
+@Composable
+fun ThemeSelectionDialog(
+    currentTheme: String,
+    onDismiss: () -> Unit,
+    onThemeSelected: (String) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(
+                "Select Theme",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
+        },
+        text = {
+            Column {
+                KeyboardTheme.all.forEach { theme ->
+                    ThemeOption(
+                        theme = theme,
+                        selected = currentTheme == theme.name,
+                        onClick = { onThemeSelected(theme.name) }
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+@Composable
+fun ThemeOption(
+    theme: KeyboardTheme,
+    selected: Boolean,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = if (selected) {
+                MaterialTheme.colorScheme.primaryContainer
+            } else {
+                MaterialTheme.colorScheme.surface
+            }
+        ),
+        border = if (selected) {
+            androidx.compose.foundation.BorderStroke(
+                2.dp,
+                MaterialTheme.colorScheme.primary
+            )
+        } else null
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Mini preview of the theme
+            Row(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(androidx.compose.ui.graphics.Color(theme.background)),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(16.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(androidx.compose.ui.graphics.Color(theme.keyNormal))
+                )
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = theme.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = if (selected) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurface
+                    }
+                )
+            }
+            if (selected) {
+                Icon(
+                    imageVector = Icons.Default.CheckCircle,
+                    contentDescription = "Selected",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+    }
 }
 
 @Composable

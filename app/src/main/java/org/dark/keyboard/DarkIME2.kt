@@ -37,6 +37,16 @@ class DarkIME2 : InputMethodService() {
                 Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
                 reloadKeyboard()
             }
+            if (key == "keyboard_theme" || key == "show_modifier_status") {
+                Log.i(TAG, "Preference '$key' changed, applying...")
+                applyTheme()
+                updateModifierStatus(
+                    keyboardView?.isShiftActive() ?: false,
+                    keyboardView?.isCtrlActive() ?: false,
+                    keyboardView?.isAltActive() ?: false,
+                    keyboardView?.isFnActive() ?: false
+                )
+            }
         }
         
         Log.e(TAG, "=== onCreate() CALLED ===")
@@ -74,6 +84,7 @@ class DarkIME2 : InputMethodService() {
         val showNumberRow = prefs.getBoolean("show_number_row", true)
         val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
         keyboardView?.setKeyboard(keyboard)
+        applyTheme()
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
                 handleKey(code, shift, ctrl, alt, fn)
@@ -293,6 +304,13 @@ class DarkIME2 : InputMethodService() {
         Log.i(TAG, ">>> returning resource ID: ${if (resourceId == R.xml.kbd_pc) "kbd_pc" else "kbd_compact"}")
         return resourceId
     }
+
+    private fun applyTheme() {
+        val themeName = prefs.getString("keyboard_theme", "Dark (Default)") ?: "Dark (Default)"
+        val theme = KeyboardTheme.fromName(themeName)
+        keyboardView?.keyboardTheme = theme
+        Log.i(TAG, "Applied theme: $themeName")
+    }
     
     private fun reloadKeyboard() {
         // Reload the keyboard with new layout
@@ -302,6 +320,7 @@ class DarkIME2 : InputMethodService() {
             val showNumberRow = prefs.getBoolean("show_number_row", true)
             val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
             keyboardView?.setKeyboard(keyboard)
+            applyTheme()
             Log.i(TAG, "Keyboard reloaded with new layout")
         }
     }

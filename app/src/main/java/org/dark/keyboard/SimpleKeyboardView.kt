@@ -56,6 +56,13 @@ class SimpleKeyboardView @JvmOverloads constructor(
         const val KEYCODE_DPAD_CENTER = -23
     }
 
+    var keyboardTheme: KeyboardTheme = KeyboardTheme.DARK
+        set(value) {
+            field = value
+            applyTheme()
+            invalidate()
+        }
+
     private var keyboard: SimpleKeyboard? = null
     private var shiftActive = false
     private var ctrlActive = false
@@ -65,19 +72,14 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private val keyBgPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val keyTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        color = Color.WHITE
         isFakeBoldText = true
     }
     private val keyModifierPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        color = Color.parseColor("#B0BEC5")
         isFakeBoldText = true
     }
-    private val keyPressedPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#1A237E")
-    }
+    private val keyPressedPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val keyBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#37474F")
         style = Paint.Style.STROKE
         strokeWidth = 1f
     }
@@ -90,6 +92,18 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var longPressRunnable: Runnable? = null
     private var isPopupShowing = false
     private var selectedPopupChar: Char? = null
+
+    init {
+        applyTheme()
+    }
+
+    private fun applyTheme() {
+        val t = keyboardTheme
+        keyTextPaint.color = t.textNormal
+        keyModifierPaint.color = t.textModifier
+        keyPressedPaint.color = t.keyPressed
+        keyBorderPaint.color = t.keyBorder
+    }
 
     var onKeyListener: OnKeyListener? = null
     var onModifierChangeListener: OnModifierChangeListener? = null
@@ -123,8 +137,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         val kb = keyboard ?: return
         val density = resources.displayMetrics.density
-        
-        canvas.drawColor(Color.parseColor("#263238"))
+
+        canvas.drawColor(keyboardTheme.background)
 
         kb.rows.forEach { row ->
             val rowHeight = row.defaultKeyHeight.toFloat()
