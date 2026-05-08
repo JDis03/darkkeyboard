@@ -254,8 +254,10 @@ class DarkIME2 : InputMethodService() {
         val dm = resources.displayMetrics
         val showNumberRow = prefs.getBoolean("show_number_row", true)
         val keyboard = if (isSymbolsMode) {
-            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels, showNumberRow)
+            // En modo símbolos, SIEMPRE mostrar number row (son parte del layout de símbolos)
+            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels, true)
         } else {
+            // En modo alfabético, respetar preferencia del usuario
             val layoutId = getLayoutResourceId()
             SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
         }
