@@ -205,7 +205,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
         Key.CODE_SHIFT -> "shift"
         Key.CODE_DELETE -> "delete"
         Key.CODE_ENTER -> "enter"
-        Key.CODE_SPACE -> null
+        Key.CODE_CTRL_LEFT -> "ctrl"
+        Key.CODE_SPACE -> "space"
         else -> null
     }
 
@@ -219,12 +220,15 @@ class SimpleKeyboardView @JvmOverloads constructor(
             else -> keyboardTheme.textNormal
         }
         paint.color = iconColor
+        paint.style = Paint.Style.FILL
 
         val s = size * 0.5f
         when (icon) {
             "shift" -> drawShiftIcon(canvas, cx, cy, s, paint)
             "delete" -> drawDeleteIcon(canvas, cx, cy, s, paint)
             "enter" -> drawEnterIcon(canvas, cx, cy, s, paint)
+            "ctrl" -> drawCtrlIcon(canvas, cx, cy, s, paint)
+            "space" -> drawSpaceIndicator(canvas, cx, cy, s)
         }
     }
 
@@ -285,6 +289,49 @@ class SimpleKeyboardView @JvmOverloads constructor(
         canvas.drawLine(cx - s * 0.3f, cy + s * 0.5f, cx - s * 0.05f, cy + s * 0.2f, paint)
         canvas.drawLine(cx - s * 0.3f, cy + s * 0.5f, cx - s * 0.55f, cy + s * 0.2f, paint)
     }
+
+    private fun drawCtrlIcon(canvas: Canvas, cx: Float, cy: Float, s: Float, paint: Paint) {
+        val strokeW = s * 0.2f
+        paint.strokeWidth = strokeW
+        paint.style = Paint.Style.STROKE
+        paint.strokeCap = Paint.Cap.ROUND
+        // Curved arrow (^) symbol for Ctrl
+        val angleStart = Math.toRadians(220.0)
+        val angleEnd = Math.toRadians(320.0)
+        val r = s * 0.6f
+        val segments = 20
+        for (i in 0 until segments) {
+            val t1 = angleStart + (angleEnd - angleStart) * i / segments
+            val t2 = angleStart + (angleEnd - angleStart) * (i + 1) / segments
+            canvas.drawLine(
+                cx + (r * Math.cos(t1)).toFloat(), cy + (r * Math.sin(t1)).toFloat(),
+                cx + (r * Math.cos(t2)).toFloat(), cy + (r * Math.sin(t2)).toFloat(),
+                paint
+            )
+        }
+        // Small upward arrow tip
+        val tipX = cx + (r * Math.cos(angleEnd)).toFloat()
+        val tipY = cy + (r * Math.sin(angleEnd)).toFloat()
+        canvas.drawLine(tipX, tipY, tipX - s * 0.2f, tipY + s * 0.2f, paint)
+        canvas.drawLine(tipX, tipY, tipX + s * 0.2f, tipY + s * 0.2f, paint)
+    }
+
+    private fun drawSpaceIndicator(canvas: Canvas, cx: Float, cy: Float, s: Float) {
+        // Subtle indicator line at bottom of spacebar (Gboard style)
+        val indicatorPaint = keyBorderPaint
+        indicatorPaint.style = Paint.Style.FILL
+        indicatorPaint.color = keyboardTheme.textNormal.copyAlpha(60)
+        val indicatorW = s * 0.6f
+        val indicatorH = s * 0.08f
+        canvas.drawRoundRect(
+            cx - indicatorW / 2, cy + s * 0.6f,
+            cx + indicatorW / 2, cy + s * 0.6f + indicatorH,
+            indicatorH / 2, indicatorH / 2,
+            indicatorPaint
+        )
+    }
+
+    private fun Int.copyAlpha(alpha: Int): Int = (this and 0x00FFFFFF) or (alpha shl 24)
 
     private fun isModifierActive(key: Key): Boolean = when (key.code) {
         Key.CODE_SHIFT -> shiftActive
