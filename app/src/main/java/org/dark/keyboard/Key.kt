@@ -4,6 +4,7 @@ data class Key(
     val label: String?,
     val code: Int,
     val shiftLabel: String? = null,
+    val popupCharacters: String? = null,
     var x: Int,
     var y: Int,
     var width: Int,

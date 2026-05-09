@@ -209,6 +209,25 @@ class SimpleKeyboardView @JvmOverloads constructor(
 
         val textY = cy + (paint.textSize - paint.descent()) / 2
         canvas.drawText(label, 0, label.length, cx, textY, paint)
+
+        // Draw hint (popup characters) below the label
+        val hint = getHintLabel(key)
+        if (hint != null) {
+            val hintPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                color = keyboardTheme.textModifier.copyAlpha(120)
+                textSize = fontSize * 0.38f
+                textAlign = Paint.Align.CENTER
+            }
+            val hintY = textY + paint.textSize * 0.6f
+            canvas.drawText(hint, 0, hint.length, cx, hintY, hintPaint)
+        }
+    }
+
+    private fun getHintLabel(key: Key): String? {
+        val pc = key.popupCharacters ?: return null
+        if (pc.length <= 1) return null
+        // Show first two non-digit characters as hint
+        return pc.takeUnless { it.length == 1 && it[0].isDigit() }?.take(2)
     }
 
     private fun getDisplayIcon(key: Key): String? = when (key.code) {

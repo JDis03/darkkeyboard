@@ -174,6 +174,7 @@ class SimpleKeyboard(
                                         val labelAttr = a.getString(R.styleable.Keyboard_Key_keyLabel)
                                         val shiftLabelAttr = a.getString(R.styleable.Keyboard_Key_shiftLabel)
                                         val outputTextAttr = a.getString(R.styleable.Keyboard_Key_keyOutputText)
+                                        val popupCharsAttr = a.getString(R.styleable.Keyboard_Key_popupCharacters)
                                         
                                         // Read custom boolean attributes (isModifier, isSticky, isRepeatable)
                                         val isModifier = a.getBoolean(R.styleable.Keyboard_Key_isModifier, false)
@@ -204,6 +205,7 @@ class SimpleKeyboard(
                                             label = labelAttr,
                                             code = code,
                                             shiftLabel = shiftLabelAttr,
+                                            popupCharacters = popupCharsAttr,
                                             x = currentX + hGap,
                                             y = row.y,
                                             width = keyWidth - hGap,
