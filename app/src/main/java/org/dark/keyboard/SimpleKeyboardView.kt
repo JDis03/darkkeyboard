@@ -6,10 +6,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.media.AudioManager
-import android.media.ToneGenerator
-import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
@@ -95,30 +91,22 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var longPressRunnable: Runnable? = null
     private var isPopupShowing = false
     private var selectedPopupChar: Char? = null
-
-    private val vibrator: Vibrator? by lazy {
-        context.getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
-    }
+    private var audioManager: AudioManager? = null
     private var prefs: SharedPreferences? = null
 
     init {
         applyTheme()
         prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        audioManager = context.getSystemService(Context.AUDIO_SERVICE) as? AudioManager
     }
 
     private fun playKeyFeedback() {
         val p = prefs ?: return
         if (p.getBoolean("sound_on_keypress", false)) {
-            try {
-                val tg = ToneGenerator(AudioManager.STREAM_SYSTEM, 50)
-                tg.startTone(ToneGenerator.TONE_DTMF_0, 30)
-                tg.release()
-            } catch (_: Exception) { }
+            try { audioManager?.playSoundEffect(AudioManager.FX_KEY_CLICK) } catch (_: Exception) { }
         }
         if (p.getBoolean("vibrate_on_keypress", false)) {
-            try {
-                vibrator?.vibrate(VibrationEffect.createOneShot(15, VibrationEffect.DEFAULT_AMPLITUDE))
-            } catch (_: Exception) { }
+            try { performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP) } catch (_: Exception) { }
         }
     }
 
