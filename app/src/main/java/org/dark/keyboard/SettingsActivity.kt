@@ -51,11 +51,15 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
     var showNumberRow by remember { 
         mutableStateOf(prefs.getBoolean("show_number_row", true)) 
     }
+    var chordingCtrlKey by remember {
+        mutableStateOf(prefs.getString("chording_ctrl_key", "0") ?: "0")
+    }
     var currentTheme by remember {
         mutableStateOf(prefs.getString("keyboard_theme", "Dark (Default)") ?: "Dark (Default)")
     }
     var showLayoutDialog by remember { mutableStateOf(false) }
     var showThemeDialog by remember { mutableStateOf(false) }
+    var showChordingDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -109,6 +113,17 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                             showNumberRow = checked
                             prefs.edit().putBoolean("show_number_row", checked).apply()
                         }
+                    )
+                }
+            }
+
+            item {
+                SettingCard {
+                    SettingItem(
+                        icon = Icons.Default.Settings,
+                        title = "Ctrl key code",
+                        subtitle = chordingCtrlKeyDisplay(chordingCtrlKey),
+                        onClick = { showChordingDialog = true }
                     )
                 }
             }
@@ -200,6 +215,65 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
             }
         )
     }
+
+    // Chording Ctrl Key Dialog
+    if (showChordingDialog) {
+        val options = listOf(
+            "0" to "None (only as meta state)",
+            "113" to "Left Ctrl",
+            "114" to "Right Ctrl"
+        )
+        ChordingKeyDialog(
+            title = "Ctrl key code",
+            currentValue = chordingCtrlKey,
+            options = options,
+            onDismiss = { showChordingDialog = false },
+            onSelected = { value ->
+                chordingCtrlKey = value
+                prefs.edit().putString("chording_ctrl_key", value).apply()
+                showChordingDialog = false
+            }
+        )
+    }
+}
+
+private fun chordingCtrlKeyDisplay(value: String) = when (value) {
+    "113" -> "Left Ctrl"
+    "114" -> "Right Ctrl"
+    else -> "None (only as meta state)"
+}
+
+@Composable
+fun ChordingKeyDialog(
+    title: String,
+    currentValue: String,
+    options: List<Pair<String, String>>,
+    onDismiss: () -> Unit,
+    onSelected: (String) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold) },
+        text = {
+            Column {
+                options.forEach { (v, label) ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth().clickable { onSelected(v) }.padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(
+                            selected = currentValue == v,
+                            onClick = { onSelected(v) },
+                            colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colorScheme.primary)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text(text = label, style = MaterialTheme.typography.bodyLarge)
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
+    )
 }
 
 @Composable
