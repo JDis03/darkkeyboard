@@ -26,17 +26,17 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
 
     <!-- Row 2: Numbers 0-9 + Delete -->
     <Row>
-        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="7.09%p" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="7.09%p" />
-        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="7.09%p" />
-        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="12.09%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="8.5%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="8.5%p" />
+        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="8.5%p" />
+        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="15%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 3: QWERTY (10 letras @ 10% = 100%, ocupa todo el ancho) -->
@@ -86,7 +86,7 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:codes="@integer/key_ctrl_left" android:keyLabel="Ctrl" android:keyWidth="10%p" android:isModifier="true" />
         <Key android:codes="@integer/key_symbol" android:keyLabel="\?123" android:keyWidth="10%p" android:isModifier="true" />
         <Key android:codes="@integer/key_space" android:keyLabel=" " android:keyWidth="24%p" android:isModifier="true" />
-        <Key android:keyLabel="." android:popupCharacters=",&lt;;:&gt;/?\\\&apos;\&quot;|" android:keyWidth="10%p" />
+        <Key android:keyLabel="." android:popupCharacters=",&lt;;:&gt;/?\&apos;\&quot;|" android:keyWidth="10%p" />
         <Key android:codes="@integer/key_dpad_left" android:keyLabel="◁" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" />
         <Key android:codes="@integer/key_dpad_down" android:keyLabel="▽" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" />
         <Key android:codes="@integer/key_dpad_right" android:keyLabel="▷" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />

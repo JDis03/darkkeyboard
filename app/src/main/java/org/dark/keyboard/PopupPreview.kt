@@ -33,6 +33,7 @@ class PopupPreview(private val context: Context) {
     
     fun showPunctuationPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         currentOptions = when {
+            !key.popupCharacters.isNullOrEmpty() -> key.popupCharacters!!.toList()
             key.label == "." -> listOf('.', ',', '?', '!', ':', ';')
             key.label == "," -> listOf(',', '.', '?', '!', ':', ';')
             key.label == "?" -> listOf('?', '!', '.', ',', ':', ';')
