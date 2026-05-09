@@ -36,7 +36,7 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="8.5%p" />
         <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="8.5%p" />
         <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="8.5%p" />
-        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="15%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
+        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="10%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 3: QWERTY (10 letras @ 10% = 100%, ocupa todo el ancho) -->
