@@ -63,10 +63,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
         }
 
     private var keyboard: SimpleKeyboard? = null
-    private var shiftActive = false
-    private var ctrlActive = false
-    private var altActive = false
-    private var fnActive = false
+    val modifierState = ModifierState()
 
     private val keyBgPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val keyTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -105,15 +102,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     var onKeyListener: OnKeyListener? = null
-    var onModifierChangeListener: OnModifierChangeListener? = null
 
     interface OnKeyListener {
         fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean)
         fun onText(text: CharSequence)
-    }
-
-    interface OnModifierChangeListener {
-        fun onModifierChanged(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean)
     }
 
     fun setKeyboard(kb: SimpleKeyboard) {
@@ -122,10 +114,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
         invalidate()
     }
 
-    fun isShiftActive() = shiftActive
-    fun isCtrlActive() = ctrlActive
-    fun isAltActive() = altActive
-    fun isFnActive() = fnActive
+    fun isShiftActive() = modifierState.isShiftActive()
+    fun isCtrlActive() = modifierState.isCtrlActive()
+    fun isAltActive() = modifierState.isAltActive()
+    fun isFnActive() = modifierState.isFnActive()
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val w = MeasureSpec.getSize(widthMeasureSpec)
@@ -318,10 +310,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private fun Int.copyAlpha(alpha: Int): Int = (this and 0x00FFFFFF) or (alpha shl 24)
 
     private fun isModifierActive(key: Key): Boolean = when (key.code) {
-        Key.CODE_SHIFT -> shiftActive
-        Key.CODE_CTRL_LEFT -> ctrlActive
-        Key.CODE_ALT_LEFT -> altActive
-        Key.CODE_FN -> fnActive
+        Key.CODE_SHIFT -> modifierState.isShiftActive()
+        Key.CODE_CTRL_LEFT -> modifierState.isCtrlActive()
+        Key.CODE_ALT_LEFT -> modifierState.isAltActive()
+        Key.CODE_FN -> modifierState.isFnActive()
         else -> false
     }
 
@@ -330,7 +322,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
         val label = key.label
         if (label != null && label.isNotEmpty()) {
             // If shift is active and this is a letter key, show uppercase
-            if (shiftActive && label.length == 1 && label[0].isLetter()) {
+            if (modifierState.isShiftActive() && label.length == 1 && label[0].isLetter()) {
                 return label.uppercase()
             }
             return label
@@ -354,7 +346,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 if (key.code > 0 && key.code < 128) {
                     val char = key.code.toChar().toString()
                     // Apply shift for letters
-                    if (shiftActive && char.length == 1 && char[0].isLetter()) {
+                    if (modifierState.isShiftActive() && char.length == 1 && char[0].isLetter()) {
                         char.uppercase()
                     } else {
                         char
@@ -441,91 +433,47 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun handleKeyPress(key: Key) {
+        val s = modifierState.isShiftActive()
+        val c = modifierState.isCtrlActive()
+        val a = modifierState.isAltActive()
+        val f = modifierState.isFnActive()
         Log.d("SimpleKeyboardView", "handleKeyPress: code=${key.code}, label=${key.label}")
         when (key.code) {
-            Key.CODE_SHIFT -> {
-                shiftActive = !shiftActive
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_DELETE -> {
-                onKeyListener?.onKey(Key.CODE_DELETE, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_MODE_CHANGE -> {
-                // Notificar al IME para cambiar de layout
-                onKeyListener?.onKey(Key.CODE_MODE_CHANGE, shiftActive, ctrlActive, altActive, fnActive)
-            }
+            Key.CODE_SHIFT -> { modifierState.toggleShift(); invalidate() }
+            Key.CODE_DELETE -> { onKeyListener?.onKey(Key.CODE_DELETE, s, c, a, f) }
+            Key.CODE_MODE_CHANGE -> { onKeyListener?.onKey(Key.CODE_MODE_CHANGE, s, c, a, f) }
             Key.CODE_ENTER -> {
-                onKeyListener?.onKey(Key.CODE_ENTER, shiftActive, ctrlActive, altActive, fnActive)
-                shiftActive = false
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
+                onKeyListener?.onKey(Key.CODE_ENTER, s, c, a, f)
+                modifierState.setShift(false); invalidate()
             }
-            Key.CODE_TAB -> {
-                onKeyListener?.onKey(Key.CODE_TAB, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_CTRL_LEFT -> {
-                ctrlActive = !ctrlActive
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
-            }
-            KEYCODE_ALT_LEFT -> {
-                altActive = !altActive
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
-            }
-            KEYCODE_FN -> {
-                fnActive = !fnActive
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
-            }
-            KEYCODE_META_LEFT -> {
-                // Meta key (no specific action for now, could add metaActive state)
-                onKeyListener?.onKey(KEYCODE_META_LEFT, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_SETTINGS -> {
-                onKeyListener?.onKey(Key.CODE_SETTINGS, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_CLOSE -> {
-                onKeyListener?.onKey(Key.CODE_CLOSE, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_SWITCH_INPUT -> {
-                onKeyListener?.onKey(Key.CODE_SWITCH_INPUT, shiftActive, ctrlActive, altActive, fnActive)
-            }
-            Key.CODE_F1 -> {
-                onKeyListener?.onKey(Key.CODE_F1, shiftActive, ctrlActive, altActive, fnActive)
-            }
+            Key.CODE_TAB -> { onKeyListener?.onKey(Key.CODE_TAB, s, c, a, f) }
+            Key.CODE_CTRL_LEFT -> { modifierState.toggleCtrl(); invalidate() }
+            KEYCODE_ALT_LEFT -> { modifierState.toggleAlt(); invalidate() }
+            KEYCODE_FN -> { modifierState.toggleFn(); invalidate() }
+            KEYCODE_META_LEFT -> { onKeyListener?.onKey(KEYCODE_META_LEFT, s, c, a, f) }
+            Key.CODE_SETTINGS -> { onKeyListener?.onKey(Key.CODE_SETTINGS, s, c, a, f) }
+            Key.CODE_CLOSE -> { onKeyListener?.onKey(Key.CODE_CLOSE, s, c, a, f) }
+            Key.CODE_SWITCH_INPUT -> { onKeyListener?.onKey(Key.CODE_SWITCH_INPUT, s, c, a, f) }
+            Key.CODE_F1 -> { onKeyListener?.onKey(Key.CODE_F1, s, c, a, f) }
             Key.CODE_SPACE -> {
-                onKeyListener?.onKey(Key.CODE_SPACE, shiftActive, ctrlActive, altActive, fnActive)
-                shiftActive = false
-                invalidate()
-                onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
+                onKeyListener?.onKey(Key.CODE_SPACE, s, c, a, f)
+                modifierState.setShift(false); invalidate()
             }
             else -> {
-                val label = if (shiftActive && key.shiftLabel != null) {
-                    key.shiftLabel
-                } else {
-                    key.label
-                }
-                val hasModifiers = ctrlActive || altActive || fnActive
-                if (label != null && label.length == 1 && key.code == 0 && !hasModifiers) {
+                val label = if (s && key.shiftLabel != null) key.shiftLabel else key.label
+                val hasMods = c || a || f
+                if (label != null && label.length == 1 && key.code == 0 && !hasMods) {
                     onKeyListener?.onText(label)
                 } else {
-                    val effectiveCode = if (key.code == 0 && label != null && label.isNotEmpty()) {
+                    val codeToSend = if (key.code == 0 && label != null && label.isNotEmpty()) {
                         label[0].code
                     } else {
                         key.code
                     }
-                    onKeyListener?.onKey(effectiveCode, shiftActive, ctrlActive, altActive, fnActive)
+                    onKeyListener?.onKey(codeToSend, s, c, a, f)
                 }
                 if (!key.isSticky && !key.isModifier) {
-                    // Auto-release todos los sticky modifiers al presionar una letra (como HK)
-                    shiftActive = false
-                    ctrlActive = false
-                    altActive = false
-                    fnActive = false
-                    invalidate()
-                    onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
+                    modifierState.clearAll(); invalidate()
                 }
             }
         }

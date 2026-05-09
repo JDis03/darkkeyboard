@@ -8,6 +8,12 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.preference.PreferenceManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
 
 /**
  * InputMethodService simple y funcional
@@ -19,6 +25,7 @@ class DarkIME2 : InputMethodService() {
     private var modifierStatusView: TextView? = null
     private var isSymbolsMode = false
     private lateinit var prefs: SharedPreferences
+    private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     
     companion object {
         private const val TAG = "DarkIME2"
@@ -95,11 +102,8 @@ class DarkIME2 : InputMethodService() {
                 currentInputConnection?.commitText(text, 1)
             }
         }
-        keyboardView?.onModifierChangeListener = object : SimpleKeyboardView.OnModifierChangeListener {
-            override fun onModifierChanged(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
-                updateModifierStatus(shift, ctrl, alt, fn)
-            }
-        }
+
+        observeModifierFlows()
         
         Log.i(TAG, "Keyboard created: ${keyboard.allKeys.size} keys, ${keyboard.rows.size} rows")
         
@@ -330,6 +334,19 @@ class DarkIME2 : InputMethodService() {
         val theme = KeyboardTheme.fromName(themeName)
         keyboardView?.keyboardTheme = theme
         Log.i(TAG, "Applied theme: $themeName")
+    }
+
+    private fun observeModifierFlows() {
+        val view = keyboardView ?: return
+        imeScope.launch {
+            combine(view.modifierState.shift, view.modifierState.ctrl, view.modifierState.alt, view.modifierState.fn)
+            { s, c, a, f -> updateModifierStatus(s, c, a, f) }.collect { }
+        }
+    }
+
+    override fun onDestroy() {
+        imeScope.cancel()
+        super.onDestroy()
     }
     
     private fun reloadKeyboard() {
