@@ -38,9 +38,8 @@ class PopupPreview(private val context: Context) {
             key.label == "?" -> listOf('?', '!', '.', ',', ':', ';')
             key.label == "!" -> listOf('!', '?', '.', ',', ':', ';')
             key.label != null && key.label.length == 1 && key.label[0].isDigit() -> {
-                val digit = key.label[0]
-                val syms = numberSymbols[digit] ?: return
-                listOf(digit) + syms
+                val syms = numberSymbols[key.label[0]] ?: return
+                syms
             }
             else -> return
         }
