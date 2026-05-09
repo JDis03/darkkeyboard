@@ -519,7 +519,11 @@ class SimpleKeyboardView @JvmOverloads constructor(
                     onKeyListener?.onKey(effectiveCode, shiftActive, ctrlActive, altActive, fnActive)
                 }
                 if (!key.isSticky && !key.isModifier) {
+                    // Auto-release todos los sticky modifiers al presionar una letra (como HK)
                     shiftActive = false
+                    ctrlActive = false
+                    altActive = false
+                    fnActive = false
                     invalidate()
                     onModifierChangeListener?.onModifierChanged(shiftActive, ctrlActive, altActive, fnActive)
                 }
