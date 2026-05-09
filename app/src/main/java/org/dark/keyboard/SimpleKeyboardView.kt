@@ -98,12 +98,13 @@ class SimpleKeyboardView @JvmOverloads constructor(
         applyTheme()
         prefs = PreferenceManager.getDefaultSharedPreferences(context)
         audioManager = context.getSystemService(Context.AUDIO_SERVICE) as? AudioManager
+        isHapticFeedbackEnabled = true
     }
 
     private fun playKeyFeedback() {
         val p = prefs ?: return
         if (p.getBoolean("sound_on_keypress", false)) {
-            try { audioManager?.playSoundEffect(AudioManager.FX_KEY_CLICK) } catch (_: Exception) { }
+            try { audioManager?.playSoundEffect(AudioManager.FX_KEY_CLICK, 1f) } catch (_: Exception) { }
         }
         if (p.getBoolean("vibrate_on_keypress", false)) {
             try { performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP) } catch (_: Exception) { }
