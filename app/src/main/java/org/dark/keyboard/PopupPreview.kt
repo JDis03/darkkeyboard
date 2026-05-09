@@ -126,43 +126,30 @@ class PopupPreview(private val context: Context) {
     fun handleMove(rawX: Float, rawY: Float): Char? {
         val popup = popupWindow ?: return null
         if (!popup.isShowing) return null
-        
         val contentView = popup.contentView as? LinearLayout ?: return null
-        
-        // Get popup location on screen
+        if (currentOptions.isEmpty()) return null
+
         val location = IntArray(2)
         contentView.getLocationOnScreen(location)
-        val popupX = location[0].toFloat()
-        val popupY = location[1].toFloat()
-        
-        // Convert raw coordinates to popup-relative coordinates
-        val localX = rawX - popupX
-        val localY = rawY - popupY
-        
-        // Check which option is under the finger
-        var selectedIndex = -1
-        optionViews.forEachIndexed { index, view ->
-            val viewLeft = view.left.toFloat()
-            val viewRight = view.right.toFloat()
-            val viewTop = view.top.toFloat()
-            val viewBottom = view.bottom.toFloat()
-            
-            if (localX >= viewLeft && localX <= viewRight &&
-                localY >= viewTop && localY <= viewBottom) {
-                selectedIndex = index
-            }
+        val popupLeft = location[0].toFloat()
+        val popupRight = popupLeft + contentView.width.toFloat()
+        val popupTop = location[1].toFloat()
+        val popupBottom = popupTop + contentView.height.toFloat()
+
+        // Generous vertical range — finger can be above popup and still swipe horizontally
+        val extendedTop = popupTop - contentView.height * 3f
+        val extendedBottom = popupBottom + contentView.height * 1.5f
+
+        if (rawX < popupLeft || rawX > popupRight) return null
+        if (rawY < extendedTop || rawY > extendedBottom) return null
+
+        val slotWidth = contentView.width.toFloat() / currentOptions.size
+        val index = ((rawX - popupLeft) / slotWidth).toInt().coerceIn(0, currentOptions.size - 1)
+
+        optionViews.forEachIndexed { i, view ->
+            view.background = if (i == index) createSelectedBackground() else null
         }
-        
-        // Update highlights
-        optionViews.forEachIndexed { index, view ->
-            view.background = if (index == selectedIndex) {
-                createSelectedBackground()
-            } else {
-                null
-            }
-        }
-        
-        return if (selectedIndex >= 0) currentOptions[selectedIndex] else null
+        return currentOptions[index]
     }
     
     fun dismiss() {
@@ -173,6 +160,8 @@ class PopupPreview(private val context: Context) {
     fun isShowing(): Boolean {
         return popupWindow?.isShowing == true
     }
+
+    fun getFirstOption(): Char? = currentOptions.firstOrNull()
     
     private fun createPopupBackground(): GradientDrawable {
         val density = context.resources.displayMetrics.density

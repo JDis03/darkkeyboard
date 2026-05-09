@@ -11,16 +11,16 @@ Proporciones estilo Gboard móvil estándar
 
     <!-- Row 1: Números 1-0 (extension row - opcional) -->
     <Row android:extension="true" android:rowEdgeFlags="top">
-        <Key android:keyLabel="1" android:shiftLabel="!" android:popupCharacters="!\`" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="2" android:shiftLabel="@" android:popupCharacters="@~" />
-        <Key android:keyLabel="3" android:shiftLabel="#" android:popupCharacters="#-" />
-        <Key android:keyLabel="4" android:shiftLabel="$" android:popupCharacters="$_" />
-        <Key android:keyLabel="5" android:shiftLabel="%" android:popupCharacters="%=" />
-        <Key android:keyLabel="6" android:shiftLabel="^" android:popupCharacters="^+" />
-        <Key android:keyLabel="7" android:shiftLabel="&amp;" android:popupCharacters="{&amp;" />
-        <Key android:keyLabel="8" android:shiftLabel="*" android:popupCharacters="}*" />
-        <Key android:keyLabel="9" android:shiftLabel="(" android:popupCharacters="([" />
-        <Key android:keyLabel="0" android:shiftLabel=")" android:popupCharacters=")]" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="2" android:popupCharacters="@~" />
+        <Key android:keyLabel="3" android:popupCharacters="#-" />
+        <Key android:keyLabel="4" android:popupCharacters="$_" />
+        <Key android:keyLabel="5" android:popupCharacters="%=" />
+        <Key android:keyLabel="6" android:popupCharacters="^+" />
+        <Key android:keyLabel="7" android:popupCharacters="{&amp;" />
+        <Key android:keyLabel="8" android:popupCharacters="}*" />
+        <Key android:keyLabel="9" android:popupCharacters="([" />
+        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 2: QWERTY (standard) -->

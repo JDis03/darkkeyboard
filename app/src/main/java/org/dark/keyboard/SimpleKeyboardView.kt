@@ -552,7 +552,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 // This callback won't be used anymore, we handle selection on ACTION_UP
             }
             isPopupShowing = true
-            selectedPopupChar = null  // Will be set by handleMove
+            selectedPopupChar = popupPreview?.getFirstOption()
         }
         longPressHandler.postDelayed(longPressRunnable!!, 300L)  // Reduced to 300ms for faster response
     }

@@ -43,17 +43,18 @@
         <Key
             android:keyLabel="1"
             android:shiftLabel="!"
+            android:popupCharacters="!\`"
             android:keyWidth="7.09090909%p"
             android:keyEdgeFlags="left" />
-        <Key android:keyLabel="2" android:shiftLabel="@" />
-        <Key android:keyLabel="3" android:shiftLabel="#" />
-        <Key android:keyLabel="4" android:shiftLabel="$" />
-        <Key android:keyLabel="5" android:shiftLabel="%" />
-        <Key android:keyLabel="6" android:shiftLabel="^" />
-        <Key android:keyLabel="7" android:shiftLabel="&amp;" />
-        <Key android:keyLabel="8" android:shiftLabel="*" />
-        <Key android:keyLabel="9" android:shiftLabel="(" />
-        <Key android:keyLabel="0" android:shiftLabel=")" />
+        <Key android:keyLabel="2" android:shiftLabel="@" android:popupCharacters="@~" />
+        <Key android:keyLabel="3" android:shiftLabel="#" android:popupCharacters="#-" />
+        <Key android:keyLabel="4" android:shiftLabel="$" android:popupCharacters="$_" />
+        <Key android:keyLabel="5" android:shiftLabel="%" android:popupCharacters="%=" />
+        <Key android:keyLabel="6" android:shiftLabel="^" android:popupCharacters="^+" />
+        <Key android:keyLabel="7" android:shiftLabel="&amp;" android:popupCharacters="{&amp;" />
+        <Key android:keyLabel="8" android:shiftLabel="*" android:popupCharacters="}*" />
+        <Key android:keyLabel="9" android:shiftLabel="(" android:popupCharacters="([" />
+        <Key android:keyLabel="0" android:shiftLabel=")" android:popupCharacters=")]" />
         <Key
             android:codes="@integer/key_delete"
             android:keyLabel="⌫"
@@ -63,7 +64,7 @@
             android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 3: QWERTY + ' -->
+    <!-- Row 3: QWERTY -->
     <Row>
         <Key android:keyLabel="q" android:keyEdgeFlags="left" />
         <Key android:keyLabel="w" />
@@ -74,8 +75,7 @@
         <Key android:keyLabel="u" />
         <Key android:keyLabel="i" />
         <Key android:keyLabel="o" />
-        <Key android:keyLabel="p" />
-        <Key android:keyLabel="'" android:shiftLabel="&quot;" android:keyEdgeFlags="right" />
+        <Key android:keyLabel="p" android:keyWidth="18.18181818%p" android:keyEdgeFlags="right" />
     </Row>
 
     <!-- Row 4: Tab + ASDFGHJKL + Enter -->
@@ -103,7 +103,7 @@
             android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 5: Shift + ZXCVBNM + , . / -->
+    <!-- Row 5: Shift + ZXCVBNM + ↑ + . -->
     <Row>
         <Key
             android:codes="@integer/key_shift"
@@ -119,12 +119,14 @@
         <Key android:keyLabel="b" />
         <Key android:keyLabel="n" />
         <Key android:keyLabel="m" />
-        <Key android:keyLabel="," android:shiftLabel="&lt;" />
-        <Key android:keyLabel="." android:shiftLabel="&gt;" />
         <Key
-            android:keyLabel="/"
-            android:shiftLabel="?"
-            android:keyWidth="7.09090909%p"
+            android:codes="@integer/key_dpad_up"
+            android:keyLabel="△"
+            android:isModifier="true"
+            android:isRepeatable="true" />
+        <Key
+            android:keyLabel="."
+            android:popupCharacters="&lt;;:&gt;/?\\"
             android:keyEdgeFlags="right" />
     </Row>
 
