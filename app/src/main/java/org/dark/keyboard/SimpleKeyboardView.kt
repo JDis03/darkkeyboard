@@ -5,13 +5,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Typeface
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
@@ -89,10 +84,11 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private var pressedKey: Key? = null
-    private val viewScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-    private var repeatJob: Job? = null
+    private var repeatHandler = Handler(Looper.getMainLooper())
+    private var repeatRunnable: Runnable? = null
     private var popupPreview: PopupPreview? = null
-    private var longPressJob: Job? = null
+    private var longPressHandler = Handler(Looper.getMainLooper())
+    private var longPressRunnable: Runnable? = null
     private var isPopupShowing = false
     private var selectedPopupChar: Char? = null
 
@@ -527,18 +523,20 @@ class SimpleKeyboardView @JvmOverloads constructor(
 
     private fun scheduleRepeat(key: Key) {
         cancelRepeat()
-        repeatJob = viewScope.launch {
-            delay(400L)
-            while (true) {
+        repeatRunnable = object : Runnable {
+            override fun run() {
                 handleKeyPress(key)
-                delay(50L)
+                repeatHandler.postDelayed(this, 50L)
             }
         }
+        repeatHandler.postDelayed(repeatRunnable!!, 400L)
     }
 
     private fun cancelRepeat() {
-        repeatJob?.cancel()
-        repeatJob = null
+        repeatRunnable?.let {
+            repeatHandler.removeCallbacks(it)
+            repeatRunnable = null
+        }
     }
     
     private fun isPunctuationKey(key: Key?): Boolean {
@@ -550,21 +548,21 @@ class SimpleKeyboardView @JvmOverloads constructor(
         if (popupPreview == null) {
             popupPreview = PopupPreview(context)
         }
-        longPressJob = viewScope.launch {
-            delay(300L)
-            popupPreview?.showPunctuationPopup(this@SimpleKeyboardView, key) { }
+        
+        longPressRunnable = Runnable {
+            popupPreview?.showPunctuationPopup(this, key) { char ->
+                // This callback won't be used anymore, we handle selection on ACTION_UP
+            }
             isPopupShowing = true
-            selectedPopupChar = null
+            selectedPopupChar = null  // Will be set by handleMove
         }
+        longPressHandler.postDelayed(longPressRunnable!!, 300L)  // Reduced to 300ms for faster response
     }
     
     private fun cancelLongPressInternal() {
-        longPressJob?.cancel()
-        longPressJob = null
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        viewScope.cancel()
+        longPressRunnable?.let {
+            longPressHandler.removeCallbacks(it)
+            longPressRunnable = null
+        }
     }
 }
