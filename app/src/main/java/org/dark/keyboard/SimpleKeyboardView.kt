@@ -386,7 +386,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 if (key != null) {
                     if (key.isRepeatable) {
                         scheduleRepeat(key)
-                    } else if (isPunctuationKey(key)) {
+                    } else if (isPopupKey(key)) {
                         scheduleLongPress(key)
                     }
                 }
@@ -516,8 +516,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
         }
     }
     
-    private fun isPunctuationKey(key: Key?): Boolean {
-        return key?.label in listOf(".", ",", "?", "!")
+    private fun isPopupKey(key: Key?): Boolean {
+        val label = key?.label ?: return false
+        return label in listOf(".", ",", "?", "!")
+                || (label.length == 1 && label[0].isDigit())
     }
     
     private fun scheduleLongPress(key: Key) {

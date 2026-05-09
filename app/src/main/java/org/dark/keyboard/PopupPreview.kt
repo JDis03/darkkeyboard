@@ -15,17 +15,40 @@ class PopupPreview(private val context: Context) {
     
     private var currentOptions: List<Char> = emptyList()
     private var optionViews: MutableList<TextView> = mutableListOf()
+
+    companion object {
+        private val numberSymbols: Map<Char, List<Char>> = mapOf(
+            '1' to listOf('!', '`'),
+            '2' to listOf('@', '~'),
+            '3' to listOf('#', '-'),
+            '4' to listOf('$', '_'),
+            '5' to listOf('%', '='),
+            '6' to listOf('^', '+'),
+            '7' to listOf('{', '&'),
+            '8' to listOf('}', '*'),
+            '9' to listOf('(', '['),
+            '0' to listOf(')', ']')
+        )
+    }
     
     fun showPunctuationPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
-        // Define punctuation options based on the key
         currentOptions = when {
             key.label == "." -> listOf('.', ',', '?', '!', ':', ';')
             key.label == "," -> listOf(',', '.', '?', '!', ':', ';')
             key.label == "?" -> listOf('?', '!', '.', ',', ':', ';')
             key.label == "!" -> listOf('!', '?', '.', ',', ':', ';')
+            key.label != null && key.label.length == 1 && key.label[0].isDigit() -> {
+                val digit = key.label[0]
+                val syms = numberSymbols[digit] ?: return
+                listOf(digit) + syms
+            }
             else -> return
         }
-        
+
+        showPopup(anchorView, key, onCharSelected)
+    }
+
+    private fun showPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         dismiss()
         optionViews.clear()
         
