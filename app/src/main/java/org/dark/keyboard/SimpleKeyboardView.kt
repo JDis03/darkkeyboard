@@ -1,16 +1,23 @@
 package org.dark.keyboard
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
-import android.graphics.Typeface
+import android.media.AudioManager
+import android.media.ToneGenerator
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
+import androidx.preference.PreferenceManager
 
 class SimpleKeyboardView @JvmOverloads constructor(
     context: Context,
@@ -89,8 +96,30 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var isPopupShowing = false
     private var selectedPopupChar: Char? = null
 
+    private val vibrator: Vibrator? by lazy {
+        context.getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
+    }
+    private var prefs: SharedPreferences? = null
+
     init {
         applyTheme()
+        prefs = PreferenceManager.getDefaultSharedPreferences(context)
+    }
+
+    private fun playKeyFeedback() {
+        val p = prefs ?: return
+        if (p.getBoolean("sound_on_keypress", false)) {
+            try {
+                val tg = ToneGenerator(AudioManager.STREAM_SYSTEM, 50)
+                tg.startTone(ToneGenerator.TONE_DTMF_0, 30)
+                tg.release()
+            } catch (_: Exception) { }
+        }
+        if (p.getBoolean("vibrate_on_keypress", false)) {
+            try {
+                vibrator?.vibrate(VibrationEffect.createOneShot(15, VibrationEffect.DEFAULT_AMPLITUDE))
+            } catch (_: Exception) { }
+        }
     }
 
     private fun applyTheme() {
@@ -433,6 +462,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun handleKeyPress(key: Key) {
+        playKeyFeedback()
         val s = modifierState.isShiftActive()
         val c = modifierState.isCtrlActive()
         val a = modifierState.isAltActive()

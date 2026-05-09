@@ -60,6 +60,12 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
     var showLayoutDialog by remember { mutableStateOf(false) }
     var showThemeDialog by remember { mutableStateOf(false) }
     var showChordingDialog by remember { mutableStateOf(false) }
+    var vibrateOnKeypress by remember {
+        mutableStateOf(prefs.getBoolean("vibrate_on_keypress", false))
+    }
+    var soundOnKeypress by remember {
+        mutableStateOf(prefs.getBoolean("sound_on_keypress", false))
+    }
 
     Scaffold(
         topBar = {
@@ -156,6 +162,39 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                             prefs.edit().putBoolean("show_modifier_status", checked).apply()
                         }
                     )
+                }
+            }
+
+            // Feedback Section
+            item {
+                SectionHeader("Feedback")
+            }
+
+            item {
+                SettingCard {
+                    Column {
+                        SettingSwitchItem(
+                            icon = Icons.Default.Star,
+                            title = "Vibrate on keypress",
+                            subtitle = "Haptic feedback when pressing keys",
+                            checked = vibrateOnKeypress,
+                            onCheckedChange = { checked ->
+                                vibrateOnKeypress = checked
+                                prefs.edit().putBoolean("vibrate_on_keypress", checked).apply()
+                            }
+                        )
+                        Divider(modifier = Modifier.padding(horizontal = 16.dp))
+                        SettingSwitchItem(
+                            icon = Icons.Default.Star,
+                            title = "Sound on keypress",
+                            subtitle = "Audible click when pressing keys",
+                            checked = soundOnKeypress,
+                            onCheckedChange = { checked ->
+                                soundOnKeypress = checked
+                                prefs.edit().putBoolean("sound_on_keypress", checked).apply()
+                            }
+                        )
+                    }
                 }
             }
 
