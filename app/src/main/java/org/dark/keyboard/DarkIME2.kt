@@ -114,104 +114,87 @@ class DarkIME2 : InputMethodService() {
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
-        
-        // Build meta state based on active modifiers
+
         var metaState = 0
         if (shift) metaState = metaState or KeyEvent.META_SHIFT_ON
         if (ctrl) metaState = metaState or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
         if (alt) metaState = metaState or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
-        
+
         val charLabel = if (code > 0 && code < 128) code.toChar().toString() else "?"
         Log.i(TAG, ">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
-        
+
         when (code) {
             KEYCODE_DELETE -> {
                 if (ctrl) {
-                    // Ctrl+Backspace: delete word
                     deleteWord(ic)
                 } else {
                     ic.deleteSurroundingText(1, 0)
                 }
             }
-            KEYCODE_SHIFT -> {
-                // Shift se maneja en el View
-            }
-            Key.CODE_CTRL_LEFT -> {
-                // Ctrl se maneja en el View como toggle
-                Log.d(TAG, "Ctrl toggle")
-            }
-            Key.CODE_ALT_LEFT -> {
-                // Alt se maneja en el View como toggle
-                Log.d(TAG, "Alt toggle")
-            }
+            KEYCODE_SHIFT -> { }
+            Key.CODE_CTRL_LEFT -> { }
+            Key.CODE_ALT_LEFT -> { }
             Key.CODE_MODE_CHANGE -> {
-                // Cambiar entre alfabético y símbolos
                 Log.i(TAG, "MODE_CHANGE pressed, switching layout...")
                 switchLayout()
             }
             KEYCODE_ENTER -> {
-                sendKeyEvent(KeyEvent.KEYCODE_ENTER, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
             Key.CODE_TAB -> {
-                sendKeyEvent(KeyEvent.KEYCODE_TAB, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_TAB, shift, ctrl, alt, fn)
             }
             Key.CODE_ESCAPE -> {
-                sendKeyEvent(KeyEvent.KEYCODE_ESCAPE, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_ESCAPE, shift, ctrl, alt, fn)
             }
             Key.CODE_FORWARD_DEL -> {
-                sendKeyEvent(KeyEvent.KEYCODE_FORWARD_DEL, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_FORWARD_DEL, shift, ctrl, alt, fn)
             }
             Key.CODE_HOME -> {
-                sendKeyEvent(KeyEvent.KEYCODE_MOVE_HOME, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_HOME, shift, ctrl, alt, fn)
             }
             Key.CODE_END -> {
-                sendKeyEvent(KeyEvent.KEYCODE_MOVE_END, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_END, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_UP -> {
-                sendKeyEvent(KeyEvent.KEYCODE_PAGE_UP, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_DOWN -> {
-                sendKeyEvent(KeyEvent.KEYCODE_PAGE_DOWN, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_UP -> {
-                sendKeyEvent(KeyEvent.KEYCODE_DPAD_UP, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_DOWN -> {
-                sendKeyEvent(KeyEvent.KEYCODE_DPAD_DOWN, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_LEFT -> {
-                sendKeyEvent(KeyEvent.KEYCODE_DPAD_LEFT, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_LEFT, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_RIGHT -> {
-                sendKeyEvent(KeyEvent.KEYCODE_DPAD_RIGHT, metaState)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_RIGHT, shift, ctrl, alt, fn)
             }
             Key.CODE_CLOSE -> {
-                // Close/hide the keyboard
                 requestHideSelf(0)
                 Log.d(TAG, "Closing keyboard")
             }
             Key.CODE_SWITCH_INPUT -> {
-                // Switch to next IME
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
                 imm.showInputMethodPicker()
                 Log.d(TAG, "Showing IME picker")
             }
             in SimpleKeyboardView.KEYCODE_FKEY_F1..SimpleKeyboardView.KEYCODE_FKEY_F12 -> {
-                // Map F1-F12 to Android keycodes
                 val fKeyNumber = SimpleKeyboardView.KEYCODE_FKEY_F1 - code + 1
                 val keycode = KeyEvent.KEYCODE_F1 + (fKeyNumber - 1)
-                sendKeyEvent(keycode, metaState)
+                sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
             }
             else -> {
                 if (code > 0 && code < 127) {
-                    // Regular character - handle with modifiers
                     if (ctrl || alt) {
-                        // Send as KeyEvent to preserve modifiers
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
                             ' ' -> KeyEvent.KEYCODE_SPACE
                             else -> {
-                                // For other chars, commit text directly
                                 var char = code.toChar().toString()
                                 if (shift && code in 'a'.code..'z'.code) {
                                     char = char.uppercase()
@@ -220,9 +203,8 @@ class DarkIME2 : InputMethodService() {
                                 return
                             }
                         }
-                        sendKeyEvent(keycode, metaState)
+                        sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
                     } else {
-                        // No modifiers - commit text directly
                         var char = code.toChar().toString()
                         if (shift && code in 'a'.code..'z'.code) {
                             char = char.uppercase()
@@ -233,12 +215,48 @@ class DarkIME2 : InputMethodService() {
             }
         }
     }
-    
-    private fun sendKeyEvent(keycode: Int, metaState: Int) {
+
+    private fun sendModifiedKeyDownUp(key: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         val eventTime = System.currentTimeMillis()
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, metaState))
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, metaState))
+
+        val meta = buildMetaState(shift, ctrl, alt, fn)
+
+        // Send modifier DOWN events first (Ctrl/Alt/Meta keys as real KeyEvents)
+        sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+        sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+
+        // Target key DOWN + UP with meta state
+        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
+        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
+
+        // Send modifier UP events (reverse order)
+        sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+        sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+    }
+
+    private fun sendModifierDown(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
+        if (!active) return
+        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
+        if (chordingMode) {
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, 0))
+        }
+    }
+
+    private fun sendModifierUp(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
+        if (!active) return
+        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
+        if (chordingMode) {
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, 0))
+        }
+    }
+
+    private fun buildMetaState(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean): Int {
+        var m = 0
+        if (shift) m = m or KeyEvent.META_SHIFT_ON or KeyEvent.META_SHIFT_LEFT_ON
+        if (ctrl) m = m or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
+        if (alt) m = m or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
+        return m
     }
     
     private fun deleteWord(ic: android.view.inputmethod.InputConnection) {

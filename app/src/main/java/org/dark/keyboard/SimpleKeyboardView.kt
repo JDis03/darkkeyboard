@@ -507,10 +507,16 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 } else {
                     key.label
                 }
-                if (label != null && label.length == 1 && key.code == 0) {
+                val hasModifiers = ctrlActive || altActive || fnActive
+                if (label != null && label.length == 1 && key.code == 0 && !hasModifiers) {
                     onKeyListener?.onText(label)
                 } else {
-                    onKeyListener?.onKey(key.code, shiftActive, ctrlActive, altActive, fnActive)
+                    val effectiveCode = if (key.code == 0 && label != null && label.isNotEmpty()) {
+                        label[0].code
+                    } else {
+                        key.code
+                    }
+                    onKeyListener?.onKey(effectiveCode, shiftActive, ctrlActive, altActive, fnActive)
                 }
                 if (!key.isSticky && !key.isModifier) {
                     shiftActive = false
