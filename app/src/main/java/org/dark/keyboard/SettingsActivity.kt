@@ -42,6 +42,21 @@ class SettingsActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
+    var showLayoutEditor by remember { mutableStateOf(false) }
+
+    if (showLayoutEditor) {
+        LayoutEditorScreen(
+            onSelectLayout = { name ->
+                prefs.edit().putString("custom_layout_name", name).apply()
+                showLayoutEditor = false
+            },
+            onClearLayout = {
+                prefs.edit().remove("custom_layout_name").apply()
+            }
+        )
+        return
+    }
+
     var currentLayout by remember { 
         mutableStateOf(prefs.getString("keyboard_layout", "pc") ?: "pc") 
     }
@@ -119,6 +134,17 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                             showNumberRow = checked
                             prefs.edit().putBoolean("show_number_row", checked).apply()
                         }
+                    )
+                }
+            }
+
+            item {
+                SettingCard {
+                    SettingItem(
+                        icon = Icons.Default.Edit,
+                        title = "Custom layouts",
+                        subtitle = "Create and edit your own XML layouts live",
+                        onClick = { showLayoutEditor = true }
                     )
                 }
             }

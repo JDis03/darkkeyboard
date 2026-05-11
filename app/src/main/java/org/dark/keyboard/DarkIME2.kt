@@ -40,7 +40,7 @@ class DarkIME2 : InputMethodService() {
         
         // Listen for preference changes
         prefs.registerOnSharedPreferenceChangeListener { _, key ->
-            if (key == "keyboard_layout" || key == "show_number_row") {
+            if (key == "keyboard_layout" || key == "show_number_row" || key == "custom_layout_name") {
                 Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
                 reloadKeyboard()
             }
@@ -87,12 +87,7 @@ class DarkIME2 : InputMethodService() {
         keyboardView = layout.findViewById(R.id.keyboard)
         modifierStatusView = layout.findViewById(R.id.modifier_status)
         
-        // Crear teclado desde XML - usar layout desde preferences
-        val dm = resources.displayMetrics
-        val layoutId = getLayoutResourceId()
-        val showNumberRow = prefs.getBoolean("show_number_row", true)
-        val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-        keyboardView?.setKeyboard(keyboard)
+        loadAndSetKeyboard()
         applyTheme()
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -105,7 +100,7 @@ class DarkIME2 : InputMethodService() {
 
         observeModifierFlows()
         
-        Log.i(TAG, "Keyboard created: ${keyboard.allKeys.size} keys, ${keyboard.rows.size} rows")
+        Log.i(TAG, "Keyboard created")
         
         return layout
     }
@@ -286,17 +281,7 @@ class DarkIME2 : InputMethodService() {
     
     private fun switchLayout() {
         isSymbolsMode = !isSymbolsMode
-        val dm = resources.displayMetrics
-        val showNumberRow = prefs.getBoolean("show_number_row", true)
-        val keyboard = if (isSymbolsMode) {
-            // En modo símbolos, SIEMPRE mostrar number row (son parte del layout de símbolos)
-            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels, true)
-        } else {
-            // En modo alfabético, respetar preferencia del usuario
-            val layoutId = getLayoutResourceId()
-            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-        }
-        keyboardView?.setKeyboard(keyboard)
+        loadAndSetKeyboard()
         Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
     }
     
@@ -350,15 +335,52 @@ class DarkIME2 : InputMethodService() {
     }
     
     private fun reloadKeyboard() {
-        // Reload the keyboard with new layout
         if (keyboardView != null) {
-            val dm = resources.displayMetrics
-            val layoutId = getLayoutResourceId()
-            val showNumberRow = prefs.getBoolean("show_number_row", true)
-            val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-            keyboardView?.setKeyboard(keyboard)
+            loadAndSetKeyboard()
             applyTheme()
-            Log.i(TAG, "Keyboard reloaded with new layout")
+            Log.i(TAG, "Keyboard reloaded")
+        }
+    }
+
+    private fun loadAndSetKeyboard() {
+        val dm = resources.displayMetrics
+        val showNumberRow = prefs.getBoolean("show_number_row", true)
+        val layoutName = prefs.getString("custom_layout_name", null)
+
+        val keyboard = if (!isSymbolsMode && layoutName != null) {
+            loadCustomOrFallback(layoutName, dm.widthPixels, dm.heightPixels, showNumberRow)
+        } else {
+            val layoutId = if (isSymbolsMode) {
+                R.xml.kbd_symbols_simple
+            } else {
+                getLayoutResourceId()
+            }
+            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
+        }
+        keyboardView?.setKeyboard(keyboard)
+    }
+
+    private fun loadCustomOrFallback(
+        name: String,
+        screenWidth: Int,
+        screenHeight: Int,
+        showNumberRow: Boolean
+    ): SimpleKeyboard {
+        val fallbackId = getLayoutResourceId()
+        val inputStream = XmlKeyboardStorage.openInputStream(this, name)
+        return if (inputStream != null) {
+            try {
+                Log.i(TAG, "Loading custom layout: $name")
+                SimpleKeyboard.fromXml(this, inputStream, screenWidth, screenHeight, showNumberRow)
+                    .also { inputStream.close() }
+            } catch (e: Exception) {
+                Log.e(TAG, "Custom layout failed, using built-in", e)
+                try { inputStream.close() } catch (_: Exception) {}
+                SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
+            }
+        } else {
+            Log.w(TAG, "Custom layout '$name' not found, using built-in")
+            SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
         }
     }
 }
