@@ -62,7 +62,7 @@ class SimpleKeyboard(
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
             Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
-            val verticalGapPx = (1.5f * density).toInt()
+            val verticalGapPx = (6.0f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
             // Restar gaps del total antes de calcular alturas de filas

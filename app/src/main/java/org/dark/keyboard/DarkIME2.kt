@@ -26,6 +26,24 @@ class DarkIME2 : InputMethodService() {
     private var isSymbolsMode = false
     private lateinit var prefs: SharedPreferences
     private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        when (key) {
+            "keyboard_layout", "show_number_row", "custom_layout_name" -> {
+                Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
+                reloadKeyboard()
+            }
+            "keyboard_theme", "show_modifier_status" -> {
+                Log.i(TAG, "Preference '$key' changed, applying...")
+                applyTheme()
+                updateModifierStatus(
+                    keyboardView?.isShiftActive() ?: false,
+                    keyboardView?.isCtrlActive() ?: false,
+                    keyboardView?.isAltActive() ?: false,
+                    keyboardView?.isFnActive() ?: false
+                )
+            }
+        }
+    }
     
     companion object {
         private const val TAG = "DarkIME2"
@@ -37,25 +55,7 @@ class DarkIME2 : InputMethodService() {
     override fun onCreate() {
         super.onCreate()
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        
-        // Listen for preference changes
-        prefs.registerOnSharedPreferenceChangeListener { _, key ->
-            if (key == "keyboard_layout" || key == "show_number_row" || key == "custom_layout_name") {
-                Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
-                reloadKeyboard()
-            }
-            if (key == "keyboard_theme" || key == "show_modifier_status") {
-                Log.i(TAG, "Preference '$key' changed, applying...")
-                applyTheme()
-                updateModifierStatus(
-                    keyboardView?.isShiftActive() ?: false,
-                    keyboardView?.isCtrlActive() ?: false,
-                    keyboardView?.isAltActive() ?: false,
-                    keyboardView?.isFnActive() ?: false
-                )
-            }
-        }
-        
+        prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
     }
     
@@ -63,8 +63,8 @@ class DarkIME2 : InputMethodService() {
         super.onStartInput(attribute, restarting)
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
 
-        // Reload keyboard and re-apply theme from preferences each time
-        // (SharedPreferences listeners don't work reliably across processes)
+        keyboardView?.modifierState?.clearAll()
+
         if (!isSymbolsMode) {
             reloadKeyboard()
         }
@@ -127,7 +127,7 @@ class DarkIME2 : InputMethodService() {
                 if (ctrl) {
                     deleteWord(ic)
                 } else {
-                    ic.deleteSurroundingText(1, 0)
+                    sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
                 }
             }
             KEYCODE_SHIFT -> { }
@@ -221,32 +221,48 @@ class DarkIME2 : InputMethodService() {
 
         val meta = buildMetaState(shift, ctrl, alt, fn)
 
-        // Send modifier DOWN events first (Ctrl/Alt/Meta keys as real KeyEvents)
-        sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
-        sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+        try {
+            sendModifierDown(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
+            sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
 
-        // Target key DOWN + UP with meta state
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
 
-        // Send modifier UP events (reverse order)
-        sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
-        sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+            sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierUp(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifiedKeyDownUp failed: ${e.message}")
+        }
+    }
+
+    private fun sendSimpleKeyEvent(key: Int) {
+        val ic = currentInputConnection ?: return
+        try {
+            val now = System.currentTimeMillis()
+            ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_DOWN, key, 0, 0))
+            ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, key, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendSimpleKeyEvent failed: ${e.message}")
+        }
     }
 
     private fun sendModifierDown(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
         if (!active) return
-        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
-        if (chordingMode) {
+        try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifierDown failed: ${e.message}")
         }
     }
 
     private fun sendModifierUp(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
         if (!active) return
-        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
-        if (chordingMode) {
+        try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifierUp failed: ${e.message}")
         }
     }
 
@@ -330,6 +346,7 @@ class DarkIME2 : InputMethodService() {
     }
 
     override fun onDestroy() {
+        prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
         imeScope.cancel()
         super.onDestroy()
     }

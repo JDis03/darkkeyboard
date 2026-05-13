@@ -3,6 +3,7 @@ package org.dark.keyboard
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
@@ -51,7 +52,12 @@ class PopupPreview(private val context: Context) {
     private fun showPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         dismiss()
         optionViews.clear()
-        
+
+        if (key.x < 0 || key.y < 0) {
+            Log.w("PopupPreview", "Invalid key coordinates: x=${key.x}, y=${key.y}")
+            return
+        }
+
         val density = context.resources.displayMetrics.density
         
         // Create popup layout
@@ -101,25 +107,29 @@ class PopupPreview(private val context: Context) {
             layout,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
-            false  // Not focusable so we can track finger movement
+            false
         ).apply {
             elevation = 8f * density
-            
-            // Calculate position to center popup above the key
-            val location = IntArray(2)
-            key.x.let { keyX ->
-                key.y.let { keyY ->
-                    // Center popup horizontally on the key
-                    val popupWidth = layout.measuredWidth
-                    val keyWidth = key.width
-                    val x = keyX + (keyWidth - popupWidth) / 2
-                    
-                    // Position popup above the key with some margin
-                    val popupHeight = layout.measuredHeight
-                    val y = keyY - popupHeight - (8 * density).toInt()
-                    
-                    showAtLocation(anchorView, Gravity.NO_GRAVITY, x, y)
+            try {
+                // Calculate position to center popup above the key
+                val location = IntArray(2)
+                key.x.let { keyX ->
+                    key.y.let { keyY ->
+                        // Center popup horizontally on the key
+                        val popupWidth = layout.measuredWidth
+                        val keyWidth = key.width
+                        val x = keyX + (keyWidth - popupWidth) / 2
+
+                        // Position popup above the key with some margin
+                        val popupHeight = layout.measuredHeight
+                        val y = keyY - popupHeight - (8 * density).toInt()
+
+                        showAtLocation(anchorView, Gravity.NO_GRAVITY, x, y)
+                    }
                 }
+            } catch (e: Exception) {
+                Log.w("PopupPreview", "Failed to show popup: ${e.message}")
+                popupWindow = null
             }
         }
     }
