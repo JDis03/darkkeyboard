@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.util.Xml
 import org.xmlpull.v1.XmlPullParser
 import java.io.InputStream
+import kotlin.math.max
 import kotlin.math.min
 
 class SimpleKeyboard(
@@ -65,16 +66,15 @@ class SimpleKeyboard(
             val verticalGapPx = (6.0f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
-            // Restar gaps del total antes de calcular alturas de filas
-            val totalGapSpace = verticalGapPx * 4
-            val availableHeightForRows = keyboardHeight - totalGapSpace
+            // NO restar gaps del total - las filas usan su altura completa menos el gap individual
+            val availableHeightForRows = keyboardHeight
             
             // Distribución de altura disponible: 18%, 21%, 21%, 21%, 19%
             val numberRowHeight = (availableHeightForRows * 0.18f).toInt()
             val rowHeight = (availableHeightForRows * 0.21f).toInt()  
             val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
             
-            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, gaps=$totalGapSpace, available=$availableHeightForRows")
+            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, available=$availableHeightForRows")
             Log.d(TAG, "Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
             val defaultKeyWidth = screenWidth / 10
 
@@ -119,9 +119,10 @@ class SimpleKeyboard(
                                                 )
                                             }
                                             "verticalGap" -> {
-                                                keyboardVerticalGap = parseDimension(
+                                                val gapFromXml = parseDimension(
                                                     parser.getAttributeValue(i), screenHeight, 0
                                                 )
+                                                keyboardVerticalGap = max(keyboardVerticalGap, gapFromXml)
                                             }
                                         }
                                     }
@@ -150,7 +151,8 @@ class SimpleKeyboard(
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
                                             isExtension = isExtension,
-                                            keyboardMode = 0
+                                            keyboardMode = 0,
+                                            verticalGap = keyboardVerticalGap
                                         )
                                         currentX = 0
                                         val thisRowHeight = when {
