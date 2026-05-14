@@ -64,6 +64,7 @@ class SimpleKeyboard(
             
             Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
             val verticalGapPx = (6.0f * density).toInt()
+            val horizontalGapPx = (1.5f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
             // NO restar gaps del total - las filas usan su altura completa menos el gap individual
@@ -152,7 +153,8 @@ class SimpleKeyboard(
                                             keys = rowKeys,
                                             isExtension = isExtension,
                                             keyboardMode = 0,
-                                            verticalGap = keyboardVerticalGap
+                                            verticalGap = keyboardVerticalGap,
+                                            horizontalGap = horizontalGapPx
                                         )
                                         currentX = 0
                                         val thisRowHeight = when {

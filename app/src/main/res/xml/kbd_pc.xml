@@ -76,28 +76,29 @@ Proporciones estilo Gboard móvil estándar
             android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 5: Bottom (DarkKeyboard custom - con Ctrl) -->
+    <!-- Row 5: Bottom (DarkKeyboard custom - Space dominante) -->
+    <!-- Ctrl 12% + Sym 12% + Space 44% + . 12% + Enter 20% = 100% -->
     <Row android:rowEdgeFlags="bottom">
         <Key
             android:codes="@integer/key_ctrl"
             android:keyLabel="Ctrl"
-            android:keyWidth="15%p"
+            android:keyWidth="12%p"
             android:isModifier="true"
             android:isSticky="true"
             android:keyEdgeFlags="left" />
         <Key
             android:codes="@integer/key_symbol"
             android:keyLabel="\?123"
-            android:keyWidth="15%p"
+            android:keyWidth="12%p"
             android:isModifier="true" />
         <Key
             android:codes="@integer/key_space"
             android:keyLabel=" "
-            android:keyWidth="35%p"
+            android:keyWidth="44%p"
             android:isModifier="true" />
         <Key
             android:keyLabel="."
-            android:keyWidth="15%p" />
+            android:keyWidth="12%p" />
         <Key
             android:codes="@integer/key_return"
             android:keyLabel="↵"

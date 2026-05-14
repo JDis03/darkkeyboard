@@ -8,6 +8,19 @@ Mobile-optimized keyboard layouts with consistent letter sizes, smart auto-cente
 
 ## ✨ Features
 
+### 🎯 Enhanced Precision (v1.1.0)
+
+**Hit Zone Expansion**
+- Touch detection area 20% larger than visual bounds
+- Captures "almost correct" touches that would normally miss
+- Reduces typing errors significantly
+- Matches modern keyboard behavior (Gboard/SwiftKey)
+
+**Optimized Spacing**
+- 6dp visible gap between rows (reduced accidental touches)
+- 1dp padding inside keys (sleek appearance)
+- Consistent muscle memory across all layouts
+
 ### 🎨 Two Professional Layouts
 
 **QWERTY Standard** - Mobile-optimized with Gboard proportions
@@ -42,6 +55,13 @@ Mobile-optimized keyboard layouts with consistent letter sizes, smart auto-cente
 - Long press on . , ? ! for quick access
 - Swipe to select without lifting finger
 - Visual highlighting of selected option
+- Numbers (1-0) have symbol popups too
+
+**Live Layout Editor (Experimental)**
+- Create and edit custom XML layouts in-app
+- Load custom layouts from device storage
+- Fallback to built-in layouts on error
+- Perfect for advanced users and developers
 
 **Modern Settings (Material Design 3)**
 - Layout selector with visual cards
@@ -50,8 +70,13 @@ Mobile-optimized keyboard layouts with consistent letter sizes, smart auto-cente
 - Instant keyboard reload on changes
 
 ### ⚙️ Technical Excellence
+- **Hit zone expansion** - 20% larger touch detection for precision
+- **Optimized spacing** - 6dp gaps reduce row confusion
 - **Custom XML parser** - TypedArray-based with support for 6 rows
-- **Lightweight** - Clean Kotlin architecture
+- **RDP compatible** - Physical KeyEvents for Ctrl+Shift+V, etc.
+- **Memory leak free** - Proper listener cleanup
+- **Crash resistant** - try-catch on all InputConnection operations
+- **Lightweight** - Clean Kotlin architecture (~2,000 LOC)
 - **Modern Compose UI** - Settings built with Jetpack Compose
 - **Pure Android** - No external dependencies
 
@@ -90,8 +115,9 @@ Or install the APK manually via ADB or file manager.
 ## 📋 Requirements
 
 - **Android 5.0+** (API 21 minimum)
-- **Target:** Android 14 (API 34)
-- **Build:** Kotlin 1.8.22 + Java 11
+- **Target:** Android 14+ (API 35)
+- **Build:** Kotlin 2.0.21 + Java 17
+- **Gradle:** 8.8+
 
 ---
 
@@ -101,16 +127,19 @@ Or install the APK manually via ADB or file manager.
 
 | File | Lines | Purpose |
 |------|-------|---------|
-| **SimpleKeyboard.kt** | 306 | XML parser with TypedArray - reads keyboard layout files |
-| **SimpleKeyboardView.kt** | 333 | Custom View - rendering + touch detection |
-| **DarkIME2.kt** | 234 | InputMethodService - lifecycle + layout switching |
-| **Key.kt** | 56 | Data class - key properties and constants |
+| **DarkIME2.kt** | ~380 | InputMethodService - lifecycle, RDP compatibility, error handling |
+| **SimpleKeyboard.kt** | ~355 | XML parser with gap calculation and auto-centering |
+| **SimpleKeyboardView.kt** | ~570 | Custom View - rendering with hit expansion + touch detection |
+| **Key.kt** | ~60 | Data class - key properties with expanded hit zones |
+| **SettingsActivity.kt** | ~680 | Compose settings with layout editor |
+| **PopupPreview.kt** | ~185 | Punctuation popup with swipe selection |
 
 ### Keyboard Layouts (XML)
 
 | File | Description |
 |------|-------------|
-| `kbd_pc.xml` | Main alphabetic layout - 5 rows with modifiers |
+| `kbd_pc.xml` | QWERTY Standard - 5 rows with Gboard proportions |
+| `kbd_compact.xml` | PC Compact - 6 rows with arrows and modifiers |
 | `kbd_symbols_simple.xml` | Symbol layout - numbers + symbols + bottom row |
 
 ### Key Technical Details
@@ -123,13 +152,17 @@ Or install the APK manually via ADB or file manager.
 
 **Rendering:**
 - Custom `onDraw()` with Canvas API
+- Hit zone expansion (+20% beyond visual bounds)
+- 6dp visible gap between rows (applied in drawKey)
 - Label fallback: XML label → ASCII code → special symbol mapping
 - Colors: Dark keys with light text, rounded corners
 
 **Input:**
 - `onTouchEvent()` with multitouch support
-- Modifier state tracking (Ctrl/Shift/Alt)
+- Hit zone expansion for precision (20% larger detection)
+- Modifier state tracking (Ctrl/Shift/Alt/Fn with sticky behavior)
 - Layout switching via `switchLayout()`
+- Physical KeyEvent generation for RDP compatibility
 
 ---
 
@@ -163,10 +196,12 @@ adb logcat -d | grep -E "Error|Exception|FATAL"
 ## 🎯 Project Goals
 
 ### What DarkKeyboard IS:
-- Lightweight, maintainable IME with PC layout
-- Learning project for Android IME development
-- Modern Kotlin implementation with clean architecture
+- Lightweight, maintainable IME with PC functionality
+- Learning project for modern Android IME development
+- Precision-focused with hit zone expansion
+- RDP/SSH compatible keyboard for remote work
 - Functional keyboard for developers and power users
+- Open source educational resource
 
 ### What DarkKeyboard is NOT:
 - Feature parity with Hacker's Keyboard (no themes, languages, extensive customization)
@@ -214,11 +249,13 @@ DarkKeyboard (2026) - Modern Kotlin rewrite
 
 ## 📊 Stats
 
-- **Total code:** ~900 lines (Kotlin + XML)
-- **Code reduction:** 85%+ vs Hacker's Keyboard
-- **Build time:** ~10 seconds (clean build)
-- **APK size:** ~300KB (debug build)
-- **Supported layouts:** 2 (alphabetic + symbols)
+- **Total code:** ~2,000 lines (Kotlin + XML)
+- **Core files:** 10+ Kotlin files
+- **Build time:** ~5-10 seconds (clean build)
+- **APK size:** ~800KB (debug build)
+- **Supported layouts:** 3 (QWERTY Standard, PC Compact, Symbols)
+- **Hit zone expansion:** 20% beyond visual bounds
+- **Vertical gap:** 6dp between rows
 
 ---
 
@@ -248,15 +285,21 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed version history and full feature l
 - [ ] Multi-language support
 - [ ] Advanced gesture controls
 
-**Completed Features (v1.0.0):**
+**Completed Features (v1.0.0 + improvements):**
 - ✅ QWERTY Standard layout with Gboard proportions
-- ✅ PC Compact layout with 6 rows
+- ✅ PC Compact layout with 6 rows + arrows
 - ✅ Auto-centering system
 - ✅ Number row toggle
 - ✅ Punctuation popup with swipe
-- ✅ Sticky modifiers with status bar
+- ✅ Sticky modifiers with visual status bar
 - ✅ Modern Compose settings UI
 - ✅ Consistent 10% letter sizes
+- ✅ **Hit zone expansion (+20%)** - Enhanced precision
+- ✅ **Optimized gaps (6dp)** - Reduced row confusion
+- ✅ **RDP compatibility** - Physical KeyEvents for Ctrl+V, etc.
+- ✅ **Live layout editor** - Create custom XML layouts in-app
+- ✅ **Memory leak fixes** - Proper listener cleanup
+- ✅ **Crash resistance** - try-catch on InputConnection ops
 
 ---
 

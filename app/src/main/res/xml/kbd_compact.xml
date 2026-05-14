@@ -80,15 +80,16 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:codes="@integer/key_return" android:keyLabel="↵" android:isModifier="true" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 6: Bottom -->
+    <!-- Row 6: Bottom (Space dominante - full 100%) -->
+    <!-- Tab 10% + Ctrl 10% + Sym 10% + Space 34% + . 8% + left 9% + down 10% + right 9% = 100% -->
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="@integer/key_tab" android:keyLabel="Tab" android:keyWidth="10%p" android:isModifier="true" android:keyEdgeFlags="left" />
         <Key android:codes="@integer/key_ctrl_left" android:keyLabel="Ctrl" android:keyWidth="10%p" android:isModifier="true" />
         <Key android:codes="@integer/key_symbol" android:keyLabel="\?123" android:keyWidth="10%p" android:isModifier="true" />
-        <Key android:codes="@integer/key_space" android:keyLabel=" " android:keyWidth="24%p" android:isModifier="true" />
-        <Key android:keyLabel="." android:popupCharacters=",&lt;;:&gt;/?\&apos;\&quot;|" android:keyWidth="10%p" />
+        <Key android:codes="@integer/key_space" android:keyLabel=" " android:keyWidth="34%p" android:isModifier="true" />
+        <Key android:keyLabel="." android:popupCharacters=",&lt;;:&gt;/?\&apos;\&quot;|" android:keyWidth="8%p" />
         <Key android:codes="@integer/key_dpad_left" android:keyLabel="◁" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" />
-        <Key android:codes="@integer/key_dpad_down" android:keyLabel="▽" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" />
+        <Key android:codes="@integer/key_dpad_down" android:keyLabel="▽" android:keyWidth="10%p" android:isModifier="true" android:isRepeatable="true" />
         <Key android:codes="@integer/key_dpad_right" android:keyLabel="▷" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 </Keyboard>
