@@ -102,6 +102,8 @@ class DarkIME2 : InputMethodService() {
         super.onStartInput(attribute, restarting)
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
 
+        // Release modifiers before clearing state
+        releaseModifiers()
         keyboardView?.modifierState?.clearAll()
         // Limpiar sugerencias al cambiar de campo de texto
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
@@ -111,6 +113,19 @@ class DarkIME2 : InputMethodService() {
             reloadKeyboard()
         }
         applyTheme()
+    }
+
+    private fun releaseModifiers() {
+        val ic = currentInputConnection ?: return
+        val now = System.currentTimeMillis()
+        try {
+            if (keyboardView?.isCtrlActive() == true)
+                ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_CTRL_LEFT, 0, 0))
+            if (keyboardView?.isAltActive() == true)
+                ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ALT_LEFT, 0, 0))
+            if (keyboardView?.isShiftActive() == true)
+                ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_SHIFT_LEFT, 0, 0))
+        } catch (_: Exception) {}
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
@@ -217,8 +232,26 @@ class DarkIME2 : InputMethodService() {
                 }
             }
             KEYCODE_SHIFT -> { }
-            Key.CODE_CTRL_LEFT -> { }
-            Key.CODE_ALT_LEFT -> { }
+            Key.CODE_CTRL_LEFT -> {
+                val now = System.currentTimeMillis()
+                val active = keyboardView?.isCtrlActive() ?: false
+                try {
+                    if (active) currentInputConnection?.sendKeyEvent(
+                        KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_CTRL_LEFT, 0, 0))
+                    else currentInputConnection?.sendKeyEvent(
+                        KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_CTRL_LEFT, 0, 0))
+                } catch (_: Exception) {}
+            }
+            Key.CODE_ALT_LEFT -> {
+                val now = System.currentTimeMillis()
+                val active = keyboardView?.isAltActive() ?: false
+                try {
+                    if (active) currentInputConnection?.sendKeyEvent(
+                        KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ALT_LEFT, 0, 0))
+                    else currentInputConnection?.sendKeyEvent(
+                        KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ALT_LEFT, 0, 0))
+                } catch (_: Exception) {}
+            }
             Key.CODE_MODE_CHANGE -> {
                 Log.i(TAG, "MODE_CHANGE pressed, switching layout...")
                 switchLayout()
@@ -307,14 +340,37 @@ class DarkIME2 : InputMethodService() {
         val meta = buildMetaState(shift, ctrl, alt, fn)
 
         try {
-            // NO enviar modifier down/up por separado — 
-            // los terminales SSH interpretan esos eventos como teclas individuales
-            // generando escape sequences (ea 6;5u).
-            // El metaState en el KeyEvent es suficiente para RDP y SSH.
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
         } catch (e: Exception) {
             Log.w(TAG, "sendModifiedKeyDownUp failed: ${e.message}")
+        }
+    }
+
+    private fun buildMetaState(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean): Int {
+        var m = 0
+        if (shift) m = m or KeyEvent.META_SHIFT_ON or KeyEvent.META_SHIFT_LEFT_ON
+        if (ctrl) m = m or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
+        if (alt) m = m or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
+        return m
+    }
+
+    private fun deleteWord(ic: android.view.inputmethod.InputConnection) {
+        val textBeforeCursor = ic.getTextBeforeCursor(100, 0) ?: return
+        var deleteCount = 0
+        var foundNonSpace = false
+        
+        for (i in textBeforeCursor.length - 1 downTo 0) {
+            val c = textBeforeCursor[i]
+            if (c.isWhitespace()) {
+                if (foundNonSpace) break
+            } else {
+                foundNonSpace = true
+            }
+            deleteCount++
+        }
+        if (deleteCount > 0) {
+            ic.deleteSurroundingText(deleteCount, 0)
         }
     }
 
@@ -329,53 +385,6 @@ class DarkIME2 : InputMethodService() {
         }
     }
 
-    private fun sendModifierDown(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
-        if (!active) return
-        try {
-            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, 0))
-        } catch (e: Exception) {
-            Log.w(TAG, "sendModifierDown failed: ${e.message}")
-        }
-    }
-
-    private fun sendModifierUp(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
-        if (!active) return
-        try {
-            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, 0))
-        } catch (e: Exception) {
-            Log.w(TAG, "sendModifierUp failed: ${e.message}")
-        }
-    }
-
-    private fun buildMetaState(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean): Int {
-        var m = 0
-        if (shift) m = m or KeyEvent.META_SHIFT_ON or KeyEvent.META_SHIFT_LEFT_ON
-        if (ctrl) m = m or KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
-        if (alt) m = m or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
-        return m
-    }
-    
-    private fun deleteWord(ic: android.view.inputmethod.InputConnection) {
-        // Delete word to the left of cursor
-        val textBeforeCursor = ic.getTextBeforeCursor(100, 0) ?: return
-        var deleteCount = 0
-        var foundNonSpace = false
-        
-        for (i in textBeforeCursor.length - 1 downTo 0) {
-            val c = textBeforeCursor[i]
-            if (c.isWhitespace()) {
-                if (foundNonSpace) break
-            } else {
-                foundNonSpace = true
-            }
-            deleteCount++
-        }
-        
-        if (deleteCount > 0) {
-            ic.deleteSurroundingText(deleteCount, 0)
-        }
-    }
-    
     private fun switchLayout() {
         isSymbolsMode = !isSymbolsMode
         loadAndSetKeyboard()
