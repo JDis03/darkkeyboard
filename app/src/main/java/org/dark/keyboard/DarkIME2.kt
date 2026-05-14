@@ -76,12 +76,7 @@ class DarkIME2 : InputMethodService() {
         }
     }
     
-    companion object {
-        private const val TAG = "DarkIME2"
-        private const val KEYCODE_DELETE = -5
-        private const val KEYCODE_SHIFT = -1
-        private const val KEYCODE_ENTER = 10
-    }
+
     
     override fun onCreate() {
         super.onCreate()
@@ -100,10 +95,13 @@ class DarkIME2 : InputMethodService() {
     
     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
-        Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
+
+        // Detectar si es una app de terminal SSH
+        val pkg = attribute?.packageName ?: ""
+        isTerminalMode = TERMINAL_PACKAGES.any { pkg.contains(it) }
+        Log.e(TAG, "=== onStartInput() pkg=$pkg terminal=$isTerminalMode inputType=${attribute?.inputType} ===")
 
         keyboardView?.modifierState?.clearAll()
-        // Limpiar sugerencias al cambiar de campo de texto
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
         suggestionBarView?.clearSuggestions()
 
@@ -111,6 +109,19 @@ class DarkIME2 : InputMethodService() {
             reloadKeyboard()
         }
         applyTheme()
+    }
+
+    companion object {
+        private const val TAG = "DarkIME2"
+        private const val KEYCODE_DELETE = -5
+        private const val KEYCODE_SHIFT = -1
+        private const val KEYCODE_ENTER = 10
+
+        // Packages conocidos de terminales SSH que necesitan bytes de control
+        private val TERMINAL_PACKAGES = listOf(
+            "darkssh", "connectbot", "juicessh", "termius",
+            "serverauditor", "blink", "termbot", "ssh", "terminal"
+        )
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
@@ -120,6 +131,9 @@ class DarkIME2 : InputMethodService() {
     }
     
     private var inputViewContainer: View? = null
+    // true = app es terminal SSH (usa commitText para control chars)
+    // false = app normal/RDP (usa sendKeyEvent con metaState)
+    private var isTerminalMode = false
     
     override fun onCreateInputView(): View? {
         Log.e(TAG, "=== onCreateInputView CALLED ===")
@@ -275,7 +289,13 @@ class DarkIME2 : InputMethodService() {
             }
             else -> {
                 if (code > 0 && code < 127) {
-                    if (ctrl || alt) {
+                    if (ctrl && !alt && code in 'a'.code..'z'.code && isTerminalMode) {
+                        // Terminal SSH: Ctrl+letra → byte de control ASCII (0x01-0x1A)
+                        // Los terminales leen el byte crudo, no KeyEvents
+                        val ctrlByte = (code - 'a'.code + 1).toChar().toString()
+                        ic.commitText(ctrlByte, 1)
+                    } else if (ctrl || alt) {
+                        // RDP y apps normales: sendKeyEvent con metaState + modifier events
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
                             ' ' -> KeyEvent.KEYCODE_SPACE
