@@ -119,8 +119,12 @@ class DarkIME2 : InputMethodService() {
 
         // Packages conocidos de terminales SSH que necesitan bytes de control
         private val TERMINAL_PACKAGES = listOf(
-            "darkssh", "connectbot", "juicessh", "termius",
-            "serverauditor", "blink", "termbot", "ssh", "terminal"
+            "com.darkssh.client",   // DarkSSH
+            "org.connectbot",        // ConnectBot
+            "com.sonelli.juicessh", // JuiceSSH
+            "com.server.auditor.ssh.client", // Termius
+            "com.blink.terminal",   // Blink
+            "net.xnano.android.sshclient" // SSH Client
         )
     }
     
