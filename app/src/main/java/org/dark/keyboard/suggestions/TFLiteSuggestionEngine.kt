@@ -5,9 +5,7 @@ import android.util.Log
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.flex.FlexDelegate
 import org.tensorflow.lite.support.common.FileUtil
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.nio.charset.StandardCharsets
+
 
 /**
  * Motor de sugerencias basado en TFLite (gpt2-spanish).
@@ -32,9 +30,8 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
     }
 
     private var interpreter: Interpreter? = null
-    // token_string → id  (key incluye espacio inicial: " hola")
-    private val vocab = mutableMapOf<String, Int>()
-    // id → token_string limpio (sin espacio)
+    private val bpeTokenizer = BpeTokenizer(context)
+    // id → token_string decodificado (UTF-8 limpio)
     private val reverseVocab = mutableMapOf<Int, String>()
     // marcar si el token empieza con espacio (= inicio de palabra)
     private val isWordStart = mutableMapOf<Int, Boolean>()
@@ -44,11 +41,15 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
 
     override fun initialize() {
         try {
-            loadVocab()
+            // Cargar tokenizador BPE real
+            bpeTokenizer.load()
+
+            // Construir reverseVocab y isWordStart desde el BPE tokenizer
+            buildReverseVocab()
 
             val modelBuffer = FileUtil.loadMappedFile(context, MODEL_FILE)
             val options = Interpreter.Options().apply {
-                numThreads = 1          // 1 thread evita el XNNPACK concurrency error
+                numThreads = 1
                 useNNAPI = false
                 addDelegate(FlexDelegate())
             }
@@ -56,13 +57,28 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
 
             val inShape  = interpreter!!.getInputTensor(0).shape().toList()
             val outShape = interpreter!!.getOutputTensor(0).shape().toList()
-            Log.i(TAG, "Input: $inShape  Output: $outShape  Vocab: ${vocab.size}")
+            Log.i(TAG, "Input: $inShape  Output: $outShape  ReverseVocab: ${reverseVocab.size}")
 
             isReady = true
         } catch (e: Exception) {
             Log.w(TAG, "TFLite init failed, using fallback: ${e.message}")
             isReady = false
         }
+    }
+
+    private fun buildReverseVocab() {
+        reverseVocab.clear()
+        isWordStart.clear()
+        // Reconstruir desde el BPE tokenizer decodificando cada token
+        val vocabSize = 50257
+        for (id in 0 until vocabSize) {
+            val decoded = bpeTokenizer.decode(id)
+            if (decoded.isNotEmpty()) {
+                reverseVocab[id] = decoded
+                isWordStart[id] = decoded.startsWith(" ")
+            }
+        }
+        Log.i(TAG, "ReverseVocab built: ${reverseVocab.size} tokens, ${isWordStart.values.count { it }} word-starts")
     }
 
     override fun getSuggestions(textBeforeCursor: String, maxResults: Int): List<String> {
@@ -90,40 +106,17 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
      * Para la palabra actual (última, incompleta) también la incluimos
      * para que el modelo prediga su completado o la siguiente palabra.
      */
+    /**
+     * Tokeniza usando BPE real — igual que el tokenizador de HuggingFace.
+     * Toma los últimos SEQ_LENGTH tokens del texto.
+     */
     private fun tokenize(text: String): IntArray {
-        val words = text.trimEnd().split(Regex("\\s+")).filter { it.isNotEmpty() }.takeLast(SEQ_LENGTH)
-        val ids = mutableListOf<Int>()
-
-        words.forEachIndexed { i, word ->
-            val isFirst = i == 0
-            val id = lookupToken(word, withSpace = !isFirst)
-            ids.add(id)
-        }
-
+        val allIds = bpeTokenizer.encode(text)
+        val ids = allIds.takeLast(SEQ_LENGTH)
         val padded = IntArray(SEQ_LENGTH) { PAD_TOKEN }
         val offset = maxOf(0, SEQ_LENGTH - ids.size)
-        ids.takeLast(SEQ_LENGTH).forEachIndexed { i, id -> padded[offset + i] = id }
+        ids.forEachIndexed { i, id -> padded[offset + i] = id }
         return padded
-    }
-
-    /**
-     * Busca el token ID de una palabra con varios fallbacks:
-     * 1. Con espacio + original:    " Hola"
-     * 2. Con espacio + minúscula:   " hola"
-     * 3. Con espacio + capitalize:  " hola" → " Hola"
-     * 4. Sin espacio + original:    "Hola"
-     * 5. Sin espacio + minúscula:   "hola"
-     * 6. UNK
-     */
-    private fun lookupToken(word: String, withSpace: Boolean): Int {
-        val sp = if (withSpace) " " else ""
-        return vocab["$sp$word"]
-            ?: vocab["$sp${word.lowercase()}"]
-            ?: vocab["$sp${word.replaceFirstChar { it.uppercase() }}"]
-            ?: vocab[word]
-            ?: vocab[word.lowercase()]
-            ?: vocab[word.replaceFirstChar { it.uppercase() }]
-            ?: UNK_TOKEN
     }
 
     private fun runInference(tokenIds: IntArray): FloatArray {
@@ -158,41 +151,6 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
             .toList()
     }
 
-    /**
-     * Carga el vocabulario desde assets/suggestions_vocab.txt
-     *
-     * El vocab fue generado por el script Python con:
-     *   token.replace("Ġ", " ")  — Ġ es el byte 0xC4 0xA0 que representa espacio en GPT-2
-     *
-     * Entonces tokens con espacio inicial = inicio de palabra.
-     */
-    private fun loadVocab() {
-        vocab.clear()
-        reverseVocab.clear()
-        isWordStart.clear()
-
-        context.assets.open(VOCAB_FILE).use { stream ->
-            BufferedReader(InputStreamReader(stream, StandardCharsets.UTF_8)).use { reader ->
-                var idx = 0
-                reader.forEachLine { line ->
-                    val startsWithSpace = line.startsWith(" ")
-                    val clean = line.trim()   // sin espacio para display
-
-                    // Indexar con y sin espacio para lookup en tokenize()
-                    vocab[line] = idx              // key original (puede tener espacio)
-                    if (startsWithSpace) {
-                        vocab[line.trimStart()] = idx  // también sin espacio
-                    }
-
-                    reverseVocab[idx] = clean
-                    isWordStart[idx] = startsWithSpace
-
-                    idx++
-                }
-            }
-        }
-        Log.i(TAG, "Vocab loaded: ${vocab.size} entries, ${reverseVocab.size} tokens")
-    }
 
     override fun close() {
         interpreter?.close()
