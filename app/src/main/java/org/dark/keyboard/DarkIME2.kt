@@ -3,6 +3,8 @@ package org.dark.keyboard
 import android.content.Intent
 import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -30,6 +32,13 @@ class DarkIME2 : InputMethodService() {
     private var suggestionBarView: SuggestionBarView? = null
     private var clipboardPopup: ClipboardPopup? = null
     private var isSymbolsMode = false
+
+    // Handler para limpiar sugerencias cuando el usuario deja de escribir
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private val clearSuggestionsRunnable = Runnable {
+        suggestionBarView?.clearSuggestions()
+    }
+    private val CLEAR_DELAY_MS = 3000L  // 3 segundos sin escribir → limpiar
     private lateinit var prefs: SharedPreferences
 
     // Motor de sugerencias — TFLite si hay modelo, Fallback si no
@@ -90,6 +99,9 @@ class DarkIME2 : InputMethodService() {
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
 
         keyboardView?.modifierState?.clearAll()
+        // Limpiar sugerencias al cambiar de campo de texto
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
+        suggestionBarView?.clearSuggestions()
 
         if (!isSymbolsMode) {
             reloadKeyboard()
@@ -121,19 +133,23 @@ class DarkIME2 : InputMethodService() {
         suggestionBarView?.listener = object : SuggestionBarView.Listener {
             override fun onSuggestionClick(text: String) {
                 val ic = currentInputConnection ?: return
-                // Si hay palabra parcial, reemplazarla con la sugerencia
                 val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
-                val partial = before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
                 val endsWithSpace = before.endsWith(" ")
-                if (!endsWithSpace && partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
+                val partial = if (!endsWithSpace) before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: "" else ""
+
+                // Reemplazar palabra parcial si la sugerencia la completa
+                if (partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
                     ic.deleteSurroundingText(partial.length, 0)
                 }
                 ic.commitText("$text ", 1)
+
                 // Aprender del usuario
                 if (::suggestionEngine.isInitialized) {
                     suggestionEngine.onSuggestionAccepted(text, before)
                 }
-                suggestionBarView?.clearSuggestions()
+
+                // Actualizar sugerencias para la siguiente palabra
+                updateSuggestions()
             }
             override fun onClipboardClick() {
                 suggestionBarView?.let { clipboardPopup?.show(it) }
@@ -418,15 +434,32 @@ class DarkIME2 : InputMethodService() {
         if (!::suggestionEngine.isInitialized) return
         val ic = currentInputConnection ?: return
         val text = ic.getTextBeforeCursor(100, 0)?.toString() ?: return
+
+        // Limpiar si no hay texto antes del cursor
+        if (text.isBlank()) {
+            mainHandler.removeCallbacks(clearSuggestionsRunnable)
+            suggestionBarView?.clearSuggestions()
+            return
+        }
+
+        // Resetear timer de limpieza — si el usuario para de escribir 3s, se limpian
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
+        mainHandler.postDelayed(clearSuggestionsRunnable, CLEAR_DELAY_MS)
+
         imeScope.launch(Dispatchers.IO) {
             val results = suggestionEngine.getSuggestions(text)
             launch(Dispatchers.Main) {
-                suggestionBarView?.setSuggestions(results)
+                if (results.isEmpty()) {
+                    // No resetear el timer — dejar que limpie solo
+                } else {
+                    suggestionBarView?.setSuggestions(results)
+                }
             }
         }
     }
 
     override fun onDestroy() {
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
         // Guardar historial del fallback engine
         if (::suggestionEngine.isInitialized && suggestionEngine is FallbackSuggestionEngine) {
             prefs.edit()
