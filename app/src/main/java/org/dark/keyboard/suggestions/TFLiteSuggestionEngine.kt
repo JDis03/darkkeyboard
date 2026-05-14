@@ -3,10 +3,10 @@ package org.dark.keyboard.suggestions
 import android.content.Context
 import android.util.Log
 import org.tensorflow.lite.Interpreter
+import org.tensorflow.lite.flex.FlexDelegate
 import org.tensorflow.lite.support.common.FileUtil
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.nio.FloatBuffer
 import java.nio.IntBuffer
 
 /**
@@ -53,7 +53,8 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
             val modelBuffer = FileUtil.loadMappedFile(context, MODEL_FILE)
             val options = Interpreter.Options().apply {
                 numThreads = 2
-                useNNAPI = false  // NNAPI puede ser inestable en algunos devices
+                useNNAPI = false
+                addDelegate(FlexDelegate()) // necesario para SELECT_TF_OPS
             }
             interpreter = Interpreter(modelBuffer, options)
             isReady = true
