@@ -268,6 +268,7 @@ class DarkIME2 : InputMethodService() {
                             char = char.uppercase()
                         }
                         ic.commitText(char, 1)
+                        updateSuggestions()
                     }
                 }
             }

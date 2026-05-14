@@ -54,9 +54,16 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
             val options = Interpreter.Options().apply {
                 numThreads = 2
                 useNNAPI = false
-                addDelegate(FlexDelegate()) // necesario para SELECT_TF_OPS
+                addDelegate(FlexDelegate())
             }
             interpreter = Interpreter(modelBuffer, options)
+
+            // Log tensor info para debugging
+            val inputDetails = interpreter!!.getInputTensor(0)
+            val outputDetails = interpreter!!.getOutputTensor(0)
+            Log.i(TAG, "Input tensor: shape=${inputDetails.shape().toList()} dtype=${inputDetails.dataType()}")
+            Log.i(TAG, "Output tensor: shape=${outputDetails.shape().toList()} dtype=${outputDetails.dataType()}")
+
             isReady = true
             Log.i(TAG, "TFLite engine ready — vocab=${vocab.size}, model=$MODEL_FILE")
         } catch (e: Exception) {
@@ -71,41 +78,58 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
 
         return try {
             val tokenIds = tokenize(textBeforeCursor)
+            Log.d(TAG, "Tokenized '${textBeforeCursor.takeLast(20)}' -> ${tokenIds.toList()}")
             val probabilities = runInference(tokenIds)
-            topK(probabilities, maxResults)
+            val results = topK(probabilities, maxResults)
+            Log.d(TAG, "Suggestions: $results")
+            results
         } catch (e: Exception) {
-            Log.e(TAG, "Inference error: ${e.message}")
+            Log.e(TAG, "Inference error: ${e.message}", e)
             emptyList()
         }
     }
 
     /**
-     * Convierte texto en secuencia de token IDs con padding.
-     * Toma las últimas SEQ_LENGTH palabras.
+     * Tokeniza texto usando el vocabulario BPE del modelo.
+     * GPT-2 usa BPE donde las palabras se representan como subwords.
+     * Aproximación: buscar coincidencias exactas y por prefijo en el vocab.
      */
     private fun tokenize(text: String): IntArray {
-        val words = text.trim().lowercase().split(Regex("\\s+")).takeLast(SEQ_LENGTH)
-        val ids = IntArray(SEQ_LENGTH) { PAD_TOKEN }
-        val offset = SEQ_LENGTH - words.size
-        words.forEachIndexed { i, word ->
-            ids[offset + i] = vocab[word] ?: UNK_TOKEN
+        val ids = mutableListOf<Int>()
+
+        // Tokenización simple: cada "word" del texto como token
+        // GPT-2 BPE usa Ġ como prefijo de espacio — buscar con y sin espacio
+        val words = text.trim().split(Regex("\\s+")).takeLast(SEQ_LENGTH * 2)
+        for (word in words) {
+            // Intentar con espacio primero (Ġword) y luego sin espacio
+            val tokenId = vocab[" $word"]
+                ?: vocab[word.lowercase()]
+                ?: vocab[" ${word.lowercase()}"]
+                ?: UNK_TOKEN
+            ids.add(tokenId)
+            if (ids.size >= SEQ_LENGTH) break
         }
-        return ids
+
+        // Padding al inicio si es necesario
+        val padded = IntArray(SEQ_LENGTH) { PAD_TOKEN }
+        val offset = maxOf(0, SEQ_LENGTH - ids.size)
+        ids.takeLast(SEQ_LENGTH).forEachIndexed { i, id -> padded[offset + i] = id }
+        return padded
     }
 
     /**
-     * Corre inferencia y retorna array de probabilidades sobre el vocabulario.
-     * Input shape:  [1, SEQ_LENGTH]
-     * Output shape: [1, MAX_VOCAB]
+     * Corre inferencia usando el output tensor por índice (más robusto que por nombre).
+     * Input shape:  [1, SEQ_LENGTH] int32
+     * Output shape: [1, VOCAB_SIZE] float32
      */
     private fun runInference(tokenIds: IntArray): FloatArray {
-        val inputBuffer = IntBuffer.wrap(tokenIds)
-        val outputBuffer = Array(1) { FloatArray(MAX_VOCAB) }
-
-        // Reshape input como array 2D [1, SEQ_LENGTH]
         val input = Array(1) { tokenIds }
-        interpreter!!.run(input, outputBuffer)
 
+        // Obtener tamaño real del vocab del output tensor
+        val vocabSize = interpreter!!.getOutputTensor(0).shape()[1]
+        val outputBuffer = Array(1) { FloatArray(vocabSize) }
+
+        interpreter!!.run(input, outputBuffer)
         return outputBuffer[0]
     }
 
@@ -118,8 +142,10 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
             .mapIndexed { idx, prob -> idx to prob }
             .sortedByDescending { it.second }
             .asSequence()
-            .mapNotNull { (idx, _) -> reverseVocab[idx] }
-            .filter { word -> word.length >= 2 && !word.startsWith("<") }
+            .mapNotNull { (idx, _) ->
+                reverseVocab[idx]?.trim()?.takeIf { it.length >= 2 && !it.startsWith("<") && it.all { c -> c.isLetter() || c == '\'' } }
+            }
+            .distinct()
             .take(k)
             .toList()
     }
@@ -135,10 +161,11 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
         BufferedReader(InputStreamReader(inputStream)).use { reader ->
             var idx = 0
             reader.forEachLine { line ->
-                val word = line.trim()
-                if (word.isNotEmpty()) {
-                    vocab[word] = idx
-                    reverseVocab[idx] = word
+                // Guardamos el token tal como está (con espacio si lo tiene)
+                // El vocab.txt ya tiene los tokens limpios con espacio al inicio
+                if (line.isNotEmpty()) {
+                    vocab[line] = idx          // "Ġword" → idx  (con espacio ya procesado)
+                    reverseVocab[idx] = line   // idx → "word"
                     idx++
                 }
             }
