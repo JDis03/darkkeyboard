@@ -22,8 +22,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.dark.keyboard.suggestions.FallbackSuggestionEngine
+import org.dark.keyboard.suggestions.SpanishDictEngine
 import org.dark.keyboard.suggestions.SuggestionEngine
-import org.dark.keyboard.suggestions.TFLiteSuggestionEngine
 
 /**
  * InputMethodService simple y funcional
@@ -89,20 +89,12 @@ class DarkIME2 : InputMethodService() {
         prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
 
-        // Inicializar motor de sugerencias en background
+        // Inicializar motor de sugerencias español en background
         imeScope.launch(Dispatchers.IO) {
-            val tflite = TFLiteSuggestionEngine(this@DarkIME2)
-            tflite.initialize()
-            suggestionEngine = if (tflite.isReady()) {
-                Log.i(TAG, "Using TFLite suggestion engine")
-                tflite
-            } else {
-                Log.i(TAG, "TFLite not available, using fallback engine")
-                // Cargar historial del usuario guardado
-                val saved = prefs.getString("suggestion_freq", "") ?: ""
-                fallbackEngine.deserializeFrequency(saved)
-                fallbackEngine
-            }
+            val engine = SpanishDictEngine(this@DarkIME2)
+            engine.initialize()
+            suggestionEngine = engine
+            Log.i(TAG, "Suggestion engine: ${suggestionEngine.engineName}")
         }
     }
     
