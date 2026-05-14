@@ -304,20 +304,15 @@ class DarkIME2 : InputMethodService() {
     private fun sendModifiedKeyDownUp(key: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
         val ic = currentInputConnection ?: return
         val eventTime = System.currentTimeMillis()
-
         val meta = buildMetaState(shift, ctrl, alt, fn)
 
         try {
-            sendModifierDown(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
-            sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
-            sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
-
+            // NO enviar modifier down/up por separado — 
+            // los terminales SSH interpretan esos eventos como teclas individuales
+            // generando escape sequences (ea 6;5u).
+            // El metaState en el KeyEvent es suficiente para RDP y SSH.
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
-
-            sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
-            sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
-            sendModifierUp(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
         } catch (e: Exception) {
             Log.w(TAG, "sendModifiedKeyDownUp failed: ${e.message}")
         }
