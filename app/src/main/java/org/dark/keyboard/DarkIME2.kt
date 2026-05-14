@@ -293,11 +293,13 @@ class DarkIME2 : InputMethodService() {
             }
             else -> {
                 if (code > 0 && code < 127) {
-                    if (ctrl && !alt && code in 'a'.code..'z'.code && isTerminalMode) {
-                        // Terminal SSH: Ctrl+letra → byte de control ASCII (0x01-0x1A)
-                        // Los terminales leen el byte crudo, no KeyEvents
+                    if (ctrl && !alt && !shift && code in 'a'.code..'z'.code && isTerminalMode) {
+                        // Terminal SSH: Ctrl+letra (sin Shift) → byte de control ASCII
+                        // Ctrl+C=0x03 (SIGINT), Ctrl+V=0x16, Ctrl+Z=0x1A, etc.
                         val ctrlByte = (code - 'a'.code + 1).toChar().toString()
                         ic.commitText(ctrlByte, 1)
+                        // Ctrl+Shift+V / Ctrl+Shift+C → caen al bloque de abajo (KeyEvent)
+                        // para pegar/copiar en la terminal local
                     } else if (ctrl || alt) {
                         // RDP y apps normales: sendKeyEvent con metaState + modifier events
                         val keycode = when (code.toChar().lowercaseChar()) {
