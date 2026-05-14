@@ -91,27 +91,39 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
      * para que el modelo prediga su completado o la siguiente palabra.
      */
     private fun tokenize(text: String): IntArray {
-        val words = text.trimEnd().split(Regex("\\s+")).takeLast(SEQ_LENGTH)
+        val words = text.trimEnd().split(Regex("\\s+")).filter { it.isNotEmpty() }.takeLast(SEQ_LENGTH)
         val ids = mutableListOf<Int>()
 
         words.forEachIndexed { i, word ->
-            // Primera palabra del contexto → sin espacio, resto → con espacio
-            val key = if (i == 0) word else " $word"
-            val keyLower = if (i == 0) word.lowercase() else " ${word.lowercase()}"
-            val id = vocab[key] ?: vocab[keyLower] ?: vocab[word] ?: vocab[word.lowercase()] ?: UNK_TOKEN
+            val isFirst = i == 0
+            val id = lookupToken(word, withSpace = !isFirst)
             ids.add(id)
-        }
-
-        // Si el texto termina con espacio, agregamos un token especial para
-        // indicar "inicio de nueva palabra" usando el token de espacio
-        if (text.endsWith(" ")) {
-            // El modelo predecirá la siguiente palabra
         }
 
         val padded = IntArray(SEQ_LENGTH) { PAD_TOKEN }
         val offset = maxOf(0, SEQ_LENGTH - ids.size)
         ids.takeLast(SEQ_LENGTH).forEachIndexed { i, id -> padded[offset + i] = id }
         return padded
+    }
+
+    /**
+     * Busca el token ID de una palabra con varios fallbacks:
+     * 1. Con espacio + original:    " Hola"
+     * 2. Con espacio + minúscula:   " hola"
+     * 3. Con espacio + capitalize:  " hola" → " Hola"
+     * 4. Sin espacio + original:    "Hola"
+     * 5. Sin espacio + minúscula:   "hola"
+     * 6. UNK
+     */
+    private fun lookupToken(word: String, withSpace: Boolean): Int {
+        val sp = if (withSpace) " " else ""
+        return vocab["$sp$word"]
+            ?: vocab["$sp${word.lowercase()}"]
+            ?: vocab["$sp${word.replaceFirstChar { it.uppercase() }}"]
+            ?: vocab[word]
+            ?: vocab[word.lowercase()]
+            ?: vocab[word.replaceFirstChar { it.uppercase() }]
+            ?: UNK_TOKEN
     }
 
     private fun runInference(tokenIds: IntArray): FloatArray {

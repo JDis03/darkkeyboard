@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.combine
@@ -39,6 +40,9 @@ class DarkIME2 : InputMethodService() {
         suggestionBarView?.clearSuggestions()
     }
     private val CLEAR_DELAY_MS = 3000L  // 3 segundos sin escribir → limpiar
+
+    // Job de inferencia activo — cancelar el anterior antes de lanzar uno nuevo
+    private var suggestionJob: Job? = null
     private lateinit var prefs: SharedPreferences
 
     // Motor de sugerencias — TFLite si hay modelo, Fallback si no
@@ -284,7 +288,6 @@ class DarkIME2 : InputMethodService() {
                             char = char.uppercase()
                         }
                         ic.commitText(char, 1)
-                        updateSuggestions()
                     }
                 }
             }
@@ -442,16 +445,16 @@ class DarkIME2 : InputMethodService() {
             return
         }
 
-        // Resetear timer de limpieza — si el usuario para de escribir 3s, se limpian
+        // Resetear timer de limpieza
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
         mainHandler.postDelayed(clearSuggestionsRunnable, CLEAR_DELAY_MS)
 
-        imeScope.launch(Dispatchers.IO) {
+        // Cancelar inferencia anterior para evitar doble thread
+        suggestionJob?.cancel()
+        suggestionJob = imeScope.launch(Dispatchers.IO) {
             val results = suggestionEngine.getSuggestions(text)
             launch(Dispatchers.Main) {
-                if (results.isEmpty()) {
-                    // No resetear el timer — dejar que limpie solo
-                } else {
+                if (results.isNotEmpty()) {
                     suggestionBarView?.setSuggestions(results)
                 }
             }
