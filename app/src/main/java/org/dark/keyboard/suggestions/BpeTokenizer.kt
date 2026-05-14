@@ -29,7 +29,10 @@ class BpeTokenizer(private val context: Context) {
     private val bpeRanks = mutableMapOf<Pair<String, String>, Int>()  // merge → rank
     private val byteEncoder = buildByteEncoder()          // byte → char
     private val byteDecoder: Map<Char, Int> = byteEncoder.entries.associate { (k, v) -> v[0] to k }
-    private val cache = mutableMapOf<String, List<String>>() // word → bpe tokens
+    // LRU cache con máximo 1024 entradas (evita unbounded memory growth)
+    private val cache = object : LinkedHashMap<String, List<String>>(256, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, List<String>>) = size > 1024
+    }
 
     private var isLoaded = false
 

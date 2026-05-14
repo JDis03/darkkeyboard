@@ -16,8 +16,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.dark.keyboard.suggestions.FallbackSuggestionEngine
 import org.dark.keyboard.suggestions.SuggestionEngine
 import org.dark.keyboard.suggestions.TFLiteSuggestionEngine
@@ -39,9 +42,14 @@ class DarkIME2 : InputMethodService() {
     private val clearSuggestionsRunnable = Runnable {
         suggestionBarView?.clearSuggestions()
     }
-    private val CLEAR_DELAY_MS = 3000L  // 3 segundos sin escribir → limpiar
+    private val CLEAR_DELAY_MS    = 3000L  // 3s sin escribir → limpiar
+    private val DEBOUNCE_MS       = 80L    // esperar 80ms antes de inferir
+    private val MIN_TEXT_LENGTH   = 2      // mínimo 2 chars antes de sugerir
 
-    // Job de inferencia activo — cancelar el anterior antes de lanzar uno nuevo
+    // Dispatcher single-thread para TFLite (evita race condition XNNPACK)
+    private val inferDispatcher = Dispatchers.IO.limitedParallelism(1)
+
+    // Job de inferencia activo — cancelar antes de lanzar uno nuevo
     private var suggestionJob: Job? = null
     private lateinit var prefs: SharedPreferences
 
@@ -145,11 +153,18 @@ class DarkIME2 : InputMethodService() {
                 if (partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
                     ic.deleteSurroundingText(partial.length, 0)
                 }
-                ic.commitText("$text ", 1)
+
+                // Respetar el case del usuario: si escribió minúscula, insertar minúscula
+                val toInsert = if (partial.isNotEmpty() && partial[0].isLowerCase() && text[0].isUpperCase()) {
+                    text.replaceFirstChar { it.lowercase() }
+                } else {
+                    text
+                }
+                ic.commitText("$toInsert ", 1)
 
                 // Aprender del usuario
                 if (::suggestionEngine.isInitialized) {
-                    suggestionEngine.onSuggestionAccepted(text, before)
+                    suggestionEngine.onSuggestionAccepted(toInsert, before)
                 }
 
                 // Actualizar sugerencias para la siguiente palabra
@@ -438,25 +453,33 @@ class DarkIME2 : InputMethodService() {
         val ic = currentInputConnection ?: return
         val text = ic.getTextBeforeCursor(100, 0)?.toString() ?: return
 
-        // Limpiar si no hay texto antes del cursor
-        if (text.isBlank()) {
+        // Limpiar si texto muy corto o vacío
+        val trimmed = text.trim()
+        if (trimmed.length < MIN_TEXT_LENGTH) {
             mainHandler.removeCallbacks(clearSuggestionsRunnable)
             suggestionBarView?.clearSuggestions()
             return
         }
 
-        // Resetear timer de limpieza
+        // Resetear timer de auto-limpieza
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
         mainHandler.postDelayed(clearSuggestionsRunnable, CLEAR_DELAY_MS)
 
-        // Cancelar inferencia anterior para evitar doble thread
+        // Cancelar job anterior — el delay() es suspension point, se cancela inmediatamente
         suggestionJob?.cancel()
-        suggestionJob = imeScope.launch(Dispatchers.IO) {
-            val results = suggestionEngine.getSuggestions(text)
-            launch(Dispatchers.Main) {
-                if (results.isNotEmpty()) {
-                    suggestionBarView?.setSuggestions(results)
-                }
+        suggestionJob = imeScope.launch {
+            // Debounce: esperar antes de inferir (evita inferir en cada tecla)
+            delay(DEBOUNCE_MS)
+            if (!isActive) return@launch
+
+            // Inferir en dispatcher single-thread (evita XNNPACK race condition)
+            val results = withContext(inferDispatcher) {
+                suggestionEngine.getSuggestions(text)
+            }
+            if (!isActive) return@launch
+
+            if (results.isNotEmpty()) {
+                suggestionBarView?.setSuggestions(results)
             }
         }
     }
