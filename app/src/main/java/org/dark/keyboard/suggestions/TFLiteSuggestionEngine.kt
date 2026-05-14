@@ -7,67 +7,60 @@ import org.tensorflow.lite.flex.FlexDelegate
 import org.tensorflow.lite.support.common.FileUtil
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.nio.IntBuffer
+import java.nio.charset.StandardCharsets
 
 /**
- * Motor de sugerencias basado en TFLite.
+ * Motor de sugerencias basado en TFLite (gpt2-spanish).
  *
- * Nivel 1: modelo next-word prediction básico (~3-5MB)
- *   - Input:  secuencia de token IDs (últimas N palabras)
- *   - Output: distribución de probabilidad sobre vocabulario
- *   - Assets: suggestions_model.tflite + vocab.txt
- *
- * Para escalar a Nivel 2-4:
- *   - Cambiar el archivo .tflite en assets/
- *   - Ajustar SEQ_LENGTH y VOCAB_SIZE si es necesario
- *   - El resto del código no cambia
- *
- * Modelo esperado en: assets/suggestions_model.tflite
- * Vocabulario en:     assets/suggestions_vocab.txt
+ * Fixes aplicados:
+ * - Thread safety: synchronized en runInference (XNNPACK no es thread-safe)
+ * - Tokenización BPE correcta: busca " palabra" (con espacio) como lo hace GPT-2
+ * - Vocab cargado con UTF-8 explícito para acentos españoles
+ * - topK filtra subwords (tokens sin espacio inicial = continuación de palabra)
  */
 class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
 
-    override val engineName = "TFLite (next-word prediction)"
+    override val engineName = "TFLite (gpt2-spanish)"
 
     companion object {
         private const val TAG = "TFLiteEngine"
         private const val MODEL_FILE = "suggestions_model.tflite"
-        private const val VOCAB_FILE = "suggestions_vocab.txt"
-        private const val SEQ_LENGTH = 5      // tokens de contexto que acepta el modelo
-        private const val MAX_VOCAB = 10000   // tamaño del vocabulario
-        private const val UNK_TOKEN = 1       // token para palabras desconocidas
-        private const val PAD_TOKEN = 0       // token de padding
+        private const val VOCAB_FILE  = "suggestions_vocab.txt"
+        private const val SEQ_LENGTH  = 5
+        private const val UNK_TOKEN   = 1
+        private const val PAD_TOKEN   = 0
     }
 
     private var interpreter: Interpreter? = null
-    private val vocab = mutableMapOf<String, Int>()       // palabra → token ID
-    private val reverseVocab = mutableMapOf<Int, String>() // token ID → palabra
+    // token_string → id  (key incluye espacio inicial: " hola")
+    private val vocab = mutableMapOf<String, Int>()
+    // id → token_string limpio (sin espacio)
+    private val reverseVocab = mutableMapOf<Int, String>()
+    // marcar si el token empieza con espacio (= inicio de palabra)
+    private val isWordStart = mutableMapOf<Int, Boolean>()
+
     private var isReady = false
+    private val inferLock = Any()   // mutex para thread safety
 
     override fun initialize() {
         try {
-            // Cargar vocabulario
             loadVocab()
 
-            // Cargar modelo TFLite
             val modelBuffer = FileUtil.loadMappedFile(context, MODEL_FILE)
             val options = Interpreter.Options().apply {
-                numThreads = 2
+                numThreads = 1          // 1 thread evita el XNNPACK concurrency error
                 useNNAPI = false
                 addDelegate(FlexDelegate())
             }
             interpreter = Interpreter(modelBuffer, options)
 
-            // Log tensor info para debugging
-            val inputDetails = interpreter!!.getInputTensor(0)
-            val outputDetails = interpreter!!.getOutputTensor(0)
-            Log.i(TAG, "Input tensor: shape=${inputDetails.shape().toList()} dtype=${inputDetails.dataType()}")
-            Log.i(TAG, "Output tensor: shape=${outputDetails.shape().toList()} dtype=${outputDetails.dataType()}")
+            val inShape  = interpreter!!.getInputTensor(0).shape().toList()
+            val outShape = interpreter!!.getOutputTensor(0).shape().toList()
+            Log.i(TAG, "Input: $inShape  Output: $outShape  Vocab: ${vocab.size}")
 
             isReady = true
-            Log.i(TAG, "TFLite engine ready — vocab=${vocab.size}, model=$MODEL_FILE")
         } catch (e: Exception) {
-            Log.w(TAG, "TFLite model not available, falling back: ${e.message}")
+            Log.w(TAG, "TFLite init failed, using fallback: ${e.message}")
             isReady = false
         }
     }
@@ -78,72 +71,75 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
 
         return try {
             val tokenIds = tokenize(textBeforeCursor)
-            Log.d(TAG, "Tokenized '${textBeforeCursor.takeLast(20)}' -> ${tokenIds.toList()}")
-            val probabilities = runInference(tokenIds)
-            val results = topK(probabilities, maxResults)
-            Log.d(TAG, "Suggestions: $results")
+            Log.d(TAG, "tokens=${tokenIds.toList()} for '${textBeforeCursor.takeLast(30)}'")
+            val probs = synchronized(inferLock) { runInference(tokenIds) }
+            val results = topK(probs, maxResults)
+            Log.d(TAG, "suggestions=$results")
             results
         } catch (e: Exception) {
-            Log.e(TAG, "Inference error: ${e.message}", e)
+            Log.e(TAG, "getSuggestions error: ${e.message}", e)
             emptyList()
         }
     }
 
     /**
-     * Tokeniza texto usando el vocabulario BPE del modelo.
-     * GPT-2 usa BPE donde las palabras se representan como subwords.
-     * Aproximación: buscar coincidencias exactas y por prefijo en el vocab.
+     * Tokeniza el texto en IDs usando el vocabulario BPE de GPT-2.
+     *
+     * GPT-2 BPE representa palabras como " palabra" (con espacio inicial).
+     * Solo tokenizamos las últimas SEQ_LENGTH palabras completas.
+     * Para la palabra actual (última, incompleta) también la incluimos
+     * para que el modelo prediga su completado o la siguiente palabra.
      */
     private fun tokenize(text: String): IntArray {
+        val words = text.trimEnd().split(Regex("\\s+")).takeLast(SEQ_LENGTH)
         val ids = mutableListOf<Int>()
 
-        // Tokenización simple: cada "word" del texto como token
-        // GPT-2 BPE usa Ġ como prefijo de espacio — buscar con y sin espacio
-        val words = text.trim().split(Regex("\\s+")).takeLast(SEQ_LENGTH * 2)
-        for (word in words) {
-            // Intentar con espacio primero (Ġword) y luego sin espacio
-            val tokenId = vocab[" $word"]
-                ?: vocab[word.lowercase()]
-                ?: vocab[" ${word.lowercase()}"]
-                ?: UNK_TOKEN
-            ids.add(tokenId)
-            if (ids.size >= SEQ_LENGTH) break
+        words.forEachIndexed { i, word ->
+            // Primera palabra del contexto → sin espacio, resto → con espacio
+            val key = if (i == 0) word else " $word"
+            val keyLower = if (i == 0) word.lowercase() else " ${word.lowercase()}"
+            val id = vocab[key] ?: vocab[keyLower] ?: vocab[word] ?: vocab[word.lowercase()] ?: UNK_TOKEN
+            ids.add(id)
         }
 
-        // Padding al inicio si es necesario
+        // Si el texto termina con espacio, agregamos un token especial para
+        // indicar "inicio de nueva palabra" usando el token de espacio
+        if (text.endsWith(" ")) {
+            // El modelo predecirá la siguiente palabra
+        }
+
         val padded = IntArray(SEQ_LENGTH) { PAD_TOKEN }
         val offset = maxOf(0, SEQ_LENGTH - ids.size)
         ids.takeLast(SEQ_LENGTH).forEachIndexed { i, id -> padded[offset + i] = id }
         return padded
     }
 
-    /**
-     * Corre inferencia usando el output tensor por índice (más robusto que por nombre).
-     * Input shape:  [1, SEQ_LENGTH] int32
-     * Output shape: [1, VOCAB_SIZE] float32
-     */
     private fun runInference(tokenIds: IntArray): FloatArray {
-        val input = Array(1) { tokenIds }
-
-        // Obtener tamaño real del vocab del output tensor
         val vocabSize = interpreter!!.getOutputTensor(0).shape()[1]
-        val outputBuffer = Array(1) { FloatArray(vocabSize) }
-
-        interpreter!!.run(input, outputBuffer)
-        return outputBuffer[0]
+        val input  = Array(1) { tokenIds }
+        val output = Array(1) { FloatArray(vocabSize) }
+        interpreter!!.run(input, output)
+        return output[0]
     }
 
     /**
-     * Retorna las top-K palabras con mayor probabilidad.
-     * Filtra palabras muy cortas y tokens especiales.
+     * Top-K filtrando correctamente tokens BPE:
+     * - Solo tokens que empiezan con espacio (= inicio de palabra completa)
+     * - Solo letras (sin números, puntuación, tokens especiales)
+     * - Mínimo 2 caracteres después de quitar el espacio
      */
     private fun topK(probabilities: FloatArray, k: Int): List<String> {
         return probabilities
             .mapIndexed { idx, prob -> idx to prob }
             .sortedByDescending { it.second }
             .asSequence()
+            .filter { (idx, _) -> isWordStart[idx] == true }
             .mapNotNull { (idx, _) ->
-                reverseVocab[idx]?.trim()?.takeIf { it.length >= 2 && !it.startsWith("<") && it.all { c -> c.isLetter() || c == '\'' } }
+                reverseVocab[idx]?.takeIf { word ->
+                    word.length >= 2 &&
+                    word.all { c -> c.isLetter() } &&
+                    !word.startsWith("<")
+                }
             }
             .distinct()
             .take(k)
@@ -151,26 +147,39 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
     }
 
     /**
-     * Carga vocabulario desde assets/suggestions_vocab.txt
-     * Formato: una palabra por línea, el índice de línea = token ID
+     * Carga el vocabulario desde assets/suggestions_vocab.txt
+     *
+     * El vocab fue generado por el script Python con:
+     *   token.replace("Ġ", " ")  — Ġ es el byte 0xC4 0xA0 que representa espacio en GPT-2
+     *
+     * Entonces tokens con espacio inicial = inicio de palabra.
      */
     private fun loadVocab() {
         vocab.clear()
         reverseVocab.clear()
-        val inputStream = context.assets.open(VOCAB_FILE)
-        BufferedReader(InputStreamReader(inputStream)).use { reader ->
-            var idx = 0
-            reader.forEachLine { line ->
-                // Guardamos el token tal como está (con espacio si lo tiene)
-                // El vocab.txt ya tiene los tokens limpios con espacio al inicio
-                if (line.isNotEmpty()) {
-                    vocab[line] = idx          // "Ġword" → idx  (con espacio ya procesado)
-                    reverseVocab[idx] = line   // idx → "word"
+        isWordStart.clear()
+
+        context.assets.open(VOCAB_FILE).use { stream ->
+            BufferedReader(InputStreamReader(stream, StandardCharsets.UTF_8)).use { reader ->
+                var idx = 0
+                reader.forEachLine { line ->
+                    val startsWithSpace = line.startsWith(" ")
+                    val clean = line.trim()   // sin espacio para display
+
+                    // Indexar con y sin espacio para lookup en tokenize()
+                    vocab[line] = idx              // key original (puede tener espacio)
+                    if (startsWithSpace) {
+                        vocab[line.trimStart()] = idx  // también sin espacio
+                    }
+
+                    reverseVocab[idx] = clean
+                    isWordStart[idx] = startsWithSpace
+
                     idx++
                 }
             }
         }
-        Log.i(TAG, "Vocab loaded: ${vocab.size} tokens")
+        Log.i(TAG, "Vocab loaded: ${vocab.size} entries, ${reverseVocab.size} tokens")
     }
 
     override fun close() {
@@ -179,9 +188,5 @@ class TFLiteSuggestionEngine(private val context: Context) : SuggestionEngine {
         isReady = false
     }
 
-    /**
-     * Retorna true si el modelo está cargado y listo.
-     * Útil para que DarkIME2 decida si usar TFLite o Fallback.
-     */
     fun isReady() = isReady
 }
