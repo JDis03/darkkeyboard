@@ -308,7 +308,12 @@ class DarkIME2 : InputMethodService() {
             }
             else -> {
                 if (code > 0 && code < 127) {
-                    if (ctrl || alt) {
+                    if (ctrl && !alt && !shift && code in 'a'.code..'z'.code) {
+                        // Ctrl+letra → carácter ASCII de control (0x01-0x1A)
+                        // Los terminales SSH necesitan el byte, no KeyEvents
+                        val ctrlChar = (code - 'a'.code + 1).toChar()
+                        ic.commitText(ctrlChar.toString(), 1)
+                    } else if (ctrl || alt) {
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
                             ' ' -> KeyEvent.KEYCODE_SPACE
