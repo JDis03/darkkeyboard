@@ -60,7 +60,7 @@ class SpanishDictEngine(private val context: Context) : SuggestionEngine {
         // === Capa 1: completions del trie ===
         if (partialWord.isNotEmpty()) {
             trie.lookup(partialWord).forEach { entry ->
-                results.add(entry.word to (entry.score * 2.0f))
+                results.add(entry.word to (entry.freq * 0.01f))
             }
         }
 

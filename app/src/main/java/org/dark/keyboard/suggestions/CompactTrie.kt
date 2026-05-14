@@ -3,133 +3,81 @@ package org.dark.keyboard.suggestions
 import android.content.Context
 import android.util.Log
 import java.io.InputStream
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
 /**
- * Diccionario compacto basado en Trie.
+ * Diccionario por binary search sobre array ordenado en memoria.
  *
- * Arquitectura estilo GBoard/SwiftKey:
- *   Trie serializado en binario → lookup O(k) por prefijo → top-N por frecuencia
- *
- * Formato del archivo (trie_es.bin):
- *   [4B] Magic = 0x444B4553
- *   [4B] Word count
- *   [nodes...] Cada nodo:
- *     [1B] flags (bit 0 = isTerminal)
- *     [1B] frequency (0-255)
- *     [1B] num_children
- *     [num_children ×]:
- *       [2B] char (UTF-16 code unit)
- *       [3B] child offset (little-endian)
- *
- * 8000 palabras, 19742 nodos, ~154 KB en assets.
+ * Más simple y robusto que el trie binario corrupto.
+ * 10000 palabras → ~14 búsquedas binarias por lookup.
+ * Cada lookup por prefijo devuelve hasta 6 palabras completas.
  */
 class CompactTrie(private val context: Context) {
 
     companion object {
         private const val TAG  = "CompactTrie"
-        private const val FILE = "trie_es.bin"
-        private const val MAGIC = 0x444B4553
+        private const val FILE = "dict_es.txt"
         private const val MAX_RESULTS = 6
     }
 
-    data class Entry(val word: String, val score: Int)
+    data class Entry(val word: String, val freq: Int)
 
-    private lateinit var buf: ByteBuffer
+    // Array de palabras ordenadas alfabéticamente + frecuencias
+    private val words = mutableListOf<Entry>()
     private var isLoaded = false
 
     fun load() {
         try {
             val stream: InputStream = context.assets.open(FILE)
-            val data = stream.readBytes()
-            stream.close()
-            buf = ByteBuffer.wrap(data).order(ByteOrder.LITTLE_ENDIAN)
-
-            val magic = buf.getInt(0)
-            if (magic != MAGIC) {
-                Log.e(TAG, "Invalid magic: ${magic.toString(16)}")
-                return
+            val reader = java.io.BufferedReader(stream.reader(java.nio.charset.StandardCharsets.UTF_8))
+            reader.forEachLine { line ->
+                val parts = line.trim().split(" ", limit = 2)
+                if (parts.size == 2) {
+                    val word = parts[0]
+                    val freq = parts[1].toIntOrNull() ?: 0
+                    if (word.length >= 2) words.add(Entry(word, freq))
+                }
             }
-            val wordCount = buf.getInt(4)
+            reader.close()
             isLoaded = true
-            Log.i(TAG, "Trie loaded: $wordCount words, ${data.size / 1024} KB")
+            Log.i(TAG, "Loaded: ${words.size} words (sorted text, binary search)")
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to load trie: ${e.message}")
+            Log.e(TAG, "Failed to load dictionary: ${e.message}")
         }
     }
 
     fun isReady() = isLoaded
 
     /**
-     * Busca completions para un prefijo. Retorna top-N por frecuencia.
-     * Ej: lookup("hol") → ["hola", "hollín", "holgar", ...]
+     * Busca todas las palabras que empiezan con [prefix].
+     * Binary search para encontrar el rango, luego colectar dentro de ese rango.
+     * Ordenado por frecuencia (mayor primero).
      */
     fun lookup(prefix: String, maxResults: Int = MAX_RESULTS): List<Entry> {
         if (!isLoaded || prefix.isEmpty()) return emptyList()
+        val p = prefix.lowercase()
 
+        // Binary search: encontrar primer match
+        var lo = 0
+        var hi = words.size
+        while (lo < hi) {
+            val mid = (lo + hi) / 2
+            if (words[mid].word < p) lo = mid + 1
+            else hi = mid
+        }
+
+        // Colectar todas las palabras que empiezan con el prefijo
         val results = mutableListOf<Entry>()
-
-        // Navegar al nodo del prefijo
-        var offset = 8  // skip header (4B magic + 4B count)
-        for (ch in prefix) {
-            offset = findChild(offset, ch)
-            if (offset < 0) return emptyList()  // prefijo no existe
-        }
-
-        // Colectar todas las palabras desde este nodo
-        collectWords(offset, prefix, results)
-        // Ordenar por score descendente (frecuencia)
-        results.sortByDescending { it.score }
-
-        return results.take(maxResults)
-    }
-
-    /**
-     * Colecta todas las palabras terminales desde un nodo del trie.
-     */
-    private fun collectWords(nodeOffset: Int, currentWord: String, results: MutableList<Entry>) {
-        val flags = buf.get(nodeOffset).toInt() and 0xFF
-        val freq  = buf.get(nodeOffset + 1).toInt() and 0xFF
-
-        if ((flags and 1) != 0) {
-            results.add(Entry(currentWord, freq))
-        }
-
-        val numChildren = buf.get(nodeOffset + 2).toInt() and 0xFF
-        var childPtr = nodeOffset + 3
-
-        for (i in 0 until numChildren) {
-            val charCode = buf.getShort(childPtr).toInt() and 0xFFFF
-            val childOffset = readUInt24(childPtr + 2)
-            val ch = charCode.toChar()
-            collectWords(childOffset, currentWord + ch, results)
-            childPtr += 5
-        }
-    }
-
-    /**
-     * Busca un hijo por carácter en un nodo.
-     * Retorna el offset del hijo o -1 si no existe.
-     */
-    private fun findChild(nodeOffset: Int, target: Char): Int {
-        val numChildren = buf.get(nodeOffset + 2).toInt() and 0xFF
-        var ptr = nodeOffset + 3
-
-        for (i in 0 until numChildren) {
-            val charCode = buf.getShort(ptr).toInt() and 0xFFFF
-            if (charCode == target.code) {
-                return readUInt24(ptr + 2)
+        var i = lo
+        while (i < words.size && words[i].word.startsWith(p)) {
+            val w = words[i]
+            if (w.word.length >= 3 && w.word != p) {
+                results.add(w)
             }
-            ptr += 5
+            i++
         }
-        return -1
-    }
 
-    private fun readUInt24(offset: Int): Int {
-        val b0 = buf.get(offset).toInt() and 0xFF
-        val b1 = buf.get(offset + 1).toInt() and 0xFF
-        val b2 = buf.get(offset + 2).toInt() and 0xFF
-        return b0 or (b1 shl 8) or (b2 shl 16)
+        // Ordenar por frecuencia descendente
+        results.sortByDescending { it.freq }
+        return results.take(maxResults)
     }
 }
