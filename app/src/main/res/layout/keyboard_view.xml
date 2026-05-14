@@ -7,6 +7,13 @@
     android:background="#FF1A1A1A"
     android:paddingBottom="48dp">
 
+    <!-- Suggestion / Clipboard / Settings bar -->
+    <org.dark.keyboard.SuggestionBarView
+        android:id="@+id/suggestion_bar"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#1E2A32" />
+
     <!-- Modifier status bar -->
     <TextView
         android:id="@+id/modifier_status"

@@ -1,5 +1,6 @@
 package org.dark.keyboard
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
 import android.util.Log
@@ -14,6 +15,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import org.dark.keyboard.suggestions.FallbackSuggestionEngine
+import org.dark.keyboard.suggestions.SuggestionEngine
+import org.dark.keyboard.suggestions.TFLiteSuggestionEngine
 
 /**
  * InputMethodService simple y funcional
@@ -23,8 +27,14 @@ class DarkIME2 : InputMethodService() {
     
     private var keyboardView: SimpleKeyboardView? = null
     private var modifierStatusView: TextView? = null
+    private var suggestionBarView: SuggestionBarView? = null
+    private var clipboardPopup: ClipboardPopup? = null
     private var isSymbolsMode = false
     private lateinit var prefs: SharedPreferences
+
+    // Motor de sugerencias — TFLite si hay modelo, Fallback si no
+    private lateinit var suggestionEngine: SuggestionEngine
+    private val fallbackEngine = FallbackSuggestionEngine()
     private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         when (key) {
@@ -57,6 +67,22 @@ class DarkIME2 : InputMethodService() {
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
         prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
+
+        // Inicializar motor de sugerencias en background
+        imeScope.launch(Dispatchers.IO) {
+            val tflite = TFLiteSuggestionEngine(this@DarkIME2)
+            tflite.initialize()
+            suggestionEngine = if (tflite.isReady()) {
+                Log.i(TAG, "Using TFLite suggestion engine")
+                tflite
+            } else {
+                Log.i(TAG, "TFLite not available, using fallback engine")
+                // Cargar historial del usuario guardado
+                val saved = prefs.getString("suggestion_freq", "") ?: ""
+                fallbackEngine.deserializeFrequency(saved)
+                fallbackEngine
+            }
+        }
     }
     
     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
@@ -86,7 +112,40 @@ class DarkIME2 : InputMethodService() {
         inputViewContainer = layout
         keyboardView = layout.findViewById(R.id.keyboard)
         modifierStatusView = layout.findViewById(R.id.modifier_status)
-        
+        suggestionBarView = layout.findViewById(R.id.suggestion_bar)
+
+        clipboardPopup = ClipboardPopup(this) { text ->
+            currentInputConnection?.commitText(text, 1)
+        }
+
+        suggestionBarView?.listener = object : SuggestionBarView.Listener {
+            override fun onSuggestionClick(text: String) {
+                val ic = currentInputConnection ?: return
+                // Si hay palabra parcial, reemplazarla con la sugerencia
+                val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                val partial = before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
+                val endsWithSpace = before.endsWith(" ")
+                if (!endsWithSpace && partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
+                    ic.deleteSurroundingText(partial.length, 0)
+                }
+                ic.commitText("$text ", 1)
+                // Aprender del usuario
+                if (::suggestionEngine.isInitialized) {
+                    suggestionEngine.onSuggestionAccepted(text, before)
+                }
+                suggestionBarView?.clearSuggestions()
+            }
+            override fun onClipboardClick() {
+                suggestionBarView?.let { clipboardPopup?.show(it) }
+            }
+            override fun onSettingsClick() {
+                val intent = Intent(this@DarkIME2, SettingsActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(intent)
+            }
+        }
+
         loadAndSetKeyboard()
         applyTheme()
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
@@ -345,7 +404,35 @@ class DarkIME2 : InputMethodService() {
         }
     }
 
+    override fun onUpdateSelection(
+        oldSelStart: Int, oldSelEnd: Int,
+        newSelStart: Int, newSelEnd: Int,
+        candidatesStart: Int, candidatesEnd: Int
+    ) {
+        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+        updateSuggestions()
+    }
+
+    private fun updateSuggestions() {
+        if (!::suggestionEngine.isInitialized) return
+        val ic = currentInputConnection ?: return
+        val text = ic.getTextBeforeCursor(100, 0)?.toString() ?: return
+        imeScope.launch(Dispatchers.IO) {
+            val results = suggestionEngine.getSuggestions(text)
+            launch(Dispatchers.Main) {
+                suggestionBarView?.setSuggestions(results)
+            }
+        }
+    }
+
     override fun onDestroy() {
+        // Guardar historial del fallback engine
+        if (::suggestionEngine.isInitialized && suggestionEngine is FallbackSuggestionEngine) {
+            prefs.edit()
+                .putString("suggestion_freq", fallbackEngine.serializeFrequency())
+                .apply()
+        }
+        suggestionEngine.takeIf { ::suggestionEngine.isInitialized }?.close()
         prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
         imeScope.cancel()
         super.onDestroy()

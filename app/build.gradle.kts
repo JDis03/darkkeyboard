@@ -34,9 +34,19 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // No compress tflite models
+    androidResources {
+        noCompress += "tflite"
+    }
 }
 
 dependencies {
+    // TFLite - motor de sugerencias (escalable de nivel 1 a nivel 4)
+    implementation("org.tensorflow:tensorflow-lite:2.16.1")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
+
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
