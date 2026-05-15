@@ -35,11 +35,13 @@ class TFLiteReRanker(private val context: Context) : ReRanker {
     private var bpeTokenizer: BpeTokenizer? = null
 
     override fun initialize() {
-        // Verificar si el modelo existe en assets
-        try {
-            context.assets.open(MODEL_FILE).close()
-        } catch (e: Exception) {
-            Log.i(TAG, "Model not found in assets — TFLite reranker disabled")
+        // Buscar modelo: primero en filesDir/models/ (descargado), luego en assets/
+        val downloaded = ModelDownloader.modelFile(context)
+        val hasDownloaded = downloaded.exists()
+        val hasAsset = try { context.assets.open(MODEL_FILE).close(); true } catch (_: Exception) { false }
+
+        if (!hasDownloaded && !hasAsset) {
+            Log.i(TAG, "Model not found — download via Settings to enable AI suggestions")
             isAvailable = false
             return
         }
@@ -48,17 +50,22 @@ class TFLiteReRanker(private val context: Context) : ReRanker {
         try {
             Class.forName("org.tensorflow.lite.Interpreter")
         } catch (e: ClassNotFoundException) {
-            Log.i(TAG, "TFLite not in APK — reranker disabled (uncomment deps in build.gradle)")
+            Log.i(TAG, "TFLite not in APK — uncomment deps in build.gradle to enable")
             isAvailable = false
             return
         }
 
         try {
-            bpeTokenizer = BpeTokenizer(context)
+            // Cargar BPE desde filesDir si está descargado, si no desde assets
+            bpeTokenizer = if (hasDownloaded) {
+                BpeTokenizer(context, useDownloaded = true)
+            } else {
+                BpeTokenizer(context)
+            }
             bpeTokenizer!!.load()
-            loadInterpreter()
+            loadInterpreter(if (hasDownloaded) downloaded.absolutePath else null)
             isAvailable = true
-            Log.i(TAG, "TFLite re-ranker ready")
+            Log.i(TAG, "TFLite re-ranker ready (${if (hasDownloaded) "downloaded" else "assets"})")
         } catch (e: Exception) {
             Log.w(TAG, "TFLite re-ranker init failed: ${e.message}")
             isAvailable = false
@@ -122,20 +129,30 @@ class TFLiteReRanker(private val context: Context) : ReRanker {
         }
     }
 
-    private fun loadInterpreter() {
-        // Cargar via reflection para no requerir dep en tiempo de compilación
-        val fileUtilClass = Class.forName("org.tensorflow.lite.support.common.FileUtil")
-        val modelBuffer   = fileUtilClass.getMethod("loadMappedFile", Context::class.java, String::class.java)
-            .invoke(null, context, MODEL_FILE)
-
-        val optionsClass  = Class.forName("org.tensorflow.lite.Interpreter\$Options")
-        val options       = optionsClass.newInstance()
+    private fun loadInterpreter(filePath: String? = null) {
+        val optionsClass = Class.forName("org.tensorflow.lite.Interpreter\$Options")
+        val options      = optionsClass.newInstance()
         optionsClass.getMethod("setNumThreads", Int::class.java).invoke(options, 1)
+        val interpClass  = Class.forName("org.tensorflow.lite.Interpreter")
 
-        val interpClass   = Class.forName("org.tensorflow.lite.Interpreter")
-        interpreter       = interpClass.getConstructor(
-            Class.forName("java.nio.MappedByteBuffer"), optionsClass
-        ).newInstance(modelBuffer, options)
+        if (filePath != null) {
+            // Modelo descargado — cargar desde File
+            val file = java.io.File(filePath)
+            val fileInputStream = java.io.FileInputStream(file)
+            val channel = fileInputStream.channel
+            val modelBuffer = channel.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, file.length())
+            interpreter = interpClass.getConstructor(
+                Class.forName("java.nio.ByteBuffer"), optionsClass
+            ).newInstance(modelBuffer, options)
+        } else {
+            // Modelo en assets
+            val fileUtilClass = Class.forName("org.tensorflow.lite.support.common.FileUtil")
+            val modelBuffer   = fileUtilClass.getMethod("loadMappedFile", Context::class.java, String::class.java)
+                .invoke(null, context, MODEL_FILE)
+            interpreter = interpClass.getConstructor(
+                Class.forName("java.nio.MappedByteBuffer"), optionsClass
+            ).newInstance(modelBuffer, options)
+        }
     }
 
     override fun close() {

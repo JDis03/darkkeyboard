@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets
  * El tokenizador GPT-2 usa un mapeo especial de bytes → unicode chars
  * donde cada byte 0-255 se representa con un char unicode específico.
  */
-class BpeTokenizer(private val context: Context) {
+class BpeTokenizer(private val context: Context, private val useDownloaded: Boolean = false) {
 
     companion object {
         private const val TAG = "BpeTokenizer"
@@ -148,8 +148,15 @@ class BpeTokenizer(private val context: Context) {
         return chars
     }
 
+    private fun openFile(name: String): java.io.InputStream =
+        if (useDownloaded) {
+            java.io.File(ModelDownloader.modelsDir(context), name).inputStream()
+        } else {
+            context.assets.open(name)
+        }
+
     private fun loadVocab() {
-        val json = context.assets.open(VOCAB_FILE).bufferedReader().readText()
+        val json = openFile(VOCAB_FILE).bufferedReader().readText()
         val obj = JSONObject(json)
         val keys = obj.keys()
         while (keys.hasNext()) {
@@ -161,7 +168,7 @@ class BpeTokenizer(private val context: Context) {
     }
 
     private fun loadMerges() {
-        context.assets.open(MERGES_FILE).use { stream ->
+        openFile(MERGES_FILE).use { stream ->
             BufferedReader(InputStreamReader(stream, StandardCharsets.UTF_8)).use { reader ->
                 var rank = 0
                 reader.forEachLine { line ->

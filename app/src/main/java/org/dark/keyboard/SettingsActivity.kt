@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.preference.PreferenceManager
+import org.dark.keyboard.suggestions.ModelDownloader
 
 class SettingsActivity : ComponentActivity() {
     private lateinit var prefs: SharedPreferences
@@ -32,6 +33,7 @@ class SettingsActivity : ComponentActivity() {
             DarkKeyboardTheme {
                 SettingsScreen(
                     prefs = prefs,
+                    context = this,
                     onBack = { finish() }
                 )
             }
@@ -41,7 +43,7 @@ class SettingsActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
+fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, onBack: () -> Unit) {
     var showLayoutEditor by remember { mutableStateOf(false) }
 
     if (showLayoutEditor) {
@@ -224,10 +226,16 @@ fun SettingsScreen(prefs: SharedPreferences, onBack: () -> Unit) {
                 }
             }
 
-            // About Section
-            item {
-                SectionHeader("About")
-            }
+             // AI Suggestions Section
+             item { SectionHeader("AI Suggestions") }
+             item {
+                 AiModelCard(context = context)
+             }
+
+             // About Section
+             item {
+                 SectionHeader("About")
+             }
 
             item {
                 SettingCard {
@@ -673,6 +681,68 @@ fun LayoutOption(
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(24.dp)
                 )
+            }
+        }
+    }
+}
+
+@Composable
+fun AiModelCard(context: android.content.Context) {
+    var isDownloaded by remember { mutableStateOf(ModelDownloader.areModelsDownloaded(context)) }
+    var isDownloading by remember { mutableStateOf(false) }
+    var progress by remember { mutableIntStateOf(0) }
+    var errorMsg by remember { mutableStateOf("") }
+
+    SettingCard {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Default.Star, null,
+                    tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text("AI Re-ranking Model",
+                        style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    Text(
+                        if (isDownloaded) "GPT-2 Spanish — Active"
+                        else "GPT-2 Spanish (~${ModelDownloader.totalSizeMB()}MB) — Not downloaded",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
+            }
+            if (errorMsg.isNotEmpty()) {
+                Spacer(Modifier.height(8.dp))
+                Text(errorMsg, style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error)
+            }
+            if (isDownloading) {
+                Spacer(Modifier.height(12.dp))
+                LinearProgressIndicator(
+                    progress = { progress / 100f },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(Modifier.height(4.dp))
+                Text("Downloading... $progress%", style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
+            }
+            Spacer(Modifier.height(12.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (!isDownloaded && !isDownloading) {
+                    Button(onClick = {
+                        isDownloading = true; errorMsg = ""
+                        ModelDownloader.download(context,
+                            onProgress = { p -> progress = p },
+                            onComplete = { isDownloaded = true; isDownloading = false },
+                            onError    = { e -> errorMsg = e; isDownloading = false }
+                        )
+                    }) { Text("Download Model") }
+                }
+                if (isDownloaded) {
+                    OutlinedButton(onClick = {
+                        ModelDownloader.deleteModels(context)
+                        isDownloaded = false
+                    }) { Text("Delete Model") }
+                }
             }
         }
     }
