@@ -23,6 +23,7 @@ class SuggestionBarView @JvmOverloads constructor(
         fun onSuggestionClick(text: String)
         fun onClipboardClick()
         fun onSettingsClick()
+        fun onLanguageClick()
     }
 
     var listener: Listener? = null
@@ -30,7 +31,10 @@ class SuggestionBarView @JvmOverloads constructor(
     private val suggestions = mutableListOf<String>()
     private val suggestionRects = mutableListOf<RectF>()
     private var clipboardRect = RectF()
-    private var settingsRect = RectF()
+    private var settingsRect  = RectF()
+    private var langRect      = RectF()
+
+    private var currentLangLabel = "ES"
 
     private val density = resources.displayMetrics.density
 
@@ -59,10 +63,16 @@ class SuggestionBarView @JvmOverloads constructor(
         color = 0xFF37474F.toInt()
     }
 
-    private var pressedIndex = -1   // index in suggestions, or -10=clipboard, -11=settings
+    private var pressedIndex = -1   // index in suggestions, or -10=clipboard, -11=settings, -12=lang
     private val iconSize = 32f * density
+    private val langWidth = 36f * density
     private val padding = 8f * density
     private val suggestionRadius = 4f * density
+
+    fun setLanguageLabel(label: String) {
+        currentLangLabel = label
+        invalidate()
+    }
 
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
         super.onSizeChanged(w, h, oldW, oldH)
@@ -72,17 +82,21 @@ class SuggestionBarView @JvmOverloads constructor(
     private fun layoutItems(w: Int, h: Int) {
         suggestionRects.clear()
 
-        // Right side: settings icon + clipboard icon
+        // Right side: settings → clipboard → lang
         val settingsRight = w.toFloat() - padding / 2
-        val settingsLeft = settingsRight - iconSize
+        val settingsLeft  = settingsRight - iconSize
         settingsRect = RectF(settingsLeft, 0f, settingsRight, h.toFloat())
 
         val clipRight = settingsLeft - padding / 2
-        val clipLeft = clipRight - iconSize
+        val clipLeft  = clipRight - iconSize
         clipboardRect = RectF(clipLeft, 0f, clipRight, h.toFloat())
 
+        val langRight = clipLeft - padding / 2
+        val langLeft  = langRight - langWidth
+        langRect = RectF(langLeft, 2f * density, langRight, h - 2f * density)
+
         // Left side: suggestions fill remaining space
-        val suggestionsWidth = clipLeft - padding
+        val suggestionsWidth = langLeft - padding
         if (suggestions.isEmpty()) return
 
         val sugWidth = (suggestionsWidth / suggestions.size).coerceAtMost(180f * density)
@@ -119,16 +133,31 @@ class SuggestionBarView @JvmOverloads constructor(
 
         // Separator before icons
         canvas.drawLine(
-            clipboardRect.left - padding / 2, padding,
-            clipboardRect.left - padding / 2, h - padding,
+            langRect.left - padding / 2, padding,
+            langRect.left - padding / 2, h - padding,
             dividerPaint
         )
 
-        // Clipboard icon (pressed state)
+        // Language button
+        val langBgPaint = if (pressedIndex == -12) pressedPaint else suggestionBgPaint
+        canvas.drawRoundRect(langRect, suggestionRadius, suggestionRadius, langBgPaint)
+        val langPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = 0xFFB0BEC5.toInt()
+            textSize = 11f * density
+            textAlign = Paint.Align.CENTER
+            isFakeBoldText = true
+        }
+        canvas.drawText(
+            currentLangLabel, langRect.centerX(),
+            langRect.centerY() + (langPaint.textSize - langPaint.descent()) / 2,
+            langPaint
+        )
+
+        // Clipboard icon
         if (pressedIndex == -10) canvas.drawRoundRect(clipboardRect, suggestionRadius, suggestionRadius, pressedPaint)
         drawClipboardIcon(canvas, clipboardRect.centerX(), clipboardRect.centerY())
 
-        // Settings icon (pressed state)
+        // Settings icon
         if (pressedIndex == -11) canvas.drawRoundRect(settingsRect, suggestionRadius, suggestionRadius, pressedPaint)
         drawSettingsIcon(canvas, settingsRect.centerX(), settingsRect.centerY())
     }
@@ -188,6 +217,7 @@ class SuggestionBarView @JvmOverloads constructor(
                     idx >= 0 && idx < suggestions.size -> listener?.onSuggestionClick(suggestions[idx])
                     idx == -10 -> listener?.onClipboardClick()
                     idx == -11 -> listener?.onSettingsClick()
+                    idx == -12 -> listener?.onLanguageClick()
                 }
                 return true
             }
@@ -201,6 +231,7 @@ class SuggestionBarView @JvmOverloads constructor(
 
     private fun hitTest(x: Float, y: Float): Int {
         suggestionRects.forEachIndexed { i, rect -> if (rect.contains(x, y)) return i }
+        if (langRect.contains(x, y)) return -12
         if (clipboardRect.contains(x, y)) return -10
         if (settingsRect.contains(x, y)) return -11
         return -1

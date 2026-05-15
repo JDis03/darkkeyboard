@@ -11,11 +11,10 @@ import java.io.InputStream
  * 10000 palabras → ~14 búsquedas binarias por lookup.
  * Cada lookup por prefijo devuelve hasta 6 palabras completas.
  */
-class CompactTrie(private val context: Context) {
+class CompactTrie(private val context: Context, private val file: String = "dict_es.txt") {
 
     companion object {
         private const val TAG  = "CompactTrie"
-        private const val FILE = "dict_es.txt"
         private const val MAX_RESULTS = 6
     }
 
@@ -27,7 +26,7 @@ class CompactTrie(private val context: Context) {
 
     fun load() {
         try {
-            val stream: InputStream = context.assets.open(FILE)
+            val stream: InputStream = context.assets.open(file)
             val reader = java.io.BufferedReader(stream.reader(java.nio.charset.StandardCharsets.UTF_8))
             reader.forEachLine { line ->
                 val parts = line.trim().split(" ", limit = 2)

@@ -22,7 +22,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.dark.keyboard.suggestions.FallbackSuggestionEngine
-import org.dark.keyboard.suggestions.SpanishDictEngine
+import org.dark.keyboard.suggestions.DictSuggestionEngine
 import org.dark.keyboard.suggestions.SuggestionEngine
 
 /**
@@ -84,11 +84,17 @@ class DarkIME2 : InputMethodService() {
         prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
 
-        // Inicializar motor de sugerencias español en background
+        // Inicializar motor de sugerencias multi-idioma en background
         imeScope.launch(Dispatchers.IO) {
-            val engine = SpanishDictEngine(this@DarkIME2)
+            val engine = DictSuggestionEngine(this@DarkIME2)
+            val savedLang = prefs.getString("suggestion_language", "es") ?: "es"
+            engine.switchLanguage(savedLang)
             engine.initialize()
             suggestionEngine = engine
+            val label = DictSuggestionEngine.LANGUAGE_NAMES[savedLang] ?: savedLang.uppercase()
+            launch(Dispatchers.Main) {
+                suggestionBarView?.setLanguageLabel(label)
+            }
             Log.i(TAG, "Suggestion engine: ${suggestionEngine.engineName}")
         }
     }
@@ -188,6 +194,19 @@ class DarkIME2 : InputMethodService() {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
                 startActivity(intent)
+            }
+            override fun onLanguageClick() {
+                val engine = suggestionEngine as? DictSuggestionEngine ?: return
+                val next = engine.nextLanguage()
+                imeScope.launch(Dispatchers.IO) {
+                    engine.switchLanguage(next)
+                    prefs.edit().putString("suggestion_language", next).apply()
+                    val label = DictSuggestionEngine.LANGUAGE_NAMES[next] ?: next.uppercase()
+                    launch(Dispatchers.Main) {
+                        suggestionBarView?.setLanguageLabel(label)
+                        suggestionBarView?.clearSuggestions()
+                    }
+                }
             }
         }
 
