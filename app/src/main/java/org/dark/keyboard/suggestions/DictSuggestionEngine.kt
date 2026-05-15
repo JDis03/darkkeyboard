@@ -55,7 +55,8 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
 
     private var currentLang = "es"
     private var trie        = CompactTrie(context)
-    private lateinit var prefs: SharedPreferences
+    private val prefs: SharedPreferences =
+        context.getSharedPreferences("dict_engine_prefs", Context.MODE_PRIVATE)
 
     // user word frequency: lang → (word → score float con decay)
     private val userFreqByLang = mutableMapOf<String, MutableMap<String, Float>>()
@@ -69,7 +70,6 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
     private var isReady = false
 
     override fun initialize() {
-        prefs = context.getSharedPreferences("dict_engine_prefs", Context.MODE_PRIVATE)
         loadLanguage(currentLang)
         loadPersistedData(currentLang)
     }
