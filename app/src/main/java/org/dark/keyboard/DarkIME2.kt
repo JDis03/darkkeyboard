@@ -261,6 +261,8 @@ class DarkIME2 : InputMethodService() {
                 switchLayout()
             }
             KEYCODE_ENTER -> {
+                // Aprender de la frase completa al presionar Enter
+                learnFromCurrentText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
             Key.CODE_TAB -> {
@@ -480,6 +482,14 @@ class DarkIME2 : InputMethodService() {
         }
     }
 
+    private fun learnFromCurrentText() {
+        val text = currentInputConnection?.getTextBeforeCursor(200, 0)?.toString() ?: return
+        val engine = suggestionEngine as? DictSuggestionEngine ?: return
+        imeScope.launch(Dispatchers.IO) {
+            engine.learnFromText(text)
+        }
+    }
+
     override fun onUpdateSelection(
         oldSelStart: Int, oldSelEnd: Int,
         newSelStart: Int, newSelEnd: Int,
@@ -527,12 +537,8 @@ class DarkIME2 : InputMethodService() {
 
     override fun onDestroy() {
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
-        // Guardar historial del fallback engine
-        if (::suggestionEngine.isInitialized && suggestionEngine is FallbackSuggestionEngine) {
-            prefs.edit()
-                .putString("suggestion_freq", fallbackEngine.serializeFrequency())
-                .apply()
-        }
+        // Guardar historial del DictSuggestionEngine
+        (suggestionEngine as? DictSuggestionEngine)?.savePersistedData()
         suggestionEngine.takeIf { ::suggestionEngine.isInitialized }?.close()
         prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
         imeScope.cancel()
