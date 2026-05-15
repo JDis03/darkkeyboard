@@ -31,8 +31,10 @@ object ModelDownloader {
         "bpe_merges.txt"
     )
 
+    // DownloadManager necesita carpeta externa — filesDir no está permitido
     fun modelsDir(context: Context): File =
-        File(context.filesDir, "models").also { it.mkdirs() }
+        (context.getExternalFilesDir(null)?.let { File(it, "models") }
+            ?: File(context.filesDir, "models")).also { it.mkdirs() }
 
     fun modelFile(context: Context): File =
         File(modelsDir(context), "suggestions_model.tflite")
@@ -120,7 +122,8 @@ object ModelDownloader {
             val request = DownloadManager.Request(Uri.parse("$RELEASE_BASE/$fileName")).apply {
                 setTitle("DarkKeyboard AI Model")
                 setDescription("Downloading $fileName...")
-                setDestinationUri(Uri.fromFile(destFile))
+                // setDestinationInExternalFilesDir es compatible con DownloadManager
+                setDestinationInExternalFilesDir(context, "models", fileName)
                 setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
                 setAllowedOverMetered(true)
                 setAllowedOverRoaming(false)
