@@ -7,6 +7,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import java.io.File
 
@@ -57,6 +59,7 @@ object ModelDownloader {
         val dir = modelsDir(context)
         val downloadIds = mutableListOf<Long>()
         var completed = 0
+        val mainHandler = Handler(Looper.getMainLooper())
 
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(ctx: Context, intent: Intent) {
@@ -71,17 +74,17 @@ object ModelDownloader {
                     if (status == DownloadManager.STATUS_SUCCESSFUL) {
                         completed++
                         val progress = (completed * 100) / FILES.size
-                        onProgress(progress)
+                        mainHandler.post { onProgress(progress) }
                         Log.i(TAG, "Download $completed/${FILES.size} complete")
                         if (completed == FILES.size) {
-                            ctx.unregisterReceiver(this)
-                            onComplete()
+                            try { ctx.unregisterReceiver(this) } catch (_: Exception) {}
+                            mainHandler.post { onComplete() }
                         }
                     } else if (status == DownloadManager.STATUS_FAILED) {
                         val reasonCol = cursor.getColumnIndex(DownloadManager.COLUMN_REASON)
                         val reason = cursor.getInt(reasonCol)
-                        ctx.unregisterReceiver(this)
-                        onError("Download failed (reason=$reason)")
+                        try { ctx.unregisterReceiver(this) } catch (_: Exception) {}
+                        mainHandler.post { onError("Download failed (reason=$reason)") }
                         Log.e(TAG, "Download failed: reason=$reason")
                     }
                 }
@@ -90,10 +93,16 @@ object ModelDownloader {
         }
 
         val filter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED)
-        } else {
-            context.registerReceiver(receiver, filter)
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                context.registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED)
+            } else {
+                context.registerReceiver(receiver, filter)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to register receiver: ${e.message}")
+            onError("Failed to start download: ${e.message}")
+            return
         }
 
         FILES.forEach { fileName ->
