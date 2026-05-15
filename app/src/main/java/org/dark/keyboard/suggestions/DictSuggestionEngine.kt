@@ -58,6 +58,12 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
     private val prefs: SharedPreferences =
         context.getSharedPreferences("dict_engine_prefs", Context.MODE_PRIVATE)
 
+    // Fase 3: re-ranker opcional (NoOp si TFLite no disponible)
+    private val reRanker: ReRanker = try {
+        TFLiteReRanker(context).also { it.initialize() }
+            .takeIf { it.isAvailable } ?: NoOpReRanker()
+    } catch (_: Exception) { NoOpReRanker() }
+
     // user word frequency: lang → (word → score float con decay)
     private val userFreqByLang = mutableMapOf<String, MutableMap<String, Float>>()
 
@@ -142,8 +148,9 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
         }
 
         // === Construir resultado final ===
+        // Fase 1+2: top-20 candidatos ordenados por score
         val seen = mutableSetOf<String>()
-        return scores.entries
+        val candidates = scores.entries
             .sortedByDescending { it.value }
             .mapNotNull { (word, _) ->
                 val display = if (partial.isNotEmpty() && partial[0].isLowerCase()) {
@@ -151,7 +158,12 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
                 } else word
                 display.takeIf { it.length >= 2 && it != partial && seen.add(it) }
             }
-            .take(maxResults)
+            .take(20) // top-20 para el re-ranker
+
+        // Fase 3: re-ranking contextual (GPT-2 si disponible, NoOp si no)
+        val reranked = reRanker.rerank(candidates, textBeforeCursor)
+
+        return reranked.take(maxResults)
     }
 
     // ---- Aprendizaje ----
@@ -309,6 +321,7 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
 
     override fun close() {
         savePersistedData(currentLang)
+        reRanker.close()
         isReady = false
     }
 
