@@ -127,6 +127,7 @@ class DarkIME2 : InputMethodService() {
         autocorrect.isTerminalApp = isTerminalMode
         autocorrect.isEnabled = profile.useAutocorrect
         autocorrect.reset()
+        terminalBuffer.clear()
         autocorrect.onEditorChanged(attribute)
         // AppInputProfile gana sobre onEditorChanged — browsers ignoran FLAG_NO_SUGGESTIONS del HTML
         autocorrect.overrideProfile(
@@ -169,8 +170,11 @@ class DarkIME2 : InputMethodService() {
     
     private var inputViewContainer: View? = null
     // true = app es terminal SSH (usa commitText para control chars)
-    // false = app normal/RDP (usa sendKeyEvent con metaState)
     private var isTerminalMode = false
+
+    // Shadow buffer para sugerencias en terminal SSH.
+    // getTextBeforeCursor() devuelve "" en terminales — rastreamos manualmente.
+    private val terminalBuffer = StringBuilder()
     
     override fun onCreateInputView(): View? {
         Log.e(TAG, "=== onCreateInputView CALLED ===")
@@ -297,6 +301,9 @@ class DarkIME2 : InputMethodService() {
 
             // ── Backspace ─────────────────────────────────────────────────
             KEYCODE_DELETE -> {
+                if (isTerminalMode && terminalBuffer.isNotEmpty()) {
+                    terminalBuffer.deleteCharAt(terminalBuffer.length - 1)
+                }
                 if (ctrl) {
                     autocorrect.onFinishComposing()
                     ic.finishComposingText()
@@ -369,6 +376,7 @@ class DarkIME2 : InputMethodService() {
             }
             KEYCODE_ENTER -> {
                 autocorrect.onFinishComposing(); ic.finishComposingText()
+                terminalBuffer.clear()
                 learnFromCurrentText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
@@ -434,9 +442,11 @@ class DarkIME2 : InputMethodService() {
                         val clip = (getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager)
                             .primaryClip?.getItemAt(0)?.text?.toString()
                         if (!clip.isNullOrEmpty()) ic.commitText(clip, 1)
+                        terminalBuffer.clear()
                     } else if (ctrl && !alt && !shift && code in 'a'.code..'z'.code && isTerminalMode) {
                         val ctrlByte = (code - 'a'.code + 1).toChar().toString()
                         ic.commitText(ctrlByte, 1)
+                        terminalBuffer.clear()
                     } else if (ctrl || alt) {
                         autocorrect.onFinishComposing(); ic.finishComposingText()
                         val keycode = when (code.toChar().lowercaseChar()) {
@@ -462,15 +472,19 @@ class DarkIME2 : InputMethodService() {
                             when (val res = autocorrect.onCharacter(char[0])) {
                                 is AutocorrectEngine.CharResult.UpdateComposing ->
                                     ic.setComposingText(res.composing, 1)
-                                is AutocorrectEngine.CharResult.CommitDirect ->
+                                is AutocorrectEngine.CharResult.CommitDirect -> {
                                     ic.commitText(res.char, 1)
+                                    // Terminal: acumular en shadow buffer para sugerencias
+                                    if (isTerminalMode) terminalBuffer.append(res.char)
+                                }
                             }
                         } else {
-                            // Puntuación — finaliza composing
+                            // Puntuación/espacio — finaliza composing y resetea buffer terminal
                             autocorrect.onFinishComposing(); ic.finishComposingText()
                             var char = c.toString()
                             if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
                             ic.commitText(char, 1)
+                            if (isTerminalMode) terminalBuffer.clear()
                         }
                         updateSuggestions()
                     }
@@ -636,7 +650,13 @@ class DarkIME2 : InputMethodService() {
     private fun updateSuggestions() {
         if (!::suggestionEngine.isInitialized) return
         val ic = currentInputConnection ?: return
-        val text = ic.getTextBeforeCursor(100, 0)?.toString() ?: return
+
+        // En terminal SSH: getTextBeforeCursor devuelve "" — usar shadow buffer
+        val text = if (isTerminalMode && terminalBuffer.isNotEmpty()) {
+            terminalBuffer.toString()
+        } else {
+            ic.getTextBeforeCursor(100, 0)?.toString() ?: return
+        }
 
         // Limpiar si texto muy corto o vacío
         val trimmed = text.trim()
