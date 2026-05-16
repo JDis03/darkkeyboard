@@ -158,17 +158,17 @@ class AutocorrectEngine(
      * Si el cursor se movió externamente → reset composing (anti-desync).
      */
     fun onCursorMoved(newCursorPos: Int) {
-        // Si hay texto en composición, el cursor se mueve naturalmente al
-        // expandir el composing region — NO es movimiento externo, ignorar.
+        // Durante composing activo: movimientos son naturales (Android expande el region)
         if (composingWord.isNotEmpty()) {
             expectedCursorPos = newCursorPos
             return
         }
-        // Sin composing: detectar tap externo del usuario (toca otro punto del texto)
-        if (expectedCursorPos != -1 && newCursorPos != expectedCursorPos) {
-            Log.d(TAG, "External cursor move ($expectedCursorPos→$newCursorPos) — clearing lastCorrection")
-            lastCorrection = null
-        }
+        // Sin composing: solo actualizar posición esperada.
+        // NO limpiar lastCorrection aquí — los movimientos del cursor causados por
+        // la propia corrección (deleteSurroundingText + commitText) dispararían
+        // onUpdateSelection y cerrarían el undo window antes de que el usuario
+        // pueda presionar backspace.
+        // El undo window se cierra por acciones del usuario: space, enter, letra nueva.
         expectedCursorPos = newCursorPos
     }
 

@@ -247,16 +247,18 @@ class AutocorrectEngineTest {
         assertEquals("hel", engine.getComposing())
     }
 
-    @Test fun `onCursorMoved - SI limpia lastCorrection en movimiento externo`() {
-        // Simular corrección aplicada
+    @Test fun `onCursorMoved - NO limpia lastCorrection (undo sigue disponible tras correccion)`() {
+        // El movimiento del cursor causado por la corrección (deleteSurrounding + commitText)
+        // NO debe cerrar el undo window — el usuario debe poder hacer backspace para deshacer.
         engine.onCharacter('t'); engine.onCharacter('e'); engine.onCharacter('h')
         val result = engine.onSpace("teh")
         if (result is AutocorrectEngine.SpaceResult.Corrected) {
-            assertTrue(engine.canUndo())
-            // Movimiento externo del cursor (composing = "" en ese momento)
-            engine.onCursorMoved(0)   // cursor a pos 0
-            engine.onCursorMoved(99)  // salta a posición lejana → externo
-            assertFalse(engine.canUndo())
+            assertTrue("Undo debe estar disponible tras corrección", engine.canUndo())
+            // Simular movimientos de cursor causados por deleteSurroundingText + commitText
+            engine.onCursorMoved(0)
+            engine.onCursorMoved(4)
+            // Undo sigue disponible — el cursor se movió por la corrección, no por el usuario
+            assertTrue("Undo debe seguir disponible después de movimientos de corrección", engine.canUndo())
         }
     }
 
