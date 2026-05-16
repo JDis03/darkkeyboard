@@ -124,8 +124,8 @@ class AutocorrectEngine(
     fun onEditorChanged(info: EditorInfo?) {
         reset()
         if (info == null) {
-            shouldAutocorrect = true
-            shouldCompose = true
+            shouldAutocorrect = !isTerminalApp
+            shouldCompose = !isTerminalApp
             return
         }
 

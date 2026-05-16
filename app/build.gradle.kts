@@ -39,6 +39,12 @@ android {
     androidResources {
         noCompress += "tflite"
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true  // Robolectric accede a assets/
+        }
+    }
 }
 
 dependencies {
@@ -60,4 +66,10 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.9.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.material:material-icons-extended")
+
+    // Tests
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.12.2")
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
 }

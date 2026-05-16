@@ -137,7 +137,7 @@ class WordDictionary(private val context: Context) {
     private val dp1 = IntArray(32)
     private val dp2 = IntArray(32)
 
-    private fun levenshtein(a: String, b: String): Int {
+    internal fun levenshtein(a: String, b: String): Int {
         val m = a.length; val n = b.length
         if (m == 0) return n
         if (n == 0) return m
