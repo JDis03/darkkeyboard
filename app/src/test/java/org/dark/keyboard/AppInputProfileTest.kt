@@ -98,23 +98,31 @@ class AppInputProfileTest {
 
     // ── WebView ───────────────────────────────────────────────────────
 
-    @Test fun `WEB_EDIT_TEXT es WEBVIEW`() {
+    @Test fun `WEB_EDIT_TEXT es WEBVIEW con autocorrect activo`() {
         val p = AppInputProfile.classify(editor(inputType =
             InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT))
         assertEquals(AppInputProfile.Mode.WEBVIEW, p.mode)
         assertTrue(p.useComposing)
-        assertFalse(p.useAutocorrect)   // precaución en WebView
+        assertTrue(p.useAutocorrect)   // usa composingWord, no getTextBeforeCursor
         assertTrue(p.useSuggestions)
     }
 
     @Test fun `Chrome pkg es WEBVIEW`() {
         val p = AppInputProfile.classify(editor(pkg = "com.android.chrome"))
         assertEquals(AppInputProfile.Mode.WEBVIEW, p.mode)
+        assertTrue(p.useAutocorrect)
     }
 
     @Test fun `Firefox pkg es WEBVIEW`() {
         val p = AppInputProfile.classify(editor(pkg = "org.mozilla.firefox"))
         assertEquals(AppInputProfile.Mode.WEBVIEW, p.mode)
+    }
+
+    @Test fun `Vivaldi pkg es WEBVIEW`() {
+        val p = AppInputProfile.classify(editor(pkg = "com.vivaldi.browser"))
+        assertEquals(AppInputProfile.Mode.WEBVIEW, p.mode)
+        assertTrue(p.useAutocorrect)
+        assertTrue(p.useComposing)
     }
 
     // ── Standard ──────────────────────────────────────────────────────

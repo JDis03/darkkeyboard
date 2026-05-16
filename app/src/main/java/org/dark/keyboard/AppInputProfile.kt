@@ -14,7 +14,7 @@ import android.view.inputmethod.EditorInfo
  * Clasificación:
  *   TERMINAL     → SSH/RDP: sin composing, sin autocorrect, control chars
  *   DIRECT       → password, PIN, número, URL, email, filtro, search
- *   WEBVIEW      → WebView edit text: composing sí, pero getTextBeforeCursor poco fiable
+ *   WEBVIEW      → WebView edit text: composing + autocorrect (usa composingWord, no getTextBeforeCursor)
  *   STANDARD     → mensajería, notas, docs: composing + autocorrect + sugerencias
  */
 object AppInputProfile {
@@ -50,7 +50,8 @@ object AppInputProfile {
         "com.android.chrome", "org.mozilla.firefox",
         "com.microsoft.emmx", "com.brave.browser",
         "com.opera.browser", "com.sec.android.app.sbrowser",
-        "com.duckduckgo.mobile.android"
+        "com.duckduckgo.mobile.android", "com.vivaldi.browser",
+        "com.kiwibrowser.browser", "com.ecosia.android"
     )
 
     // Paquetes con composing problemático conocido
@@ -114,8 +115,11 @@ object AppInputProfile {
         val isWebViewPkg = WEBVIEW_PACKAGES.any { pkg.contains(it) }
 
         if (isWebView || isWebViewPkg) {
-            // Composing sí, pero autocorrect con precaución (getTextBeforeCursor poco fiable)
-            return Profile(Mode.WEBVIEW, true, false, true, "webview var=$variation pkg=$pkg")
+            // Composing + autocorrect: usamos composingWord como fuente primaria,
+            // NO getTextBeforeCursor (que es poco fiable en WebView).
+            // La corrección en onSpace() usa composingWord.ifEmpty { textBefore }
+            // así que WebView es seguro siempre que haya composing activo.
+            return Profile(Mode.WEBVIEW, true, true, true, "webview var=$variation pkg=$pkg")
         }
 
         // ── 5. Campos de persona/dirección → sin autocorrect ──────────
