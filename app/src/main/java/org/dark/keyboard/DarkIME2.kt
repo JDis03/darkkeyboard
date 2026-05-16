@@ -1,7 +1,10 @@
 package org.dark.keyboard
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -10,10 +13,17 @@ import android.widget.TextView
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.dark.keyboard.suggestions.FallbackSuggestionEngine
+import org.dark.keyboard.suggestions.DictSuggestionEngine
+import org.dark.keyboard.suggestions.SuggestionEngine
 
 /**
  * InputMethodService simple y funcional
@@ -23,28 +33,37 @@ class DarkIME2 : InputMethodService() {
     
     private var keyboardView: SimpleKeyboardView? = null
     private var modifierStatusView: TextView? = null
+    private var suggestionBarView: SuggestionBarView? = null
+    private var clipboardPopup: ClipboardPopup? = null
     private var isSymbolsMode = false
-    private lateinit var prefs: SharedPreferences
-    private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-    
-    companion object {
-        private const val TAG = "DarkIME2"
-        private const val KEYCODE_DELETE = -5
-        private const val KEYCODE_SHIFT = -1
-        private const val KEYCODE_ENTER = 10
+
+    // Handler para limpiar sugerencias cuando el usuario deja de escribir
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private val clearSuggestionsRunnable = Runnable {
+        suggestionBarView?.clearSuggestions()
     }
-    
-    override fun onCreate() {
-        super.onCreate()
-        prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        
-        // Listen for preference changes
-        prefs.registerOnSharedPreferenceChangeListener { _, key ->
-            if (key == "keyboard_layout" || key == "show_number_row") {
+    private val CLEAR_DELAY_MS    = 3000L  // 3s sin escribir → limpiar
+    private val DEBOUNCE_MS       = 80L    // esperar 80ms antes de inferir
+    private val MIN_TEXT_LENGTH   = 2      // mínimo 2 chars antes de sugerir
+
+    // Dispatcher single-thread para TFLite (evita race condition XNNPACK)
+    private val inferDispatcher = Dispatchers.IO.limitedParallelism(1)
+
+    // Job de inferencia activo — cancelar antes de lanzar uno nuevo
+    private var suggestionJob: Job? = null
+    private lateinit var prefs: SharedPreferences
+
+    // Motor de sugerencias — TFLite si hay modelo, Fallback si no
+    private lateinit var suggestionEngine: SuggestionEngine
+    private val fallbackEngine = FallbackSuggestionEngine()
+    private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        when (key) {
+            "keyboard_layout", "show_number_row", "custom_layout_name" -> {
                 Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
                 reloadKeyboard()
             }
-            if (key == "keyboard_theme" || key == "show_modifier_status") {
+            "keyboard_theme", "show_modifier_status" -> {
                 Log.i(TAG, "Preference '$key' changed, applying...")
                 applyTheme()
                 updateModifierStatus(
@@ -55,20 +74,64 @@ class DarkIME2 : InputMethodService() {
                 )
             }
         }
-        
+    }
+    
+
+    
+    override fun onCreate() {
+        super.onCreate()
+        prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
+
+        // Inicializar motor de sugerencias multi-idioma en background
+        imeScope.launch(Dispatchers.IO) {
+            val engine = DictSuggestionEngine(this@DarkIME2)
+            val savedLang = prefs.getString("suggestion_language", "es") ?: "es"
+            engine.switchLanguage(savedLang)
+            engine.initialize()
+            suggestionEngine = engine
+            val label = DictSuggestionEngine.LANGUAGE_NAMES[savedLang] ?: savedLang.uppercase()
+            launch(Dispatchers.Main) {
+                suggestionBarView?.setLanguageLabel(label)
+            }
+            Log.i(TAG, "Suggestion engine: ${suggestionEngine.engineName}")
+        }
     }
     
     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
-        Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
 
-        // Reload keyboard and re-apply theme from preferences each time
-        // (SharedPreferences listeners don't work reliably across processes)
+        // Detectar si es una app de terminal SSH
+        val pkg = attribute?.packageName ?: ""
+        isTerminalMode = TERMINAL_PACKAGES.any { pkg.contains(it) }
+        Log.e(TAG, "=== onStartInput() pkg=$pkg terminal=$isTerminalMode inputType=${attribute?.inputType} ===")
+
+        keyboardView?.modifierState?.clearAll()
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
+        suggestionBarView?.clearSuggestions()
+
         if (!isSymbolsMode) {
             reloadKeyboard()
         }
         applyTheme()
+    }
+
+    companion object {
+        private const val TAG = "DarkIME2"
+        private const val KEYCODE_DELETE = -5
+        private const val KEYCODE_SHIFT = -1
+        private const val KEYCODE_ENTER = 10
+
+        // Packages conocidos de terminales SSH que necesitan bytes de control
+        private val TERMINAL_PACKAGES = listOf(
+            "com.darkssh.client",   // DarkSSH
+            "org.connectbot",        // ConnectBot
+            "com.sonelli.juicessh", // JuiceSSH
+            "com.server.auditor.ssh.client", // Termius
+            "com.blink.terminal",   // Blink
+            "net.xnano.android.sshclient" // SSH Client
+        )
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
@@ -78,6 +141,9 @@ class DarkIME2 : InputMethodService() {
     }
     
     private var inputViewContainer: View? = null
+    // true = app es terminal SSH (usa commitText para control chars)
+    // false = app normal/RDP (usa sendKeyEvent con metaState)
+    private var isTerminalMode = false
     
     override fun onCreateInputView(): View? {
         Log.e(TAG, "=== onCreateInputView CALLED ===")
@@ -86,13 +152,65 @@ class DarkIME2 : InputMethodService() {
         inputViewContainer = layout
         keyboardView = layout.findViewById(R.id.keyboard)
         modifierStatusView = layout.findViewById(R.id.modifier_status)
-        
-        // Crear teclado desde XML - usar layout desde preferences
-        val dm = resources.displayMetrics
-        val layoutId = getLayoutResourceId()
-        val showNumberRow = prefs.getBoolean("show_number_row", true)
-        val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-        keyboardView?.setKeyboard(keyboard)
+        suggestionBarView = layout.findViewById(R.id.suggestion_bar)
+
+        clipboardPopup = ClipboardPopup(this) { text ->
+            currentInputConnection?.commitText(text, 1)
+        }
+
+        suggestionBarView?.listener = object : SuggestionBarView.Listener {
+            override fun onSuggestionClick(text: String) {
+                val ic = currentInputConnection ?: return
+                val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                val endsWithSpace = before.endsWith(" ")
+                val partial = if (!endsWithSpace) before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: "" else ""
+
+                // Reemplazar palabra parcial si la sugerencia la completa
+                if (partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
+                    ic.deleteSurroundingText(partial.length, 0)
+                }
+
+                // Respetar el case del usuario: si escribió minúscula, insertar minúscula
+                val toInsert = if (partial.isNotEmpty() && partial[0].isLowerCase() && text[0].isUpperCase()) {
+                    text.replaceFirstChar { it.lowercase() }
+                } else {
+                    text
+                }
+                ic.commitText("$toInsert ", 1)
+
+                // Aprender del usuario
+                if (::suggestionEngine.isInitialized) {
+                    suggestionEngine.onSuggestionAccepted(toInsert, before)
+                }
+
+                // Actualizar sugerencias para la siguiente palabra
+                updateSuggestions()
+            }
+            override fun onClipboardClick() {
+                suggestionBarView?.let { clipboardPopup?.show(it) }
+            }
+            override fun onSettingsClick() {
+                val intent = Intent(this@DarkIME2, SettingsActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(intent)
+            }
+            override fun onLanguageClick() {
+                val engine = suggestionEngine as? DictSuggestionEngine ?: return
+                val next = engine.nextLanguage()
+                imeScope.launch(Dispatchers.IO) {
+                    engine.switchLanguage(next)
+                    prefs.edit().putString("suggestion_language", next).apply()
+                    val label = DictSuggestionEngine.LANGUAGE_NAMES[next] ?: next.uppercase()
+                    launch(Dispatchers.Main) {
+                        suggestionBarView?.setLanguageLabel(label)
+                        suggestionBarView?.clearSuggestions()
+                    }
+                }
+            }
+        }
+
+        loadAndSetKeyboard()
         applyTheme()
         keyboardView?.onKeyListener = object : SimpleKeyboardView.OnKeyListener {
             override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -105,7 +223,7 @@ class DarkIME2 : InputMethodService() {
 
         observeModifierFlows()
         
-        Log.i(TAG, "Keyboard created: ${keyboard.allKeys.size} keys, ${keyboard.rows.size} rows")
+        Log.i(TAG, "Keyboard created")
         
         return layout
     }
@@ -132,7 +250,7 @@ class DarkIME2 : InputMethodService() {
                 if (ctrl) {
                     deleteWord(ic)
                 } else {
-                    ic.deleteSurroundingText(1, 0)
+                    sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
                 }
             }
             KEYCODE_SHIFT -> { }
@@ -143,6 +261,8 @@ class DarkIME2 : InputMethodService() {
                 switchLayout()
             }
             KEYCODE_ENTER -> {
+                // Aprender de la frase completa al presionar Enter
+                learnFromCurrentText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
             Key.CODE_TAB -> {
@@ -194,7 +314,19 @@ class DarkIME2 : InputMethodService() {
             }
             else -> {
                 if (code > 0 && code < 127) {
-                    if (ctrl || alt) {
+                    if (isTerminalMode && ctrl && !alt && shift && code == 'v'.code) {
+                        // Terminal SSH: Ctrl+Shift+V → pegar directamente del clipboard
+                        // NO usar KeyEvent (genera '6;5u' por kitty keyboard protocol)
+                        val clip = (getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager)
+                            .primaryClip?.getItemAt(0)?.text?.toString()
+                        if (!clip.isNullOrEmpty()) ic.commitText(clip, 1)
+                    } else if (ctrl && !alt && !shift && code in 'a'.code..'z'.code && isTerminalMode) {
+                        // Terminal SSH: Ctrl+letra (sin Shift) → byte de control ASCII
+                        // Ctrl+C=0x03 (SIGINT), Ctrl+V=0x16, Ctrl+Z=0x1A, etc.
+                        val ctrlByte = (code - 'a'.code + 1).toChar().toString()
+                        ic.commitText(ctrlByte, 1)
+                    } else if (ctrl || alt) {
+                        // RDP y apps normales: sendKeyEvent con metaState + modifier events
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
                             ' ' -> KeyEvent.KEYCODE_SPACE
@@ -226,32 +358,48 @@ class DarkIME2 : InputMethodService() {
 
         val meta = buildMetaState(shift, ctrl, alt, fn)
 
-        // Send modifier DOWN events first (Ctrl/Alt/Meta keys as real KeyEvents)
-        sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
-        sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+        try {
+            sendModifierDown(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
+            sendModifierDown(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierDown(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
 
-        // Target key DOWN + UP with meta state
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
-        ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, key, 0, meta))
+            ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, key, 0, meta))
 
-        // Send modifier UP events (reverse order)
-        sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
-        sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierUp(ic, eventTime, alt, KeyEvent.KEYCODE_ALT_LEFT)
+            sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
+            sendModifierUp(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifiedKeyDownUp failed: ${e.message}")
+        }
+    }
+
+    private fun sendSimpleKeyEvent(key: Int) {
+        val ic = currentInputConnection ?: return
+        try {
+            val now = System.currentTimeMillis()
+            ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_DOWN, key, 0, 0))
+            ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, key, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendSimpleKeyEvent failed: ${e.message}")
+        }
     }
 
     private fun sendModifierDown(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
         if (!active) return
-        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
-        if (chordingMode) {
+        try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifierDown failed: ${e.message}")
         }
     }
 
     private fun sendModifierUp(ic: android.view.inputmethod.InputConnection, eventTime: Long, active: Boolean, keycode: Int) {
         if (!active) return
-        val chordingMode = prefs.getString("chording_ctrl_key", "0") != "0"
-        if (chordingMode) {
+        try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, 0))
+        } catch (e: Exception) {
+            Log.w(TAG, "sendModifierUp failed: ${e.message}")
         }
     }
 
@@ -286,17 +434,7 @@ class DarkIME2 : InputMethodService() {
     
     private fun switchLayout() {
         isSymbolsMode = !isSymbolsMode
-        val dm = resources.displayMetrics
-        val showNumberRow = prefs.getBoolean("show_number_row", true)
-        val keyboard = if (isSymbolsMode) {
-            // En modo símbolos, SIEMPRE mostrar number row (son parte del layout de símbolos)
-            SimpleKeyboard.fromXml(this, R.xml.kbd_symbols_simple, dm.widthPixels, dm.heightPixels, true)
-        } else {
-            // En modo alfabético, respetar preferencia del usuario
-            val layoutId = getLayoutResourceId()
-            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-        }
-        keyboardView?.setKeyboard(keyboard)
+        loadAndSetKeyboard()
         Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
     }
     
@@ -344,21 +482,116 @@ class DarkIME2 : InputMethodService() {
         }
     }
 
+    private fun learnFromCurrentText() {
+        val text = currentInputConnection?.getTextBeforeCursor(200, 0)?.toString() ?: return
+        val engine = suggestionEngine as? DictSuggestionEngine ?: return
+        imeScope.launch(Dispatchers.IO) {
+            engine.learnFromText(text)
+        }
+    }
+
+    override fun onUpdateSelection(
+        oldSelStart: Int, oldSelEnd: Int,
+        newSelStart: Int, newSelEnd: Int,
+        candidatesStart: Int, candidatesEnd: Int
+    ) {
+        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+        updateSuggestions()
+    }
+
+    private fun updateSuggestions() {
+        if (!::suggestionEngine.isInitialized) return
+        val ic = currentInputConnection ?: return
+        val text = ic.getTextBeforeCursor(100, 0)?.toString() ?: return
+
+        // Limpiar si texto muy corto o vacío
+        val trimmed = text.trim()
+        if (trimmed.length < MIN_TEXT_LENGTH) {
+            mainHandler.removeCallbacks(clearSuggestionsRunnable)
+            suggestionBarView?.clearSuggestions()
+            return
+        }
+
+        // Resetear timer de auto-limpieza
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
+        mainHandler.postDelayed(clearSuggestionsRunnable, CLEAR_DELAY_MS)
+
+        // Cancelar job anterior — el delay() es suspension point, se cancela inmediatamente
+        suggestionJob?.cancel()
+        suggestionJob = imeScope.launch {
+            // Debounce: esperar antes de inferir (evita inferir en cada tecla)
+            delay(DEBOUNCE_MS)
+            if (!isActive) return@launch
+
+            // Inferir en dispatcher single-thread (evita XNNPACK race condition)
+            val results = withContext(inferDispatcher) {
+                suggestionEngine.getSuggestions(text)
+            }
+            if (!isActive) return@launch
+
+            if (results.isNotEmpty()) {
+                suggestionBarView?.setSuggestions(results)
+            }
+        }
+    }
+
     override fun onDestroy() {
+        mainHandler.removeCallbacks(clearSuggestionsRunnable)
+        // Guardar historial del DictSuggestionEngine
+        (suggestionEngine as? DictSuggestionEngine)?.savePersistedData()
+        suggestionEngine.takeIf { ::suggestionEngine.isInitialized }?.close()
+        prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
         imeScope.cancel()
         super.onDestroy()
     }
     
     private fun reloadKeyboard() {
-        // Reload the keyboard with new layout
         if (keyboardView != null) {
-            val dm = resources.displayMetrics
-            val layoutId = getLayoutResourceId()
-            val showNumberRow = prefs.getBoolean("show_number_row", true)
-            val keyboard = SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
-            keyboardView?.setKeyboard(keyboard)
+            loadAndSetKeyboard()
             applyTheme()
-            Log.i(TAG, "Keyboard reloaded with new layout")
+            Log.i(TAG, "Keyboard reloaded")
+        }
+    }
+
+    private fun loadAndSetKeyboard() {
+        val dm = resources.displayMetrics
+        val showNumberRow = prefs.getBoolean("show_number_row", true)
+        val layoutName = prefs.getString("custom_layout_name", null)
+
+        val keyboard = if (!isSymbolsMode && layoutName != null) {
+            loadCustomOrFallback(layoutName, dm.widthPixels, dm.heightPixels, showNumberRow)
+        } else {
+            val layoutId = if (isSymbolsMode) {
+                R.xml.kbd_symbols_simple
+            } else {
+                getLayoutResourceId()
+            }
+            SimpleKeyboard.fromXml(this, layoutId, dm.widthPixels, dm.heightPixels, showNumberRow)
+        }
+        keyboardView?.setKeyboard(keyboard)
+    }
+
+    private fun loadCustomOrFallback(
+        name: String,
+        screenWidth: Int,
+        screenHeight: Int,
+        showNumberRow: Boolean
+    ): SimpleKeyboard {
+        val fallbackId = getLayoutResourceId()
+        val inputStream = XmlKeyboardStorage.openInputStream(this, name)
+        return if (inputStream != null) {
+            try {
+                Log.i(TAG, "Loading custom layout: $name")
+                SimpleKeyboard.fromXml(this, inputStream, screenWidth, screenHeight, showNumberRow)
+                    .also { inputStream.close() }
+            } catch (e: Exception) {
+                Log.e(TAG, "Custom layout failed, using built-in", e)
+                try { inputStream.close() } catch (_: Exception) {}
+                SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
+            }
+        } else {
+            Log.w(TAG, "Custom layout '$name' not found, using built-in")
+            SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
         }
     }
 }

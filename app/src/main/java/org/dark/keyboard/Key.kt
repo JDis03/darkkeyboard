@@ -14,8 +14,15 @@ data class Key(
     val isRepeatable: Boolean = false,
     val edgeFlags: Int = 0
 ) {
-    fun contains(px: Int, py: Int): Boolean =
-        px >= x && px < x + width && py >= y && py < y + height
+    fun contains(px: Int, py: Int): Boolean {
+        // Expand hit zone by 10% on each side (20% total horizontal, 20% total vertical)
+        // This matches modern keyboard behavior (Gboard/SwiftKey)
+        val expandH = (width * 0.10f).toInt()
+        val expandV = (height * 0.10f).toInt()
+        
+        return px >= x - expandH && px < x + width + expandH &&
+               py >= y - expandV && py < y + height + expandV
+    }
 
     companion object {
         const val EDGE_LEFT = 1

@@ -156,9 +156,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
             keyTextPaint.textSize = fontSize
             keyModifierPaint.textSize = labelFontSize
 
+            val vgap = row.verticalGap
+            val hgap = row.horizontalGap
+
             row.keys.forEach { key ->
                 val isPressed = key == pressedKey
-                drawKey(canvas, key, isPressed, fontSize, labelFontSize, rowHeight)
+                drawKey(canvas, key, isPressed, fontSize, labelFontSize, rowHeight, vgap, hgap)
             }
         }
     }
@@ -169,15 +172,19 @@ class SimpleKeyboardView @JvmOverloads constructor(
         isPressed: Boolean,
         fontSize: Float,
         labelFontSize: Float,
-        rowHeight: Float
+        rowHeight: Float,
+        vgap: Int,
+        hgap: Int = 0
     ) {
         val density = resources.displayMetrics.density
-        val pad = 2f * density
+        val pad = 1f * density
+        val halfVGap = vgap / 2f
+        val halfHGap = hgap / 2f
         val rect = RectF(
-            key.x.toFloat() + pad,
-            key.y.toFloat() + pad,
-            (key.x + key.width).toFloat() - pad,
-            (key.y + key.height).toFloat() - pad
+            key.x.toFloat() + pad + halfHGap,
+            key.y.toFloat() + pad + halfVGap,
+            (key.x + key.width).toFloat() - pad - halfHGap,
+            (key.y + key.height).toFloat() - pad - halfVGap
         )
 
         keyBgPaint.color = when {

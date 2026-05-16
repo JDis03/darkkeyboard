@@ -2,10 +2,12 @@ package org.dark.keyboard
 
 import android.content.Context
 import android.content.res.Resources
-import android.content.res.XmlResourceParser
 import android.util.Log
 import android.util.TypedValue
 import android.util.Xml
+import org.xmlpull.v1.XmlPullParser
+import java.io.InputStream
+import kotlin.math.max
 import kotlin.math.min
 
 class SimpleKeyboard(
@@ -25,6 +27,32 @@ class SimpleKeyboard(
             screenHeight: Int,
             showExtensionRow: Boolean = true
         ): SimpleKeyboard {
+            val parser = context.resources.getXml(xmlResId)
+            return parseXml(context, parser, screenWidth, screenHeight, showExtensionRow)
+        }
+
+        fun fromXml(
+            context: Context,
+            inputStream: InputStream,
+            screenWidth: Int,
+            screenHeight: Int,
+            showExtensionRow: Boolean = true
+        ): SimpleKeyboard {
+            val xmlString = inputStream.bufferedReader().readText()
+            Log.d(TAG, "Parsing custom layout XML (${xmlString.length} chars):\n${xmlString.take(300)}")
+            val parser = Xml.newPullParser()
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
+            parser.setInput(xmlString.reader())
+            return parseXml(context, parser, screenWidth, screenHeight, showExtensionRow)
+        }
+
+        private fun parseXml(
+            context: Context,
+            parser: XmlPullParser,
+            screenWidth: Int,
+            screenHeight: Int,
+            showExtensionRow: Boolean
+        ): SimpleKeyboard {
             val density = context.resources.displayMetrics.density
             
             // Fórmula original de HeliBoard, pero reducida para dejar espacio para botones
@@ -35,23 +63,22 @@ class SimpleKeyboard(
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
             Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
-            val verticalGapPx = (1.5f * density).toInt()
+            val verticalGapPx = (6.0f * density).toInt()
+            val horizontalGapPx = (1.5f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
-            // Restar gaps del total antes de calcular alturas de filas
-            val totalGapSpace = verticalGapPx * 4
-            val availableHeightForRows = keyboardHeight - totalGapSpace
+            // NO restar gaps del total - las filas usan su altura completa menos el gap individual
+            val availableHeightForRows = keyboardHeight
             
             // Distribución de altura disponible: 18%, 21%, 21%, 21%, 19%
             val numberRowHeight = (availableHeightForRows * 0.18f).toInt()
             val rowHeight = (availableHeightForRows * 0.21f).toInt()  
             val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
             
-            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, gaps=$totalGapSpace, available=$availableHeightForRows")
+            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, available=$availableHeightForRows")
             Log.d(TAG, "Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
             val defaultKeyWidth = screenWidth / 10
 
-            val parser = context.resources.getXml(xmlResId)
             val rows = mutableListOf<KeyboardRow>()
             var currentRow: KeyboardRow? = null
             var currentX = 0
@@ -66,17 +93,17 @@ class SimpleKeyboard(
             try {
                 var eventType = parser.eventType
                 var tagCount = 0
-                while (eventType != XmlResourceParser.END_DOCUMENT) {
-                    if (eventType == XmlResourceParser.START_TAG && parser.name == "Row") {
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    if (eventType == XmlPullParser.START_TAG && parser.name == "Row") {
                         tagCount++
                         Log.d(TAG, "Parser saw Row START_TAG #$tagCount")
                     }
                     when (eventType) {
-                        XmlResourceParser.START_TAG -> {
+                        XmlPullParser.START_TAG -> {
                             when (parser.name) {
                                 "Keyboard" -> {
                                     for (i in 0 until parser.attributeCount) {
-                                        when (parser.getAttributeName(i)) {
+                                        when (parser.attrName(i)) {
                                             "keyWidth" -> {
                                                 keyboardDefaultWidth = parseDimension(
                                                     parser.getAttributeValue(i), screenWidth, 0
@@ -93,28 +120,19 @@ class SimpleKeyboard(
                                                 )
                                             }
                                             "verticalGap" -> {
-                                                keyboardVerticalGap = parseDimension(
+                                                val gapFromXml = parseDimension(
                                                     parser.getAttributeValue(i), screenHeight, 0
                                                 )
+                                                keyboardVerticalGap = max(keyboardVerticalGap, gapFromXml)
                                             }
                                         }
                                     }
                                 }
                                 "Row" -> {
-                                    // Use TypedArray to read Row attributes properly
-                                    val rowAttrs = context.obtainStyledAttributes(
-                                        Xml.asAttributeSet(parser),
-                                        R.styleable.Keyboard_Row
-                                    )
+                                    val hasKeyboardMode = getAttrValue(parser, "keyboardMode") != null
+                                    val isExtension = getAttrValue(parser, "extension").toBoolean(default = false)
                                     
-                                    val keyboardModeId = rowAttrs.getResourceId(R.styleable.Keyboard_Row_keyboardMode, 0)
-                                    val isExtension = rowAttrs.getBoolean(R.styleable.Keyboard_Row_extension, false)
-                                    val rowEdgeFlags = rowAttrs.getInt(R.styleable.Keyboard_Row_rowEdgeFlags, 0)
-                                    val hasKeyboardMode = keyboardModeId != 0
-                                    
-                                    rowAttrs.recycle()
-                                    
-                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode, modeId=$keyboardModeId")
+                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode")
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
@@ -134,7 +152,9 @@ class SimpleKeyboard(
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
                                             isExtension = isExtension,
-                                            keyboardMode = 0
+                                            keyboardMode = 0,
+                                            verticalGap = keyboardVerticalGap,
+                                            horizontalGap = horizontalGapPx
                                         )
                                         currentX = 0
                                         val thisRowHeight = when {
@@ -149,12 +169,6 @@ class SimpleKeyboard(
                                 }
                                 "Key" -> {
                                     currentRow?.let { row ->
-                                        // Use TypedArray to read custom attributes from attrs-keyboard.xml
-                                        val a = context.obtainStyledAttributes(
-                                            Xml.asAttributeSet(parser),
-                                            R.styleable.Keyboard_Key
-                                        )
-                                        
                                         val keyWidthAttr = getAttrValue(parser, "keyWidth")
                                         val keyWidth = if (keyWidthAttr != null) {
                                             parseDimension(keyWidthAttr, screenWidth, keyboardDefaultWidth)
@@ -167,22 +181,28 @@ class SimpleKeyboard(
                                         } else {
                                             keyboardHorizontalGap
                                         }
-                                        
-                                        // Read codes using TypedArray (resolves @integer/key_* references)
-                                        val codeFromXml = a.getInt(R.styleable.Keyboard_Key_codes, Int.MIN_VALUE)
-                                        
-                                        val labelAttr = a.getString(R.styleable.Keyboard_Key_keyLabel)
-                                        val shiftLabelAttr = a.getString(R.styleable.Keyboard_Key_shiftLabel)
-                                        val outputTextAttr = a.getString(R.styleable.Keyboard_Key_keyOutputText)
-                                        val popupCharsAttr = a.getString(R.styleable.Keyboard_Key_popupCharacters)
-                                        
-                                        // Read custom boolean attributes (isModifier, isSticky, isRepeatable)
-                                        val isModifier = a.getBoolean(R.styleable.Keyboard_Key_isModifier, false)
-                                        val isSticky = a.getBoolean(R.styleable.Keyboard_Key_isSticky, false)
-                                        val isRepeatable = a.getBoolean(R.styleable.Keyboard_Key_isRepeatable, false)
-                                        val edgeFlags = a.getInt(R.styleable.Keyboard_Key_keyEdgeFlags, 0)
-                                        
-                                        a.recycle()
+
+                                        val codeStr = getAttrValue(parser, "codes")
+                                        var codeFromXml = when {
+                                            codeStr != null -> codeStr.toIntOrNull() ?: Int.MIN_VALUE
+                                            else -> Int.MIN_VALUE
+                                        }
+                                        if (codeFromXml == Int.MIN_VALUE && codeStr != null && codeStr.startsWith("@")) {
+                                            val a = context.obtainStyledAttributes(
+                                                Xml.asAttributeSet(parser), R.styleable.Keyboard_Key)
+                                            codeFromXml = a.getInt(R.styleable.Keyboard_Key_codes, Int.MIN_VALUE)
+                                            a.recycle()
+                                        }
+
+                                        val labelAttr = getAttrValue(parser, "keyLabel")
+                                        val shiftLabelAttr = getAttrValue(parser, "shiftLabel")
+                                        val outputTextAttr = getAttrValue(parser, "keyOutputText")
+                                        val popupCharsAttr = getAttrValue(parser, "popupCharacters")
+
+                                        val isModifier = getAttrValue(parser, "isModifier").toBoolean(default = false)
+                                        val isSticky = getAttrValue(parser, "isSticky").toBoolean(default = false)
+                                        val isRepeatable = getAttrValue(parser, "isRepeatable").toBoolean(default = false)
+                                        val edgeFlags = getAttrValue(parser, "keyEdgeFlags")?.toIntOrNull() ?: 0
 
                                         var code: Int
                                         if (codeFromXml != Int.MIN_VALUE) {
@@ -222,7 +242,7 @@ class SimpleKeyboard(
                                 }
                             }
                         }
-                        XmlResourceParser.END_TAG -> {
+                        XmlPullParser.END_TAG -> {
                             when (parser.name) {
                                 "Row" -> {
                                     currentRow?.let { row ->
@@ -255,8 +275,6 @@ class SimpleKeyboard(
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Error parsing keyboard XML", e)
-            } finally {
-                parser.close()
             }
 
             val actualHeight = if (rows.isNotEmpty()) {
@@ -266,10 +284,24 @@ class SimpleKeyboard(
                 keyboardHeight
             }
 
-            Log.d(TAG, "Parsed ${rows.size} rows, ${rows.sumOf { it.keys.size }} keys, " +
-                    "height=$actualHeight, width=$screenWidth")
+            val totalKeys = rows.sumOf { it.keys.size }
+            Log.e(TAG, "=== PARSED: ${rows.size} rows, $totalKeys keys, height=$actualHeight, width=$screenWidth ===")
+            if (rows.isNotEmpty()) {
+                rows.forEachIndexed { i, r ->
+                    Log.e(TAG, "  Row[$i]: ${r.keys.size} keys, y=${r.y}, height=${r.defaultKeyHeight}, isExtension=${r.isExtension}")
+                    r.keys.take(3).forEachIndexed { j, k ->
+                        Log.e(TAG, "    Key[$j]: label='${k.label}' code=${k.code} x=${k.x} y=${k.y} w=${k.width} h=${k.height}")
+                    }
+                }
+            }
 
             return SimpleKeyboard(rows, screenWidth, actualHeight)
+        }
+
+        private fun String?.toBoolean(default: Boolean): Boolean = when (this?.lowercase()) {
+            "true" -> true
+            "false" -> false
+            else -> default
         }
 
         private fun parseDimension(value: String, base: Int, default: Int): Int {
@@ -300,20 +332,23 @@ class SimpleKeyboard(
             }
         }
 
-        private fun hasAttribute(parser: XmlResourceParser, attrName: String): Boolean {
+        private fun hasAttribute(parser: XmlPullParser, attrName: String): Boolean {
             for (i in 0 until parser.attributeCount) {
-                if (parser.getAttributeName(i) == attrName) {
+                if (parser.attrName(i) == attrName) {
                     return true
                 }
             }
             return false
         }
 
-        private fun getAttrValue(parser: XmlResourceParser, attrName: String): String? {
+        private const val ANDROID_NS = "http://schemas.android.com/apk/res-auto"
+
+        private fun XmlPullParser.attrName(index: Int): String =
+            getAttributeName(index).substringAfterLast(':')
+
+        private fun getAttrValue(parser: XmlPullParser, attrName: String): String? {
             for (i in 0 until parser.attributeCount) {
-                if (parser.getAttributeName(i) == attrName) {
-                    return parser.getAttributeValue(i)
-                }
+                if (parser.attrName(i) == attrName) return parser.getAttributeValue(i)
             }
             return null
         }

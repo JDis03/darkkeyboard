@@ -6,5 +6,7 @@ data class KeyboardRow(
     var defaultKeyWidth: Int = 0,
     var defaultKeyHeight: Int = 0,
     val isExtension: Boolean = false,
-    val keyboardMode: Int = -1
+    val keyboardMode: Int = -1,
+    var verticalGap: Int = 0,
+    var horizontalGap: Int = 0
 )
