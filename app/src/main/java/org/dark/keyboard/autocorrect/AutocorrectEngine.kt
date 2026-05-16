@@ -158,9 +158,15 @@ class AutocorrectEngine(
      * Si el cursor se movió externamente → reset composing (anti-desync).
      */
     fun onCursorMoved(newCursorPos: Int) {
+        // Si hay texto en composición, el cursor se mueve naturalmente al
+        // expandir el composing region — NO es movimiento externo, ignorar.
+        if (composingWord.isNotEmpty()) {
+            expectedCursorPos = newCursorPos
+            return
+        }
+        // Sin composing: detectar tap externo del usuario (toca otro punto del texto)
         if (expectedCursorPos != -1 && newCursorPos != expectedCursorPos) {
-            Log.d(TAG, "External cursor move detected ($expectedCursorPos→$newCursorPos) — resetting composing")
-            composingWord = ""
+            Log.d(TAG, "External cursor move ($expectedCursorPos→$newCursorPos) — clearing lastCorrection")
             lastCorrection = null
         }
         expectedCursorPos = newCursorPos
