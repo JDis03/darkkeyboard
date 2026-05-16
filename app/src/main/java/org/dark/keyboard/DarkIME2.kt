@@ -190,11 +190,17 @@ class DarkIME2 : InputMethodService() {
                 val partial: String
 
                 if (composing.isNotEmpty()) {
-                    // Hay palabra en composición — finalizarla y borrarla
-                    ic.finishComposingText()
+                    // Reemplazar composing directamente — WebView-safe (no deleteSurroundingText)
                     autocorrect.onFinishComposing()
-                    ic.deleteSurroundingText(composing.length, 0)
-                    partial = composing
+                    ic.setComposingText(text, 1)
+                    ic.finishComposingText()
+                    ic.commitText(" ", 1)
+                    if (::suggestionEngine.isInitialized) {
+                        val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                        suggestionEngine.onSuggestionAccepted(text, before)
+                    }
+                    updateSuggestions()
+                    return
                 } else {
                     // Sin composing — obtener última palabra del texto
                     val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
@@ -314,14 +320,25 @@ class DarkIME2 : InputMethodService() {
             // ── Space ─────────────────────────────────────────────────────
             ' '.code -> {
                 val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
-                // Pasar la sugerencia visible al motor — evita que autocorrect
-                // y la barra elijan palabras distintas
                 val topSuggestion = suggestionBarView?.getTopSuggestion()
+                // Guardar composing ANTES de onSpace() — lo limpia internamente
+                val composingSnapshot = autocorrect.getComposing()
+
                 when (val result = autocorrect.onSpace(textBefore, topSuggestion)) {
                     is AutocorrectEngine.SpaceResult.Corrected -> {
-                        ic.finishComposingText()
-                        ic.deleteSurroundingText(result.original.length, 0)
-                        ic.commitText("${result.corrected} ", 1)
+                        if (composingSnapshot.isNotEmpty()) {
+                            // Camino WebView-safe: reemplazar la región de composing
+                            // directamente con setComposingText → finishComposingText.
+                            // Evita deleteSurroundingText que falla en Chromium/WebViews.
+                            ic.setComposingText(result.corrected, 1)
+                            ic.finishComposingText()
+                            ic.commitText(" ", 1)
+                        } else {
+                            // Sin composing: camino estándar (deleteSurrounding + commit)
+                            ic.finishComposingText()
+                            ic.deleteSurroundingText(result.original.length, 0)
+                            ic.commitText("${result.corrected} ", 1)
+                        }
                         Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}'")
                     }
                     AutocorrectEngine.SpaceResult.PeriodInserted -> {
