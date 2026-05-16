@@ -115,16 +115,17 @@ class DarkIME2 : InputMethodService() {
         }
     }
     
-    override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
+     override fun onStartInput(attribute: android.view.inputmethod.EditorInfo?, restarting: Boolean) {
         super.onStartInput(attribute, restarting)
 
-        // Detectar si es una app de terminal SSH
-        val pkg = attribute?.packageName ?: ""
-        isTerminalMode = TERMINAL_PACKAGES.any { pkg.contains(it) }
-        Log.e(TAG, "=== onStartInput() pkg=$pkg terminal=$isTerminalMode inputType=${attribute?.inputType} ===")
+        // Clasificar el campo actual y ajustar comportamiento
+        val profile = AppInputProfile.classify(attribute)
+        isTerminalMode = profile.mode == AppInputProfile.Mode.TERMINAL
+        Log.i(TAG, "=== onStartInput() mode=${profile.mode} reason=${profile.reason} inputType=${attribute?.inputType} ===")
 
-        // Autocorrect: reset ghost-composing + ajustar según campo
+        // Autocorrect: reset ghost-composing + ajustar según perfil
         autocorrect.isTerminalApp = isTerminalMode
+        autocorrect.isEnabled = profile.useAutocorrect
         autocorrect.reset()
         autocorrect.onEditorChanged(attribute)
 
