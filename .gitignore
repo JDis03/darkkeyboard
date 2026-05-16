@@ -36,3 +36,7 @@ local.properties
 # OS files
 .DS_Store
 *~
+*.tflite
+*.onnx
+_dormant/*.tflite
+app/src/main/assets/*.tflite
