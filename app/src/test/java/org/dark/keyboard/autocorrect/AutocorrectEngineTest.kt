@@ -230,6 +230,28 @@ class AutocorrectEngineTest {
         assertFalse(engine.canUndo())
     }
 
+    // ── Bug: backspace en segunda palabra deshace corrección de la primera ──
+
+    @Test fun `lastCorrection se limpia al empezar nueva palabra`() {
+        // Paso 1: primera palabra corregida
+        engine.onCharacter('t'); engine.onCharacter('e'); engine.onCharacter('h')
+        val spaceResult = engine.onSpace("teh")
+
+        if (spaceResult is AutocorrectEngine.SpaceResult.Corrected) {
+            assertTrue("Undo disponible justo después de corrección", engine.canUndo())
+
+            // Paso 2: usuario empieza a escribir segunda palabra
+            engine.onCharacter('w')  // primera letra → debe cerrar undo window
+            assertFalse("Undo NO disponible al empezar nueva palabra", engine.canUndo())
+
+            // Paso 3: backspace sobre segunda palabra → debe borrar composing, NO deshacer corrección anterior
+            engine.onCharacter('r'); engine.onCharacter('o')
+            val backResult = engine.onBackspace()
+            assertIs<AutocorrectEngine.BackspaceResult.UpdateComposing>(backResult)
+            assertEquals("wr", (backResult as AutocorrectEngine.BackspaceResult.UpdateComposing).remaining)
+        }
+    }
+
     // ── El bug que corregimos: cursor move durante composing ──────────
 
     @Test fun `onCursorMoved - NO resetea composing cuando hay texto en composicion`() {

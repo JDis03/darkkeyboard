@@ -181,8 +181,14 @@ class AutocorrectEngine(
     fun onCharacter(c: Char, isSurrogate: Boolean = false): CharResult {
         // Si no debemos componer → commit directo
         if (!shouldCompose || !isEnabled || isSurrogate) {
-            lastCorrection = null  // cualquier char rompe el undo window
+            lastCorrection = null
             return CharResult.CommitDirect(c.toString())
+        }
+        // Primera letra de una palabra nueva → cerrar ventana de undo.
+        // Sin esto, backspace sobre la segunda palabra intentaría deshacer
+        // la corrección de la primera en lugar de borrar del composing.
+        if (composingWord.isEmpty()) {
+            lastCorrection = null
         }
         composingWord += c
         return CharResult.UpdateComposing(composingWord)
