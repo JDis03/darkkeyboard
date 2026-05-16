@@ -313,7 +313,10 @@ class DarkIME2 : InputMethodService() {
             // ── Space ─────────────────────────────────────────────────────
             ' '.code -> {
                 val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
-                when (val result = autocorrect.onSpace(textBefore)) {
+                // Pasar la sugerencia visible al motor — evita que autocorrect
+                // y la barra elijan palabras distintas
+                val topSuggestion = suggestionBarView?.getTopSuggestion()
+                when (val result = autocorrect.onSpace(textBefore, topSuggestion)) {
                     is AutocorrectEngine.SpaceResult.Corrected -> {
                         ic.finishComposingText()
                         ic.deleteSurroundingText(result.original.length, 0)

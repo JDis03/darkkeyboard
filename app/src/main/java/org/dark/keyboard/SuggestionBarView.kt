@@ -249,4 +249,7 @@ class SuggestionBarView @JvmOverloads constructor(
         suggestionRects.clear()
         invalidate()
     }
+
+    /** Primera sugerencia visible — usada por autocorrect al presionar space. */
+    fun getTopSuggestion(): String? = suggestions.firstOrNull()
 }

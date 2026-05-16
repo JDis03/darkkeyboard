@@ -192,32 +192,30 @@ class AutocorrectEngine(
      * El usuario presionó space.
      * Retorna la acción a ejecutar en el IC.
      */
-    fun onSpace(textBeforeCursor: String): SpaceResult {
-        // Capturar la palabra antes de limpiar estado
+    /**
+     * @param suggestionHint Top sugerencia de DictSuggestionEngine (ya visible en la barra).
+     *   Si se provee, se usa como candidato preferido sobre findByEditDistance.
+     *   Esto evita que autocorrect y la barra elijan palabras distintas.
+     */
+    fun onSpace(textBeforeCursor: String, suggestionHint: String? = null): SpaceResult {
         val word = composingWord.ifEmpty {
             textBeforeCursor.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
         }
         composingWord = ""
 
-        // Double-space → ". " (cancela cualquier undo pendiente)
+        // Double-space → ". "
         if (textBeforeCursor.endsWith(" ")) {
             lastCorrection = null
             return SpaceResult.PeriodInserted
         }
 
-        // Limpiar lastCorrection — el espacio nuevo invalida el undo anterior
         lastCorrection = null
 
         if (!shouldAutocorrect || !isEnabled || word.length < 2) return SpaceResult.Normal
 
-        val corrected = findCorrection(word, textBeforeCursor) ?: return SpaceResult.Normal
+        val corrected = findCorrection(word, textBeforeCursor, suggestionHint) ?: return SpaceResult.Normal
 
-        // Guardamos el record ANTES de actualizar cursor
-        lastCorrection = CorrectionRecord(
-            original = word,
-            corrected = corrected,
-            cursorAfter = -1  // se actualiza desde DarkIME2 post-commit
-        )
+        lastCorrection = CorrectionRecord(original = word, corrected = corrected, cursorAfter = -1)
         return SpaceResult.Corrected(word, corrected)
     }
 
@@ -292,19 +290,35 @@ class AutocorrectEngine(
 
     // ── Corrección ───────────────────────────────────────────────────────
 
-    private fun findCorrection(typed: String, contextText: String): String? {
+    private fun findCorrection(typed: String, contextText: String, hint: String? = null): String? {
         val t = typed.lowercase()
 
-        // Pre-flight checks
+        // Pre-flight checks (aplican siempre, incluso con hint)
         if (typed.isAllCaps()) return null
         if (typed.containsDigit()) return null
         if (personalDict.contains(typed)) return null
         if (isMidSentenceProperNoun(typed, contextText)) return null
 
-        // Si la palabra ya existe en el dict con buena frecuencia → no corregir
         val typedFreq = dict.getFreq(t)
 
-        // Buscar candidatos por edit distance (llamar siempre en background)
+        // ── Prioridad 1: hint de DictSuggestionEngine ───────────────────
+        // La barra ya eligió la mejor palabra (con bigrams + user freq).
+        // Si es diferente a la tipada, usarla — evita conflicto con edit distance.
+        if (hint != null) {
+            val h = hint.lowercase().trim()
+            if (h != t && h.length >= 2) {
+                val pairKey = "$t→$h"
+                if (!rejectedPairs.contains(pairKey)) {
+                    // Solo aplicar si la hint está en el diccionario o la palabra tipada no lo está
+                    val hintFreq = dict.getFreq(h)
+                    if (hintFreq > 0 || typedFreq == 0) {
+                        return preserveCase(typed, h)
+                    }
+                }
+            }
+        }
+
+        // ── Prioridad 2: edit distance (sin hint o hint rechazada) ───────
         val candidates = dict.findByEditDistance(t, WordDictionary.MAX_EDIT_DISTANCE)
             .filter { it.word != t }
             .take(5)
@@ -315,26 +329,23 @@ class AutocorrectEngine(
         val bestFreq = dict.getFreq(best.word)
         val dist = levenshteinSimple(t, best.word)
 
-        // Verificar que el par no fue rechazado
         val pairKey = "$t→${best.word}"
         if (rejectedPairs.contains(pairKey)) return null
 
-        // Threshold dinámico por distancia
         val threshold = THRESHOLD[dist] ?: return null
 
-        // Si la palabra tipada ya existe con suficiente frecuencia → no corregir
         if (typedFreq > 0 && bestFreq < typedFreq * threshold) return null
+        if (typedFreq == 0 && bestFreq < 5000) return null
 
-        // Si la tipada no existe en el dict pero la corrección sí tiene freq alta → corregir
-        if (typedFreq == 0 && bestFreq < 5000) return null  // corrección también oscura → skip
-
-        // Preservar capitalización
-        return if (typed[0].isUpperCase() && !isMidSentenceProperNoun(typed, contextText)) {
-            best.word.replaceFirstChar { it.uppercase() }
-        } else {
-            best.word
-        }
+        return preserveCase(typed, best.word)
     }
+
+    private fun preserveCase(typed: String, correction: String): String =
+        if (typed.isNotEmpty() && typed[0].isUpperCase()) {
+            correction.replaceFirstChar { it.uppercase() }
+        } else {
+            correction
+        }
 
     private fun isMidSentenceProperNoun(word: String, textBefore: String): Boolean {
         if (word.isEmpty() || !word[0].isUpperCase()) return false
