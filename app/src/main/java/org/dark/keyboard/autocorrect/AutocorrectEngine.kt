@@ -236,9 +236,16 @@ class AutocorrectEngine(
 
         lastCorrection = null
 
-        if (!shouldAutocorrect || !isEnabled || word.length < MIN_WORD_LENGTH) return SpaceResult.Normal
+        Log.d(TAG, "onSpace: word='$word' len=${word.length} shouldAutocorrect=$shouldAutocorrect isEnabled=$isEnabled hint=$suggestionHint")
 
-        val corrected = findCorrection(word, textBeforeCursor, suggestionHint) ?: return SpaceResult.Normal
+        if (!shouldAutocorrect || !isEnabled || word.length < MIN_WORD_LENGTH) {
+            Log.d(TAG, "onSpace: skipped (shouldAutocorrect=$shouldAutocorrect isEnabled=$isEnabled len=${word.length} minLen=$MIN_WORD_LENGTH)")
+            return SpaceResult.Normal
+        }
+
+        val corrected = findCorrection(word, textBeforeCursor, suggestionHint)
+        Log.d(TAG, "onSpace: findCorrection('$word') → '$corrected'")
+        if (corrected == null) return SpaceResult.Normal
 
         lastCorrection = CorrectionRecord(original = word, corrected = corrected, cursorAfter = -1)
         return SpaceResult.Corrected(word, corrected)
@@ -318,18 +325,17 @@ class AutocorrectEngine(
     private fun findCorrection(typed: String, contextText: String, hint: String? = null): String? {
         val t = typed.lowercase()
 
+        Log.d(TAG, "findCorrection: typed='$t' hint='$hint'")
+
         // Pre-flight: nunca corregir estas categorías
-        if (typed.isAllCaps()) return null
-        if (typed.containsDigit()) return null
-        if (personalDict.contains(typed)) return null
-        if (isMidSentenceProperNoun(typed, contextText)) return null
+        if (typed.isAllCaps()) { Log.d(TAG, "  skip: ALL_CAPS"); return null }
+        if (typed.containsDigit()) { Log.d(TAG, "  skip: contains digit"); return null }
+        if (personalDict.contains(typed)) { Log.d(TAG, "  skip: personal dict"); return null }
+        if (isMidSentenceProperNoun(typed, contextText)) { Log.d(TAG, "  skip: proper noun"); return null }
 
         val typedFreq = dict.getFreq(t)
-
-        // Si la palabra existe en el diccionario con frecuencia alta → no es un error tipográfico.
-        // En este caso SOLO corregimos si el hint tiene edit distance pequeña Y
-        // es mucho más frecuente (la persona tipea bien la mayoría del tiempo).
         val typedIsInDict = typedFreq > 0
+        Log.d(TAG, "  typedFreq=$typedFreq typedIsInDict=$typedIsInDict")
 
         // ── Prioridad 1: hint de DictSuggestionEngine ───────────────────
         // IMPORTANTE: el hint puede ser una predicción de SIGUIENTE PALABRA (bigrams),
@@ -353,28 +359,26 @@ class AutocorrectEngine(
         }
 
         // ── Prioridad 2: edit distance pura ──────────────────────────────
-        // Solo para palabras NO en el diccionario (errores tipográficos claros)
-        if (typedIsInDict) return null  // Palabra correcta → no tocar
+        if (typedIsInDict) { Log.d(TAG, "  skip: word in dict (freq=$typedFreq)"); return null }
 
         val candidates = dict.findByEditDistance(t, WordDictionary.MAX_EDIT_DISTANCE)
-            .filter { it.word != t }
-            .take(5)
+            .filter { it.word != t }.take(5)
+        Log.d(TAG, "  candidates: ${candidates.map { "${it.word}(${dict.getFreq(it.word)})" }}")
 
-        if (candidates.isEmpty()) return null
+        if (candidates.isEmpty()) { Log.d(TAG, "  skip: no candidates within dist=${WordDictionary.MAX_EDIT_DISTANCE}"); return null }
 
         val best = candidates.first()
         val bestFreq = dict.getFreq(best.word)
         val dist = levenshteinSimple(t, best.word)
+        Log.d(TAG, "  best='${best.word}' bestFreq=$bestFreq dist=$dist threshold=${THRESHOLD[dist]}")
 
         val pairKey = "$t→${best.word}"
-        if (rejectedPairs.contains(pairKey)) return null
+        if (rejectedPairs.contains(pairKey)) { Log.d(TAG, "  skip: rejected"); return null }
+        val threshold = THRESHOLD[dist] ?: run { Log.d(TAG, "  skip: dist=$dist out of range"); return null }
+        if (bestFreq < MIN_CANDIDATE_FREQ) { Log.d(TAG, "  skip: freq $bestFreq < min $MIN_CANDIDATE_FREQ"); return null }
+        if (bestFreq < typedFreq * threshold) { Log.d(TAG, "  skip: threshold not met"); return null }
 
-        val threshold = THRESHOLD[dist] ?: return null
-
-        // El candidato debe ser claramente mejor y tener frecuencia mínima
-        if (bestFreq < MIN_CANDIDATE_FREQ) return null
-        if (bestFreq < typedFreq * threshold) return null  // typedFreq=0 siempre pasa
-
+        Log.i(TAG, "  CORRECTING '$t' → '${best.word}'")
         return preserveCase(typed, best.word)
     }
 
