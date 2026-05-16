@@ -40,7 +40,15 @@ class AutocorrectEngine(
         private const val TAG = "Autocorrect"
 
         // Threshold: score(corrección) debe ser N× mayor que score(typed)
-        private val THRESHOLD = mapOf(1 to 1.5f, 2 to 3.0f)
+        // Valores conservadores — preferimos NO corregir antes que corregir mal
+        private val THRESHOLD = mapOf(1 to 3.0f, 2 to 8.0f)
+
+        // Longitud mínima para autocorrect — palabras cortas son ambiguas
+        // "si"→"mi", "yo"→"lo", "el"→"él" tienen dist=1 pero son palabras válidas
+        private const val MIN_WORD_LENGTH = 4
+
+        // Frecuencia mínima del candidato para ser considerado corrección
+        private const val MIN_CANDIDATE_FREQ = 20_000
 
         // Abreviaciones comunes — NO capitalizar después de estas
         private val ABBREVIATIONS = setOf(
@@ -217,7 +225,7 @@ class AutocorrectEngine(
 
         lastCorrection = null
 
-        if (!shouldAutocorrect || !isEnabled || word.length < 2) return SpaceResult.Normal
+        if (!shouldAutocorrect || !isEnabled || word.length < MIN_WORD_LENGTH) return SpaceResult.Normal
 
         val corrected = findCorrection(word, textBeforeCursor, suggestionHint) ?: return SpaceResult.Normal
 
@@ -299,7 +307,7 @@ class AutocorrectEngine(
     private fun findCorrection(typed: String, contextText: String, hint: String? = null): String? {
         val t = typed.lowercase()
 
-        // Pre-flight checks (aplican siempre, incluso con hint)
+        // Pre-flight: nunca corregir estas categorías
         if (typed.isAllCaps()) return null
         if (typed.containsDigit()) return null
         if (personalDict.contains(typed)) return null
@@ -307,24 +315,36 @@ class AutocorrectEngine(
 
         val typedFreq = dict.getFreq(t)
 
+        // Si la palabra existe en el diccionario con frecuencia alta → no es un error tipográfico.
+        // En este caso SOLO corregimos si el hint tiene edit distance pequeña Y
+        // es mucho más frecuente (la persona tipea bien la mayoría del tiempo).
+        val typedIsInDict = typedFreq > 0
+
         // ── Prioridad 1: hint de DictSuggestionEngine ───────────────────
-        // La barra ya eligió la mejor palabra (con bigrams + user freq).
-        // Si es diferente a la tipada, usarla — evita conflicto con edit distance.
+        // IMPORTANTE: el hint puede ser una predicción de SIGUIENTE PALABRA (bigrams),
+        // no una corrección de la actual. Solo lo usamos si:
+        //   a) La palabra tipada NO está en el dict (es un error)    ← caso principal
+        //   b) Y la hint tiene edit distance ≤ 2 (es realmente similar a lo tipado)
+        //   c) Y la hint tiene frecuencia mínima
         if (hint != null) {
             val h = hint.lowercase().trim()
-            if (h != t && h.length >= 2) {
+            val hintDist = levenshteinSimple(t, h)
+            if (h != t && h.length >= MIN_WORD_LENGTH && hintDist <= 2) {
                 val pairKey = "$t→$h"
                 if (!rejectedPairs.contains(pairKey)) {
-                    // Solo aplicar si la hint está en el diccionario o la palabra tipada no lo está
                     val hintFreq = dict.getFreq(h)
-                    if (hintFreq > 0 || typedFreq == 0) {
+                    // Solo aplicar hint si la palabra tipada es un error
+                    if (!typedIsInDict && hintFreq >= MIN_CANDIDATE_FREQ) {
                         return preserveCase(typed, h)
                     }
                 }
             }
         }
 
-        // ── Prioridad 2: edit distance (sin hint o hint rechazada) ───────
+        // ── Prioridad 2: edit distance pura ──────────────────────────────
+        // Solo para palabras NO en el diccionario (errores tipográficos claros)
+        if (typedIsInDict) return null  // Palabra correcta → no tocar
+
         val candidates = dict.findByEditDistance(t, WordDictionary.MAX_EDIT_DISTANCE)
             .filter { it.word != t }
             .take(5)
@@ -340,8 +360,9 @@ class AutocorrectEngine(
 
         val threshold = THRESHOLD[dist] ?: return null
 
-        if (typedFreq > 0 && bestFreq < typedFreq * threshold) return null
-        if (typedFreq == 0 && bestFreq < 5000) return null
+        // El candidato debe ser claramente mejor y tener frecuencia mínima
+        if (bestFreq < MIN_CANDIDATE_FREQ) return null
+        if (bestFreq < typedFreq * threshold) return null  // typedFreq=0 siempre pasa
 
         return preserveCase(typed, best.word)
     }
