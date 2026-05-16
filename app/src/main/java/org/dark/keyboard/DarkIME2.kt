@@ -128,6 +128,11 @@ class DarkIME2 : InputMethodService() {
         autocorrect.isEnabled = profile.useAutocorrect
         autocorrect.reset()
         autocorrect.onEditorChanged(attribute)
+        // AppInputProfile gana sobre onEditorChanged — browsers ignoran FLAG_NO_SUGGESTIONS del HTML
+        autocorrect.overrideProfile(
+            useComposing  = profile.useComposing,
+            useAutocorrect = profile.useAutocorrect
+        )
 
         keyboardView?.modifierState?.clearAll()
         mainHandler.removeCallbacks(clearSuggestionsRunnable)

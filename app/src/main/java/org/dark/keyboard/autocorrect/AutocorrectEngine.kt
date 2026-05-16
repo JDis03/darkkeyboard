@@ -165,6 +165,17 @@ class AutocorrectEngine(
      * Llamar desde onUpdateSelection.
      * Si el cursor se movió externamente → reset composing (anti-desync).
      */
+    /**
+     * Fuerza shouldCompose y shouldAutocorrect ignorando lo que onEditorChanged haya decidido.
+     * Usar cuando AppInputProfile sabe más que los flags del EditorInfo
+     * (ej: browsers ponen FLAG_NO_SUGGESTIONS aunque el usuario quiere autocorrect).
+     */
+    fun overrideProfile(useComposing: Boolean, useAutocorrect: Boolean) {
+        shouldCompose     = useComposing  && !isTerminalApp
+        shouldAutocorrect = useAutocorrect && !isTerminalApp
+        Log.d(TAG, "Profile override: shouldCompose=$shouldCompose shouldAutocorrect=$shouldAutocorrect")
+    }
+
     fun onCursorMoved(newCursorPos: Int) {
         // Durante composing activo: movimientos son naturales (Android expande el region)
         if (composingWord.isNotEmpty()) {
