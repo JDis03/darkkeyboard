@@ -21,13 +21,15 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.dark.keyboard.suggestions.FallbackSuggestionEngine
+import org.dark.keyboard.autocorrect.AutocorrectEngine
+import org.dark.keyboard.autocorrect.PersonalDictionary
+import org.dark.keyboard.autocorrect.WordDictionary
 import org.dark.keyboard.suggestions.DictSuggestionEngine
+import org.dark.keyboard.suggestions.FallbackSuggestionEngine
 import org.dark.keyboard.suggestions.SuggestionEngine
 
 /**
- * InputMethodService simple y funcional
- * Sin complejidad innecesaria - solo mostrar teclado y escribir
+ * InputMethodService con sugerencias + autocorrección nivel 3.
  */
 class DarkIME2 : InputMethodService() {
     
@@ -57,6 +59,11 @@ class DarkIME2 : InputMethodService() {
     private lateinit var suggestionEngine: SuggestionEngine
     private val fallbackEngine = FallbackSuggestionEngine()
     private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+    // Motor de autocorrección nivel 3
+    private lateinit var wordDict: WordDictionary
+    private lateinit var personalDict: PersonalDictionary
+    private lateinit var autocorrect: AutocorrectEngine
     private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         when (key) {
             "keyboard_layout", "show_number_row", "custom_layout_name" -> {
@@ -84,6 +91,12 @@ class DarkIME2 : InputMethodService() {
         prefs.registerOnSharedPreferenceChangeListener(prefsListener)
         Log.e(TAG, "=== onCreate() CALLED ===")
 
+        // Inicializar autocorrect + diccionario en background
+        wordDict     = WordDictionary(this)
+        personalDict = PersonalDictionary(this)
+        autocorrect  = AutocorrectEngine(this, wordDict, personalDict)
+        autocorrect.initialize()
+
         // Inicializar motor de sugerencias multi-idioma en background
         imeScope.launch(Dispatchers.IO) {
             val engine = DictSuggestionEngine(this@DarkIME2)
@@ -91,6 +104,9 @@ class DarkIME2 : InputMethodService() {
             engine.switchLanguage(savedLang)
             engine.initialize()
             suggestionEngine = engine
+            // Compartir el mismo diccionario con autocorrect para eficiencia
+            wordDict.load(savedLang)
+            autocorrect.isTerminalApp = false
             val label = DictSuggestionEngine.LANGUAGE_NAMES[savedLang] ?: savedLang.uppercase()
             launch(Dispatchers.Main) {
                 suggestionBarView?.setLanguageLabel(label)
@@ -106,6 +122,11 @@ class DarkIME2 : InputMethodService() {
         val pkg = attribute?.packageName ?: ""
         isTerminalMode = TERMINAL_PACKAGES.any { pkg.contains(it) }
         Log.e(TAG, "=== onStartInput() pkg=$pkg terminal=$isTerminalMode inputType=${attribute?.inputType} ===")
+
+        // Autocorrect: reset ghost-composing + ajustar según campo
+        autocorrect.isTerminalApp = isTerminalMode
+        autocorrect.reset()
+        autocorrect.onEditorChanged(attribute)
 
         keyboardView?.modifierState?.clearAll()
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
@@ -246,106 +267,171 @@ class DarkIME2 : InputMethodService() {
         Log.i(TAG, ">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
 
         when (code) {
+
+            // ── Backspace ─────────────────────────────────────────────────
             KEYCODE_DELETE -> {
                 if (ctrl) {
+                    autocorrect.onFinishComposing()
+                    ic.finishComposingText()
                     deleteWord(ic)
                 } else {
-                    sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
+                    when (val result = autocorrect.onBackspace()) {
+                        is AutocorrectEngine.BackspaceResult.UndoCorrection -> {
+                            val r = result.record
+                            ic.finishComposingText()
+                            if (ic.deleteSurroundingText(r.corrected.length + 1, 0)) {
+                                ic.setComposingText(r.original, 1)
+                                Log.i(TAG, "Undo autocorrect: '${r.corrected}' → '${r.original}'")
+                            }
+                        }
+                        is AutocorrectEngine.BackspaceResult.UpdateComposing -> {
+                            if (result.remaining.isEmpty()) ic.commitText("", 1)
+                            else ic.setComposingText(result.remaining, 1)
+                        }
+                        AutocorrectEngine.BackspaceResult.Normal -> {
+                            sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
+                        }
+                    }
                 }
             }
+
+            // ── Space ─────────────────────────────────────────────────────
+            ' '.code -> {
+                val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
+                when (val result = autocorrect.onSpace(textBefore)) {
+                    is AutocorrectEngine.SpaceResult.Corrected -> {
+                        ic.finishComposingText()
+                        ic.deleteSurroundingText(result.original.length, 0)
+                        ic.commitText("${result.corrected} ", 1)
+                        Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}'")
+                    }
+                    AutocorrectEngine.SpaceResult.PeriodInserted -> {
+                        ic.finishComposingText()
+                        ic.deleteSurroundingText(1, 0)
+                        ic.commitText(". ", 1)
+                    }
+                    AutocorrectEngine.SpaceResult.Normal -> {
+                        ic.finishComposingText()
+                        ic.commitText(" ", 1)
+                    }
+                }
+                updateSuggestions()
+            }
+
+            // ── Teclas que finalizan composing ────────────────────────────
             KEYCODE_SHIFT -> { }
             Key.CODE_CTRL_LEFT -> { }
             Key.CODE_ALT_LEFT -> { }
             Key.CODE_MODE_CHANGE -> {
-                Log.i(TAG, "MODE_CHANGE pressed, switching layout...")
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 switchLayout()
             }
             KEYCODE_ENTER -> {
-                // Aprender de la frase completa al presionar Enter
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 learnFromCurrentText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
             Key.CODE_TAB -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_TAB, shift, ctrl, alt, fn)
             }
             Key.CODE_ESCAPE -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ESCAPE, shift, ctrl, alt, fn)
             }
             Key.CODE_FORWARD_DEL -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_FORWARD_DEL, shift, ctrl, alt, fn)
             }
             Key.CODE_HOME -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_HOME, shift, ctrl, alt, fn)
             }
             Key.CODE_END -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_END, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_UP -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_DOWN -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_UP -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_DOWN -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_LEFT -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_LEFT, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_RIGHT -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_RIGHT, shift, ctrl, alt, fn)
             }
-            Key.CODE_CLOSE -> {
-                requestHideSelf(0)
-                Log.d(TAG, "Closing keyboard")
-            }
+            Key.CODE_CLOSE -> { requestHideSelf(0) }
             Key.CODE_SWITCH_INPUT -> {
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
                 imm.showInputMethodPicker()
-                Log.d(TAG, "Showing IME picker")
             }
             in SimpleKeyboardView.KEYCODE_FKEY_F1..SimpleKeyboardView.KEYCODE_FKEY_F12 -> {
+                autocorrect.onFinishComposing(); ic.finishComposingText()
                 val fKeyNumber = SimpleKeyboardView.KEYCODE_FKEY_F1 - code + 1
-                val keycode = KeyEvent.KEYCODE_F1 + (fKeyNumber - 1)
-                sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
+                sendModifiedKeyDownUp(KeyEvent.KEYCODE_F1 + (fKeyNumber - 1), shift, ctrl, alt, fn)
             }
+
+            // ── Caracteres ────────────────────────────────────────────────
             else -> {
                 if (code > 0 && code < 127) {
                     if (isTerminalMode && ctrl && !alt && shift && code == 'v'.code) {
-                        // Terminal SSH: Ctrl+Shift+V → pegar directamente del clipboard
-                        // NO usar KeyEvent (genera '6;5u' por kitty keyboard protocol)
                         val clip = (getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager)
                             .primaryClip?.getItemAt(0)?.text?.toString()
                         if (!clip.isNullOrEmpty()) ic.commitText(clip, 1)
                     } else if (ctrl && !alt && !shift && code in 'a'.code..'z'.code && isTerminalMode) {
-                        // Terminal SSH: Ctrl+letra (sin Shift) → byte de control ASCII
-                        // Ctrl+C=0x03 (SIGINT), Ctrl+V=0x16, Ctrl+Z=0x1A, etc.
                         val ctrlByte = (code - 'a'.code + 1).toChar().toString()
                         ic.commitText(ctrlByte, 1)
                     } else if (ctrl || alt) {
-                        // RDP y apps normales: sendKeyEvent con metaState + modifier events
+                        autocorrect.onFinishComposing(); ic.finishComposingText()
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
                             ' ' -> KeyEvent.KEYCODE_SPACE
                             else -> {
                                 var char = code.toChar().toString()
-                                if (shift && code in 'a'.code..'z'.code) {
-                                    char = char.uppercase()
-                                }
-                                ic.commitText(char, 1)
-                                return
+                                if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
+                                ic.commitText(char, 1); return
                             }
                         }
                         sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
                     } else {
-                        var char = code.toChar().toString()
-                        if (shift && code in 'a'.code..'z'.code) {
-                            char = char.uppercase()
+                        val c = code.toChar()
+                        if (c.isLetter()) {
+                            var char = c.toString()
+                            if (shift) char = char.uppercase()
+                            // Auto-capitalización
+                            if (!shift) {
+                                val textBefore = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                                if (autocorrect.shouldCapitalizeNext(textBefore)) char = char.uppercase()
+                            }
+                            when (val res = autocorrect.onCharacter(char[0])) {
+                                is AutocorrectEngine.CharResult.UpdateComposing ->
+                                    ic.setComposingText(res.composing, 1)
+                                is AutocorrectEngine.CharResult.CommitDirect ->
+                                    ic.commitText(res.char, 1)
+                            }
+                        } else {
+                            // Puntuación — finaliza composing
+                            autocorrect.onFinishComposing(); ic.finishComposingText()
+                            var char = c.toString()
+                            if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
+                            ic.commitText(char, 1)
                         }
-                        ic.commitText(char, 1)
+                        updateSuggestions()
                     }
                 }
             }
@@ -490,12 +576,19 @@ class DarkIME2 : InputMethodService() {
         }
     }
 
+    override fun onFinishInput() {
+        currentInputConnection?.finishComposingText()
+        autocorrect.reset()
+        super.onFinishInput()
+    }
+
     override fun onUpdateSelection(
         oldSelStart: Int, oldSelEnd: Int,
         newSelStart: Int, newSelEnd: Int,
         candidatesStart: Int, candidatesEnd: Int
     ) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+        autocorrect.onCursorMoved(newSelStart)
         updateSuggestions()
     }
 
