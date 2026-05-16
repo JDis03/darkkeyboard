@@ -90,9 +90,12 @@ object AppInputProfile {
 
         val isNoSuggestions = flags and InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS != 0
         val isAutoComplete  = flags and InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE != 0
+        val isBrowserPkg    = WEBVIEW_PACKAGES.any { pkg.contains(it) }
 
-        if (isNoSuggestions) return direct("FLAG_NO_SUGGESTIONS")
-        if (isAutoComplete)  return direct("FLAG_AUTO_COMPLETE (app manages own completions)")
+        // En browsers, FLAG_NO_SUGGESTIONS viene del HTML (autocomplete="off"),
+        // no del usuario. Lo ignoramos para poder ofrecer correcciones.
+        if (isNoSuggestions && !isBrowserPkg) return direct("FLAG_NO_SUGGESTIONS")
+        if (isAutoComplete  && !isBrowserPkg) return direct("FLAG_AUTO_COMPLETE")
 
         val isUri   = variation == InputType.TYPE_TEXT_VARIATION_URI
         val isEmail = variation in setOf(
@@ -112,9 +115,8 @@ object AppInputProfile {
 
         // ── 4. WebView ─────────────────────────────────────────────────
         val isWebView = variation == InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT
-        val isWebViewPkg = WEBVIEW_PACKAGES.any { pkg.contains(it) }
 
-        if (isWebView || isWebViewPkg) {
+        if (isWebView || isBrowserPkg) {
             // Composing + autocorrect: usamos composingWord como fuente primaria,
             // NO getTextBeforeCursor (que es poco fiable en WebView).
             // La corrección en onSpace() usa composingWord.ifEmpty { textBefore }

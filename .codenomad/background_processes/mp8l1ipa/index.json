@@ -1,0 +1,13 @@
+[
+  {
+    "id": "proc_2026-05-16T2255_4a4ac4",
+    "workspaceId": "mp8l1ipa",
+    "title": "ADB Logcat DarkKeyboard",
+    "command": "export PATH=\"$PATH:/home/dark/Android/Sdk/platform-tools\" && adb logcat -c && adb logcat DarkIME2:I Autocorrect:D InputProfile:D WordDict:I *:S",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "running",
+    "pid": 3652089,
+    "startedAt": "2026-05-16T22:55:30.691Z",
+    "outputSizeBytes": 0
+  }
+]
