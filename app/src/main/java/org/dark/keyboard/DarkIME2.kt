@@ -193,8 +193,23 @@ class DarkIME2 : InputMethodService() {
             override fun onSuggestionClick(text: String) {
                 val ic = currentInputConnection ?: return
 
-                // Determinar la palabra a reemplazar.
-                // Prioridad: composing activo (más confiable que getTextBeforeCursor)
+                // ── Terminal SSH: getTextBeforeCursor="" y composing="" ──────
+                // Usar terminalBuffer para saber qué borrar, backspaces reales para borrarlo.
+                if (isTerminalMode && terminalBuffer.isNotEmpty()) {
+                    val partial = terminalBuffer.toString()
+                    val t = System.currentTimeMillis()
+                    // Enviar N backspaces para borrar la palabra parcial tipada
+                    repeat(partial.length) {
+                        ic.sendKeyEvent(KeyEvent(t, t, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL, 0))
+                        ic.sendKeyEvent(KeyEvent(t, t, KeyEvent.ACTION_UP,   KeyEvent.KEYCODE_DEL, 0))
+                    }
+                    terminalBuffer.clear()
+                    ic.commitText(text, 1)  // sin espacio — en terminal el espacio lo pone el usuario
+                    updateSuggestions()
+                    return
+                }
+
+                // ── Apps normales ─────────────────────────────────────────────
                 val composing = autocorrect.getComposing()
                 val partial: String
 
@@ -211,13 +226,10 @@ class DarkIME2 : InputMethodService() {
                     updateSuggestions()
                     return
                 } else {
-                    // Sin composing — obtener última palabra del texto
                     val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
                     partial = if (!before.endsWith(" "))
                         before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
                     else ""
-                    // Siempre borrar la palabra parcial, sin importar si la sugerencia
-                    // la "extiende" o la "corrige" (ej: "teh"→"the" no es prefijo)
                     if (partial.isNotEmpty()) {
                         ic.deleteSurroundingText(partial.length, 0)
                     }
