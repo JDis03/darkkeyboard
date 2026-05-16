@@ -182,29 +182,44 @@ class DarkIME2 : InputMethodService() {
         suggestionBarView?.listener = object : SuggestionBarView.Listener {
             override fun onSuggestionClick(text: String) {
                 val ic = currentInputConnection ?: return
-                val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
-                val endsWithSpace = before.endsWith(" ")
-                val partial = if (!endsWithSpace) before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: "" else ""
 
-                // Reemplazar palabra parcial si la sugerencia la completa
-                if (partial.isNotEmpty() && text.startsWith(partial, ignoreCase = true)) {
-                    ic.deleteSurroundingText(partial.length, 0)
+                // Determinar la palabra a reemplazar.
+                // Prioridad: composing activo (más confiable que getTextBeforeCursor)
+                val composing = autocorrect.getComposing()
+                val partial: String
+
+                if (composing.isNotEmpty()) {
+                    // Hay palabra en composición — finalizarla y borrarla
+                    ic.finishComposingText()
+                    autocorrect.onFinishComposing()
+                    ic.deleteSurroundingText(composing.length, 0)
+                    partial = composing
+                } else {
+                    // Sin composing — obtener última palabra del texto
+                    val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                    partial = if (!before.endsWith(" "))
+                        before.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
+                    else ""
+                    // Siempre borrar la palabra parcial, sin importar si la sugerencia
+                    // la "extiende" o la "corrige" (ej: "teh"→"the" no es prefijo)
+                    if (partial.isNotEmpty()) {
+                        ic.deleteSurroundingText(partial.length, 0)
+                    }
                 }
 
-                // Respetar el case del usuario: si escribió minúscula, insertar minúscula
+                // Preservar case del usuario
                 val toInsert = if (partial.isNotEmpty() && partial[0].isLowerCase() && text[0].isUpperCase()) {
                     text.replaceFirstChar { it.lowercase() }
-                } else {
-                    text
-                }
+                } else text
+
                 ic.commitText("$toInsert ", 1)
 
                 // Aprender del usuario
                 if (::suggestionEngine.isInitialized) {
+                    val before = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
                     suggestionEngine.onSuggestionAccepted(toInsert, before)
                 }
 
-                // Actualizar sugerencias para la siguiente palabra
                 updateSuggestions()
             }
             override fun onClipboardClick() {
