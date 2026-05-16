@@ -14,10 +14,13 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.dark.keyboard.autocorrect.AutocorrectEngine
+import org.dark.keyboard.autocorrect.PersonalDictionary
+import org.dark.keyboard.autocorrect.WordDictionary
 
 /**
- * InputMethodService simple y funcional
- * Sin complejidad innecesaria - solo mostrar teclado y escribir
+ * InputMethodService con autocorrección nivel 3.
  */
 class DarkIME2 : InputMethodService() {
     
@@ -26,7 +29,13 @@ class DarkIME2 : InputMethodService() {
     private var isSymbolsMode = false
     private lateinit var prefs: SharedPreferences
     private val imeScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-    
+
+    // ── Autocorrect ──────────────────────────────────────────────────────
+    private lateinit var wordDict: WordDictionary
+    private lateinit var personalDict: PersonalDictionary
+    private lateinit var autocorrect: AutocorrectEngine
+    private var currentLang = "es"
+
     companion object {
         private const val TAG = "DarkIME2"
         private const val KEYCODE_DELETE = -5
@@ -37,6 +46,17 @@ class DarkIME2 : InputMethodService() {
     override fun onCreate() {
         super.onCreate()
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
+        // Inicializar autocorrect en background
+        wordDict     = WordDictionary(this)
+        personalDict = PersonalDictionary(this)
+        autocorrect  = AutocorrectEngine(this, wordDict, personalDict)
+        autocorrect.initialize()
+        currentLang  = prefs.getString("suggestion_language", "es") ?: "es"
+        imeScope.launch(Dispatchers.IO) {
+            wordDict.load(currentLang)
+            Log.i(TAG, "WordDictionary ready for $currentLang")
+        }
         
         // Listen for preference changes
         prefs.registerOnSharedPreferenceChangeListener { _, key ->
@@ -63,12 +83,29 @@ class DarkIME2 : InputMethodService() {
         super.onStartInput(attribute, restarting)
         Log.e(TAG, "=== onStartInput() inputType=${attribute?.inputType} ===")
 
-        // Reload keyboard and re-apply theme from preferences each time
-        // (SharedPreferences listeners don't work reliably across processes)
-        if (!isSymbolsMode) {
-            reloadKeyboard()
-        }
+        // Resetear autocorrect — previene ghost-composing entre campos
+        autocorrect.reset()
+        autocorrect.onEditorChanged(attribute)
+
+        if (!isSymbolsMode) reloadKeyboard()
         applyTheme()
+    }
+
+    override fun onFinishInput() {
+        // Finalizar composing antes de perder el campo — previene texto duplicado
+        currentInputConnection?.finishComposingText()
+        autocorrect.reset()
+        super.onFinishInput()
+    }
+
+    override fun onUpdateSelection(
+        oldSelStart: Int, oldSelEnd: Int,
+        newSelStart: Int, newSelEnd: Int,
+        candidatesStart: Int, candidatesEnd: Int
+    ) {
+        super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+        // Detectar movimiento externo del cursor (tap del usuario en otro punto)
+        autocorrect.onCursorMoved(newSelStart)
     }
     
     override fun onEvaluateFullscreenMode(): Boolean {
@@ -128,54 +165,131 @@ class DarkIME2 : InputMethodService() {
         Log.i(TAG, ">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
 
         when (code) {
+
+            // ── Backspace ─────────────────────────────────────────────────
             KEYCODE_DELETE -> {
                 if (ctrl) {
+                    autocorrect.onFinishComposing()
+                    ic.finishComposingText()
                     deleteWord(ic)
                 } else {
-                    ic.deleteSurroundingText(1, 0)
+                    when (val result = autocorrect.onBackspace()) {
+                        is AutocorrectEngine.BackspaceResult.UndoCorrection -> {
+                            val r = result.record
+                            // Borrar " corrected" (espacio + palabra corregida)
+                            val deleteCount = r.corrected.length + 1
+                            if (ic.deleteSurroundingText(deleteCount, 0)) {
+                                ic.setComposingText(r.original, 1)
+                                Log.i(TAG, "Undo: '${r.corrected}' → '${r.original}'")
+                            }
+                        }
+                        is AutocorrectEngine.BackspaceResult.UpdateComposing -> {
+                            if (result.remaining.isEmpty()) {
+                                ic.commitText("", 1)
+                            } else {
+                                ic.setComposingText(result.remaining, 1)
+                            }
+                        }
+                        AutocorrectEngine.BackspaceResult.Normal -> {
+                            ic.deleteSurroundingText(1, 0)
+                        }
+                    }
                 }
             }
+
+            // ── Space ─────────────────────────────────────────────────────
+            ' '.code -> {
+                val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
+                when (val result = autocorrect.onSpace(textBefore)) {
+                    is AutocorrectEngine.SpaceResult.Corrected -> {
+                        // Finalizar composing antes de modificar texto
+                        ic.finishComposingText()
+                        // Borrar la palabra tipada y reemplazar con corrección
+                        ic.deleteSurroundingText(result.original.length, 0)
+                        ic.commitText("${result.corrected} ", 1)
+                        Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}'")
+                    }
+                    AutocorrectEngine.SpaceResult.PeriodInserted -> {
+                        ic.finishComposingText()
+                        ic.deleteSurroundingText(1, 0)  // quitar el espacio anterior
+                        ic.commitText(". ", 1)
+                        Log.i(TAG, "Double-space → period")
+                    }
+                    AutocorrectEngine.SpaceResult.Normal -> {
+                        ic.finishComposingText()
+                        ic.commitText(" ", 1)
+                    }
+                }
+            }
+
+            // ── Teclas especiales — finalizan composing ───────────────────
             KEYCODE_SHIFT -> { }
             Key.CODE_CTRL_LEFT -> { }
             Key.CODE_ALT_LEFT -> { }
             Key.CODE_MODE_CHANGE -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 Log.i(TAG, "MODE_CHANGE pressed, switching layout...")
                 switchLayout()
             }
             KEYCODE_ENTER -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ENTER, shift, ctrl, alt, fn)
             }
             Key.CODE_TAB -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_TAB, shift, ctrl, alt, fn)
             }
             Key.CODE_ESCAPE -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_ESCAPE, shift, ctrl, alt, fn)
             }
             Key.CODE_FORWARD_DEL -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_FORWARD_DEL, shift, ctrl, alt, fn)
             }
             Key.CODE_HOME -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_HOME, shift, ctrl, alt, fn)
             }
             Key.CODE_END -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_MOVE_END, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_UP -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_PAGE_DOWN -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_PAGE_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_UP -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_UP, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_DOWN -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_DOWN, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_LEFT -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_LEFT, shift, ctrl, alt, fn)
             }
             Key.CODE_DPAD_RIGHT -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 sendModifiedKeyDownUp(KeyEvent.KEYCODE_DPAD_RIGHT, shift, ctrl, alt, fn)
             }
             Key.CODE_CLOSE -> {
@@ -188,32 +302,64 @@ class DarkIME2 : InputMethodService() {
                 Log.d(TAG, "Showing IME picker")
             }
             in SimpleKeyboardView.KEYCODE_FKEY_F1..SimpleKeyboardView.KEYCODE_FKEY_F12 -> {
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
                 val fKeyNumber = SimpleKeyboardView.KEYCODE_FKEY_F1 - code + 1
                 val keycode = KeyEvent.KEYCODE_F1 + (fKeyNumber - 1)
                 sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
             }
+
+            // ── Caracteres regulares ──────────────────────────────────────
             else -> {
                 if (code > 0 && code < 127) {
                     if (ctrl || alt) {
+                        // Ctrl/Alt combos — finalizar composing primero
+                        autocorrect.onFinishComposing()
+                        ic.finishComposingText()
                         val keycode = when (code.toChar().lowercaseChar()) {
                             in 'a'..'z' -> KeyEvent.KEYCODE_A + (code.toChar().lowercaseChar() - 'a')
-                            ' ' -> KeyEvent.KEYCODE_SPACE
+                            ' '         -> KeyEvent.KEYCODE_SPACE
                             else -> {
                                 var char = code.toChar().toString()
-                                if (shift && code in 'a'.code..'z'.code) {
-                                    char = char.uppercase()
-                                }
+                                if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
                                 ic.commitText(char, 1)
                                 return
                             }
                         }
                         sendModifiedKeyDownUp(keycode, shift, ctrl, alt, fn)
                     } else {
-                        var char = code.toChar().toString()
-                        if (shift && code in 'a'.code..'z'.code) {
-                            char = char.uppercase()
+                        val c = code.toChar()
+                        val isLetter = c.isLetter()
+
+                        if (isLetter) {
+                            // ── Letra: pasar por autocorrect ─────────────
+                            var char = c.toString()
+                            if (shift) char = char.uppercase()
+
+                            // Auto-capitalización después de ". " etc.
+                            if (!shift) {
+                                val textBefore = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                                if (autocorrect.shouldCapitalizeNext(textBefore)) {
+                                    char = char.uppercase()
+                                }
+                            }
+
+                            when (val result = autocorrect.onCharacter(char[0])) {
+                                is AutocorrectEngine.CharResult.UpdateComposing -> {
+                                    ic.setComposingText(result.composing, 1)
+                                }
+                                is AutocorrectEngine.CharResult.CommitDirect -> {
+                                    ic.commitText(result.char, 1)
+                                }
+                            }
+                        } else {
+                            // ── Puntuación u otro char — finaliza composing
+                            autocorrect.onFinishComposing()
+                            ic.finishComposingText()
+                            var char = c.toString()
+                            if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
+                            ic.commitText(char, 1)
                         }
-                        ic.commitText(char, 1)
                     }
                 }
             }
