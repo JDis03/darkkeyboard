@@ -42,7 +42,8 @@ object AppInputProfile {
         "com.sonelli.juicessh", "net.schmizz.sshj",
         "com.github.damus_io", "org.dark.ssh", "com.blink.terminal",
         "net.xnano.android.sshclient", "de.mud.terminal",
-        "com.iiordanov.bVNC", "com.freerdp", "org.dark.rdp"
+        "com.iiordanov.bVNC", "com.freerdp", "org.dark.rdp",
+        "com.darkssh.client", "com.darkrdp.client"
     )
 
     // Paquetes WebView conocidos (navegadores)
