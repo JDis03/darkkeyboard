@@ -76,8 +76,11 @@ class AutocorrectEngine(
     // Última corrección aplicada (para undo con backspace)
     private var lastCorrection: CorrectionRecord? = null
 
-    // Pares rechazados: "typed→corrected"
+    // Pares rechazados permanentemente (persisten en SharedPreferences)
     private val rejectedPairs = mutableSetOf<String>()
+    
+    // Pares rechazados para esta sesión (solo in-memory, se limpia en reset)
+    private val sessionRejected = mutableSetOf<String>()
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences("autocorrect_prefs", Context.MODE_PRIVATE)
@@ -123,6 +126,7 @@ class AutocorrectEngine(
         composingWord = ""
         lastCorrection = null
         expectedCursorPos = -1
+        sessionRejected.clear()  // Nueva sesión → limpiar rechazos temporales
     }
 
     /**
@@ -262,10 +266,11 @@ class AutocorrectEngine(
         val corr = lastCorrection
         if (corr != null) {
             lastCorrection = null
-            // Rechazar inmediatamente para evitar loop infinito
+            // Rechazar para esta sesión (no permanente) — evita re-corrección inmediata
+            // pero permite que funcione en próximas sesiones/campos
             val pair = "${corr.original.lowercase()}→${corr.corrected.lowercase()}"
-            rejectedPairs.add(pair)
-            saveRejected()
+            sessionRejected.add(pair)
+            Log.d(TAG, "Session reject: $pair (not persisted)")
             return BackspaceResult.UndoCorrection(corr)
         }
 
@@ -336,9 +341,12 @@ class AutocorrectEngine(
         if (hint != null) {
             val h = hint.lowercase().trim()
             val hintDist = levenshteinSimple(t, h)
-            if (h != t && h.length >= MIN_WORD_LENGTH && hintDist <= 2) {
+            // El hint viene del suggestion engine con contexto bigram → más confiable
+            // que edit distance puro. No aplicar MIN_WORD_LENGTH aquí (permite "teh→the")
+            if (h != t && h.length >= 2 && hintDist <= 2) {
                 val pairKey = "$t→$h"
-                if (!rejectedPairs.contains(pairKey)) {
+                // Chequear rechazos (permanentes + sesión)
+                if (!rejectedPairs.contains(pairKey) && !sessionRejected.contains(pairKey)) {
                     val hintFreq = dict.getFreq(h)
                     // Solo aplicar hint si la palabra tipada es un error
                     if (!typedIsInDict && hintFreq >= MIN_CANDIDATE_FREQ) {
@@ -360,7 +368,8 @@ class AutocorrectEngine(
         val dist = levenshteinSimple(t, best.word)
 
         val pairKey = "$t→${best.word}"
-        if (rejectedPairs.contains(pairKey)) return null
+        // Chequear rechazos (permanentes + sesión)
+        if (rejectedPairs.contains(pairKey) || sessionRejected.contains(pairKey)) return null
         val threshold = THRESHOLD[dist] ?: return null
         if (bestFreq < MIN_CANDIDATE_FREQ) return null
         if (bestFreq < typedFreq * threshold) return null
@@ -377,9 +386,10 @@ class AutocorrectEngine(
 
     private fun isMidSentenceProperNoun(word: String, textBefore: String): Boolean {
         if (word.isEmpty() || !word[0].isUpperCase()) return false
-        val t = textBefore.trimEnd()
-        val isStartOfSentence = t.isEmpty() ||
-            t.endsWith(".") || t.endsWith("!") || t.endsWith("?") || t.endsWith("\n")
+        // textBefore puede incluir la palabra tipada — removerla para obtener contexto real
+        val context = textBefore.trimEnd().removeSuffix(word).trimEnd()
+        val isStartOfSentence = context.isEmpty() ||
+            context.endsWith(".") || context.endsWith("!") || context.endsWith("?") || context.endsWith("\n")
         return !isStartOfSentence
     }
 

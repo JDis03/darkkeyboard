@@ -205,6 +205,12 @@ class DarkIME2 : InputMethodService() {
                     }
                     terminalBuffer.clear()
                     ic.commitText(text, 1)  // sin espacio — en terminal el espacio lo pone el usuario
+                    
+                    // Alimentar learning engine — en terminal no hay contexto previo (getTextBeforeCursor = "")
+                    if (::suggestionEngine.isInitialized) {
+                        suggestionEngine.onSuggestionAccepted(text, "")
+                    }
+                    
                     updateSuggestions()
                     return
                 }
@@ -325,7 +331,14 @@ class DarkIME2 : InputMethodService() {
                         is AutocorrectEngine.BackspaceResult.UndoCorrection -> {
                             val r = result.record
                             ic.finishComposingText()
-                            if (ic.deleteSurroundingText(r.corrected.length + 1, 0)) {
+                            
+                            // Validar que el cursor está donde esperamos (no se movió externamente)
+                            val currentCursorPos = ic.getTextBeforeCursor(0, 0)?.length ?: -1
+                            if (r.cursorAfter != -1 && currentCursorPos != r.cursorAfter) {
+                                // Cursor se movió — el undo sería peligroso, borrar normal
+                                Log.w(TAG, "Undo aborted: cursor moved ($currentCursorPos != ${r.cursorAfter})")
+                                sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
+                            } else if (ic.deleteSurroundingText(r.corrected.length + 1, 0)) {
                                 ic.setComposingText(r.original, 1)
                                 Log.i(TAG, "Undo autocorrect: '${r.corrected}' → '${r.original}'")
                             }
@@ -363,11 +376,32 @@ class DarkIME2 : InputMethodService() {
                             ic.deleteSurroundingText(result.original.length, 0)
                             ic.commitText("${result.corrected} ", 1)
                         }
-                        Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}'")
+                        // Guardar posición del cursor post-corrección para validar undo
+                        val cursorPos = ic.getTextBeforeCursor(0, 0)?.length ?: -1
+                        autocorrect.updateExpectedCursor(cursorPos)
+                        
+                        // Alimentar el learning engine con la corrección aplicada
+                        if (::suggestionEngine.isInitialized) {
+                            // Remover la palabra original (typo) del contexto antes de aprender
+                            val cleanContext = textBefore.trimEnd()
+                                .removeSuffix(result.original)
+                                .trimEnd()
+                            suggestionEngine.onSuggestionAccepted(result.corrected, cleanContext)
+                        }
+                        
+                        Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}' @ $cursorPos")
                     }
                     AutocorrectEngine.SpaceResult.PeriodInserted -> {
                         ic.finishComposingText()
-                        ic.deleteSurroundingText(1, 0)
+                        // Contar cuántos espacios hay antes del cursor y borrar todos
+                        var spacesToDelete = 0
+                        val beforeText = ic.getTextBeforeCursor(10, 0)?.toString() ?: ""
+                        for (i in beforeText.length - 1 downTo 0) {
+                            if (beforeText[i] == ' ') spacesToDelete++ else break
+                        }
+                        if (spacesToDelete > 0) {
+                            ic.deleteSurroundingText(spacesToDelete, 0)
+                        }
                         ic.commitText(". ", 1)
                     }
                     AutocorrectEngine.SpaceResult.Normal -> {
