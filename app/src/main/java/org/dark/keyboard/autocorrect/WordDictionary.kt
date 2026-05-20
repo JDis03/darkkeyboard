@@ -1,7 +1,7 @@
 package org.dark.keyboard.autocorrect
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 
 /**
  * Diccionario de palabras para autocorrección.
@@ -16,7 +16,7 @@ import android.util.Log
 class WordDictionary(private val context: Context) {
 
     companion object {
-        private const val TAG = "WordDict"
+
 
         val DICT_FILES = mapOf(
             "es" to "dict_es.txt",
@@ -62,9 +62,9 @@ class WordDictionary(private val context: Context) {
             wordsByLang[lang] = entries
             freqIndexByLang[lang] = entries.associate { it.word to it.freq }
             isReady = true
-            Log.i(TAG, "Loaded ${entries.size} words for '$lang'")
+            Timber.i("Loaded ${entries.size} words for '$lang'")
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to load $file: ${e.message}")
+            Timber.e("Failed to load $file: ${e.message}")
             isReady = false
         }
     }
@@ -132,29 +132,53 @@ class WordDictionary(private val context: Context) {
         return results.sortedByDescending { it.freq }
     }
 
-    // ---- Levenshtein ----
-    // Reutiliza arrays para no allocar en cada llamada
-    private val dp1 = IntArray(32)
-    private val dp2 = IntArray(32)
+    // ---- Damerau-Levenshtein ----
+    // Soporta transposiciones: "teh"→"the" = dist 1 (no 2 como Levenshtein puro)
+    // Operaciones: inserción, eliminación, sustitución, transposición adyacente
 
+    /**
+     * Damerau-Levenshtein con transposiciones adyacentes.
+     * Más preciso que Levenshtein para errores de teclado comunes.
+     *
+     * Ejemplos:
+     *   levenshtein("teh", "the") = 2 (sustituir e→h, h→e)
+     *   damerauLevenshtein("teh", "the") = 1 (transponer eh→he)
+     */
     internal fun levenshtein(a: String, b: String): Int {
-        val m = a.length; val n = b.length
+        return damerauLevenshtein(a, b)
+    }
+
+    private fun damerauLevenshtein(a: String, b: String): Int {
+        val m = a.length
+        val n = b.length
         if (m == 0) return n
         if (n == 0) return m
 
-        // Asegurar espacio suficiente (palabras hasta 31 chars)
-        val prev = if (n < dp1.size) dp1 else IntArray(n + 1)
-        val curr = if (n < dp2.size) dp2 else IntArray(n + 1)
+        // Matriz completa necesaria para transposiciones (no se puede optimizar a 2 filas)
+        val d = Array(m + 1) { IntArray(n + 1) }
 
-        for (j in 0..n) prev[j] = j
+        for (i in 0..m) d[i][0] = i
+        for (j in 0..n) d[0][j] = j
+
         for (i in 1..m) {
-            curr[0] = i
             for (j in 1..n) {
-                curr[j] = if (a[i - 1] == b[j - 1]) prev[j - 1]
-                else 1 + minOf(prev[j], curr[j - 1], prev[j - 1])
+                val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+
+                d[i][j] = minOf(
+                    d[i - 1][j] + 1,      // eliminación
+                    d[i][j - 1] + 1,      // inserción
+                    d[i - 1][j - 1] + cost // sustitución
+                )
+
+                // Transposición adyacente
+                if (i > 1 && j > 1 &&
+                    a[i - 1] == b[j - 2] &&
+                    a[i - 2] == b[j - 1]
+                ) {
+                    d[i][j] = minOf(d[i][j], d[i - 2][j - 2] + cost)
+                }
             }
-            for (j in 0..n) prev[j] = curr[j]
         }
-        return prev[n]
+        return d[m][n]
     }
 }

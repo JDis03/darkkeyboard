@@ -2,7 +2,7 @@ package org.dark.keyboard
 
 import android.content.Context
 import android.content.res.Resources
-import android.util.Log
+import timber.log.Timber
 import android.util.TypedValue
 import android.util.Xml
 import org.xmlpull.v1.XmlPullParser
@@ -18,7 +18,7 @@ class SimpleKeyboard(
     val allKeys: List<Key> get() = rows.flatMap { it.keys }
 
     companion object {
-        private const val TAG = "SimpleKeyboard"
+
 
         fun fromXml(
             context: Context,
@@ -39,7 +39,7 @@ class SimpleKeyboard(
             showExtensionRow: Boolean = true
         ): SimpleKeyboard {
             val xmlString = inputStream.bufferedReader().readText()
-            Log.d(TAG, "Parsing custom layout XML (${xmlString.length} chars):\n${xmlString.take(300)}")
+            Timber.d("Parsing custom layout XML (${xmlString.length} chars):\n${xmlString.take(300)}")
             val parser = Xml.newPullParser()
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
             parser.setInput(xmlString.reader())
@@ -62,7 +62,7 @@ class SimpleKeyboard(
             val maxHeight = screenHeight * 0.38f
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
-            Log.d(TAG, "Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
+            Timber.d("Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
             val verticalGapPx = (6.0f * density).toInt()
             val horizontalGapPx = (1.5f * density).toInt()
 
@@ -75,8 +75,8 @@ class SimpleKeyboard(
             val rowHeight = (availableHeightForRows * 0.21f).toInt()  
             val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
             
-            Log.d(TAG, "Height calc: keyboard=$keyboardHeight, available=$availableHeightForRows")
-            Log.d(TAG, "Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
+            Timber.d("Height calc: keyboard=$keyboardHeight, available=$availableHeightForRows")
+            Timber.d("Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
             val defaultKeyWidth = screenWidth / 10
 
             val rows = mutableListOf<KeyboardRow>()
@@ -96,7 +96,7 @@ class SimpleKeyboard(
                 while (eventType != XmlPullParser.END_DOCUMENT) {
                     if (eventType == XmlPullParser.START_TAG && parser.name == "Row") {
                         tagCount++
-                        Log.d(TAG, "Parser saw Row START_TAG #$tagCount")
+                        Timber.d("Parser saw Row START_TAG #$tagCount")
                     }
                     when (eventType) {
                         XmlPullParser.START_TAG -> {
@@ -132,23 +132,23 @@ class SimpleKeyboard(
                                     val hasKeyboardMode = getAttrValue(parser, "keyboardMode") != null
                                     val isExtension = getAttrValue(parser, "extension").toBoolean(default = false)
                                     
-                                    Log.d(TAG, "ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode")
+                                     Timber.d("ROW START: rowCount=$rowCount, hasKeyboardMode=$hasKeyboardMode")
                                     
                                     val rowKeys = mutableListOf<Key>()
                                     
                                     // Skip rows con keyboardMode - son alternativas que Android debería filtrar
                                     // Pero nuestro parser simple no soporta modes, entonces skip
                                     if (hasKeyboardMode) {
-                                        Log.d(TAG, "  -> WILL SKIP this row (has keyboardMode)")
+                                         Timber.d("  -> WILL SKIP this row (has keyboardMode)")
                                         currentRow = null
                                     } else if (isExtension && !showExtensionRow) {
-                                        Log.d(TAG, "  -> WILL SKIP extension row (user preference)")
+                                         Timber.d("  -> WILL SKIP extension row (user preference)")
                                         currentRow = null
                                     } else if (rowCount >= 6) {
-                                        Log.d(TAG, "  -> WILL SKIP: already have 6 rows")
+                                         Timber.d("  -> WILL SKIP: already have 6 rows")
                                         currentRow = null
                                     } else {
-                                        Log.d(TAG, "  -> WILL CREATE row")
+                                         Timber.d("  -> WILL CREATE row")
                                         currentRow = KeyboardRow(
                                             keys = rowKeys,
                                             isExtension = isExtension,
@@ -218,7 +218,7 @@ class SimpleKeyboard(
                                         
                                         // Debug log for special keys
                                         if (code == 9 || code == 10) {
-                                            Log.d(TAG, "Parsed special key: label=$labelAttr code=$code")
+                                             Timber.d("Parsed special key: label=$labelAttr code=$code")
                                         }
 
                                         val key = Key(
@@ -237,7 +237,7 @@ class SimpleKeyboard(
                                         )
                                         row.keys.add(key)
                                         currentX += keyWidth
-                                        Log.d(TAG, "Added key: label=$labelAttr, code=$code, x=${key.x}, width=${key.width}")
+                                         Timber.d("Added key: label=$labelAttr, code=$code, x=${key.x}, width=${key.width}")
                                     }
                                 }
                             }
@@ -246,13 +246,13 @@ class SimpleKeyboard(
                             when (parser.name) {
                                 "Row" -> {
                                     currentRow?.let { row ->
-                                        Log.d(TAG, "Closing Row: keyboardMode=${row.keyboardMode}, keys=${row.keys.size}, rowCount=$rowCount")
+                                         Timber.d("Closing Row: keyboardMode=${row.keyboardMode}, keys=${row.keys.size}, rowCount=$rowCount")
                                         if (row.keyboardMode == -1 || row.keyboardMode == 0) {
                                             // Centrar row si no usa todo el ancho
                                             val totalRowWidth = row.keys.sumOf { it.width + keyboardHorizontalGap }
                                             if (totalRowWidth < screenWidth) {
                                                 val offset = (screenWidth - totalRowWidth) / 2
-                                                Log.d(TAG, "  -> Centering row: totalWidth=$totalRowWidth, offset=$offset")
+                                                 Timber.d("  -> Centering row: totalWidth=$totalRowWidth, offset=$offset")
                                                 row.keys.forEach { key ->
                                                     key.x += offset
                                                 }
@@ -261,9 +261,9 @@ class SimpleKeyboard(
                                             rows.add(row)
                                             currentY += row.defaultKeyHeight + keyboardVerticalGap
                                             rowCount++
-                                            Log.d(TAG, "  -> Added row #$rowCount with ${row.keys.size} keys")
+                                             Timber.d("  -> Added row #$rowCount with ${row.keys.size} keys")
                                         } else {
-                                            Log.d(TAG, "  -> SKIPPED row (keyboardMode=${row.keyboardMode})")
+                                             Timber.d("  -> SKIPPED row (keyboardMode=${row.keyboardMode})")
                                         }
                                     }
                                     currentRow = null
@@ -274,7 +274,7 @@ class SimpleKeyboard(
                     eventType = parser.next()
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Error parsing keyboard XML", e)
+                Timber.e(e, "Error parsing keyboard XML")
             }
 
             val actualHeight = if (rows.isNotEmpty()) {
@@ -285,12 +285,12 @@ class SimpleKeyboard(
             }
 
             val totalKeys = rows.sumOf { it.keys.size }
-            Log.e(TAG, "=== PARSED: ${rows.size} rows, $totalKeys keys, height=$actualHeight, width=$screenWidth ===")
+            Timber.e("=== PARSED: ${rows.size} rows, $totalKeys keys, height=$actualHeight, width=$screenWidth ===")
             if (rows.isNotEmpty()) {
                 rows.forEachIndexed { i, r ->
-                    Log.e(TAG, "  Row[$i]: ${r.keys.size} keys, y=${r.y}, height=${r.defaultKeyHeight}, isExtension=${r.isExtension}")
+                    Timber.e("  Row[$i]: ${r.keys.size} keys, y=${r.y}, height=${r.defaultKeyHeight}, isExtension=${r.isExtension}")
                     r.keys.take(3).forEachIndexed { j, k ->
-                        Log.e(TAG, "    Key[$j]: label='${k.label}' code=${k.code} x=${k.x} y=${k.y} w=${k.width} h=${k.height}")
+                        Timber.e("    Key[$j]: label='${k.label}' code=${k.code} x=${k.x} y=${k.y} w=${k.width} h=${k.height}")
                     }
                 }
             }

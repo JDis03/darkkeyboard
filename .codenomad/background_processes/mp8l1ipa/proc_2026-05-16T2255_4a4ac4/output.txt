@@ -2582,3 +2582,1848 @@
 05-16 19:32:38.443 15500 15500 I DarkIME2: Applied theme: Dark (Default)
 05-16 19:32:38.443 15500 15500 I DarkIME2: Keyboard reloaded
 05-16 19:32:38.443 15500 15500 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:32:39.465 19170 19170 E DarkIME2: === onCreate() CALLED ===
+05-16 19:32:39.474 19170 19170 I Autocorrect: Init: 12 rejected pairs loaded
+05-16 19:32:39.543 19170 19170 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:32:39.543 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:32:39.543 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:32:39.543 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:32:39.809 19170 19309 I WordDict: Loaded 8000 words for 'es'
+05-16 19:32:39.809 19170 19309 I DarkIME2: Suggestion engine: Dict+Overlay (es)
+05-16 19:33:28.402 19170 19170 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:33:28.402 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:28.402 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:28.410 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:29.675 19170 19170 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:33:29.675 19170 19170 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:33:29.675 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:29.675 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:29.675 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:31.952 19170 19170 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:33:31.952 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:33:31.952 19170 19170 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:33:31.952 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:31.957 19170 19170 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:33:31.960 19170 19170 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:33:31.964 19170 19170 E DarkIME2: === onCreateInputView CALLED ===
+05-16 19:33:31.981 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:31.981 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:31.994 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:31.994 19170 19170 I DarkIME2: Keyboard created
+05-16 19:33:41.292 19170 19170 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:33:41.292 19170 19170 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:33:41.292 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:41.293 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:41.293 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:41.293 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:41.299 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:41.299 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:41.299 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:43.683 19170 19170 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:33:43.683 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:33:43.683 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:43.684 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:43.684 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:43.690 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:43.690 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:43.690 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:53.941 19170 19170 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:33:53.941 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:53.941 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:53.941 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:53.941 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:53.951 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:53.951 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:53.951 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:55.101 19170 19170 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:33:55.101 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:33:55.101 19170 19170 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:33:55.102 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:55.102 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:55.110 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:55.110 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:55.110 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:55.118 19170 19170 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:33:55.119 19170 19170 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:33:57.065 19170 19170 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:33:57.065 19170 19170 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:33:57.065 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:57.065 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:57.065 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:57.065 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:57.072 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:57.072 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:57.072 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:58.407 19170 19170 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 19:33:58.407 19170 19170 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=131073 ===
+05-16 19:33:58.408 19170 19170 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:33:58.408 19170 19170 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:33:58.408 19170 19170 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:33:58.408 19170 19170 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:33:58.413 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:33:58.413 19170 19170 I DarkIME2: Keyboard reloaded
+05-16 19:33:58.413 19170 19170 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:23.034 16844 16844 E DarkIME2: === onCreate() CALLED ===
+05-16 19:34:23.037 16844 16844 I Autocorrect: Init: 12 rejected pairs loaded
+05-16 19:34:23.065 16844 16844 D InputProfile: STANDARD: pkg=org.dark.keyboard variation=0
+05-16 19:34:23.065 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+05-16 19:34:23.065 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:34:23.065 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:34:23.065 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:23.190 16844 19806 I WordDict: Loaded 8000 words for 'es'
+05-16 19:34:23.191 16844 19806 I DarkIME2: Suggestion engine: Dict+Overlay (es)
+05-16 19:34:24.783 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:34:24.783 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:34:24.783 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:34:24.783 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:34:24.783 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:28.222 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:34:28.222 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:34:28.222 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:34:28.222 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:28.225 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:34:28.226 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:34:28.226 16844 16844 E DarkIME2: === onCreateInputView CALLED ===
+05-16 19:34:28.232 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:34:28.232 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:34:28.239 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:28.239 16844 16844 I DarkIME2: Keyboard created
+05-16 19:34:42.357 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:42.670 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:44.019 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:45.871 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:48.239 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.114 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.165 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.216 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.267 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.319 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.370 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.421 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.472 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:52.480 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:53.007 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:53.250 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:54.314 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:54.531 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:54.723 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:34:56.966 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:34:56.966 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:34:56.966 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:34:56.966 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:34:56.966 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:34:56.966 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:34:56.971 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:56.971 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:34:56.971 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:59.446 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:34:59.446 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:34:59.446 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:34:59.447 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:34:59.447 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:34:59.451 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:59.451 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:34:59.451 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:34:59.458 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:34:59.458 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:35:01.940 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:02.238 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:03.654 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:04.978 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:07.876 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:10.150 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:12.667 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:14.178 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.684 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.736 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.788 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.839 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.890 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.941 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:15.992 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:16.043 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:16.094 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:16.145 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:16.197 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:16.206 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:19.805 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:35:19.805 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:35:19.805 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:35:19.805 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:35:19.806 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:35:19.806 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:35:19.811 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:19.811 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:35:19.811 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:20.551 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:35:20.551 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:35:20.551 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:35:20.551 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:35:20.551 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:35:20.555 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:20.555 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:35:20.555 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:46.601 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:35:46.601 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:35:46.601 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:35:46.601 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:35:46.601 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:35:46.606 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:46.606 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:35:46.606 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:47.848 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:35:47.848 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:35:47.848 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:35:47.848 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:35:47.848 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:35:47.852 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:47.852 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:35:47.852 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:35:47.852 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:35:47.852 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:35:48.647 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:48.921 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:49.171 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:49.604 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:52.939 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:54.109 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:54.410 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:54.790 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:55.450 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:55.919 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:56.331 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:35:57.792 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:00.116 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:01.991 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.043 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.094 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.145 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.195 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.246 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.297 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.348 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.399 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.450 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.504 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.555 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.607 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.658 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:02.690 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:36:13.180 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:36:13.180 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:36:13.180 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:36:13.180 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:36:13.180 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:36:13.181 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:36:13.184 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:36:13.184 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:36:13.184 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:36:16.776 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:36:16.776 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:36:16.776 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:36:16.776 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:36:16.776 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:36:16.781 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:36:16.781 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:36:16.781 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:36:21.139 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:36:21.139 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:36:21.139 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:36:21.139 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:36:21.139 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:36:21.146 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:36:21.146 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:36:21.146 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:20.097 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:38:20.098 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:38:20.098 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:38:20.098 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:38:20.098 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:38:20.102 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:20.102 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:38:20.102 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:20.315 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:38:20.315 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:38:20.315 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:38:20.315 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:38:20.315 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:38:20.320 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:20.320 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:38:20.320 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:40.471 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=49313 ===
+05-16 19:38:40.472 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:38:40.472 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:38:40.472 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:38:40.472 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:38:40.476 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:40.476 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:38:40.476 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:40.483 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:38:49.705 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:49.911 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:50.109 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:50.306 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:50.517 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:50.725 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:50.925 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:51.131 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:51.340 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:51.541 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:51.755 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:51.941 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:52.487 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:52.893 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:53.861 16844 16844 I DarkIME2: Modifiers active: Shift
+05-16 19:38:54.063 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=true, ctrl=false, alt=false, fn=false, metaState=1
+05-16 19:38:54.349 16844 16844 I DarkIME2: >>> handleKey: code=104 (h), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:55.672 16844 16844 I DarkIME2: >>> handleKey: code=10 (
+05-16 19:38:55.672 16844 16844 I DarkIME2: ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:38:55.713 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:38:55.713 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:38:55.713 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:38:55.713 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:38:55.713 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:38:55.717 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:38:55.717 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:38:55.717 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:01.453 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=49313 ===
+05-16 19:39:01.453 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:39:01.453 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:01.453 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:01.453 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:01.457 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:01.457 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:01.457 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:01.467 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:39:04.710 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:04.762 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:04.813 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:04.864 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:04.915 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:04.967 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.017 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.068 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.119 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.170 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.220 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.271 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.322 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.373 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.424 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.475 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:05.479 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:06.059 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:06.985 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:12.018 16844 16844 I DarkIME2: >>> handleKey: code=10 (
+05-16 19:39:12.018 16844 16844 I DarkIME2: ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:39:12.109 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:39:12.109 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:39:12.109 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:12.110 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:12.110 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:12.113 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:12.113 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:12.113 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:18.345 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=540833 ===
+05-16 19:39:18.345 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:39:18.345 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:18.345 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:18.345 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:18.351 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:18.351 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:18.351 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:18.357 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:39:22.013 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:39:22.013 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:39:22.014 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:22.014 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:22.014 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:22.016 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:22.016 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:22.016 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:27.363 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:39:27.363 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:39:27.363 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:27.363 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:27.363 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:27.366 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:27.366 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:27.366 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:27.371 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:39:34.169 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:39:34.169 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:39:34.169 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:34.169 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:34.169 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:34.171 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:34.171 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:34.171 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:34.222 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:39:34.222 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:39:34.222 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:34.222 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:34.222 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:34.224 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:34.224 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:34.224 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:34.273 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:39:50.198 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:39:50.198 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:39:50.198 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:39:50.199 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:39:50.199 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:39:50.201 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:39:50.201 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:39:50.201 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:21.087 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:47:21.087 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:47:21.087 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:47:21.087 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:47:21.088 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:47:21.088 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:47:21.091 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:21.091 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:47:21.091 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:21.574 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkssh.client.debug inputType=524432 ===
+05-16 19:47:21.574 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:47:21.574 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 19:47:21.574 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:47:21.574 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:47:21.577 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:21.577 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:47:21.577 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:21.582 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:47:21.582 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:47:25.431 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:47:25.431 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:47:25.431 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:47:25.431 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:47:25.431 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:47:25.431 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:47:25.433 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:25.433 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:47:25.433 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:29.162 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:47:29.162 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:47:29.162 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:47:29.162 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:47:29.163 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:47:29.163 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:47:29.165 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:29.165 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:47:29.165 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:37.166 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:47:37.166 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:47:37.166 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:47:37.166 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:47:37.166 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:47:37.166 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:47:37.169 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:47:37.169 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:47:37.169 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:14.836 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:48:14.836 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:48:14.836 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:48:14.836 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:48:14.836 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:48:14.838 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:14.838 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:48:14.838 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:37.721 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=540833 ===
+05-16 19:48:37.721 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:48:37.721 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:48:37.722 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:48:37.722 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:48:37.725 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:37.725 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:48:37.725 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:37.726 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:48:39.788 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:48:40.287 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:48:45.726 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:48:45.726 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:48:45.726 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:48:45.726 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:48:45.726 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:48:45.729 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:48:45.729 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:48:45.729 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:00.688 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:49:00.688 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:49:00.688 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:49:00.688 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:49:00.688 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:49:00.690 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:00.690 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:49:00.690 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:00.696 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:49:02.364 16844 16844 I DarkIME2: >>> handleKey: code=104 (h), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:02.563 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:02.636 16844 16844 I DarkIME2: >>> handleKey: code=121 (y), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:02.974 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:03.614 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:03.871 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:04.139 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:04.722 16844 16844 I DarkIME2: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:04.937 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:05.446 16844 16844 I DarkIME2: >>> handleKey: code=103 (g), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:05.704 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:06.286 16844 16844 I DarkIME2: >>> handleKey: code=113 (q), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:06.386 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:06.610 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:06.752 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:07.264 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:07.401 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:07.672 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:07.795 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:07.969 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:09.577 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:09.799 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:10.069 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:10.695 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:10.850 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:11.000 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:11.108 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:11.541 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:12.243 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:12.463 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:12.623 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:12.730 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:12.916 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:13.131 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:13.135 16844 16844 I DarkIME2: Autocorrect: 'todoa' → 'todos'
+05-16 19:49:13.968 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:14.166 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:14.356 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:14.506 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:14.891 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:15.114 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:15.331 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:15.832 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:16.416 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:16.528 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:16.760 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:17.372 16844 16844 I DarkIME2: >>> handleKey: code=119 (w), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:17.577 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:17.751 16844 16844 I DarkIME2: >>> handleKey: code=121 (y), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:18.047 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:18.178 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:18.369 16844 16844 I DarkIME2: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:18.570 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:18.906 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:19.424 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:19.600 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:19.782 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:20.421 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:20.608 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:20.723 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:21.812 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:22.067 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:22.308 16844 16844 I DarkIME2: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:23.301 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:23.550 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:24.597 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:24.796 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:25.047 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:26.323 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:26.554 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:26.752 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:26.981 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:27.777 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:27.917 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:28.160 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:28.294 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:28.536 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:28.930 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:29.629 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:29.850 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:30.068 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:30.240 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:30.502 16844 16844 I DarkIME2: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:30.771 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:31.326 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:31.343 16844 16844 I DarkIME2: Autocorrect: 'cribo' → 'creo'
+05-16 19:49:31.684 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:32.494 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:32.689 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:33.191 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:34.171 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:34.728 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:34.980 16844 16844 I DarkIME2: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:35.281 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:36.291 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:37.155 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:37.865 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:38.542 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:38.755 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:38.919 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:39.487 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:39.690 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:40.704 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:40.901 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:42.385 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:42.590 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:42.851 16844 16844 I DarkIME2: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:43.015 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:43.198 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:43.758 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:43.767 16844 16844 I DarkIME2: Autocorrect: 'envia' → 'encima'
+05-16 19:49:44.134 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:44.676 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:44.879 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:45.398 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:46.558 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:47.007 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:47.727 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:48.523 16844 16844 I DarkIME2: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:48.651 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:49.046 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:49.654 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:50.399 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:50.608 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:50.801 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:50.984 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:51.177 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:51.533 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:52.711 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:49:58.923 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:49:58.923 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:49:58.923 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:49:58.923 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:49:58.923 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:49:58.925 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:58.925 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:49:58.925 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:58.994 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:49:58.994 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:49:58.994 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:49:58.995 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:49:58.995 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:49:58.996 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:58.996 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:49:58.996 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:49:59.000 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:52:21.732 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:52:23.746 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:23.946 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:25.170 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:25.281 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:25.565 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:25.769 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:25.988 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:26.350 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:27.214 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:27.547 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:27.971 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:28.160 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:28.352 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:28.552 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:28.895 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:29.086 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:29.192 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:29.807 16844 16844 I DarkIME2: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:30.035 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:30.253 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:30.864 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:31.045 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:31.245 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:31.340 16844 16844 I DarkIME2: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:31.559 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:31.786 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:34.078 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:34.306 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:34.459 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:34.697 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:34.916 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:35.097 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:35.349 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:36.076 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:36.198 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:36.397 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:37.167 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:37.313 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:37.677 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:37.821 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:38.074 16844 16844 I DarkIME2: >>> handleKey: code=120 (x), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:38.263 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:38.482 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:38.733 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:39.104 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:39.741 16844 16844 I DarkIME2: >>> handleKey: code=121 (y), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:40.048 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:40.711 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:40.928 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:41.239 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:41.562 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:41.777 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:41.926 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:42.538 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:42.726 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:43.813 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:43.949 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:44.167 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:44.292 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:44.604 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:44.857 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:45.074 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:45.350 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:45.933 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.101 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.181 16844 16844 I DarkIME2: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.323 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.512 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.621 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:46.830 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:47.173 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:47.767 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:47.975 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:48.044 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:48.189 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:48.397 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:48.675 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:49.184 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:49.380 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:49.593 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:49.828 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:50.424 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:50.619 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:50.803 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:51.331 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:51.527 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:51.667 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:52.287 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:52.484 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:52.854 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:52.960 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:53.175 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:53.410 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:53.811 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 19:52:53.833 16844 16844 I DarkIME2: Autocorrect: 'opcion' → 'opción'
+05-16 19:52:57.571 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:52:57.571 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:52:57.571 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:52:57.571 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:52:57.571 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:52:57.573 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:52:57.573 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:52:57.573 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:52:57.609 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:52:57.610 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:52:57.610 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:52:57.610 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:52:57.610 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:52:57.612 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:52:57.612 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:52:57.612 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:52:57.669 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 19:54:25.215 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:54:25.215 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:54:25.215 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:54:25.215 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:54:25.215 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:54:25.217 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:25.217 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:54:25.217 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:26.045 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 19:54:26.045 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:54:26.045 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:54:26.045 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:54:26.045 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:54:26.048 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:26.048 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:54:26.048 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:27.351 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:54:27.351 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:54:27.351 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:54:27.351 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:54:27.352 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:54:27.352 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:54:27.354 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:27.354 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:54:27.354 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:48.841 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:54:48.841 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:54:48.841 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:54:48.841 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:54:48.841 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:54:48.841 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:54:48.843 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:48.843 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:54:48.843 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:51.075 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:54:51.075 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:54:51.075 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:54:51.075 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:54:51.075 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:54:51.075 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:54:51.078 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:54:51.078 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:54:51.078 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:18.414 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:55:18.414 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:55:18.414 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:55:18.414 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:55:18.414 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:55:18.414 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:55:18.416 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:18.416 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:55:18.416 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:20.366 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:55:20.366 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:55:20.366 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:55:20.366 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:55:20.366 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:55:20.366 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:55:20.367 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:20.367 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:55:20.368 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:21.364 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:55:21.365 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:55:21.365 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:55:21.365 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:55:21.365 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:55:21.365 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:55:21.367 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:55:21.367 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:55:21.368 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:02.143 16844 16844 D InputProfile: STANDARD: pkg=com.miui.gallery variation=0
+05-16 19:56:02.143 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.gallery variation=0 inputType=0 ===
+05-16 19:56:02.143 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:56:02.143 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:56:02.143 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:56:02.143 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:56:02.146 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:02.146 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:56:02.146 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:05.555 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 19:56:05.555 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 19:56:05.555 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 19:56:05.555 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:56:05.555 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:56:05.555 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:56:05.561 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:05.561 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:56:05.561 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:07.657 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 19:56:07.657 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 19:56:07.657 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 19:56:07.657 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 19:56:07.657 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 19:56:07.660 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 19:56:07.660 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 19:56:07.660 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:03:50.412 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:03:50.412 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:03:50.412 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:03:50.412 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:03:50.412 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:03:50.414 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:03:50.414 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:03:50.414 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:41.526 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:07:41.526 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:07:41.526 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:41.526 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:41.526 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:41.528 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:41.528 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:41.528 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:42.604 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:07:42.604 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:42.604 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:42.604 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:42.604 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:42.607 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:42.607 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:42.607 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:43.679 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:07:43.679 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:07:43.679 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:43.679 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:43.679 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:43.680 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:43.683 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:43.683 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:43.683 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:51.882 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:51.882 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:51.882 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:51.883 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:51.883 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:51.883 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:51.884 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:51.884 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:51.884 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:53.333 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:53.333 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:53.333 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:53.333 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:53.333 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:53.333 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:53.336 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:53.336 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:53.336 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:55.662 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:55.662 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:55.662 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:55.662 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:55.662 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:55.662 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:55.664 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:55.664 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:55.664 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:58.607 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:58.607 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:58.607 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:58.607 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:58.607 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:58.607 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:58.609 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:58.609 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:58.609 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:59.445 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:59.445 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:59.445 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:59.445 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:59.445 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:59.445 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:59.447 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:59.447 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:59.447 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:59.752 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:07:59.752 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:07:59.752 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:07:59.752 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:07:59.752 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:07:59.752 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:07:59.754 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:07:59.754 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:07:59.755 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:00.541 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:08:00.541 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:08:00.541 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:00.541 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:00.541 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:00.541 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:00.542 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:00.542 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:00.542 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:07.141 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:08:07.142 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:08:07.142 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:07.142 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:07.142 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:07.142 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:07.144 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:07.144 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:07.144 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:23.403 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.app.personas variation=0
+05-16 20:08:23.403 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.app.personas variation=0 inputType=0 ===
+05-16 20:08:23.403 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:23.403 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:23.403 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:23.403 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:23.405 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:23.405 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:23.405 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:25.656 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:08:25.656 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:08:25.656 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:25.656 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:25.656 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:25.656 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:25.658 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:25.658 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:25.658 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:27.924 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.sismo.mach variation=0
+05-16 20:08:27.924 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.sismo.mach variation=0 inputType=0 ===
+05-16 20:08:27.924 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:27.924 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:27.924 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:27.924 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:27.926 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:27.926 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:27.926 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:29.340 16844 16844 D InputProfile: STANDARD: pkg=com.android.systemui variation=0
+05-16 20:08:29.340 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.android.systemui variation=0 inputType=0 ===
+05-16 20:08:29.340 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:29.340 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:29.340 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:29.340 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:29.342 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:29.342 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:29.342 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:31.046 16844 16844 D InputProfile: STANDARD: pkg=cl.bci.sismo.mach variation=0
+05-16 20:08:31.046 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=cl.bci.sismo.mach variation=0 inputType=0 ===
+05-16 20:08:31.047 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:31.047 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:31.047 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:31.047 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:31.048 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:31.048 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:31.048 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:46.931 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:08:46.931 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:08:46.931 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:46.931 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:46.931 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:46.931 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:46.933 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:46.933 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:46.933 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:56.259 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:08:56.259 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:08:56.259 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:08:56.259 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:08:56.259 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:08:56.259 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:08:56.262 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:56.262 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:08:56.262 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:08:56.263 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:08:56.263 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:08:58.067 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:08:58.282 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:08:58.417 16844 16844 I DarkIME2: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:08:58.574 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:08:58.807 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:01.540 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:01.737 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:01.879 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:02.046 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:03.713 16844 16844 I DarkIME2: >>> handleKey: code=49 (1), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:03.829 16844 16844 I DarkIME2: >>> handleKey: code=48 (0), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:04.204 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:04.734 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:04.862 16844 16844 I DarkIME2: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:05.071 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:05.268 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:06.562 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:09:08.352 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:09:08.353 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:09:08.353 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:09:08.353 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:09:08.353 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:09:08.353 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:09:08.356 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:09:08.356 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:09:08.356 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:10:41.305 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:10:41.305 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:10:41.305 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:10:41.305 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:10:41.305 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:10:41.305 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:10:41.306 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:10:41.306 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:10:41.306 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:10:41.307 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:10:45.811 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:46.011 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:46.161 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:46.774 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:46.882 16844 16844 I DarkIME2: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:47.063 16844 16844 I DarkIME2: >>> handleKey: code=106 (j), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:47.180 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:10:48.142 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:10:48.143 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:10:48.143 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:10:48.143 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:10:48.143 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:10:48.143 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:10:48.147 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:10:48.147 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:10:48.147 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:05.801 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:05.980 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:06.091 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:06.749 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:06.868 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:07.039 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:07.855 16844 16844 I DarkIME2: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:08.023 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:08.086 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:08.829 16844 16844 I DarkIME2: >>> handleKey: code=106 (j), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:09.053 16844 16844 I DarkIME2: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:10.094 16844 16844 I DarkIME2: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:11.255 16844 16844 I DarkIME2: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:11.636 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:11:11.638 16844 16844 I DarkIME2: Autocorrect: 'tarje' → 'tarjeta'
+05-16 20:11:13.668 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:11:13.668 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:11:13.668 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:13.668 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:13.668 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:13.668 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:13.671 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:13.671 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:13.671 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:15.941 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:11:15.941 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:11:15.941 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:15.941 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:15.942 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:15.942 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:15.944 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:15.944 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:15.944 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:23.531 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:23.531 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=0 ===
+05-16 20:11:23.531 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:23.531 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:23.531 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:23.531 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:23.533 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:23.533 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:23.533 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:29.274 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:29.274 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=0 ===
+05-16 20:11:29.274 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:29.274 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:29.274 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:29.274 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:29.276 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:29.276 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:29.276 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:31.847 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:31.847 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=0 ===
+05-16 20:11:31.847 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:31.847 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:31.847 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:31.847 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:31.850 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:31.851 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:31.851 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:38.891 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:38.891 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=0 ===
+05-16 20:11:38.891 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:38.891 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:38.891 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:38.891 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:38.893 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:38.893 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:38.893 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:40.306 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:40.306 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=0 ===
+05-16 20:11:40.306 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:40.306 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:40.306 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:40.306 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:40.308 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:40.308 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:40.308 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:41.068 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:41.068 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=180225 ===
+05-16 20:11:41.068 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:41.068 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:41.068 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:41.068 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:41.070 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:41.070 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:41.070 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:41.073 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:11:41.098 16844 16844 D InputProfile: STANDARD: pkg=com.facebook.stella variation=0
+05-16 20:11:41.098 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.facebook.stella variation=0 inputType=180225 ===
+05-16 20:11:41.098 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:41.098 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:41.098 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:41.098 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:41.100 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:41.100 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:41.100 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:41.100 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:11:42.881 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:11:42.881 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:11:42.881 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:11:42.881 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:42.881 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:42.881 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:42.883 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:42.883 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:42.883 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:49.380 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:11:49.380 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:11:49.380 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:11:49.380 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:11:49.380 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:11:49.383 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:11:49.383 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:11:49.383 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:37.421 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:12:37.421 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:37.421 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:37.421 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:37.421 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:37.424 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:37.424 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:37.424 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:37.945 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:12:37.946 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=0 ===
+05-16 20:12:37.946 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:37.946 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:37.946 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:37.946 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:37.948 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:37.948 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:37.948 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:38.401 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:12:38.401 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:12:38.401 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:38.401 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:38.401 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:38.401 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:38.403 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:38.403 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:38.403 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:38.488 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:12:39.339 16844 16844 I DarkIME2: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:39.554 16844 16844 I DarkIME2: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:39.844 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:40.275 16844 16844 I DarkIME2: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:40.494 16844 16844 I DarkIME2: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:41.600 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:42.218 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:42.401 16844 16844 I DarkIME2: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:42.550 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:42.735 16844 16844 I DarkIME2: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:44.169 16844 16844 I DarkIME2: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:12:44.173 16844 16844 I DarkIME2: Autocorrect: 'llav' → 'llave'
+05-16 20:12:45.410 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:12:45.411 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:12:45.411 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:45.411 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:45.411 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:45.411 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:45.414 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:45.414 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:45.414 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:47.335 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:12:47.335 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:12:47.335 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:47.335 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:47.335 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:47.335 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:47.337 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:47.337 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:47.337 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:48.664 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:12:48.664 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:12:48.664 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:48.665 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:48.665 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:48.667 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:48.667 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:48.667 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:50.512 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:12:50.512 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:50.512 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:50.512 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:50.512 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:50.514 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:50.514 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:50.514 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:51.632 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:12:51.632 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:12:51.632 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:51.632 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:51.632 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:51.632 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:51.634 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:51.634 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:51.634 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:53.827 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:12:53.827 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:12:53.827 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:12:53.827 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:12:53.827 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:12:53.827 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:12:53.829 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:12:53.829 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:12:53.829 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:17.121 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:13:17.121 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:13:17.121 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:17.121 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:17.121 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:17.121 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:17.123 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:17.123 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:17.123 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:18.000 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:13:18.000 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:13:18.000 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:18.000 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:18.000 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:18.000 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:18.002 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:18.002 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:18.002 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:20.513 16844 16844 D InputProfile: STANDARD: pkg=com.android.vending variation=0
+05-16 20:13:20.513 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.android.vending variation=0 inputType=0 ===
+05-16 20:13:20.513 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:20.513 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:20.513 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:20.513 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:20.516 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:20.516 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:20.516 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:24.998 16844 16844 D InputProfile: STANDARD: pkg=com.android.systemui variation=0
+05-16 20:13:24.998 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.android.systemui variation=0 inputType=0 ===
+05-16 20:13:24.998 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:24.998 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:24.998 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:24.998 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:25.000 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:25.000 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:25.000 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:28.666 16844 16844 D InputProfile: STANDARD: pkg=com.miui.global.packageinstaller variation=0
+05-16 20:13:28.666 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.global.packageinstaller variation=0 inputType=0 ===
+05-16 20:13:28.666 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:28.666 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:28.666 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:28.666 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:28.674 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:28.674 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:28.674 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:37.531 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:13:37.531 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:13:37.531 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:13:37.531 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:37.531 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:37.535 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:37.535 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:37.535 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:41.982 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:13:41.982 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:13:41.982 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:41.982 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:41.982 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:41.982 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:41.984 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:41.984 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:41.984 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:47.516 16844 16844 D InputProfile: STANDARD: pkg=com.miui.thirdappassistant variation=0
+05-16 20:13:47.516 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.thirdappassistant variation=0 inputType=0 ===
+05-16 20:13:47.516 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:13:47.516 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:13:47.516 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:13:47.516 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:13:47.520 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:13:47.520 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:13:47.520 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:24.321 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:14:24.321 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:14:24.321 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:24.321 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:24.321 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:24.321 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:24.323 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:24.323 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:24.323 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:25.188 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:14:25.188 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:14:25.188 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:25.188 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:25.188 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:25.190 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:25.190 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:25.190 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:29.743 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:14:34.519 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:14:34.520 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:34.520 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:34.520 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:34.520 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:34.521 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:34.521 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:34.521 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:34.577 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:14:34.577 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:14:34.577 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:34.577 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:34.577 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:34.580 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:34.580 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:34.580 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:34.603 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:14:35.806 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:14:35.806 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:35.806 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:35.806 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:35.806 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:35.808 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:35.808 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:35.808 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:35.841 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:14:35.841 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:14:35.841 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:35.841 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:35.841 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:35.843 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:35.843 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:35.843 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:37.417 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:14:37.417 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:14:37.417 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:37.417 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:37.417 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:37.417 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:37.419 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:37.419 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:37.419 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:40.797 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:14:40.797 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:14:40.797 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:14:40.797 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:40.797 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:40.799 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:40.799 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:40.799 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:44.619 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:14:44.620 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:14:44.620 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:44.620 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:44.620 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:44.620 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:44.621 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:44.621 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:44.621 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:47.117 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:14:47.117 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:14:47.117 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:14:47.117 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:47.117 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:47.117 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:47.120 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:47.120 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:47.120 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:51.874 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+05-16 20:14:51.874 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:14:51.874 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:14:51.874 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:14:51.874 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:14:51.876 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:14:51.876 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:14:51.876 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:33.695 16844 16844 I DarkIME2: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+05-16 20:18:33.695 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:33.695 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:33.695 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:33.695 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:33.697 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:33.697 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:33.697 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:35.820 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:18:35.820 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:18:35.820 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:35.820 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:35.820 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:35.820 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:35.822 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:35.822 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:35.822 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:36.436 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:18:36.436 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:18:36.437 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:36.437 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:36.437 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:36.437 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:36.439 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:36.439 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:36.439 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:41.999 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:18:41.999 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:18:41.999 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:41.999 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:41.999 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:41.999 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:42.001 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:42.001 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:42.001 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:42.892 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:18:42.892 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:18:42.892 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:42.892 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:42.892 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:42.892 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:42.894 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:42.894 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:42.894 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:46.307 16844 16844 D InputProfile: STANDARD: pkg=com.miui.global.packageinstaller variation=0
+05-16 20:18:46.307 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.global.packageinstaller variation=0 inputType=0 ===
+05-16 20:18:46.307 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:46.307 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:46.307 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:46.307 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:46.309 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:46.309 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:46.309 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:49.767 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:18:49.767 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=0 ===
+05-16 20:18:49.767 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:49.767 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:49.767 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:49.767 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:49.769 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:49.769 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:49.769 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:50.224 16844 16844 D InputProfile: STANDARD: pkg=org.telegram.messenger variation=0
+05-16 20:18:50.224 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=org.telegram.messenger variation=0 inputType=147457 ===
+05-16 20:18:50.224 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:18:50.224 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:18:50.224 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:18:50.224 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:18:50.225 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:18:50.226 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:18:50.226 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:01.828 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:19:01.828 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:19:01.828 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:01.828 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:01.828 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:01.828 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:01.830 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:01.830 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:01.830 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:27.936 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:19:27.936 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:19:27.936 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:27.936 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:27.936 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:27.936 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:27.939 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:27.939 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:27.939 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:30.842 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:19:30.842 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:19:30.842 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:30.842 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:30.842 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:30.842 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:30.847 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:30.847 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:30.847 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:31.859 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:19:31.859 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:19:31.859 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:31.859 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:31.859 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:31.859 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:31.862 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:31.862 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:31.862 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:35.240 16844 16844 D InputProfile: STANDARD: pkg=com.android.vending variation=0
+05-16 20:19:35.240 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.android.vending variation=0 inputType=0 ===
+05-16 20:19:35.240 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:35.240 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:35.240 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:35.240 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:35.243 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:35.243 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:35.243 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:39.177 16844 16844 D InputProfile: STANDARD: pkg=com.android.systemui variation=0
+05-16 20:19:39.177 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.android.systemui variation=0 inputType=0 ===
+05-16 20:19:39.177 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:39.177 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:39.177 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:39.177 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:39.179 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:39.179 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:39.179 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:41.765 16844 16844 D InputProfile: STANDARD: pkg=com.miui.global.packageinstaller variation=0
+05-16 20:19:41.765 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.global.packageinstaller variation=0 inputType=0 ===
+05-16 20:19:41.765 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:41.765 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:41.765 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:41.765 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:41.767 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:41.767 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:41.767 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:50.396 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:19:50.397 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:19:50.397 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:19:50.397 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:50.397 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:50.398 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:50.398 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:50.398 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:54.310 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:19:54.310 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:19:54.310 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:54.310 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:54.310 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:54.310 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:54.312 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:54.312 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:54.312 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:57.298 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:19:57.298 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:19:57.298 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:19:57.298 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:19:57.299 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:19:57.299 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:19:57.300 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:19:57.300 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:19:57.300 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:07.777 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:20:07.777 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:20:07.777 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:07.777 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:07.777 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:07.777 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:07.779 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:07.779 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:07.779 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:09.206 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:20:09.206 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:20:09.206 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:09.206 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:09.206 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:09.206 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:09.208 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:09.208 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:09.208 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:11.969 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:20:11.969 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:20:11.969 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:11.969 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:11.969 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:11.969 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:11.971 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:11.971 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:11.971 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:14.438 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:20:14.438 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:20:14.438 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:14.438 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:14.439 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:14.439 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:14.440 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:14.440 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:14.440 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:15.353 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:20:15.353 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:20:15.353 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:15.353 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:15.353 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:15.353 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:15.355 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:15.355 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:15.355 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:17.900 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:20:17.900 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:20:17.900 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:17.900 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:17.900 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:17.900 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:17.903 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:17.903 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:17.903 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:18.166 16844 16844 D InputProfile: STANDARD: pkg=com.miui.global.packageinstaller variation=0
+05-16 20:20:18.167 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.global.packageinstaller variation=0 inputType=0 ===
+05-16 20:20:18.167 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:18.167 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:18.167 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:18.167 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:18.171 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:18.171 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:18.171 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:24.585 16844 16844 D InputProfile: STANDARD: pkg=com.miui.global.packageinstaller variation=0
+05-16 20:20:24.585 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.global.packageinstaller variation=0 inputType=0 ===
+05-16 20:20:24.585 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:20:24.585 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:20:24.585 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:24.585 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:24.587 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:24.587 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:24.587 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:26.694 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:20:26.694 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:20:26.694 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:20:26.695 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:26.695 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:26.696 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:26.696 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:26.696 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:29.607 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=32769 ===
+05-16 20:20:29.607 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:20:29.607 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:20:29.607 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:29.608 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:29.610 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:29.610 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:29.610 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:29.611 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=32769 ===
+05-16 20:20:29.611 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:20:29.611 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:20:29.611 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:29.611 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:29.612 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:29.612 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:29.612 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:29.613 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:20:33.466 16844 16844 I DarkIME2: >>> handleKey: code=106 (j), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:33.797 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:34.425 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=32769 ===
+05-16 20:20:34.425 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:20:34.425 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:20:34.425 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:34.425 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:34.428 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:34.428 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:34.428 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:34.429 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:20:35.384 16844 16844 I DarkIME2: >>> handleKey: code=49 (1), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:36.030 16844 16844 I DarkIME2: >>> handleKey: code=57 (9), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:36.520 16844 16844 I DarkIME2: >>> handleKey: code=50 (2), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:37.378 16844 16844 I DarkIME2: >>> handleKey: code=46 (.), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:41.223 16844 16844 I DarkIME2: >>> handleKey: code=49 (1), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:42.130 16844 16844 I DarkIME2: >>> handleKey: code=54 (6), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:42.766 16844 16844 I DarkIME2: >>> handleKey: code=56 (8), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:44.057 16844 16844 I DarkIME2: >>> handleKey: code=46 (.), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:44.541 16844 16844 I DarkIME2: >>> handleKey: code=53 (5), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:45.385 16844 16844 I DarkIME2: >>> handleKey: code=48 (0), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:46.279 16844 16844 I DarkIME2: >>> handleKey: code=46 (.), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:46.788 16844 16844 I DarkIME2: >>> handleKey: code=52 (4), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:46.974 16844 16844 I DarkIME2: >>> handleKey: code=53 (5), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:57.883 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=32769 ===
+05-16 20:20:57.883 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:20:57.883 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:20:57.884 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:20:57.884 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:20:57.886 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:57.886 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:20:57.887 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:20:57.889 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:20:58.903 16844 16844 I DarkIME2: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:59.124 16844 16844 I DarkIME2: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:20:59.603 16844 16844 I DarkIME2: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:00.426 16844 16844 I DarkIME2: >>> handleKey: code=107 (k), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:01.049 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=32769 ===
+05-16 20:21:01.049 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:21:01.049 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:21:01.049 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:01.050 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:01.052 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:01.052 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:01.052 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:01.055 16844 16844 E DarkIME2: === onEvaluateFullscreenMode() = false ===
+05-16 20:21:02.123 16844 16844 I DarkIME2: >>> handleKey: code=51 (3), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:02.314 16844 16844 I DarkIME2: >>> handleKey: code=52 (4), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:03.126 16844 16844 I DarkIME2: >>> handleKey: code=54 (6), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:03.321 16844 16844 I DarkIME2: >>> handleKey: code=55 (7), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+05-16 20:21:14.032 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:21:14.032 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:21:14.032 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:21:14.032 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:14.032 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:14.034 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:14.034 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:14.034 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:16.203 16844 16844 I DarkIME2: === onStartInput() mode=TERMINAL reason=terminal pkg=com.darkrdp.client.debug inputType=0 ===
+05-16 20:21:16.203 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=false shouldCompose=false
+05-16 20:21:16.203 16844 16844 D Autocorrect: Profile override: shouldCompose=false shouldAutocorrect=false
+05-16 20:21:16.203 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:16.203 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:16.206 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:16.206 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:16.206 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:33.240 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:21:33.240 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:21:33.240 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:21:33.240 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:21:33.240 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:33.240 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:33.242 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:33.242 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:33.242 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:40.118 16844 16844 D InputProfile: STANDARD: pkg=com.alphainventor.filemanager variation=0
+05-16 20:21:40.118 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+05-16 20:21:40.118 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:21:40.118 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:21:40.118 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:40.118 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:40.120 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:40.120 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:40.120 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:41.640 16844 16844 D InputProfile: STANDARD: pkg=com.miui.thirdappassistant variation=0
+05-16 20:21:41.640 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.thirdappassistant variation=0 inputType=0 ===
+05-16 20:21:41.640 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:21:41.640 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:21:41.640 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:41.640 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:41.643 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:41.643 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:41.643 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:50.574 16844 16844 D InputProfile: STANDARD: pkg=com.miui.home variation=0
+05-16 20:21:50.575 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+05-16 20:21:50.575 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:21:50.575 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:21:50.575 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:21:50.575 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:21:50.579 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:21:50.579 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:21:50.579 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:05.590 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:05.590 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:05.590 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:05.590 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:05.590 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:05.590 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:05.591 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:05.591 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:05.591 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:06.031 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:06.031 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:06.031 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:06.031 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:06.031 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:06.031 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:06.034 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:06.034 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:06.034 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:06.226 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:06.226 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:06.226 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:06.226 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:06.226 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:06.226 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:06.229 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:06.229 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:06.229 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:13.604 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:13.604 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:13.604 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:13.604 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:13.604 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:13.604 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:13.607 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:13.607 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:13.607 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:16.282 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:16.283 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:16.283 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:16.283 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:16.283 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:16.283 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:16.284 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:16.284 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:16.284 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:16.593 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:16.593 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=0 ===
+05-16 20:22:16.593 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:16.594 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:16.594 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:16.594 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:16.596 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:16.596 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:16.596 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:21.310 16844 16844 D InputProfile: STANDARD: pkg=com.devolutions.remotedesktopmanager variation=0
+05-16 20:22:21.310 16844 16844 I DarkIME2: === onStartInput() mode=STANDARD reason=pkg=com.devolutions.remotedesktopmanager variation=0 inputType=131073 ===
+05-16 20:22:21.310 16844 16844 D Autocorrect: EditorChanged: shouldAutocorrect=true shouldCompose=true
+05-16 20:22:21.310 16844 16844 D Autocorrect: Profile override: shouldCompose=true shouldAutocorrect=true
+05-16 20:22:21.310 16844 16844 I DarkIME2: >>> getLayoutResourceId: layout preference = 'pc'
+05-16 20:22:21.310 16844 16844 I DarkIME2: >>> returning resource ID: kbd_pc
+05-16 20:22:21.312 16844 16844 I DarkIME2: Applied theme: Dark (Default)
+05-16 20:22:21.312 16844 16844 I DarkIME2: Keyboard reloaded
+05-16 20:22:21.312 16844 16844 I DarkIME2: Applied theme: Dark (Default)

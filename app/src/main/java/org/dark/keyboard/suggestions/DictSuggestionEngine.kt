@@ -2,7 +2,7 @@ package org.dark.keyboard.suggestions
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
+import timber.log.Timber
 import kotlin.math.ln
 import kotlin.math.pow
 
@@ -25,7 +25,7 @@ import kotlin.math.pow
 class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
 
     companion object {
-        private const val TAG = "DictEngine"
+
 
         // Pesos del scoring — Fase 2
         private const val W_CORPUS = 1.0f    // peso del corpus estático
@@ -58,11 +58,13 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
     private val prefs: SharedPreferences =
         context.getSharedPreferences("dict_engine_prefs", Context.MODE_PRIVATE)
 
-    // Fase 3: re-ranker opcional (NoOp si TFLite no disponible)
-    private val reRanker: ReRanker = try {
-        TFLiteReRanker(context).also { it.initialize() }
-            .takeIf { it.isAvailable } ?: NoOpReRanker()
-    } catch (_: Exception) { NoOpReRanker() }
+    // Fase 3: re-ranker opcional (lazy init — no bloquea constructor)
+    private val reRanker: ReRanker by lazy {
+        try {
+            TFLiteReRanker(context).also { it.initialize() }
+                .takeIf { it.isAvailable } ?: NoOpReRanker()
+        } catch (_: Exception) { NoOpReRanker() }
+    }
 
     // user word frequency: lang → (word → score float con decay)
     private val userFreqByLang = mutableMapOf<String, MutableMap<String, Float>>()
@@ -86,7 +88,7 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
         currentLang = lang
         loadLanguage(lang)
         loadPersistedData(lang)
-        Log.i(TAG, "Switched to: $lang")
+        Timber.i("Switched to: $lang")
     }
 
     fun getCurrentLanguage() = currentLang
@@ -116,10 +118,20 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
 
         // === Fase 1: candidatos del trie (corpus) ===
         if (partial.isNotEmpty()) {
+            // 1a. Prefijo exacto (completions)
             trie.lookup(partial, maxResults = 12).forEach { entry ->
-                // normalizar corpus freq (1-255) a 0.0-1.0
-                val corpusScore = entry.freq / 255f
-                scores[entry.word] = (scores[entry.word] ?: 0f) + corpusScore * W_CORPUS
+                scores[entry.word] = (scores[entry.word] ?: 0f) + entry.freq / 255f * W_CORPUS
+            }
+
+            // 1b. Edit distance (correcciones ortográficas)
+            // Solo si la palabra no está en el diccionario y tiene ≥3 chars
+            val hasPrefixMatches = trie.lookup(partial, maxResults = 1).isNotEmpty()
+            if (!hasPrefixMatches && partial.length >= 3) {
+                trie.findByEditDistance(partial, maxDist = 2, maxResults = 10)
+                    .forEach { entry ->
+                        // Boost: correcciones tienen más peso que completions normales
+                        scores[entry.word] = (scores[entry.word] ?: 0f) + entry.freq / 255f * W_CORPUS * 1.5f
+                    }
             }
         }
 
@@ -227,7 +239,7 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
         if (daysPassed < DECAY_DAYS) return
 
         val factor = DECAY_FACTOR.pow(daysPassed.toFloat() / DECAY_DAYS)
-        Log.d(TAG, "Applying decay factor=$factor for $lang (${daysPassed}d passed)")
+        Timber.d("Applying decay factor=$factor for $lang (${daysPassed}d passed)")
 
         userFreq().replaceAll { _, v -> v * factor }
         bigrams().values.forEach { bg -> bg.replaceAll { _, v -> v * factor } }
@@ -268,7 +280,7 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
             .putLong("decay_$lang", lastDecayByLang[lang] ?: System.currentTimeMillis())
             .apply()
 
-        Log.d(TAG, "Saved: ${uf.size} words, ${bg.size} bigrams for $lang")
+        Timber.d("Saved: ${uf.size} words, ${bg.size} bigrams for $lang")
     }
 
     private fun loadPersistedData(lang: String) {
@@ -304,7 +316,7 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
         }
 
         lastDecayByLang[lang] = prefs.getLong("decay_$lang", System.currentTimeMillis())
-        Log.i(TAG, "Loaded: ${uf.size} words, ${bg.size} bigrams for $lang")
+        Timber.i("Loaded: ${uf.size} words, ${bg.size} bigrams for $lang")
     }
 
     // ---- Helpers ----

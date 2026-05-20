@@ -1,5 +1,6 @@
 package org.dark.keyboard
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,10 +18,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import androidx.preference.PreferenceManager
 import org.dark.keyboard.suggestions.ModelDownloader
+import org.dark.keyboard.util.FileLoggingTree
+import timber.log.Timber
+import java.io.File
 
 class SettingsActivity : ComponentActivity() {
     private lateinit var prefs: SharedPreferences
@@ -232,6 +238,12 @@ fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, o
                  AiModelCard(context = context)
              }
 
+             // Debug Logs Section
+             item { SectionHeader("Debug") }
+             item {
+                 LogManagementCard(context = context)
+             }
+
              // About Section
              item {
                  SectionHeader("About")
@@ -269,7 +281,7 @@ fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, o
                     onLayoutSelected = { layout ->
                 currentLayout = layout
                 prefs.edit().putString("keyboard_layout", layout).remove("custom_layout_name").apply()
-                android.util.Log.i("SettingsActivity", "Layout changed to: $layout")
+                Timber.i("Layout changed to: $layout")
                 showLayoutDialog = false
             }
         )
@@ -283,7 +295,7 @@ fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, o
             onThemeSelected = { theme ->
                 currentTheme = theme
                 prefs.edit().putString("keyboard_theme", theme).apply()
-                android.util.Log.i("SettingsActivity", "Theme changed to: $theme")
+                Timber.i("Theme changed to: $theme")
                 showThemeDialog = false
             }
         )
@@ -700,11 +712,11 @@ fun AiModelCard(context: android.content.Context) {
                     tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("AI Re-ranking Model",
+                    Text("AI Spell Checker (T5 Encoder)",
                         style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
                     Text(
-                        if (isDownloaded) "GPT-2 Spanish — Active"
-                        else "GPT-2 Spanish (~${ModelDownloader.totalSizeMB()}MB) — Not downloaded",
+                        if (isDownloaded) "T5 active — GPU accelerated"
+                        else "T5 Encoder (~${ModelDownloader.totalSizeMB()}MB) — Download for AI autocorrect",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
@@ -745,5 +757,124 @@ fun AiModelCard(context: android.content.Context) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun LogManagementCard(context: android.content.Context) {
+    val logTree = DarkIME2.fileLoggingTree
+    val logFiles = logTree?.getLogFiles() ?: emptyList()
+    val logSizeMB = logTree?.getTotalLogSizeMB() ?: 0.0
+    var showClearDialog by remember { mutableStateOf(false) }
+
+    SettingCard {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Default.BugReport, null,
+                    tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text("Debug Logs",
+                        style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    Text(
+                        "${logFiles.size} files, ${String.format("%.1f", logSizeMB)}MB",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
+            }
+            Spacer(Modifier.height(12.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(
+                    onClick = {
+                        logTree?.getCurrentLogFile()?.let { logFile ->
+                            try {
+                                val uri = FileProvider.getUriForFile(
+                                    context,
+                                    "${context.packageName}.fileprovider",
+                                    logFile
+                                )
+                                val intent = Intent(Intent.ACTION_SEND).apply {
+                                    type = "text/plain"
+                                    putExtra(Intent.EXTRA_STREAM, uri)
+                                    putExtra(Intent.EXTRA_SUBJECT, "DarkKeyboard Log - ${logFile.name}")
+                                    putExtra(Intent.EXTRA_TEXT, "DarkKeyboard session log attached.")
+                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                }
+                                context.startActivity(Intent.createChooser(intent, "Share log file"))
+                                Timber.i("Log file shared: ${logFile.name}")
+                            } catch (e: Exception) {
+                                Timber.e(e, "Failed to share log file")
+                            }
+                        }
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(Icons.Default.Share, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(4.dp))
+                    Text("Share Log")
+                }
+                OutlinedButton(
+                    onClick = {
+                        logTree?.getLogFiles()?.let { files ->
+                            if (files.isEmpty()) return@let
+                            try {
+                                val uris = files.map { file ->
+                                    FileProvider.getUriForFile(
+                                        context,
+                                        "${context.packageName}.fileprovider",
+                                        file
+                                    )
+                                }
+                                val intent = Intent(Intent.ACTION_SEND_MULTIPLE).apply {
+                                    type = "text/plain"
+                                    putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
+                                    putExtra(Intent.EXTRA_SUBJECT, "DarkKeyboard Logs (${files.size} files)")
+                                    putExtra(Intent.EXTRA_TEXT, "All DarkKeyboard session logs attached.")
+                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                }
+                                context.startActivity(Intent.createChooser(intent, "Share all logs"))
+                                Timber.i("All logs shared: ${files.size} files")
+                            } catch (e: Exception) {
+                                Timber.e(e, "Failed to share all logs")
+                            }
+                        }
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(Icons.Default.Folder, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(4.dp))
+                    Text("Share All")
+                }
+            }
+            Spacer(Modifier.height(8.dp))
+            OutlinedButton(
+                onClick = { showClearDialog = true },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)
+            ) {
+                Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(4.dp))
+                Text("Clear Logs")
+            }
+        }
+    }
+
+    if (showClearDialog) {
+        AlertDialog(
+            onDismissRequest = { showClearDialog = false },
+            title = { Text("Clear Logs") },
+            text = { Text("Delete all ${logFiles.size} log files (${String.format("%.1f", logSizeMB)}MB)?") },
+            confirmButton = {
+                TextButton(onClick = {
+                    logTree?.clearAllLogs()
+                    showClearDialog = false
+                    Timber.i("Logs cleared")
+                }) { Text("Clear", color = MaterialTheme.colorScheme.error) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showClearDialog = false }) { Text("Cancel") }
+            }
+        )
     }
 }

@@ -3,7 +3,7 @@ package org.dark.keyboard
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import android.util.Log
+import timber.log.Timber
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
@@ -54,7 +54,7 @@ class PopupPreview(private val context: Context) {
         optionViews.clear()
 
         if (key.x < 0 || key.y < 0) {
-            Log.w("PopupPreview", "Invalid key coordinates: x=${key.x}, y=${key.y}")
+            Timber.w("Invalid key coordinates: x=${key.x}, y=${key.y}")
             return
         }
 
@@ -128,7 +128,7 @@ class PopupPreview(private val context: Context) {
                     }
                 }
             } catch (e: Exception) {
-                Log.w("PopupPreview", "Failed to show popup: ${e.message}")
+                Timber.w(e, "Failed to show popup")
                 popupWindow = null
             }
         }

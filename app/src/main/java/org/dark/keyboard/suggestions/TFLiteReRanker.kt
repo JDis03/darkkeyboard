@@ -1,165 +1,183 @@
 package org.dark.keyboard.suggestions
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
+import org.tensorflow.lite.Interpreter
+import java.io.File
+import java.io.FileInputStream
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
 
 /**
- * Re-ranker usando GPT-2 TFLite (Fase 3).
+ * Re-ranker T5 — Fase 3 del pipeline de sugerencias de DarkKeyboard.
  *
- * Estrategia de re-ranking:
- *   1. El trie genera top-20 candidatos (corpus + user freq + bigrams)
- *   2. Para cada candidato, GPT-2 calcula P(candidato | contexto)
- *   3. Score final = 0.4 * trie_score + 0.6 * gpt2_score
- *   4. Retornar top-3
+ * Modelo: t5_small_multi encoder mean-pool, TFLite INT8 (34MB).
+ * Tokenizador: SentencePiece puro Kotlin (spiece.model, ~800KB).
+ * Aceleración: XNNPack (built-in en TFLite 2.16+, recomendado para Android 15+).
  *
- * Activar: descomentar TFLite en build.gradle + poner modelo en assets/
+ * ── Arquitectura ─────────────────────────────────────────────────────────────
  *
- * NOTA: El modelo (118MB) se descarga bajo demanda (Fase 4).
- *       Sin modelo → isAvailable=false → usa NoOpReRanker.
+ *   Trie → top-20 candidatos [~1ms]
+ *       ↓
+ *   T5 embed(context)       → ctxEmb  [float[512]]
+ *   T5 embed(word)          → wordEmb [float[512]]
+ *       ↓
+ *   score_i = cosine_similarity(ctxEmb, wordEmb)
+ *       ↓
+ *   Top-3 reordenados
+ *
+ * ── Modelo TFLite ────────────────────────────────────────────────────────────
+ *
+ *   Signature : "serving_default"
+ *   Inputs    : encoder_token_ids [1,32] int32
+ *               encoder_padding_mask [1,32] int32
+ *   Output    : output_0 [1,512] float32
  */
 class TFLiteReRanker(private val context: Context) : ReRanker {
 
-    override val name = "TFLite GPT-2 ReRanker"
+    override val name = "T5 Encoder Re-ranker (t5_small_multi)"
     override var isAvailable = false
         private set
 
     companion object {
-        private const val TAG = "TFLiteReRanker"
-        private const val MODEL_FILE = "suggestions_model.tflite"
-        private const val W_TRIE   = 0.4f
-        private const val W_GPT2   = 0.6f
+        private const val MODEL_FILE    = "suggestions_model.tflite"
+        private const val SIGNATURE_KEY = "serving_default"
+        private const val SEQ_LEN       = 32
+        private const val HIDDEN_SIZE   = 512
+        private const val IN_TOKEN_IDS  = "encoder_token_ids"
+        private const val IN_MASK       = "encoder_padding_mask"
+        private const val OUT_EMBEDDING = "output_0"
     }
 
-    // TFLite classes - reflejadas via reflection para no requerir dep en compilación
-    private var interpreter: Any? = null
-    private var bpeTokenizer: BpeTokenizer? = null
+    private var interpreter : Interpreter? = null
+    private var tokenizer   : SentencePieceTokenizer? = null
+    private val lock = Any()
+
+    // ── Lifecycle ─────────────────────────────────────────────────────────────
 
     override fun initialize() {
-        // Buscar modelo: primero en filesDir/models/ (descargado), luego en assets/
-        val downloaded = ModelDownloader.modelFile(context)
-        val hasDownloaded = downloaded.exists()
-        val hasAsset = try { context.assets.open(MODEL_FILE).close(); true } catch (_: Exception) { false }
-
-        if (!hasDownloaded && !hasAsset) {
-            Log.i(TAG, "Model not found — download via Settings to enable AI suggestions")
-            isAvailable = false
-            return
-        }
-
-        // Verificar si TFLite está disponible en runtime (dep opcional)
-        try {
-            Class.forName("org.tensorflow.lite.Interpreter")
-        } catch (e: ClassNotFoundException) {
-            Log.i(TAG, "TFLite not in APK — uncomment deps in build.gradle to enable")
-            isAvailable = false
+        val modelFile = ModelDownloader.modelFile(context)
+        if (!modelFile.exists()) {
+            Timber.i("T5 model not found — download via Settings")
             return
         }
 
         try {
-            // Cargar BPE desde filesDir si está descargado, si no desde assets
-            bpeTokenizer = if (hasDownloaded) {
-                BpeTokenizer(context, useDownloaded = true)
-            } else {
-                BpeTokenizer(context)
+            tokenizer = SentencePieceTokenizer(context).also { it.load() }
+            if (tokenizer?.isReady != true) {
+                Timber.w("SentencePiece not ready: ${tokenizer?.debugInfo()}")
+                return
             }
-            bpeTokenizer!!.load()
-            loadInterpreter(if (hasDownloaded) downloaded.absolutePath else null)
+
+            initInterpreter(modelFile)
             isAvailable = true
-            Log.i(TAG, "TFLite re-ranker ready (${if (hasDownloaded) "downloaded" else "assets"})")
+
+            Timber.i(
+                "T5 ReRanker ready | ${modelFile.length() / 1_048_576}MB " +
+                "| ${tokenizer?.debugInfo()} | XNNPack | seq=$SEQ_LEN"
+            )
         } catch (e: Exception) {
-            Log.w(TAG, "TFLite re-ranker init failed: ${e.message}")
-            isAvailable = false
+            Timber.e(e, "T5 ReRanker init failed")
+            close()
         }
     }
+
+    private fun initInterpreter(modelFile: File) {
+        val modelBuffer: MappedByteBuffer = FileInputStream(modelFile).channel.use { ch ->
+            ch.map(FileChannel.MapMode.READ_ONLY, 0, modelFile.length())
+        }
+
+        val options = Interpreter.Options().apply {
+            setNumThreads(Runtime.getRuntime().availableProcessors().coerceIn(2, 4))
+            // XNNPack está habilitado por defecto en TFLite 2.16+
+            // NNAPI está deprecated desde Android 14 — no necesitamos añadir delegates
+        }
+
+        interpreter = Interpreter(modelBuffer, options)
+
+        val interp = interpreter!!
+        Timber.i("Interpreter: inputs=${interp.inputTensorCount}, outputs=${interp.outputTensorCount}, delegate=XNNPack")
+        repeat(interp.inputTensorCount) { i ->
+            val t = interp.getInputTensor(i)
+            Timber.d("Input[$i] '${t.name()}' shape=${t.shape().toList()} dtype=${t.dataType()}")
+        }
+    }
+
+    // ── Re-ranking ────────────────────────────────────────────────────────────
 
     override fun rerank(candidates: List<String>, context: String): List<String> {
-        if (!isAvailable || interpreter == null || candidates.isEmpty()) return candidates
-        if (candidates.size <= 1) return candidates
+        if (!isAvailable || interpreter == null || candidates.size <= 1) return candidates
 
         return try {
-            val scores = candidates.map { word ->
-                val contextScore = scoreCandidate(word, context)
-                word to contextScore
+            val ctxEmb = embed(context) ?: return candidates
+
+            val scored = candidates.mapNotNull { word ->
+                val wordEmb = embed(word) ?: return@mapNotNull null
+                val score   = cosineSimilarity(ctxEmb, wordEmb)
+                Timber.v("T5 '$word' score=${"%.4f".format(score)}")
+                word to score
             }
-            scores.sortedByDescending { it.second }.map { it.first }
+
+            if (scored.isEmpty()) candidates
+            else scored.sortedByDescending { it.second }.map { it.first }
+
         } catch (e: Exception) {
-            Log.e(TAG, "Rerank error: ${e.message}")
-            candidates  // fallback: devolver sin cambios
+            Timber.e(e, "Rerank failed")
+            candidates
         }
     }
 
-    /**
-     * Calcula P(word | context) usando GPT-2.
-     * Tokeniza el contexto + palabra y extrae la probabilidad del último token.
-     */
-    private fun scoreCandidate(word: String, context: String): Float {
-        val tokenizer = bpeTokenizer ?: return 0f
-        val fullText = "$context $word"
-        val ids = tokenizer.encode(fullText).takeLast(5)
-        if (ids.isEmpty()) return 0f
+    // ── Inferencia ────────────────────────────────────────────────────────────
 
-        val padded = IntArray(5) { 0 }
-        val offset = maxOf(0, 5 - ids.size)
-        ids.forEachIndexed { i, id -> padded[offset + i] = id }
-
-        val probs = runInference(padded) ?: return 0f
-
-        // Probabilidad del primer token de la palabra candidata
-        val wordTokens = tokenizer.encode(" $word")
-        val firstToken = wordTokens.firstOrNull() ?: return 0f
-        return if (firstToken < probs.size) probs[firstToken] else 0f
+    fun embed(text: String): FloatArray? {
+        val tok = tokenizer ?: return null
+        val tokenIds    = tok.encodeToArray(text, SEQ_LEN)
+        val paddingMask = tok.paddingMask(tokenIds)
+        return runInference(tokenIds, paddingMask)
     }
 
-    private fun runInference(tokenIds: IntArray): FloatArray? {
-        return try {
-            val input  = Array(1) { tokenIds }
-            val interp = interpreter ?: return null
-            // Usar reflection para no requerir el import en tiempo de compilación
-            val outputTensor = interp.javaClass.getMethod("getOutputTensor", Int::class.java)
-                .invoke(interp, 0)
-            val shape = outputTensor.javaClass.getMethod("shape").invoke(outputTensor) as IntArray
-            val vocabSize = shape[1]
-            val output = Array(1) { FloatArray(vocabSize) }
-            interp.javaClass.getMethod("run", Any::class.java, Any::class.java)
-                .invoke(interp, input, output)
-            output[0]
-        } catch (e: Exception) {
-            Log.e(TAG, "Inference error: ${e.message}")
-            null
+    private fun runInference(tokenIds: IntArray, paddingMask: IntArray): FloatArray? {
+        val interp = interpreter ?: return null
+        return synchronized(lock) {
+            try {
+                val inputMap: Map<String, Any> = mapOf(
+                    IN_TOKEN_IDS to Array(1) { tokenIds },
+                    IN_MASK      to Array(1) { paddingMask }
+                )
+                val outputBuf = Array(1) { FloatArray(HIDDEN_SIZE) }
+                val outputMap: MutableMap<String, Any> = mutableMapOf(OUT_EMBEDDING to outputBuf)
+
+                try {
+                    interp.runSignature(inputMap, outputMap, SIGNATURE_KEY)
+                } catch (_: Exception) {
+                    interp.runForMultipleInputsOutputs(
+                        arrayOf(Array(1) { tokenIds }, Array(1) { paddingMask }),
+                        mapOf(0 to outputBuf)
+                    )
+                }
+
+                outputBuf[0]
+            } catch (e: Exception) {
+                Timber.e(e, "T5 inference error")
+                null
+            }
         }
     }
 
-    private fun loadInterpreter(filePath: String? = null) {
-        val optionsClass = Class.forName("org.tensorflow.lite.Interpreter\$Options")
-        val options      = optionsClass.newInstance()
-        optionsClass.getMethod("setNumThreads", Int::class.java).invoke(options, 1)
-        val interpClass  = Class.forName("org.tensorflow.lite.Interpreter")
+    // ── Utilidades ────────────────────────────────────────────────────────────
 
-        if (filePath != null) {
-            // Modelo descargado — cargar desde File
-            val file = java.io.File(filePath)
-            val fileInputStream = java.io.FileInputStream(file)
-            val channel = fileInputStream.channel
-            val modelBuffer = channel.map(java.nio.channels.FileChannel.MapMode.READ_ONLY, 0, file.length())
-            interpreter = interpClass.getConstructor(
-                Class.forName("java.nio.ByteBuffer"), optionsClass
-            ).newInstance(modelBuffer, options)
-        } else {
-            // Modelo en assets
-            val fileUtilClass = Class.forName("org.tensorflow.lite.support.common.FileUtil")
-            val modelBuffer   = fileUtilClass.getMethod("loadMappedFile", Context::class.java, String::class.java)
-                .invoke(null, context, MODEL_FILE)
-            interpreter = interpClass.getConstructor(
-                Class.forName("java.nio.MappedByteBuffer"), optionsClass
-            ).newInstance(modelBuffer, options)
-        }
+    private fun cosineSimilarity(a: FloatArray, b: FloatArray): Float {
+        var dot = 0.0; var na = 0.0; var nb = 0.0
+        for (i in a.indices) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i] }
+        val denom = Math.sqrt(na * nb)
+        return if (denom > 1e-9) (dot / denom).toFloat() else 0f
     }
 
     override fun close() {
-        try {
-            interpreter?.javaClass?.getMethod("close")?.invoke(interpreter)
-        } catch (_: Exception) {}
+        try { interpreter?.close() } catch (_: Exception) {}
         interpreter = null
+        tokenizer   = null
         isAvailable = false
+        Timber.d("T5 ReRanker closed")
     }
 }

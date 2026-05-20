@@ -1,0 +1,43 @@
+2026-05-19 19:52:33.803615: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-19 19:52:33.803957: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-05-19 19:52:33.805722: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-05-19 19:52:33.810700: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-19 19:52:33.819087: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-19 19:52:33.821470: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-19 19:52:33.827707: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-05-19 19:52:34.255180: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779220354.875550  201940 cuda_executor.cc:1015] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-19 19:52:34.882451: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2343] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/ops/nn.py:947: UserWarning: You are using a softmax over axis -1 of a tensor of shape (1, 8, 1, 1). This axis has size 1. The softmax operation will always return the value 1, which is likely not what you intended. Did you mean to use a sigmoid instead?
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/ops/nn.py:947: UserWarning: You are using a softmax over axis -1 of a tensor of shape (1, 8, 1, 1). This axis has size 1. The softmax operation will always return the value 1, which is likely not what you intended. Did you mean to use a sigmoid instead?
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1779220360.299561  201940 tf_tfl_flatbuffer_helpers.cc:392] Ignored output_format.
+W0000 00:00:1779220360.299584  201940 tf_tfl_flatbuffer_helpers.cc:395] Ignored drop_control_dependency.
+2026-05-19 19:52:40.299924: I tensorflow/cc/saved_model/reader.cc:83] Reading SavedModel from: output/saved_model
+2026-05-19 19:52:40.306358: I tensorflow/cc/saved_model/reader.cc:52] Reading meta graph with tags { serve }
+2026-05-19 19:52:40.306378: I tensorflow/cc/saved_model/reader.cc:147] Reading SavedModel debug info (if present) from: output/saved_model
+2026-05-19 19:52:40.347961: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+2026-05-19 19:52:40.352978: I tensorflow/cc/saved_model/loader.cc:236] Restoring SavedModel bundle.
+2026-05-19 19:52:40.577200: I tensorflow/cc/saved_model/loader.cc:220] Running initialization op on SavedModel bundle at path: output/saved_model
+2026-05-19 19:52:40.634524: I tensorflow/cc/saved_model/loader.cc:462] SavedModel load for tags { serve }; Status: success: OK. Took 334601 microseconds.
+2026-05-19 19:52:40.701527: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+loc(fused["ReadVariableOp:", "t5_encoder_model_1/t5_backbone_1/encoder_output_layer_norm_1/Mul_1/ReadVariableOp@__inference_serving_fn_12441"]): error: missing attribute 'value'
+LLVM ERROR: Failed to infer result type(s).
+bash: line 1: 201940 Aborted                    (core dumped) python train_model.py 2>&1

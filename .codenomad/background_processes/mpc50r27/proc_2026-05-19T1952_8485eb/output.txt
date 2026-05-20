@@ -1,0 +1,60 @@
+2026-05-19 19:52:11.701695: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-05-19 19:52:11.702063: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-05-19 19:52:11.703836: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-05-19 19:52:11.708871: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-19 19:52:11.717121: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-19 19:52:11.719561: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-19 19:52:11.725672: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-05-19 19:52:12.150704: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779220332.800390  201747 cuda_executor.cc:1015] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-19 19:52:12.805591: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2343] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/ops/nn.py:947: UserWarning: You are using a softmax over axis -1 of a tensor of shape (1, 8, 1, 1). This axis has size 1. The softmax operation will always return the value 1, which is likely not what you intended. Did you mean to use a sigmoid instead?
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/ops/nn.py:947: UserWarning: You are using a softmax over axis -1 of a tensor of shape (1, 8, 1, 1). This axis has size 1. The softmax operation will always return the value 1, which is likely not what you intended. Did you mean to use a sigmoid instead?
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'self_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/keras/src/layers/layer.py:1035: UserWarning: Layer 'cross_attention' (of type T5MultiHeadAttention) was passed an input with a mask attached to it. However, this layer does not support masking and will therefore destroy the mask information. Downstream layers will not see the mask.
+  warnings.warn(
+TF 2.17.0 | keras-nlp 0.17.0
+Preset : t5_small_multi
+SeqLen : 32
+==================================================
+📥 Downloading T5 backbone...
+✅ Loaded (60,506,624 params)
+🔧 Building encoder model...
+✅ Encoder output shape: (1, 512)
+💾 Saving SavedModel...
+✅ SavedModel: output/saved_model
+⚙️  Converting to TFLite INT8...
+Traceback (most recent call last):
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/train_model.py", line 178, in <module>
+    main()
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/train_model.py", line 133, in main
+    tflite = converter.convert()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/tensorflow/lite/python/lite.py", line 1231, in wrapper
+    return self._convert_and_export_metrics(convert_func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/tensorflow/lite/python/lite.py", line 1183, in _convert_and_export_metrics
+    result = convert_func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/tensorflow/lite/python/lite.py", line 1562, in convert
+    return self._convert_from_saved_model(graph_def)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/tensorflow/lite/python/lite.py", line 1414, in _convert_from_saved_model
+    self._validate_inference_input_output_types(quant_mode)
+  File "/home/dark/Project/darkkeyboard/ml_pipeline/.venv/lib/python3.11/site-packages/tensorflow/lite/python/lite.py", line 1261, in _validate_inference_input_output_types
+    raise ValueError(
+ValueError: The inference_input_type and inference_output_type must be in ['tf.float32', 'tf.int8', 'tf.uint8', 'tf.int16'].

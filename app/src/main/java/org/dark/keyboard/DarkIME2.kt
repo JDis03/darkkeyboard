@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import android.inputmethodservice.InputMethodService
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
+
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
@@ -27,6 +27,8 @@ import org.dark.keyboard.autocorrect.WordDictionary
 import org.dark.keyboard.suggestions.DictSuggestionEngine
 import org.dark.keyboard.suggestions.FallbackSuggestionEngine
 import org.dark.keyboard.suggestions.SuggestionEngine
+import org.dark.keyboard.util.FileLoggingTree
+import timber.log.Timber
 
 /**
  * InputMethodService con sugerencias + autocorrección nivel 3.
@@ -67,11 +69,11 @@ class DarkIME2 : InputMethodService() {
     private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         when (key) {
             "keyboard_layout", "show_number_row", "custom_layout_name" -> {
-                Log.i(TAG, "Preference '$key' changed, reloading keyboard...")
+                Timber.i("Preference '$key' changed, reloading keyboard...")
                 reloadKeyboard()
             }
             "keyboard_theme", "show_modifier_status" -> {
-                Log.i(TAG, "Preference '$key' changed, applying...")
+                Timber.i("Preference '$key' changed, applying...")
                 applyTheme()
                 updateModifierStatus(
                     keyboardView?.isShiftActive() ?: false,
@@ -87,9 +89,22 @@ class DarkIME2 : InputMethodService() {
     
     override fun onCreate() {
         super.onCreate()
+
+        // Plantar FileLoggingTree para logs compartibles
+        fileLoggingTree = FileLoggingTree(this).also {
+            Timber.plant(it)
+            Timber.plant(object : Timber.DebugTree() {
+                override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+                    android.util.Log.println(priority, tag ?: "DarkIME", message)
+                }
+            })
+
+        }
+
         prefs = PreferenceManager.getDefaultSharedPreferences(this)
         prefs.registerOnSharedPreferenceChangeListener(prefsListener)
-        Log.e(TAG, "=== onCreate() CALLED ===")
+        Timber.e("=== onCreate() CALLED ===")
+        Timber.i("DarkIME2 onCreate")
 
         // Inicializar autocorrect + diccionario en background
         wordDict     = WordDictionary(this)
@@ -111,7 +126,7 @@ class DarkIME2 : InputMethodService() {
             launch(Dispatchers.Main) {
                 suggestionBarView?.setLanguageLabel(label)
             }
-            Log.i(TAG, "Suggestion engine: ${suggestionEngine.engineName}")
+            Timber.i("Suggestion engine: ${suggestionEngine.engineName}")
         }
     }
     
@@ -121,13 +136,17 @@ class DarkIME2 : InputMethodService() {
         // Clasificar el campo actual y ajustar comportamiento
         val profile = AppInputProfile.classify(attribute)
         isTerminalMode = profile.mode == AppInputProfile.Mode.TERMINAL
-        Log.i(TAG, "=== onStartInput() mode=${profile.mode} reason=${profile.reason} inputType=${attribute?.inputType} ===")
+        Timber.i("=== onStartInput() mode=${profile.mode} reason=${profile.reason} inputType=${attribute?.inputType} ===")
 
         // Autocorrect: reset ghost-composing + ajustar según perfil
         autocorrect.isTerminalApp = isTerminalMode
         autocorrect.isEnabled = profile.useAutocorrect
         autocorrect.reset()
         terminalBuffer.clear()
+        composingBroken = false
+        composingFailCount = 0
+        expectedSelStart = -1  // recalculate on next updateSelection
+        expectedSelEnd = -1
         autocorrect.onEditorChanged(attribute)
         // AppInputProfile gana sobre onEditorChanged — browsers ignoran FLAG_NO_SUGGESTIONS del HTML
         autocorrect.overrideProfile(
@@ -146,10 +165,13 @@ class DarkIME2 : InputMethodService() {
     }
 
     companion object {
-        private const val TAG = "DarkIME2"
+
         private const val KEYCODE_DELETE = -5
         private const val KEYCODE_SHIFT = -1
         private const val KEYCODE_ENTER = 10
+
+        var fileLoggingTree: FileLoggingTree? = null
+            private set
 
         // Packages conocidos de terminales SSH que necesitan bytes de control
         private val TERMINAL_PACKAGES = listOf(
@@ -164,7 +186,7 @@ class DarkIME2 : InputMethodService() {
     
     override fun onEvaluateFullscreenMode(): Boolean {
         val result = super.onEvaluateFullscreenMode()
-        Log.e(TAG, "=== onEvaluateFullscreenMode() = $result ===")
+        Timber.e("=== onEvaluateFullscreenMode() = $result ===")
         return false  // Force non-fullscreen mode
     }
     
@@ -176,8 +198,23 @@ class DarkIME2 : InputMethodService() {
     // getTextBeforeCursor() devuelve "" en terminales — rastreamos manualmente.
     private val terminalBuffer = StringBuilder()
     
+    // ── Modo "direct commit" (HeliBoard pattern) ──────────────────────────────
+    // Si setComposingText() retorna false repetidamente, el campo no soporta
+    // composing (ej: WebView, campos de búsqueda). Cambiamos a commit directo.
+    private var composingBroken = false
+    private var composingFailCount = 0
+    private val maxComposingFails = 3
+    
+    // ── Cursor tracking (HeliBoard pattern) ───────────────────────────────────
+    // expectedSelStart: posición esperada del cursor después de nuestras operaciones.
+    // Si onUpdateSelection llega con este valor → es un update "belated" (nuestro).
+    // Si llega con otro valor → el usuario movió el cursor externamente.
+    // -1 = desconocido (se recalcula al inicio)
+    private var expectedSelStart = -1
+    private var expectedSelEnd = -1
+    
     override fun onCreateInputView(): View? {
-        Log.e(TAG, "=== onCreateInputView CALLED ===")
+        Timber.e("=== onCreateInputView CALLED ===")
         
         val layout = layoutInflater.inflate(R.layout.keyboard_view, null) as LinearLayout
         inputViewContainer = layout
@@ -293,7 +330,7 @@ class DarkIME2 : InputMethodService() {
 
         observeModifierFlows()
         
-        Log.i(TAG, "Keyboard created")
+        Timber.i("Keyboard created")
         
         return layout
     }
@@ -301,7 +338,7 @@ class DarkIME2 : InputMethodService() {
     override fun onComputeInsets(outInsets: Insets) {
         super.onComputeInsets(outInsets)
         // Let Android handle insets automatically
-        Log.d(TAG, "onComputeInsets: contentTop=${outInsets.contentTopInsets}, visibleTop=${outInsets.visibleTopInsets}")
+        Timber.d("onComputeInsets: contentTop=${outInsets.contentTopInsets}, visibleTop=${outInsets.visibleTopInsets}")
     }
     
     private fun handleKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -313,7 +350,7 @@ class DarkIME2 : InputMethodService() {
         if (alt) metaState = metaState or KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
 
         val charLabel = if (code > 0 && code < 128) code.toChar().toString() else "?"
-        Log.i(TAG, ">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
+        Timber.i(">>> handleKey: code=$code ($charLabel), shift=$shift, ctrl=$ctrl, alt=$alt, fn=$fn, metaState=$metaState")
 
         when (code) {
 
@@ -330,25 +367,77 @@ class DarkIME2 : InputMethodService() {
                     when (val result = autocorrect.onBackspace()) {
                         is AutocorrectEngine.BackspaceResult.UndoCorrection -> {
                             val r = result.record
-                            ic.finishComposingText()
+                            val textBeforeUndo = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
                             
-                            // Validar que el cursor está donde esperamos (no se movió externamente)
-                            val currentCursorPos = ic.getTextBeforeCursor(0, 0)?.length ?: -1
-                            if (r.cursorAfter != -1 && currentCursorPos != r.cursorAfter) {
-                                // Cursor se movió — el undo sería peligroso, borrar normal
-                                Log.w(TAG, "Undo aborted: cursor moved ($currentCursorPos != ${r.cursorAfter})")
+                            // La palabra corregida + espacio están al final de textBefore
+                            // Ej: "calcetines " corregido → undo borra "calcetines" y pone "calcet"
+                            val suffix = "${r.corrected} "
+                            if (textBeforeUndo.endsWith(suffix)) {
+                                ic.beginBatchEdit()
+                                
+                                // Verificar que deleteSurroundingText realmente borra todo
+                                // (fix para bug "oosea" - deleteSurroundingText miente en WebView)
+                                // Borrar palabra + espacio (cursor está después del espacio)
+                                ic.deleteSurroundingText(r.corrected.length + 1, 0)
+                                
+                                val textAfterDelete = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
+                                val actuallyDeleted = textBeforeUndo.length - textAfterDelete.length
+                                val expectedToDelete = r.corrected.length + 1  // palabra + espacio
+                                
+                                if (actuallyDeleted == expectedToDelete) {
+                                    // Éxito: borró completamente
+                                    val ok = ic.setComposingText(r.original, 1)
+                                    if (ok) {
+                                        autocorrect.restoreComposing(r.original)
+                                        expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length 
+                                            ?: expectedSelStart
+                                        Timber.i("Undo: '${r.corrected}' → '${r.original}' (deleted ${actuallyDeleted} chars)")
+                                    } else {
+                                        Timber.w("Undo setComposingText failed, word may be duplicated")
+                                    }
+                                } else {
+                                    // Falló: deleteSurroundingText no borró todo
+                                    Timber.w("Undo deleteSurroundingText failed: expected ${expectedToDelete} but deleted ${actuallyDeleted}")
+                                    Timber.w("  textBefore: '${textBeforeUndo.takeLast(20)}'")
+                                    Timber.w("  textAfter: '${textAfterDelete.takeLast(20)}'")
+                                    
+                                    // Fallback: intentar setComposingText sobre lo que quedó
+                                    // Puede quedar "oosea" pero al menos está en composing y usuario puede corregir
+                                    val ok = ic.setComposingText(r.original, 1)
+                                    if (ok) {
+                                        autocorrect.restoreComposing(r.original)
+                                        Timber.w("Undo fallback: composed '${r.original}' over remaining text")
+                                    }
+                                }
+                                
+                                ic.endBatchEdit()
+                            } else {
+                                ic.finishComposingText()
                                 sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
-                            } else if (ic.deleteSurroundingText(r.corrected.length + 1, 0)) {
-                                ic.setComposingText(r.original, 1)
-                                Log.i(TAG, "Undo autocorrect: '${r.corrected}' → '${r.original}'")
                             }
                         }
                         is AutocorrectEngine.BackspaceResult.UpdateComposing -> {
-                            if (result.remaining.isEmpty()) ic.commitText("", 1)
-                            else ic.setComposingText(result.remaining, 1)
+                            if (result.remaining.isEmpty()) {
+                                ic.finishComposingText()
+                                expectedSelStart = ic.getTextBeforeCursor(100, 0)?.length ?: -1
+                                expectedSelEnd = expectedSelStart
+                            } else {
+                                val ok = ic.setComposingText(result.remaining, 1)
+                                if (!ok) {
+                                    Timber.w("Backspace setComposingText failed, resetting")
+                                    autocorrect.onFinishComposing()
+                                    ic.finishComposingText()
+                                    expectedSelStart = -1
+                                } else {
+                                    expectedSelStart = ic.getTextBeforeCursor(100, 0)?.length 
+                                        ?: expectedSelStart
+                                }
+                            }
                         }
                         AutocorrectEngine.BackspaceResult.Normal -> {
                             sendSimpleKeyEvent(KeyEvent.KEYCODE_DEL)
+                            expectedSelStart = maxOf(0, expectedSelStart - 1)
+                            expectedSelEnd = expectedSelStart
                         }
                     }
                 }
@@ -363,46 +452,63 @@ class DarkIME2 : InputMethodService() {
 
                 when (val result = autocorrect.onSpace(textBefore, topSuggestion)) {
                     is AutocorrectEngine.SpaceResult.Corrected -> {
+                        ic.beginBatchEdit()
                         if (composingSnapshot.isNotEmpty()) {
-                            // Camino WebView-safe: reemplazar la región de composing
-                            // directamente con setComposingText → finishComposingText.
-                            // Evita deleteSurroundingText que falla en Chromium/WebViews.
+                            // Camino ideal: reemplazar composing directamente
                             ic.setComposingText(result.corrected, 1)
                             ic.finishComposingText()
                             ic.commitText(" ", 1)
                         } else {
-                            // Sin composing: camino estándar (deleteSurrounding + commit)
-                            ic.finishComposingText()
-                            ic.deleteSurroundingText(result.original.length, 0)
-                            ic.commitText("${result.corrected} ", 1)
+                            // Sin composing activo: verificar que deleteSurroundingText realmente borre
+                            // (fix para bug "ppalabra" - deleteSurroundingText miente en WebView/navegadores)
+                            val textBeforeDelete = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
+                            val expectedSuffix = result.original
+                            
+                            if (textBeforeDelete.endsWith(expectedSuffix)) {
+                                ic.deleteSurroundingText(result.original.length, 0)
+                                
+                                // Verificar que realmente borró todo
+                                val textAfterDelete = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
+                                val actuallyDeleted = textBeforeDelete.length - textAfterDelete.length
+                                
+                                if (actuallyDeleted == result.original.length) {
+                                    // Éxito: borró completamente
+                                    ic.commitText("${result.corrected} ", 1)
+                                    Timber.d("Autocorrect: deleted ${actuallyDeleted} chars, '${result.original}' → '${result.corrected}'")
+                                } else {
+                                    // Falló: deleteSurroundingText no borró todo
+                                    Timber.w("deleteSurroundingText failed: expected ${result.original.length} but deleted ${actuallyDeleted}")
+                                    Timber.w("  textBefore: '${textBeforeDelete.takeLast(20)}'")
+                                    Timber.w("  textAfter: '${textAfterDelete.takeLast(20)}'")
+                                    
+                                    // Fallback: commitText con espacio inicial (evita duplicado parcial)
+                                    // Quedará "palab palabra" (duplicado completo) pero es más fácil de limpiar que "ppalabra"
+                                    ic.commitText(" ${result.corrected} ", 1)
+                                    
+                                    // Activar flag para este campo
+                                    composingBroken = true
+                                }
+                            } else {
+                                // La palabra original no está al final del texto
+                                Timber.w("Cannot delete: text does not end with '${result.original}'")
+                                Timber.w("  textBefore ends with: '${textBeforeDelete.takeLast(20)}'")
+                                ic.commitText(" ${result.corrected} ", 1)
+                            }
                         }
-                        // Guardar posición del cursor post-corrección para validar undo
-                        val cursorPos = ic.getTextBeforeCursor(0, 0)?.length ?: -1
-                        autocorrect.updateExpectedCursor(cursorPos)
+                        ic.endBatchEdit()
                         
-                        // Alimentar el learning engine con la corrección aplicada
+                        // Track cursor tras la operación
+                        expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length ?: expectedSelStart
+                        expectedSelEnd = expectedSelStart
+                        
+                        // Alimentar el learning engine
                         if (::suggestionEngine.isInitialized) {
-                            // Remover la palabra original (typo) del contexto antes de aprender
                             val cleanContext = textBefore.trimEnd()
-                                .removeSuffix(result.original)
-                                .trimEnd()
+                                .removeSuffix(result.original).trimEnd()
                             suggestionEngine.onSuggestionAccepted(result.corrected, cleanContext)
                         }
                         
-                        Log.i(TAG, "Autocorrect: '${result.original}' → '${result.corrected}' @ $cursorPos")
-                    }
-                    AutocorrectEngine.SpaceResult.PeriodInserted -> {
-                        ic.finishComposingText()
-                        // Contar cuántos espacios hay antes del cursor y borrar todos
-                        var spacesToDelete = 0
-                        val beforeText = ic.getTextBeforeCursor(10, 0)?.toString() ?: ""
-                        for (i in beforeText.length - 1 downTo 0) {
-                            if (beforeText[i] == ' ') spacesToDelete++ else break
-                        }
-                        if (spacesToDelete > 0) {
-                            ic.deleteSurroundingText(spacesToDelete, 0)
-                        }
-                        ic.commitText(". ", 1)
+                        Timber.i("Autocorrect: '${result.original}' → '${result.corrected}'")
                     }
                     AutocorrectEngine.SpaceResult.Normal -> {
                         ic.finishComposingText()
@@ -511,16 +617,87 @@ class DarkIME2 : InputMethodService() {
                             var char = c.toString()
                             if (shift) char = char.uppercase()
                             // Auto-capitalización
-                            if (!shift) {
-                                val textBefore = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
-                                if (autocorrect.shouldCapitalizeNext(textBefore)) char = char.uppercase()
+                            val textBefore = ic.getTextBeforeCursor(50, 0)?.toString() ?: ""
+                            if (!shift && autocorrect.shouldCapitalizeNext(textBefore)) {
+                                char = char.uppercase()
                             }
+                            
+                            // ── HeliBoard: cursor-position-aware composing ──────────
+                            // Si el cursor está en medio del composing (o desincronizado),
+                            // commitear la palabra actual antes de seguir escribiendo.
+                            if (autocorrect.isComposingDesynced(textBefore)) {
+                                Timber.w("Composing desynced: composing='${autocorrect.getComposing()}', textBefore='$textBefore'")
+                                autocorrect.onFinishComposing()
+                                ic.finishComposingText()
+                                expectedSelStart = ic.getTextBeforeCursor(100, 0)?.length ?: -1
+                            }
+                            
+                            // ── Desync fix (HeliBoard: commitTyped pattern) ──────────
+                            // Solo se activa cuando composingWord se vació después de escribir
+                            // una palabra de ≥2 chars (ej: backspace eliminó el espacio).
+                            // NO se activa tras backspace-to-empty de 1 char → eso es normal.
+                            val currentComposing = autocorrect.getComposing()
+                            if (currentComposing.isEmpty() && 
+                                textBefore.isNotEmpty() && 
+                                !textBefore.endsWith(" ") &&
+                                !textBefore.endsWith("\n")) {
+                                val existingWord = textBefore.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
+                                if (existingWord.length >= 2 && existingWord.all { it.isLetter() }) {
+                                    ic.commitText(char, 1)
+                                    expectedSelStart += 1
+                                    Timber.d("Desync: commit '$char' after word '$existingWord'")
+                                    updateSuggestions()
+                                    return
+                                }
+                            }
+                            
                             when (val res = autocorrect.onCharacter(char[0])) {
-                                is AutocorrectEngine.CharResult.UpdateComposing ->
-                                    ic.setComposingText(res.composing, 1)
+                                is AutocorrectEngine.CharResult.UpdateComposing -> {
+                                    if (composingBroken) {
+                                        ic.commitText(char, 1)
+                                        expectedSelStart += 1
+                                        if (isTerminalMode) terminalBuffer.append(char)
+                                    } else {
+                                        // ── Fix "ppalabra" duplicate ──────────────────────
+                                        // Cuando composing estaba vacío y usuario reescribe la misma
+                                        // letra que finishComposingText() acabó de commitear, borrar
+                                        // la letra vieja antes de crear nuevo composing.
+                                        var success = false
+                                        if (currentComposing.isEmpty() && textBefore.endsWith(char)) {
+                                            ic.beginBatchEdit()
+                                            val deleted = ic.deleteSurroundingText(1, 0)
+                                            val set = ic.setComposingText(res.composing, 1)
+                                            ic.endBatchEdit()
+                                            success = deleted && set
+                                            if (!success) {
+                                                Timber.w("Failed to delete+setComposing for '${res.composing}' (del=$deleted set=$set)")
+                                            } else {
+                                                Timber.d("Deleted duplicate committed char before starting composing")
+                                            }
+                                        } else {
+                                            success = ic.setComposingText(res.composing, 1)
+                                        }
+                                        
+                                        if (!success) {
+                                            composingFailCount++
+                                            Timber.w("setComposingText failed (${composingFailCount}/$maxComposingFails) for '${res.composing}'")
+                                            if (composingFailCount >= maxComposingFails) {
+                                                composingBroken = true
+                                                Timber.w("Composing broken — switching to direct commit mode")
+                                                autocorrect.onFinishComposing()
+                                                ic.finishComposingText()
+                                                ic.commitText(char, 1)
+                                            }
+                                            expectedSelStart = -1
+                                        } else {
+                                            composingFailCount = 0
+                                            expectedSelStart = ic.getTextBeforeCursor(100, 0)?.length ?: expectedSelStart
+                                        }
+                                    }
+                                }
                                 is AutocorrectEngine.CharResult.CommitDirect -> {
                                     ic.commitText(res.char, 1)
-                                    // Terminal: acumular en shadow buffer para sugerencias
+                                    expectedSelStart += 1
                                     if (isTerminalMode) terminalBuffer.append(res.char)
                                 }
                             }
@@ -557,7 +734,7 @@ class DarkIME2 : InputMethodService() {
             sendModifierUp(ic, eventTime, ctrl, KeyEvent.KEYCODE_CTRL_LEFT)
             sendModifierUp(ic, eventTime, shift, KeyEvent.KEYCODE_SHIFT_LEFT)
         } catch (e: Exception) {
-            Log.w(TAG, "sendModifiedKeyDownUp failed: ${e.message}")
+            Timber.w(e, "sendModifiedKeyDownUp failed")
         }
     }
 
@@ -568,7 +745,7 @@ class DarkIME2 : InputMethodService() {
             ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_DOWN, key, 0, 0))
             ic.sendKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, key, 0, 0))
         } catch (e: Exception) {
-            Log.w(TAG, "sendSimpleKeyEvent failed: ${e.message}")
+            Timber.w(e, "sendSimpleKeyEvent failed")
         }
     }
 
@@ -577,7 +754,7 @@ class DarkIME2 : InputMethodService() {
         try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, keycode, 0, 0))
         } catch (e: Exception) {
-            Log.w(TAG, "sendModifierDown failed: ${e.message}")
+            Timber.w(e, "sendModifierDown failed")
         }
     }
 
@@ -586,7 +763,7 @@ class DarkIME2 : InputMethodService() {
         try {
             ic.sendKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_UP, keycode, 0, 0))
         } catch (e: Exception) {
-            Log.w(TAG, "sendModifierUp failed: ${e.message}")
+            Timber.w(e, "sendModifierUp failed")
         }
     }
 
@@ -622,7 +799,7 @@ class DarkIME2 : InputMethodService() {
     private fun switchLayout() {
         isSymbolsMode = !isSymbolsMode
         loadAndSetKeyboard()
-        Log.i(TAG, "Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
+        Timber.i("Switched layout to ${if (isSymbolsMode) "symbols" else "alphabet"}")
     }
     
     private fun updateModifierStatus(shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -636,7 +813,7 @@ class DarkIME2 : InputMethodService() {
         if (statusParts.isNotEmpty() && showStatus) {
             modifierStatusView?.text = "[ ${statusParts.joinToString(" + ")} ]"
             modifierStatusView?.visibility = View.VISIBLE
-            Log.i(TAG, "Modifiers active: ${statusParts.joinToString(" + ")}")
+            Timber.i("Modifiers active: ${statusParts.joinToString(" + ")}")
         } else {
             modifierStatusView?.visibility = View.GONE
         }
@@ -644,13 +821,13 @@ class DarkIME2 : InputMethodService() {
     
     private fun getLayoutResourceId(): Int {
         val layout = prefs.getString("keyboard_layout", "pc")
-        Log.i(TAG, ">>> getLayoutResourceId: layout preference = '$layout'")
+        Timber.i(">>> getLayoutResourceId: layout preference = '$layout'")
         val resourceId = when (layout) {
             "pc" -> R.xml.kbd_pc
             "compact" -> R.xml.kbd_compact
             else -> R.xml.kbd_pc  // Default to QWERTY Standard
         }
-        Log.i(TAG, ">>> returning resource ID: ${if (resourceId == R.xml.kbd_pc) "kbd_pc" else "kbd_compact"}")
+        Timber.i(">>> returning resource ID: ${if (resourceId == R.xml.kbd_pc) "kbd_pc" else "kbd_compact"}")
         return resourceId
     }
 
@@ -658,7 +835,7 @@ class DarkIME2 : InputMethodService() {
         val themeName = prefs.getString("keyboard_theme", "Dark (Default)") ?: "Dark (Default)"
         val theme = KeyboardTheme.fromName(themeName)
         keyboardView?.keyboardTheme = theme
-        Log.i(TAG, "Applied theme: $themeName")
+        Timber.i("Applied theme: $themeName")
     }
 
     private fun observeModifierFlows() {
@@ -689,6 +866,39 @@ class DarkIME2 : InputMethodService() {
         candidatesStart: Int, candidatesEnd: Int
     ) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd, candidatesStart, candidatesEnd)
+        
+        // HeliBoard algorithm — isBelatedExpectedUpdate
+        // Si el nuevo cursor coincide con nuestro expected → es un update generado
+        // por nuestras propias operaciones (setComposingText, etc.). Ignorar.
+        if (expectedSelStart == newSelStart && expectedSelEnd == newSelEnd) {
+            return
+        }
+        
+        // Si nuestro expected coincide con los old values Y new es diferente,
+        // el usuario movió el cursor externamente → reset
+        if (expectedSelStart == oldSelStart && expectedSelEnd == oldSelEnd
+            && (oldSelStart != newSelStart || oldSelEnd != newSelEnd)) {
+            Timber.d("External cursor move: $oldSelStart → $newSelStart, resetting composing")
+            autocorrect.onFinishComposing()
+            expectedSelStart = newSelStart
+            expectedSelEnd = newSelEnd
+            updateSuggestions()
+            return
+        }
+        
+        // Si nuestro expected está entre old y new (update intermedio de Android)
+        val betweenOldAndExpected = 
+            (newSelStart - oldSelStart) * (expectedSelStart - newSelStart) >= 0 &&
+            (newSelEnd - oldSelEnd) * (expectedSelEnd - newSelEnd) >= 0
+        
+        if (newSelStart == newSelEnd && betweenOldAndExpected) {
+            // Belated update → ignorar
+            return
+        }
+        
+        // Update no reconocido → recalcular expected
+        expectedSelStart = newSelStart
+        expectedSelEnd = newSelEnd
         autocorrect.onCursorMoved(newSelStart)
         updateSuggestions()
     }
@@ -742,6 +952,7 @@ class DarkIME2 : InputMethodService() {
         suggestionEngine.takeIf { ::suggestionEngine.isInitialized }?.close()
         prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
         imeScope.cancel()
+        fileLoggingTree?.close()
         super.onDestroy()
     }
     
@@ -749,7 +960,7 @@ class DarkIME2 : InputMethodService() {
         if (keyboardView != null) {
             loadAndSetKeyboard()
             applyTheme()
-            Log.i(TAG, "Keyboard reloaded")
+            Timber.i("Keyboard reloaded")
         }
     }
 
@@ -781,16 +992,16 @@ class DarkIME2 : InputMethodService() {
         val inputStream = XmlKeyboardStorage.openInputStream(this, name)
         return if (inputStream != null) {
             try {
-                Log.i(TAG, "Loading custom layout: $name")
+                Timber.i("Loading custom layout: $name")
                 SimpleKeyboard.fromXml(this, inputStream, screenWidth, screenHeight, showNumberRow)
                     .also { inputStream.close() }
             } catch (e: Exception) {
-                Log.e(TAG, "Custom layout failed, using built-in", e)
+                Timber.e(e, "Custom layout failed, using built-in")
                 try { inputStream.close() } catch (_: Exception) {}
                 SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
             }
         } else {
-            Log.w(TAG, "Custom layout '$name' not found, using built-in")
+            Timber.w("Custom layout '$name' not found, using built-in")
             SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
         }
     }

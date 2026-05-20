@@ -1,7 +1,7 @@
 package org.dark.keyboard
 
 import android.inputmethodservice.InputMethodService
-import android.util.Log
+import timber.log.Timber
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
@@ -12,11 +12,11 @@ class DarkIME : InputMethodService(), SimpleKeyboardView.OnKeyListener {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("DarkIME", "onCreate")
+        Timber.d("onCreate")
     }
 
     override fun onCreateInputView(): View {
-        Log.d("DarkIME", "onCreateInputView")
+        Timber.d("onCreateInputView")
         try {
             val screenWidth = resources.displayMetrics.widthPixels
             val screenHeight = resources.displayMetrics.heightPixels
@@ -46,17 +46,17 @@ class DarkIME : InputMethodService(), SimpleKeyboardView.OnKeyListener {
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ))
 
-            Log.d("DarkIME", "Keyboard created: ${keyboard.rows.size} rows, ${keyboard.allKeys.size} keys, h=${keyboard.totalHeight}")
+            Timber.d("Keyboard created: ${keyboard.rows.size} rows, ${keyboard.allKeys.size} keys, h=${keyboard.totalHeight}")
             return container
         } catch (e: Exception) {
-            Log.e("DarkIME", "onCreateInputView error", e)
+            Timber.e(e, "onCreateInputView error")
             return android.widget.TextView(this).apply { text = "Error: ${e.message}" }
         }
     }
 
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
-        Log.d("DarkIME", "onStartInputView")
+        Timber.d("onStartInputView")
     }
 
     override fun onKey(code: Int, shift: Boolean, ctrl: Boolean, alt: Boolean, fn: Boolean) {
@@ -89,7 +89,7 @@ class DarkIME : InputMethodService(), SimpleKeyboardView.OnKeyListener {
                     intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                 } catch (e: Exception) {
-                    Log.e("DarkIME", "Cannot open settings", e)
+                    Timber.e(e, "Cannot open settings")
                 }
             }
             Key.CODE_F1 -> { }

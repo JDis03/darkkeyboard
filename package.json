@@ -1,0 +1,16 @@
+{
+  "name": "darkkeyboard",
+  "version": "1.0.0",
+  "description": "Modern Android IME with AI-powered autocorrect",
+  "private": true,
+  "scripts": {
+    "spec:new": "openspec new change",
+    "spec:status": "openspec status",
+    "spec:archive": "openspec archive",
+    "spec:list": "openspec list changes",
+    "spec:validate": "openspec validate"
+  },
+  "devDependencies": {
+    "@fission-ai/openspec": "^1.3.1"
+  }
+}

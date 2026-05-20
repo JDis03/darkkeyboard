@@ -1,7 +1,7 @@
 package org.dark.keyboard.suggestions
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 
 /**
  * Motor de sugerencias híbrido — el patrón GBoard/SwiftKey.
@@ -19,7 +19,7 @@ class SpanishDictEngine(private val context: Context) : SuggestionEngine {
     override val engineName = "Spanish Trie + Bigrams"
 
     companion object {
-        private const val TAG = "SpanishDictEngine"
+
         private const val MAX_RESULTS = 3
         private const val MAX_BIGRAMS = 2000
     }
@@ -42,7 +42,7 @@ class SpanishDictEngine(private val context: Context) : SuggestionEngine {
     override fun initialize() {
         trie.load()
         isReady = trie.isReady()
-        Log.i(TAG, "Engine ready: ${if (isReady) "OK" else "FAILED"}")
+        Timber.i("Engine ready: ${if (isReady) "OK" else "FAILED"}")
     }
 
     override fun getSuggestions(textBeforeCursor: String, maxResults: Int): List<String> {

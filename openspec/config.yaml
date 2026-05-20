@@ -1,0 +1,33 @@
+schema: spec-driven
+
+context: |
+  Language: English
+  All artifacts must be written in English (proposals, design docs, tasks, specs).
+  
+  Note: The user will communicate with you in Spanish, but you should generate 
+  all documentation and artifacts in English for consistency with the codebase.
+  
+  # DarkKeyboard Project Context
+  Tech stack:
+    - Language: Kotlin
+    - UI Framework: Android Views (custom keyboard view)
+    - Database: Text files (dictionaries)
+    - ML: TFLite (T5 encoder for re-ranking)
+    - Testing: JUnit 5 + Kotest
+  
+  Architecture:
+    - IME Service (DarkIME2.kt): Handles keyboard events, cursor tracking
+    - AutocorrectEngine: Conservative correction logic (hint-based only)
+    - SuggestionEngine: Trie + T5 re-ranker
+    - HeliBoard patterns: Cursor tracking, batch edits, NO setComposingRegion
+  
+  Constraints:
+    - APK ~44MB (arm64-v8a only)
+    - T5 model downloadable on-demand (~35MB)
+    - Conservative autocorrect: prefer no correction over wrong correction
+    - NEVER use setComposingRegion (causes cursor jumps)
+    - 161 unit tests must pass
+  
+  References:
+    - HeliBoard: /home/dark/Project/heliboard (reference pattern)
+    - SDD.md: Formal specifications (migrated to openspec/specs/)

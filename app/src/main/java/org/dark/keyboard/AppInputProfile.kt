@@ -1,7 +1,7 @@
 package org.dark.keyboard
 
 import android.text.InputType
-import android.util.Log
+import timber.log.Timber
 import android.view.inputmethod.EditorInfo
 
 /**
@@ -19,7 +19,6 @@ import android.view.inputmethod.EditorInfo
  */
 object AppInputProfile {
 
-    private const val TAG = "InputProfile"
 
     enum class Mode {
         TERMINAL,   // SSH/RDP
@@ -140,11 +139,11 @@ object AppInputProfile {
 
     private fun standard(reason: String) =
         Profile(Mode.STANDARD, true, true, true, reason).also {
-            Log.d(TAG, "STANDARD: $reason")
+        Timber.d("STANDARD: $reason")
         }
 
     private fun direct(reason: String) =
         Profile(Mode.DIRECT, false, false, false, reason).also {
-            Log.d(TAG, "DIRECT: $reason")
+        Timber.d("DIRECT: $reason")
         }
 }

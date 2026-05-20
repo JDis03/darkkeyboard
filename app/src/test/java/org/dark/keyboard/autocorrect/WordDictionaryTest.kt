@@ -40,11 +40,20 @@ class WordDictionaryTest {
         assertEquals(1, dict.levenshtein("hola", "bola"))
     }
 
-    @Test fun `levenshtein - transposicion teh-the es 2 (Levenshtein estandar)`() {
-        // Levenshtein estándar NO cuenta transposiciones como 1 operación.
-        // "teh" → "the": sustituir e→h + sustituir h→e = 2 operaciones.
-        // (Damerau-Levenshtein daría 1, pero no es lo que implementamos)
-        assertEquals(2, dict.levenshtein("teh", "the"))
+    @Test fun `levenshtein - transposicion teh-the es 1 (Damerau-Levenshtein)`() {
+        // Damerau-Levenshtein cuenta transposiciones adyacentes como 1 operación.
+        // "teh" → "the": transponer e↔h = 1 operación.
+        assertEquals(1, dict.levenshtein("teh", "the"))
+    }
+
+    @Test fun `levenshtein - transposicion adyacente recibir-reciibr`() {
+        // "recibir" → "reciibr": transponer i↔b = 1 operación (más otras)
+        val d = dict.levenshtein("reciibr", "recibir")
+        assertTrue("Esperado ≤2, fue $d", d <= 2)
+    }
+
+    @Test fun `levenshtein - transposicion simple ab-ba`() {
+        assertEquals(1, dict.levenshtein("ab", "ba"))
     }
 
     @Test fun `levenshtein - dos errores es 2`() {

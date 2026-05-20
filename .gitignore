@@ -40,3 +40,8 @@ local.properties
 *.onnx
 _dormant/*.tflite
 app/src/main/assets/*.tflite
+
+# OpenSpec - only commit completed changes
+openspec/changes/*/
+!openspec/changes/archive/
+node_modules/

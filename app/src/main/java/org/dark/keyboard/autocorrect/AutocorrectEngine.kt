@@ -2,7 +2,7 @@ package org.dark.keyboard.autocorrect
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
+import timber.log.Timber
 import android.text.InputType
 import android.view.inputmethod.EditorInfo
 
@@ -37,7 +37,7 @@ class AutocorrectEngine(
     val personalDict: PersonalDictionary
 ) {
     companion object {
-        private const val TAG = "Autocorrect"
+
 
         // Threshold: score(corrección) debe ser N× mayor que score(typed)
         // Valores conservadores — preferimos NO corregir antes que corregir mal
@@ -49,6 +49,12 @@ class AutocorrectEngine(
 
         // Frecuencia mínima del candidato para ser considerado corrección
         private const val MIN_CANDIDATE_FREQ = 20_000
+        
+        // Frecuencia mínima para hints de SuggestionEngine (más permisivo porque
+        // el hint ya fue rankeado por bigrams + frecuencia → más confiable)
+        // Bajado de 5000 a 2000 porque palabras como "corrupción" (3306) y 
+        // "calcetines" (4603) son válidas pero poco frecuentes
+        private const val MIN_HINT_FREQ = 2_000
 
         // Abreviaciones comunes — NO capitalizar después de estas
         private val ABBREVIATIONS = setOf(
@@ -75,6 +81,12 @@ class AutocorrectEngine(
 
     // Última corrección aplicada (para undo con backspace)
     private var lastCorrection: CorrectionRecord? = null
+    
+    // Última palabra antes de presionar espacio (para restaurar si borra el espacio)
+    private var lastWordBeforeSpace: String = ""
+    
+    // Si true, NO autocorregir la palabra actual (usuario hizo undo y sigue escribiendo)
+    private var skipCurrentWord: Boolean = false
 
     // Pares rechazados permanentemente (persisten en SharedPreferences)
     private val rejectedPairs = mutableSetOf<String>()
@@ -100,7 +112,6 @@ class AutocorrectEngine(
 
     sealed class SpaceResult {
         data class Corrected(val original: String, val corrected: String) : SpaceResult()
-        object PeriodInserted : SpaceResult()   // double-space → ". "
         object Normal : SpaceResult()
     }
 
@@ -115,7 +126,7 @@ class AutocorrectEngine(
     fun initialize() {
         val saved = prefs.getStringSet(PREFS_REJECTED, emptySet()) ?: emptySet()
         rejectedPairs.addAll(saved)
-        Log.i(TAG, "Init: ${rejectedPairs.size} rejected pairs loaded")
+        Timber.i("Init: ${rejectedPairs.size} rejected pairs loaded")
     }
 
     /**
@@ -125,6 +136,8 @@ class AutocorrectEngine(
     fun reset() {
         composingWord = ""
         lastCorrection = null
+        lastWordBeforeSpace = ""
+        skipCurrentWord = false
         expectedCursorPos = -1
         sessionRejected.clear()  // Nueva sesión → limpiar rechazos temporales
     }
@@ -162,7 +175,7 @@ class AutocorrectEngine(
 
         // Composing se desactiva en los mismos casos + en terminales
         shouldCompose = shouldAutocorrect && !isTerminalApp
-        Log.d(TAG, "EditorChanged: shouldAutocorrect=$shouldAutocorrect shouldCompose=$shouldCompose")
+        Timber.d("EditorChanged: shouldAutocorrect=$shouldAutocorrect shouldCompose=$shouldCompose")
     }
 
     /**
@@ -177,7 +190,7 @@ class AutocorrectEngine(
     fun overrideProfile(useComposing: Boolean, useAutocorrect: Boolean) {
         shouldCompose     = useComposing  && !isTerminalApp
         shouldAutocorrect = useAutocorrect && !isTerminalApp
-        Log.d(TAG, "Profile override: shouldCompose=$shouldCompose shouldAutocorrect=$shouldAutocorrect")
+        Timber.d("Profile override: shouldCompose=$shouldCompose shouldAutocorrect=$shouldAutocorrect")
     }
 
     fun onCursorMoved(newCursorPos: Int) {
@@ -198,6 +211,29 @@ class AutocorrectEngine(
     // ── Input handling ───────────────────────────────────────────────────
 
     /**
+     * Verifica si el cursor está al final del composing word.
+     * HeliBoard: isCursorFrontOrMiddleOfComposingWord()
+     * Si el cursor NO está al final → hay que commitear antes de editar.
+     */
+    fun isCursorAtEndOfComposing(textBeforeCursor: String, cursorPos: Int): Boolean {
+        if (composingWord.isEmpty()) return true  // no composing, OK
+        val expectedEnd = textBeforeCursor.length
+        // El cursor está al final si el texto antes del cursor termina 
+        // con nuestro composingWord (o parte de él)
+        return expectedEnd == cursorPos
+    }
+    
+    /**
+     * HeliBoard: cursor en medio del composing → revertir.
+     * Si el texto antes del cursor NO contiene nuestro composingWord al final,
+     * estamos desincronizados o el cursor se movió.
+     */
+    fun isComposingDesynced(textBeforeCursor: String): Boolean {
+        if (composingWord.isEmpty()) return false
+        return !textBeforeCursor.endsWith(composingWord)
+    }
+
+    /**
      * El usuario presionó una letra.
      * Retorna qué hacer con el IC.
      */
@@ -205,13 +241,15 @@ class AutocorrectEngine(
         // Si no debemos componer → commit directo
         if (!shouldCompose || !isEnabled || isSurrogate) {
             lastCorrection = null
+            lastWordBeforeSpace = ""
             return CharResult.CommitDirect(c.toString())
         }
-        // Primera letra de una palabra nueva → cerrar ventana de undo.
+        // Primera letra de una palabra nueva → cerrar ventana de undo y restauración.
         // Sin esto, backspace sobre la segunda palabra intentaría deshacer
         // la corrección de la primera en lugar de borrar del composing.
         if (composingWord.isEmpty()) {
             lastCorrection = null
+            lastWordBeforeSpace = ""  // Ya no se puede restaurar, usuario empezó palabra nueva
         }
         composingWord += c
         return CharResult.UpdateComposing(composingWord)
@@ -227,18 +265,24 @@ class AutocorrectEngine(
      *   Esto evita que autocorrect y la barra elijan palabras distintas.
      */
     fun onSpace(textBeforeCursor: String, suggestionHint: String? = null): SpaceResult {
+        Timber.d("onSpace called: textBeforeCursor='$textBeforeCursor', composingWord='$composingWord', skip=$skipCurrentWord")
         val word = composingWord.ifEmpty {
             textBeforeCursor.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
         }
+        
+        // Guardar palabra antes de limpiar (para restaurar si borra el espacio)
+        lastWordBeforeSpace = word
         composingWord = ""
 
-        // Double-space → ". "
-        if (textBeforeCursor.endsWith(" ")) {
-            lastCorrection = null
-            return SpaceResult.PeriodInserted
-        }
-
         lastCorrection = null
+        
+        // Si el usuario hizo undo en esta palabra, NO autocorregir
+        // El flag se resetea aquí para la próxima palabra
+        if (skipCurrentWord) {
+            Timber.d("Skipping autocorrect for '$word' (user rejected previous correction)")
+            skipCurrentWord = false
+            return SpaceResult.Normal
+        }
 
         if (!shouldAutocorrect || !isEnabled || word.length < MIN_WORD_LENGTH) return SpaceResult.Normal
 
@@ -270,7 +314,8 @@ class AutocorrectEngine(
             // pero permite que funcione en próximas sesiones/campos
             val pair = "${corr.original.lowercase()}→${corr.corrected.lowercase()}"
             sessionRejected.add(pair)
-            Log.d(TAG, "Session reject: $pair (not persisted)")
+            skipCurrentWord = true
+            Timber.d("Session reject: $pair, skipCurrentWord=true")
             return BackspaceResult.UndoCorrection(corr)
         }
 
@@ -280,7 +325,16 @@ class AutocorrectEngine(
             return BackspaceResult.UpdateComposing(composingWord)
         }
 
-        // 3) Backspace normal
+        // 3) Espacio fue borrado — marcar skip y dejar que el backspace normal
+        //    elimine el espacio. composingWord se queda vacío para que el 
+        //    desyncFix en onCharacter adopte la palabra al escribir la siguiente letra.
+        if (lastWordBeforeSpace.isNotEmpty()) {
+            skipCurrentWord = true
+            lastWordBeforeSpace = ""
+            Timber.d("Space deleted, skipCurrentWord=true, word will be adopted on next char")
+        }
+
+        // 4) Backspace normal
         return BackspaceResult.Normal
     }
 
@@ -291,6 +345,15 @@ class AutocorrectEngine(
     fun onFinishComposing() {
         composingWord = ""
         lastCorrection = null
+        lastWordBeforeSpace = ""
+    }
+    
+    /**
+     * Restaura el composing word después de un undo.
+     * Llamar desde DarkIME2 después de setComposingText(r.original).
+     */
+    fun restoreComposing(word: String) {
+        composingWord = word
     }
 
     // ── Auto-capitalize ──────────────────────────────────────────────────
@@ -332,49 +395,79 @@ class AutocorrectEngine(
         val typedFreq = dict.getFreq(t)
         val typedIsInDict = typedFreq > 0
 
-        // ── Prioridad 1: hint de DictSuggestionEngine ───────────────────
-        // IMPORTANTE: el hint puede ser una predicción de SIGUIENTE PALABRA (bigrams),
-        // no una corrección de la actual. Solo lo usamos si:
-        //   a) La palabra tipada NO está en el dict (es un error)    ← caso principal
-        //   b) Y la hint tiene edit distance ≤ 2 (es realmente similar a lo tipado)
-        //   c) Y la hint tiene frecuencia mínima
+        // ── Hint de DictSuggestionEngine ────────────────────────────────
+        // El hint es la primera sugerencia de la barra. Puede ser:
+        //   - Una corrección (lo que queremos usar)
+        //   - Una predicción de siguiente palabra (bigram) - NO usar
+        //   - Una completación de prefijo - usar si es corrección
+        //
+        // Para distinguir, verificamos que el hint sea SIMILAR a lo tecleado:
+        //   - Primera letra compatible (igual o adyacente QWERTY)
+        //   - Edit distance ≤ 3
+        //   - Comparte prefijo (para palabras largas)
         if (hint != null) {
             val h = hint.lowercase().trim()
             val hintDist = levenshteinSimple(t, h)
-            // El hint viene del suggestion engine con contexto bigram → más confiable
-            // que edit distance puro. No aplicar MIN_WORD_LENGTH aquí (permite "teh→the")
-            if (h != t && h.length >= 2 && hintDist <= 2) {
+            Timber.d("Hint check: '$t' → hint='$h' dist=$hintDist typedInDict=$typedIsInDict")
+            
+            // El hint debe ser una CORRECCIÓN, no una predicción.
+            // Una predicción tendría dist muy alto (palabras completamente diferentes)
+            val isLikelyCorrection = h != t && 
+                                     h.length >= 2 && 
+                                     hintDist <= 3 && 
+                                     firstLetterCompatible(t, h) &&
+                                     prefixCompatible(t, h)  // También verificar prefijo
+            
+            if (isLikelyCorrection) {
+                Timber.d("  ✓ Hint looks like a correction (dist=$hintDist ≤ 3, prefix OK)")
                 val pairKey = "$t→$h"
+                
                 // Chequear rechazos (permanentes + sesión)
-                if (!rejectedPairs.contains(pairKey) && !sessionRejected.contains(pairKey)) {
+                if (rejectedPairs.contains(pairKey)) {
+                    Timber.d("  ✗ Hint rejected: in rejectedPairs")
+                } else if (sessionRejected.contains(pairKey)) {
+                    Timber.d("  ✗ Hint rejected: in sessionRejected")
+                } else {
                     val hintFreq = dict.getFreq(h)
+                    Timber.d("  Hint freq=$hintFreq, MIN=$MIN_HINT_FREQ, typedInDict=$typedIsInDict")
+                    
                     // Solo aplicar hint si la palabra tipada es un error
-                    if (!typedIsInDict && hintFreq >= MIN_CANDIDATE_FREQ) {
+                    if (!typedIsInDict && hintFreq >= MIN_HINT_FREQ) {
+                        Timber.d("  ✓ USING HINT: '$t' → '$h'")
                         return preserveCase(typed, h)
+                    } else if (typedIsInDict) {
+                        Timber.d("  ✗ Hint skipped: typed word is in dict (freq=$typedFreq)")
+                    } else {
+                        Timber.d("  ✗ Hint skipped: hint freq too low ($hintFreq < $MIN_HINT_FREQ)")
                     }
                 }
+            } else {
+                // El hint no parece ser una corrección (probablemente es una predicción)
+                val reason = when {
+                    h == t -> "hint equals typed"
+                    h.length < 2 -> "hint too short"
+                    hintDist > 3 -> "distance too high ($hintDist > 3)"
+                    !firstLetterCompatible(t, h) -> "first letter not compatible"
+                    !prefixCompatible(t, h) -> "prefix not compatible"
+                    else -> "unknown"
+                }
+                Timber.d("  ✗ Hint is likely a prediction, not a correction: $reason")
             }
         }
 
-        // ── Prioridad 2: edit distance pura ──────────────────────────────
-        if (typedIsInDict) return null
-
-        val candidates = dict.findByEditDistance(t, WordDictionary.MAX_EDIT_DISTANCE)
-            .filter { it.word != t }.take(5)
-        if (candidates.isEmpty()) return null
-
-        val best = candidates.first()
-        val bestFreq = dict.getFreq(best.word)
-        val dist = levenshteinSimple(t, best.word)
-
-        val pairKey = "$t→${best.word}"
-        // Chequear rechazos (permanentes + sesión)
-        if (rejectedPairs.contains(pairKey) || sessionRejected.contains(pairKey)) return null
-        val threshold = THRESHOLD[dist] ?: return null
-        if (bestFreq < MIN_CANDIDATE_FREQ) return null
-        if (bestFreq < typedFreq * threshold) return null
-
-        return preserveCase(typed, best.word)
+        // ── Prioridad 2: edit distance - DESHABILITADO ──────────────────
+        // El fallback a edit distance sin hint era demasiado agresivo y causaba
+        // correcciones incorrectas como 'calcu' → 'calle', 'lite' → 'listo'.
+        // 
+        // La autocorrección ahora SOLO se aplica cuando:
+        // 1. El hint de la barra de sugerencias es una corrección válida (dist ≤ 3)
+        // 2. La palabra tecleada NO está en el diccionario
+        // 3. El hint tiene frecuencia suficiente
+        //
+        // Si no hay hint válido, preferimos NO corregir antes que corregir mal.
+        // El usuario puede seleccionar manualmente de la barra de sugerencias.
+        Timber.d("No hint correction available for '$t', skipping autocorrect")
+        return null
     }
 
     private fun preserveCase(typed: String, correction: String): String =
@@ -406,20 +499,116 @@ class AutocorrectEngine(
         prefs.edit().putStringSet(PREFS_REJECTED, toSave).apply()
     }
 
+    /**
+     * Damerau-Levenshtein: incluye transposiciones adyacentes.
+     * "teh"→"the" = 1 (transposición), no 2 (dos sustituciones)
+     */
     private fun levenshteinSimple(a: String, b: String): Int {
         if (a == b) return 0
-        val m = a.length; val n = b.length
-        val prev = IntArray(n + 1) { it }
-        val curr = IntArray(n + 1)
+        val m = a.length
+        val n = b.length
+        if (m == 0) return n
+        if (n == 0) return m
+
+        val d = Array(m + 1) { IntArray(n + 1) }
+        for (i in 0..m) d[i][0] = i
+        for (j in 0..n) d[0][j] = j
+
         for (i in 1..m) {
-            curr[0] = i
             for (j in 1..n) {
-                curr[j] = if (a[i - 1] == b[j - 1]) prev[j - 1]
-                else 1 + minOf(prev[j], curr[j - 1], prev[j - 1])
+                val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+                d[i][j] = minOf(
+                    d[i - 1][j] + 1,
+                    d[i][j - 1] + 1,
+                    d[i - 1][j - 1] + cost
+                )
+                // Transposición adyacente
+                if (i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1]) {
+                    d[i][j] = minOf(d[i][j], d[i - 2][j - 2] + cost)
+                }
             }
-            prev.indices.forEach { prev[it] = curr[it] }
         }
-        return prev[n]
+        return d[m][n]
+    }
+
+    /**
+     * Verifica si la primera letra de la corrección es compatible con la primera letra tipada.
+     * Acepta: misma letra, o teclas adyacentes en el teclado QWERTY.
+     * Esto evita correcciones como "Calce" → "Hace" (C y H no son adyacentes).
+     */
+    /**
+     * Verifica que la primera letra sea compatible (igual o adyacente en QWERTY).
+     */
+    private fun firstLetterCompatible(typed: String, correction: String): Boolean {
+        if (typed.isEmpty() || correction.isEmpty()) return false
+        val t = typed[0].lowercaseChar()
+        val c = correction[0].lowercaseChar()
+        if (t == c) return true
+        
+        // Mapa de teclas adyacentes en QWERTY (incluyendo español)
+        val adjacent = mapOf(
+            'q' to setOf('w', 'a'),
+            'w' to setOf('q', 'e', 'a', 's'),
+            'e' to setOf('w', 'r', 's', 'd'),
+            'r' to setOf('e', 't', 'd', 'f'),
+            't' to setOf('r', 'y', 'f', 'g'),
+            'y' to setOf('t', 'u', 'g', 'h'),
+            'u' to setOf('y', 'i', 'h', 'j'),
+            'i' to setOf('u', 'o', 'j', 'k'),
+            'o' to setOf('i', 'p', 'k', 'l'),
+            'p' to setOf('o', 'l', 'ñ'),
+            'a' to setOf('q', 'w', 's', 'z'),
+            's' to setOf('a', 'w', 'e', 'd', 'z', 'x'),
+            'd' to setOf('s', 'e', 'r', 'f', 'x', 'c'),
+            'f' to setOf('d', 'r', 't', 'g', 'c', 'v'),
+            'g' to setOf('f', 't', 'y', 'h', 'v', 'b'),
+            'h' to setOf('g', 'y', 'u', 'j', 'b', 'n'),
+            'j' to setOf('h', 'u', 'i', 'k', 'n', 'm'),
+            'k' to setOf('j', 'i', 'o', 'l', 'm'),
+            'l' to setOf('k', 'o', 'p', 'ñ'),
+            'ñ' to setOf('l', 'p'),
+            'z' to setOf('a', 's', 'x'),
+            'x' to setOf('z', 's', 'd', 'c'),
+            'c' to setOf('x', 'd', 'f', 'v'),
+            'v' to setOf('c', 'f', 'g', 'b'),
+            'b' to setOf('v', 'g', 'h', 'n'),
+            'n' to setOf('b', 'h', 'j', 'm'),
+            'm' to setOf('n', 'j', 'k')
+        )
+        
+        return adjacent[t]?.contains(c) == true
+    }
+    
+    /**
+     * Verifica que el prefijo sea compatible.
+     * Para palabras ≥4 caracteres, la corrección debe compartir al menos 2 caracteres iniciales.
+     * Esto previene correcciones como 'calcu' → 'calle' (solo comparten 'c').
+     */
+    private fun prefixCompatible(typed: String, correction: String): Boolean {
+        val tLower = typed.lowercase()
+        val cLower = correction.lowercase()
+        
+        // Para palabras cortas, solo verificar primera letra
+        if (typed.length < 4) return true
+        
+        // Calcular caracteres iniciales compartidos
+        val sharedPrefix = tLower.zip(cLower).takeWhile { (a, b) -> a == b }.count()
+        
+        // Palabras de 4-5 chars: requieren al menos 2 chars compartidos
+        // Palabras de 6+ chars: requieren al menos 3 chars compartidos
+        val minRequired = if (typed.length >= 6) 3 else 2
+        
+        return sharedPrefix >= minRequired
+    }
+    
+    /**
+     * No corregir a una palabra más corta si el usuario claramente está escribiendo algo más largo.
+     * Ejemplo: 'calcu' (5 chars) → no corregir a 'calle' (5 chars) pero tampoco a 'cal' (3 chars)
+     * La corrección debe ser al menos tan larga como lo tecleado, o como máximo 1 char más corta.
+     */
+    private fun lengthCompatible(typed: String, correction: String): Boolean {
+        // La corrección no puede ser más de 1 caracter más corta que lo tecleado
+        return correction.length >= typed.length - 1
     }
 
     private fun String.isAllCaps() =

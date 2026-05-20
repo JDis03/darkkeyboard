@@ -1,7 +1,7 @@
 package org.dark.keyboard.suggestions
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 import java.io.InputStream
 
 /**
@@ -14,7 +14,7 @@ import java.io.InputStream
 class CompactTrie(private val context: Context, private val file: String = "dict_es.txt") {
 
     companion object {
-        private const val TAG  = "CompactTrie"
+
         private const val MAX_RESULTS = 6
     }
 
@@ -38,9 +38,9 @@ class CompactTrie(private val context: Context, private val file: String = "dict
             }
             reader.close()
             isLoaded = true
-            Log.i(TAG, "Loaded: ${words.size} words (sorted text, binary search)")
+            Timber.i("Loaded: ${words.size} words (sorted text, binary search)")
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to load dictionary: ${e.message}")
+            Timber.e("Failed to load dictionary: ${e.message}")
         }
     }
 
@@ -48,35 +48,105 @@ class CompactTrie(private val context: Context, private val file: String = "dict
 
     /**
      * Busca todas las palabras que empiezan con [prefix].
-     * Binary search para encontrar el rango, luego colectar dentro de ese rango.
-     * Ordenado por frecuencia (mayor primero).
      */
     fun lookup(prefix: String, maxResults: Int = MAX_RESULTS): List<Entry> {
         if (!isLoaded || prefix.isEmpty()) return emptyList()
         val p = prefix.lowercase()
 
-        // Binary search: encontrar primer match
-        var lo = 0
-        var hi = words.size
+        var lo = 0; var hi = words.size
         while (lo < hi) {
             val mid = (lo + hi) / 2
-            if (words[mid].word < p) lo = mid + 1
-            else hi = mid
+            if (words[mid].word < p) lo = mid + 1 else hi = mid
         }
 
-        // Colectar todas las palabras que empiezan con el prefijo
         val results = mutableListOf<Entry>()
         var i = lo
         while (i < words.size && words[i].word.startsWith(p)) {
             val w = words[i]
-            if (w.word.length >= 3 && w.word != p) {
-                results.add(w)
-            }
+            if (w.word.length >= 3 && w.word != p) results.add(w)
             i++
         }
-
-        // Ordenar por frecuencia descendente
         results.sortByDescending { it.freq }
         return results.take(maxResults)
+    }
+
+    /**
+     * Busca palabras similares a [typed] por edit distance (Damerau-Levenshtein).
+     *
+     * Para cada keyword, esto itera sobre las ~8000 palabras del diccionario
+     * y calcula la distancia. Toma ~1-4ms.
+     *
+     * Filtra por:
+     *   - maxDist (1-2 típicamente)
+     *   - Primera letra compatible (misma o adyacente QWERTY)
+     *   - Longitud similar (±2 chars)
+     *
+     * @return top-N candidatos ordenados por frecuencia descendente.
+     */
+    fun findByEditDistance(
+        typed: String,
+        maxDist: Int = 2,
+        maxResults: Int = 12
+    ): List<Entry> {
+        if (!isLoaded || typed.length < 3) return emptyList()
+        val t = typed.lowercase()
+
+        val results = mutableListOf<Entry>()
+        val window = maxOf(3, t.length - 2)..(t.length + 2)
+
+        for (entry in words) {
+            if (entry.word.length !in window) continue
+            if (entry.word == t) continue
+            if (!firstLetterCompat(t, entry.word)) continue
+
+            val d = damerauLevenshtein(t, entry.word)
+            if (d <= maxDist) results.add(entry)
+        }
+
+        results.sortByDescending { it.freq }
+        return results.take(maxResults)
+    }
+
+    private fun firstLetterCompat(typed: String, correction: String): Boolean {
+        val t = typed[0]; val c = correction[0]
+        if (t == c) return true
+        val adjacent = mapOf(
+            'q' to "wa", 'w' to "qe", 'e' to "wr", 'r' to "et",
+            't' to "ry", 'y' to "tu", 'u' to "yi", 'i' to "uo",
+            'o' to "ip", 'p' to "o", 'a' to "qs", 's' to "aw",
+            'd' to "se", 'f' to "dr", 'g' to "ft", 'h' to "gy",
+            'j' to "hu", 'k' to "ji", 'l' to "ko", 'z' to "as",
+            'x' to "zs", 'c' to "xd", 'v' to "cf", 'b' to "vg",
+            'n' to "bh", 'm' to "nj"
+        )
+        return adjacent[t]?.contains(c) == true
+    }
+
+    /**
+     * Damerau-Levenshtein: insert, delete, substitute, transpose = 1
+     */
+    private fun damerauLevenshtein(a: String, b: String): Int {
+        val n = a.length; val m = b.length
+        var prevRow = IntArray(m + 1) { it }
+        var curRow  = IntArray(m + 1)
+        var prevPrevRow = IntArray(m + 1)
+
+        for (i in 1..n) {
+            curRow[0] = i
+            for (j in 1..m) {
+                val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+                curRow[j] = minOf(
+                    prevRow[j] + 1,          // delete
+                    curRow[j - 1] + 1,        // insert
+                    prevRow[j - 1] + cost     // substitute
+                )
+                if (i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1]) {
+                    curRow[j] = minOf(curRow[j], prevPrevRow[j - 2] + cost)
+                }
+            }
+            prevPrevRow = prevRow; prevRow = curRow
+            curRow = IntArray(m + 1)
+        }
+        return prevRow[m]
     }
 }

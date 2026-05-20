@@ -1,0 +1,72 @@
+[
+  {
+    "id": "proc_2026-05-19T1952_8485eb",
+    "workspaceId": "mpc50r27",
+    "title": "T5 TFLite export",
+    "command": "export PATH=\"$HOME/.local/bin:$PATH\" && cd /home/dark/Project/darkkeyboard/ml_pipeline && source .venv/bin/activate && python train_model.py 2>&1",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "error",
+    "pid": 201745,
+    "startedAt": "2026-05-19T19:52:11.503Z",
+    "outputSizeBytes": 7415,
+    "terminalReason": "failed",
+    "exitCode": 1,
+    "stoppedAt": "2026-05-19T19:52:18.554Z"
+  },
+  {
+    "id": "proc_2026-05-19T1952_795a33",
+    "workspaceId": "mpc50r27",
+    "title": "T5 TFLite export v2",
+    "command": "export PATH=\"$HOME/.local/bin:$PATH\" && cd /home/dark/Project/darkkeyboard/ml_pipeline && source .venv/bin/activate && python train_model.py 2>&1",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "error",
+    "pid": 201938,
+    "startedAt": "2026-05-19T19:52:33.612Z",
+    "outputSizeBytes": 7120,
+    "terminalReason": "failed",
+    "exitCode": 134,
+    "stoppedAt": "2026-05-19T19:52:46.821Z"
+  },
+  {
+    "id": "proc_2026-05-19T1953_3821a2",
+    "workspaceId": "mpc50r27",
+    "title": "T5 TFLite export v3",
+    "command": "export PATH=\"$HOME/.local/bin:$PATH\" && cd /home/dark/Project/darkkeyboard/ml_pipeline && source .venv/bin/activate && python train_model.py 2>&1",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "error",
+    "pid": 202254,
+    "startedAt": "2026-05-19T19:53:20.632Z",
+    "outputSizeBytes": 7120,
+    "terminalReason": "failed",
+    "exitCode": 134,
+    "stoppedAt": "2026-05-19T19:53:39.821Z"
+  },
+  {
+    "id": "proc_2026-05-19T1954_13ef6d",
+    "workspaceId": "mpc50r27",
+    "title": "T5 TFLite export v4",
+    "command": "export PATH=\"$HOME/.local/bin:$PATH\" && cd /home/dark/Project/darkkeyboard/ml_pipeline && source .venv/bin/activate && python train_model.py 2>&1",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "stopped",
+    "pid": 202622,
+    "startedAt": "2026-05-19T19:54:51.114Z",
+    "outputSizeBytes": 16953,
+    "terminalReason": "finished",
+    "exitCode": 0,
+    "stoppedAt": "2026-05-19T19:55:01.864Z"
+  },
+  {
+    "id": "proc_2026-05-19T2019_47bd62",
+    "workspaceId": "mpc50r27",
+    "title": "T5 model rebuild (fix call signature)",
+    "command": "export PATH=\"$HOME/.local/bin:$PATH\" && cd /home/dark/Project/darkkeyboard/ml_pipeline && source .venv/bin/activate && python train_model.py 2>&1",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "stopped",
+    "pid": 210700,
+    "startedAt": "2026-05-19T20:19:30.614Z",
+    "outputSizeBytes": 16953,
+    "terminalReason": "finished",
+    "exitCode": 0,
+    "stoppedAt": "2026-05-19T20:19:41.441Z"
+  }
+]

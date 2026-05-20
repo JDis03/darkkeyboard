@@ -1,0 +1,15 @@
+[
+  {
+    "id": "proc_2026-05-18T1643_84645a",
+    "workspaceId": "mpbeq0l4",
+    "title": "Logcat autocorrect",
+    "command": "export PATH=\"$PATH:/home/dark/Android/Sdk/platform-tools\" && adb logcat -c && adb logcat 'DarkIME2:I' 'Autocorrect:D' 'InputProfile:D' 'WordDict:I' 'DictEngine:I' '*:S'",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "error",
+    "pid": 28270,
+    "startedAt": "2026-05-18T16:43:07.342Z",
+    "outputSizeBytes": 503706,
+    "terminalReason": "failed",
+    "stoppedAt": "2026-05-18T22:03:58.216Z"
+  }
+]

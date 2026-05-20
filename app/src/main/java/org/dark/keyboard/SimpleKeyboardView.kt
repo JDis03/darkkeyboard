@@ -8,8 +8,11 @@ import android.graphics.RectF
 import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.util.AttributeSet
-import android.util.Log
+import timber.log.Timber
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
@@ -91,6 +94,14 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var longPressRunnable: Runnable? = null
     private var isPopupShowing = false
     private var selectedPopupChar: Char? = null
+    
+    // ── Touch noise threshold (HeliBoard pattern) ───────────────────────
+    private var touchDownTime = 0L
+    private var touchDownX = 0f
+    private var touchDownY = 0f
+    private var touchMoved = false       // true si el dedo se movió más que el slop
+    private val touchNoiseTimeMs = 50L   // ignorar toques más cortos que 50ms
+    private val touchSlopPx = 8f          // ignorar movimientos < 8px (jitter del panel)
     private var audioManager: AudioManager? = null
     private var prefs: SharedPreferences? = null
 
@@ -107,8 +118,38 @@ class SimpleKeyboardView @JvmOverloads constructor(
             try { audioManager?.playSoundEffect(AudioManager.FX_KEY_CLICK, 1f) } catch (_: Exception) { }
         }
         if (p.getBoolean("vibrate_on_keypress", false)) {
-            try { performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP) } catch (_: Exception) { }
+            try {
+                // Método 1: HapticFeedbackConstants (requiere View habilitado)
+                if (isHapticFeedbackEnabled) {
+                    performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP,
+                        HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING)
+                } else {
+                    // Método 2: Vibrator directo (funciona siempre)
+                    vibrate(10)
+                }
+            } catch (_: Exception) {
+                try { vibrate(10) } catch (_: Exception) { }
+            }
         }
+    }
+    
+    private var vibrator: Vibrator? = null
+    
+    private fun vibrate(ms: Long) {
+        val v = vibrator ?: run {
+            val vm = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                val vibratorManager = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                vibratorManager.defaultVibrator
+            } else {
+                @Suppress("DEPRECATION")
+                context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            }
+            vibrator = vm
+            vm
+        }
+        try {
+            v.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE))
+        } catch (_: Exception) { }
     }
 
     private fun applyTheme() {
@@ -396,7 +437,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
                         char
                     }
                 } else {
-                    Log.e("SimpleKeyboardView", "No label for key: code=${key.code}")
+                    Timber.e("No label for key: code=${key.code}")
                     null
                 }
             }
@@ -405,8 +446,19 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        // ── Multi-touch filter: solo procesar el primer pointer ─────────
+        val pointerIndex = event.actionIndex
+        if (pointerIndex > 0 && event.actionMasked != MotionEvent.ACTION_POINTER_UP) {
+            return true  // ignorar dedos adicionales
+        }
+        
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                touchDownTime = System.currentTimeMillis()
+                touchDownX = event.x
+                touchDownY = event.y
+                touchMoved = false
+                
                 val key = findKey(event.x.toInt(), event.y.toInt())
                 pressedKey = key
                 if (key != null) {
@@ -420,6 +472,13 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 return true
             }
             MotionEvent.ACTION_MOVE -> {
+                // Detectar si el dedo se movió significativamente
+                val dx = event.x - touchDownX
+                val dy = event.y - touchDownY
+                if (dx * dx + dy * dy > touchSlopPx * touchSlopPx) {
+                    touchMoved = true
+                }
+                
                 // If popup is showing, track finger movement across options
                 if (isPopupShowing) {
                     selectedPopupChar = popupPreview?.handleMove(event.rawX, event.rawY)
@@ -439,6 +498,10 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 cancelRepeat()
                 cancelLongPressInternal()
                 
+                // ── Touch noise filter ─────────────────────────────────
+                val touchDuration = System.currentTimeMillis() - touchDownTime
+                val isNoise = touchDuration < touchNoiseTimeMs
+                
                 // If popup was showing, insert the selected character
                 if (isPopupShowing) {
                     selectedPopupChar?.let { char ->
@@ -447,8 +510,8 @@ class SimpleKeyboardView @JvmOverloads constructor(
                     popupPreview?.dismiss()
                     isPopupShowing = false
                     selectedPopupChar = null
-                } else {
-                    // Normal key press
+                } else if (!isNoise) {
+                    // Normal key press (noise filter passed)
                     pressedKey?.let { key ->
                         handleKeyPress(key)
                     }
@@ -482,7 +545,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
         val c = modifierState.isCtrlActive()
         val a = modifierState.isAltActive()
         val f = modifierState.isFnActive()
-        Log.d("SimpleKeyboardView", "handleKeyPress: code=${key.code}, label=${key.label}")
+        Timber.d("handleKeyPress: code=${key.code}, label=${key.label}")
         when (key.code) {
             Key.CODE_SHIFT -> { modifierState.toggleShift(); invalidate() }
             Key.CODE_DELETE -> { onKeyListener?.onKey(Key.CODE_DELETE, s, c, a, f) }

@@ -1,7 +1,7 @@
 package org.dark.keyboard.suggestions
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets
 class BpeTokenizer(private val context: Context, private val useDownloaded: Boolean = false) {
 
     companion object {
-        private const val TAG = "BpeTokenizer"
+
         private const val VOCAB_FILE  = "bpe_vocab.json"
         private const val MERGES_FILE = "bpe_merges.txt"
     }
@@ -41,9 +41,9 @@ class BpeTokenizer(private val context: Context, private val useDownloaded: Bool
             loadVocab()
             loadMerges()
             isLoaded = true
-            Log.i(TAG, "BPE tokenizer loaded: ${encoder.size} tokens, ${bpeRanks.size} merges")
+            Timber.i("BPE tokenizer loaded: ${encoder.size} tokens, ${bpeRanks.size} merges")
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to load BPE tokenizer: ${e.message}")
+            Timber.e("Failed to load BPE tokenizer: ${e.message}")
         }
     }
 

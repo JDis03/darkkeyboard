@@ -1,13 +1,13 @@
 package org.dark.keyboard
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 import java.io.File
 import java.io.InputStream
 
 object XmlKeyboardStorage {
 
-    private const val TAG = "XmlKeyboardStorage"
+
     private const val LAYOUTS_DIR = "layouts"
 
     private fun layoutsDir(context: Context): File {
@@ -37,12 +37,12 @@ object XmlKeyboardStorage {
 
     fun saveLayout(context: Context, name: String, xmlContent: String) {
         File(layoutsDir(context), "$name.xml").writeText(xmlContent)
-        Log.i(TAG, "Saved custom layout: $name")
+        Timber.i("Saved custom layout: $name")
     }
 
     fun deleteLayout(context: Context, name: String): Boolean {
         val deleted = File(layoutsDir(context), "$name.xml").delete()
-        if (deleted) Log.i(TAG, "Deleted custom layout: $name")
+        if (deleted) Timber.i("Deleted custom layout: $name")
         return deleted
     }
 
@@ -56,7 +56,7 @@ object XmlKeyboardStorage {
                 )
             ).bufferedReader().readText()
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to read template XML", e)
+            Timber.e(e, "Failed to read template XML")
             ""
         }
     }

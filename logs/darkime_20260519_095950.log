@@ -1,0 +1,2013 @@
+================================================================================
+DarkIME Log Session Started
+Timestamp: 2026-05-19 09:59:50.653
+Android Version: 16 (API 36)
+Device: Xiaomi 25069PTEBG
+================================================================================
+
+[2026-05-19 09:59:50.653] I/DarkIME: Logs cleared
+[2026-05-19 09:59:50.714] D/DarkIME: STANDARD: pkg=org.dark.keyboard variation=0
+[2026-05-19 09:59:50.715] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+[2026-05-19 09:59:50.715] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 09:59:50.715] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 09:59:50.715] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 09:59:53.045] D/DarkIME: STANDARD: pkg=com.miui.home variation=0
+[2026-05-19 09:59:53.045] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+[2026-05-19 09:59:53.045] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 09:59:53.046] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 09:59:53.046] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 09:59:54.330] I/DarkIME: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+[2026-05-19 09:59:54.331] D/DarkIME: EditorChanged: shouldAutocorrect=false shouldCompose=false
+[2026-05-19 09:59:54.331] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 09:59:54.331] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 09:59:55.457] E/DarkIME: === onEvaluateFullscreenMode() = false ===
+[2026-05-19 09:59:55.458] E/DarkIME: === onCreateInputView CALLED ===
+[2026-05-19 09:59:55.465] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 09:59:55.465] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 09:59:55.466] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 09:59:55.467] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 09:59:55.467] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 09:59:55.468] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 09:59:55.468] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 09:59:55.469] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 09:59:55.469] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 09:59:55.469] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 09:59:55.470] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 09:59:55.470] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 09:59:55.470] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 09:59:55.470] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 09:59:55.471] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 09:59:55.471] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 09:59:55.471] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 09:59:55.471] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 09:59:55.472] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 09:59:55.472] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 09:59:55.472] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 09:59:55.472] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 09:59:55.472] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 09:59:55.473] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 09:59:55.473] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 09:59:55.473] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 09:59:55.473] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 09:59:55.474] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 09:59:55.474] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 09:59:55.474] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 09:59:55.474] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 09:59:55.475] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 09:59:55.475] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 09:59:55.475] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 09:59:55.475] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 09:59:55.475] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 09:59:55.476] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 09:59:55.476] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 09:59:55.476] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 09:59:55.476] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 09:59:55.477] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 09:59:55.477] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 09:59:55.477] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 09:59:55.477] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 09:59:55.478] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 09:59:55.478] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 09:59:55.478] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 09:59:55.478] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 09:59:55.478] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 09:59:55.479] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 09:59:55.479] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 09:59:55.479] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 09:59:55.479] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 09:59:55.480] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 09:59:55.480] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 09:59:55.480] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 09:59:55.480] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 09:59:55.480] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 09:59:55.481] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 09:59:55.481] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 09:59:55.481] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 09:59:55.481] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 09:59:55.482] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 09:59:55.482] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 09:59:55.482] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 09:59:55.482] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 09:59:55.483] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 09:59:55.483] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 09:59:55.483] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 09:59:55.484] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 09:59:55.484] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 09:59:55.484] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 09:59:55.484] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 09:59:55.485] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 09:59:55.485] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 09:59:55.485] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 09:59:55.485] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 09:59:55.485] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 09:59:55.485] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 09:59:55.486] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 09:59:55.486] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 09:59:55.486] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 09:59:55.486] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 09:59:55.486] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 09:59:55.486] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 09:59:55.487] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 09:59:55.487] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 09:59:55.487] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 09:59:55.487] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 09:59:55.487] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 09:59:55.488] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 09:59:55.488] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 09:59:55.488] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 09:59:55.488] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 09:59:55.488] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 09:59:55.488] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 09:59:55.489] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 09:59:55.489] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 09:59:55.489] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 09:59:55.489] I/DarkIME: Keyboard created
+[2026-05-19 09:59:55.504] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:55.553] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:56.757] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:56.867] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 09:59:56.868] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:56.884] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:56.891] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:56.957] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:57.076] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 09:59:57.076] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:57.093] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:57.115] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:57.181] I/DarkIME: Model not found — download via Settings to enable AI suggestions
+[2026-05-19 09:59:57.190] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:57.193] D/DarkIME: handleKeyPress: code=107, label=k
+[2026-05-19 09:59:57.194] I/DarkIME: >>> handleKey: code=107 (k), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:57.206] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.216] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.304] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 09:59:58.306] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:58.315] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.397] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.423] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.468] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-19 09:59:58.469] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:58.491] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:58.583] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.214] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.294] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 09:59:59.295] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:59.314] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.414] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.465] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.594] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-19 09:59:59.596] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 09:59:59.614] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 09:59:59.705] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:00.705] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:00.789] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:00.790] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:00.797] D/DarkIME: onSpace called: textBeforeCursor='Calce', composingWord='Calce'
+[2026-05-19 10:00:00.798] D/DarkIME: Hint check: 'calce' → hint='calcetines' dist=5 typedInDict=false
+[2026-05-19 10:00:00.799] D/DarkIME:   ✗ Hint failed distance check (dist=5 > 3)
+[2026-05-19 10:00:00.839] I/DarkIME: Autocorrect: 'Calce' → 'Hace' @ 5
+[2026-05-19 10:00:00.846] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:01.779] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:01.864] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:01.865] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:01.866] D/DarkIME: Session reject: calce→hace (not persisted)
+[2026-05-19 10:00:01.874] I/DarkIME: Undo autocorrect: 'Hace' → 'Calce'
+[2026-05-19 10:00:01.878] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:02.005] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.560] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.668] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-19 10:00:04.669] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:04.692] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.767] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.784] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.831] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-19 10:00:04.835] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:04.860] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:04.952] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:05.425] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:05.499] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:05.501] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:05.508] D/DarkIME: onSpace called: textBeforeCursor='Calceti', composingWord='Calceti'
+[2026-05-19 10:00:05.510] D/DarkIME: Hint check: 'calceti' → hint='calcetines' dist=3 typedInDict=false
+[2026-05-19 10:00:05.512] D/DarkIME:   ✓ Hint passed distance check (dist=3 ≤ 3)
+[2026-05-19 10:00:05.513] D/DarkIME:   Hint freq=4603, MIN=5000, typedInDict=false
+[2026-05-19 10:00:05.514] D/DarkIME:   ✗ Hint skipped: freq too low (4603 < 5000)
+[2026-05-19 10:00:05.563] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:06.275] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:06.351] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:06.353] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:06.374] D/DarkIME: Synced composing: 'Calceti'
+[2026-05-19 10:00:06.392] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:06.492] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.199] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.267] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-19 10:00:07.269] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:07.320] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.415] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.448] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.558] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-19 10:00:07.561] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:07.592] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:07.691] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:08.356] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:08.432] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:08.433] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:08.437] D/DarkIME: onSpace called: textBeforeCursor='Calcetine', composingWord='Calcetine'
+[2026-05-19 10:00:08.439] D/DarkIME: Hint check: 'calcetine' → hint='calcetines' dist=1 typedInDict=false
+[2026-05-19 10:00:08.439] D/DarkIME:   ✓ Hint passed distance check (dist=1 ≤ 3)
+[2026-05-19 10:00:08.440] D/DarkIME:   Hint freq=4603, MIN=5000, typedInDict=false
+[2026-05-19 10:00:08.441] D/DarkIME:   ✗ Hint skipped: freq too low (4603 < 5000)
+[2026-05-19 10:00:08.474] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.131] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.223] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:09.225] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:09.247] D/DarkIME: Synced composing: 'Calcetine'
+[2026-05-19 10:00:09.255] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.356] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.414] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.501] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-19 10:00:09.502] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:09.529] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:09.988] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:10.053] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:10.055] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:10.061] D/DarkIME: onSpace called: textBeforeCursor='Calcetines', composingWord='Calcetines'
+[2026-05-19 10:00:10.062] D/DarkIME: Hint check: 'calcetines' → hint='calcetines' dist=0 typedInDict=true
+[2026-05-19 10:00:10.063] D/DarkIME:   ✗ Hint failed distance check (dist=0 > 3)
+[2026-05-19 10:00:10.085] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:13.097] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:13.910] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.002] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 10:00:14.004] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:14.031] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.076] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.152] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.164] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:14.165] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:14.184] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.277] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.368] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.485] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:00:14.486] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:14.512] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.567] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.601] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.662] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:00:14.664] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:14.690] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:14.786] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:16.525] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:16.600] D/DarkIME: handleKeyPress: code=117, label=u
+[2026-05-19 10:00:16.601] I/DarkIME: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:16.632] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:16.726] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:16.841] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:16.916] D/DarkIME: handleKeyPress: code=112, label=p
+[2026-05-19 10:00:16.918] I/DarkIME: >>> handleKey: code=112 (p), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:16.955] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:17.050] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:17.299] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:17.415] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 10:00:17.418] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:17.441] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:17.533] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:18.207] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:18.307] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-19 10:00:18.309] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:18.341] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:18.450] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:18.465] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:18.502] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:18.503] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:18.524] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:19.089] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:19.147] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:19.149] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:19.156] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcio', composingWord='corrupcio'
+[2026-05-19 10:00:19.158] D/DarkIME: Hint check: 'corrupcio' → hint='corrupción' dist=2 typedInDict=false
+[2026-05-19 10:00:19.159] D/DarkIME:   ✓ Hint passed distance check (dist=2 ≤ 3)
+[2026-05-19 10:00:19.160] D/DarkIME:   Hint freq=3306, MIN=5000, typedInDict=false
+[2026-05-19 10:00:19.161] D/DarkIME:   ✗ Hint skipped: freq too low (3306 < 5000)
+[2026-05-19 10:00:19.202] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:19.905] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:20.006] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:20.008] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:20.029] D/DarkIME: Synced composing: 'corrupcio'
+[2026-05-19 10:00:20.038] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:21.837] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:21.930] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:21.932] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:21.941] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcio', composingWord='corrupcio'
+[2026-05-19 10:00:21.945] D/DarkIME: Hint check: 'corrupcio' → hint='corrupción' dist=2 typedInDict=false
+[2026-05-19 10:00:21.946] D/DarkIME:   ✓ Hint passed distance check (dist=2 ≤ 3)
+[2026-05-19 10:00:21.947] D/DarkIME:   Hint freq=3306, MIN=5000, typedInDict=false
+[2026-05-19 10:00:21.949] D/DarkIME:   ✗ Hint skipped: freq too low (3306 < 5000)
+[2026-05-19 10:00:21.987] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:22.645] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:22.710] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:22.712] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:22.730] D/DarkIME: Synced composing: 'corrupcio'
+[2026-05-19 10:00:22.737] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:23.094] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:23.162] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-19 10:00:23.163] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:23.203] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:23.445] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:23.503] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:23.505] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:23.512] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion', composingWord='corrupcion'
+[2026-05-19 10:00:23.515] D/DarkIME: Hint check: 'corrupcion' → hint='corrupción' dist=1 typedInDict=false
+[2026-05-19 10:00:23.516] D/DarkIME:   ✓ Hint passed distance check (dist=1 ≤ 3)
+[2026-05-19 10:00:23.517] D/DarkIME:   Hint freq=3306, MIN=5000, typedInDict=false
+[2026-05-19 10:00:23.518] D/DarkIME:   ✗ Hint skipped: freq too low (3306 < 5000)
+[2026-05-19 10:00:23.556] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.308] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.408] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-19 10:00:26.410] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:26.433] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.516] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.525] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.602] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:00:26.603] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:26.618] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:26.717] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:27.399] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:27.475] D/DarkIME: handleKeyPress: code=103, label=g
+[2026-05-19 10:00:27.477] I/DarkIME: >>> handleKey: code=103 (g), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:27.517] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:27.573] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:27.628] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:27.631] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:27.650] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:28.515] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:28.572] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:28.574] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:28.582] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:28.681] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:28.744] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:28.746] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:28.757] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:28.857] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.281] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.355] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-19 10:00:29.358] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:29.397] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.490] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.581] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.671] D/DarkIME: handleKeyPress: code=103, label=g
+[2026-05-19 10:00:29.674] I/DarkIME: >>> handleKey: code=103 (g), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:29.692] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.763] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:29.843] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:29.844] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:29.868] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:30.696] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:30.785] D/DarkIME: handleKeyPress: code=106, label=j
+[2026-05-19 10:00:30.786] I/DarkIME: >>> handleKey: code=106 (j), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:30.799] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:30.896] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:30.998] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:31.000] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:31.023] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:31.737] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:31.813] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:31.816] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:31.822] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:31.912] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:31.975] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:31.979] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:31.986] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.145] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.209] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-19 10:00:32.210] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:32.230] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.329] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.420] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:00:32.422] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:32.449] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:32.974] D/DarkIME: handleKeyPress: code=109, label=m
+[2026-05-19 10:00:32.976] I/DarkIME: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:32.997] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:33.178] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:33.247] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-19 10:00:33.247] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:33.270] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:34.085] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:34.168] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-19 10:00:34.170] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:34.205] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:34.294] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:34.359] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:00:34.360] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:34.387] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:34.968] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:35.026] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-19 10:00:35.028] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:35.060] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:36.309] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:36.359] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:36.361] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:36.369] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometri', composingWord='trigonometri'
+[2026-05-19 10:00:36.372] D/DarkIME: Hint check: 'trigonometri' → hint='triste' dist=8 typedInDict=false
+[2026-05-19 10:00:36.374] D/DarkIME:   ✗ Hint failed distance check (dist=8 > 3)
+[2026-05-19 10:00:36.411] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:37.033] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:37.093] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:37.097] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:37.111] D/DarkIME: Synced composing: 'trigonometri'
+[2026-05-19 10:00:37.119] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:37.557] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:37.646] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:00:37.650] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:37.676] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:37.932] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:38.008] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:38.009] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:38.016] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria', composingWord='trigonometria'
+[2026-05-19 10:00:38.018] D/DarkIME: Hint check: 'trigonometria' → hint='triste' dist=9 typedInDict=false
+[2026-05-19 10:00:38.019] D/DarkIME:   ✗ Hint failed distance check (dist=9 > 3)
+[2026-05-19 10:00:38.048] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:39.431] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:39.541] D/DarkIME: handleKeyPress: code=120, label=x
+[2026-05-19 10:00:39.542] I/DarkIME: >>> handleKey: code=120 (x), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:39.563] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:39.656] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:39.865] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:39.965] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:00:39.967] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:40.001] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:40.113] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:40.201] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-19 10:00:40.202] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:40.221] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:40.722] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:40.805] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:40.806] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:40.815] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:40.946] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:41.012] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:41.014] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:41.021] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:41.120] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:41.138] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:41.185] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:41.186] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:41.190] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:41.199] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:41.298] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:42.129] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:42.194] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:42.195] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:42.205] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:42.212] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:42.313] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:42.978] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.075] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:43.076] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:43.084] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:43.094] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.186] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.537] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.609] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:43.611] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:43.620] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:43.629] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.736] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.816] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:43.817] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:43.821] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:43.830] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.894] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:43.999] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:44.000] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:44.005] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:44.015] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.111] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.519] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.598] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:44.599] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:44.609] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:44.620] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.718] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.792] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:44.793] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:44.799] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:44.809] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.884] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.901] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:44.971] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:44.972] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:44.978] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:44.988] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.068] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.084] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.146] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:45.147] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:45.152] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:45.159] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.217] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.242] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.306] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:45.308] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:45.313] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:45.321] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.419] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.784] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:45.833] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:45.835] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:45.843] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x', composingWord='x'
+[2026-05-19 10:00:45.869] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.467] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.551] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:46.553] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:46.573] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:46.583] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.684] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.725] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.832] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:46.833] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:46.841] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:46.851] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:46.942] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:47.990] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.075] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:48.076] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:48.081] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:48.091] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.182] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.262] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:48.263] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:48.268] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:48.276] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.357] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.365] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.448] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:48.449] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:48.454] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:48.465] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:48.549] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.398] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.465] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:49.466] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:49.477] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:49.490] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.564] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.589] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.635] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:49.637] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:49.643] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:49.650] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.739] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.801] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:49.803] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:49.806] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:49.813] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:49.906] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:52.345] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:52.470] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:00:52.471] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:52.504] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:52.912] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:53.002] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-19 10:00:53.004] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:53.029] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:53.620] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:53.736] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:53.737] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:53.744] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:53.852] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:53.957] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:53.960] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:53.969] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:54.069] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:54.085] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:54.201] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:54.204] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:54.208] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:54.218] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:54.302] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.051] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.159] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:56.161] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:56.167] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:56.178] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.258] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.275] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.351] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:56.352] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:56.357] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:56.368] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.459] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.758] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:56.842] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:56.844] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:56.852] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x', composingWord='x'
+[2026-05-19 10:00:56.888] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.275] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.342] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:57.344] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:57.351] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x ', composingWord=''
+[2026-05-19 10:00:57.382] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.458] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.546] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:57.546] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:57.549] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x  ', composingWord=''
+[2026-05-19 10:00:57.574] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.674] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.754] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:57.756] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:57.760] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x   ', composingWord=''
+[2026-05-19 10:00:57.785] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.882] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:57.959] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:57.960] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:57.963] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x    ', composingWord=''
+[2026-05-19 10:00:57.982] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:58.065] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:58.153] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:58.155] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:58.158] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x     ', composingWord=''
+[2026-05-19 10:00:58.179] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:58.298] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:58.373] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:00:58.374] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:58.377] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x      ', composingWord=''
+[2026-05-19 10:00:58.391] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:58.965] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:00:59.355] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.357] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.427] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.429] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.496] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.499] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.568] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.571] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.633] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.635] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.704] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.707] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.774] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.775] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.793] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:59.846] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.847] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.856] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:59.908] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.910] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.921] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:00:59.973] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:00:59.975] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:00:59.986] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.037] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.038] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.043] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.095] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.097] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.106] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.158] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.159] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.170] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.223] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.225] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.236] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.289] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.291] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.301] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.324] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.326] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.331] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.339] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.432] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.663] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.771] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.772] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.776] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.785] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.871] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.880] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:00.953] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:00.954] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:00.959] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:00.964] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.046] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.054] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.142] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:01.143] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:01.147] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:01.154] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.230] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.247] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.320] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:01.321] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:01.325] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:01.331] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.396] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.430] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.509] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:01.510] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:01.515] D/DarkIME: Synced composing: 'x'
+[2026-05-19 10:01:01.524] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:01.621] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:03.961] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:04.047] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:04.049] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:04.056] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x', composingWord='x'
+[2026-05-19 10:01:04.078] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:04.802] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:04.903] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 10:01:04.905] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:04.935] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.044] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.144] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.219] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:01:05.221] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:05.253] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.352] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.810] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:05.893] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-19 10:01:05.895] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:05.933] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.026] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.100] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.206] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-19 10:01:06.208] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:06.226] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.283] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.317] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:06.371] D/DarkIME: handleKeyPress: code=117, label=u
+[2026-05-19 10:01:06.372] I/DarkIME: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:06.397] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:08.182] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:08.265] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:08.267] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:08.277] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x calcu', composingWord='calcu'
+[2026-05-19 10:01:08.279] D/DarkIME: Hint check: 'calcu' → hint='calcetines' dist=6 typedInDict=false
+[2026-05-19 10:01:08.280] D/DarkIME:   ✗ Hint failed distance check (dist=6 > 3)
+[2026-05-19 10:01:08.317] I/DarkIME: Autocorrect: 'calcu' → 'calle' @ 44
+[2026-05-19 10:01:08.325] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:09.323] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:09.391] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:09.393] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:09.395] D/DarkIME: Session reject: calcu→calle (not persisted)
+[2026-05-19 10:01:09.403] I/DarkIME: Undo autocorrect: 'calle' → 'calcu'
+[2026-05-19 10:01:09.407] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:12.439] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:19.015] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:19.074] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-19 10:01:19.076] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:19.100] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:19.490] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:19.573] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:19.574] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:19.576] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x calcul', composingWord='calcul'
+[2026-05-19 10:01:19.612] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:20.323] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:20.715] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:20.716] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:20.733] D/DarkIME: Synced composing: 'calcul'
+[2026-05-19 10:01:20.785] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:20.787] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:20.840] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:20.842] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:20.895] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:20.897] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:20.949] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:20.950] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.003] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.005] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.058] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.059] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.067] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.121] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.122] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.130] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.182] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.184] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.194] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.247] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.249] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.256] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.308] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.310] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.320] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.373] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.375] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.386] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.438] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.440] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.449] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.501] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.503] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.514] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.565] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.567] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.578] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.608] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.609] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.615] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.625] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:21.730] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:21.738] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:21.842] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:21.843] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:21.847] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:21.854] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:21.921] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:21.946] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.029] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:22.030] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:22.035] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:22.048] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.104] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.147] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.228] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:22.229] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:22.238] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:22.245] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.338] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.720] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.804] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:22.805] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:22.815] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:22.821] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.912] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:22.985] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:22.986] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:22.993] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:22.998] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.078] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.096] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.167] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:23.169] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:23.175] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:23.182] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.253] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.278] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.340] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:23.341] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:23.346] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:23.352] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.445] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.507] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:23.509] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:23.513] D/DarkIME: Synced composing: 'c'
+[2026-05-19 10:01:23.522] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.627] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.778] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:23.887] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:23.888] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:23.895] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c', composingWord='c'
+[2026-05-19 10:01:23.918] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.569] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.677] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:01:24.678] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:24.705] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.735] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.773] D/DarkIME: handleKeyPress: code=104, label=h
+[2026-05-19 10:01:24.774] I/DarkIME: >>> handleKey: code=104 (h), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:24.794] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.886] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.919] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:24.992] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:01:24.994] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:25.013] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.043] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.111] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.148] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:01:25.150] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:25.180] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.277] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.293] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.381] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:01:25.382] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:25.403] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.551] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:25.625] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:25.626] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:25.631] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c ahora', composingWord='ahora'
+[2026-05-19 10:01:25.633] D/DarkIME: Hint check: 'ahora' → hint='ahora' dist=0 typedInDict=true
+[2026-05-19 10:01:25.633] D/DarkIME:   ✗ Hint failed distance check (dist=0 > 3)
+[2026-05-19 10:01:25.655] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.218] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.282] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-19 10:01:26.284] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:26.314] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.409] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.509] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:01:26.510] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:26.537] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.635] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.726] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:26.816] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:26.818] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:26.821] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c ahora no', composingWord='no'
+[2026-05-19 10:01:26.845] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.450] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.518] D/DarkIME: handleKeyPress: code=98, label=b
+[2026-05-19 10:01:27.520] I/DarkIME: >>> handleKey: code=98 (b), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:27.554] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.650] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.657] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.740] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-19 10:01:27.742] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:27.774] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.841] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.866] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:27.946] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:01:27.948] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:27.977] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:28.033] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:28.074] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:28.130] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-19 10:01:28.131] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:28.151] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:28.299] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:28.408] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:01:28.410] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:28.444] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.049] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.124] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:29.125] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:29.132] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.223] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.305] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:29.306] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:29.315] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.416] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.873] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:29.957] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-19 10:01:29.958] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:29.984] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.073] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.114] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.205] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-19 10:01:30.206] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:30.233] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.323] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.481] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:30.615] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:30.616] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:30.623] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c ahora no borra', composingWord='borra'
+[2026-05-19 10:01:30.625] D/DarkIME: Hint check: 'borra' → hint='borracho' dist=3 typedInDict=false
+[2026-05-19 10:01:30.625] D/DarkIME:   ✓ Hint passed distance check (dist=3 ≤ 3)
+[2026-05-19 10:01:30.626] D/DarkIME:   Hint freq=19877, MIN=5000, typedInDict=false
+[2026-05-19 10:01:30.627] D/DarkIME:   ✓ USING HINT: 'borra' → 'borracho'
+[2026-05-19 10:01:30.645] I/DarkIME: Autocorrect: 'borra' → 'borracho' @ 58
+[2026-05-19 10:01:30.657] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:31.663] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:31.711] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:31.713] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:31.714] D/DarkIME: Session reject: borra→borracho (not persisted)
+[2026-05-19 10:01:31.720] I/DarkIME: Undo autocorrect: 'borracho' → 'borra'
+[2026-05-19 10:01:31.730] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:31.830] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:32.238] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:32.348] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:32.350] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:32.358] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c ahora no borra', composingWord='borra'
+[2026-05-19 10:01:32.361] D/DarkIME: Hint check: 'borra' → hint='borracho' dist=3 typedInDict=false
+[2026-05-19 10:01:32.362] D/DarkIME:   ✓ Hint passed distance check (dist=3 ≤ 3)
+[2026-05-19 10:01:32.364] D/DarkIME:   ✗ Hint rejected: in sessionRejected
+[2026-05-19 10:01:32.397] I/DarkIME: Autocorrect: 'borra' → 'otra' @ 54
+[2026-05-19 10:01:32.412] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:33.162] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:33.221] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:33.222] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:33.223] D/DarkIME: Session reject: borra→otra (not persisted)
+[2026-05-19 10:01:33.232] I/DarkIME: Undo autocorrect: 'otra' → 'borra'
+[2026-05-19 10:01:33.237] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:33.354] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:33.762] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:33.870] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-19 10:01:33.871] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:33.878] D/DarkIME: onSpace called: textBeforeCursor='Calcetines corrupcion trigonometria x c ahora no borra', composingWord='borra'
+[2026-05-19 10:01:33.880] D/DarkIME: Hint check: 'borra' → hint='borracho' dist=3 typedInDict=false
+[2026-05-19 10:01:33.881] D/DarkIME:   ✓ Hint passed distance check (dist=3 ≤ 3)
+[2026-05-19 10:01:33.882] D/DarkIME:   ✗ Hint rejected: in sessionRejected
+[2026-05-19 10:01:33.904] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.353] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.438] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:34.440] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:34.453] D/DarkIME: Synced composing: 'borra'
+[2026-05-19 10:01:34.463] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.561] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.577] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.686] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:34.688] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:34.694] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.844] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:34.885] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:34.886] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:34.893] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:36.942] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:37.340] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.342] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.395] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.397] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.449] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.452] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.461] D/DarkIME: Synced composing: 'ahorab'
+[2026-05-19 10:01:37.513] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.515] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.567] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.569] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.624] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.626] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.680] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.684] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.738] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.740] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.793] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.794] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.804] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:37.856] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.858] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.869] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:37.923] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.925] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:37.936] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:37.988] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:37.990] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.003] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.054] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.056] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.068] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.121] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.123] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.133] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.185] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.187] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.197] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.252] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.254] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.264] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.316] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.318] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.327] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.380] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.382] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.392] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.444] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.446] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.455] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.475] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.476] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.481] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.490] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.584] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.665] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.775] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.777] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.786] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.796] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.874] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.899] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:38.970] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:38.972] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:38.977] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:38.984] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.074] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.081] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.164] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:39.165] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:39.170] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:39.174] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.240] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.273] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.361] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:39.362] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:39.369] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:39.376] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:39.473] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:40.697] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:40.763] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:40.765] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:40.776] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:40.785] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:40.864] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:40.880] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:40.926] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:40.927] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:40.934] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:40.942] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:41.022] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:41.038] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:41.100] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:41.101] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:41.105] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:41.114] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:41.214] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:42.379] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:42.772] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:42.774] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:42.785] D/DarkIME: Synced composing: 'aorra'
+[2026-05-19 10:01:42.837] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:42.838] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:42.892] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:42.893] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:42.946] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:42.948] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.001] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.003] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.056] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.058] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.067] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.120] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.122] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.133] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.186] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.187] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.196] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.248] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.250] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.261] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.314] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.316] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.325] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.378] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.381] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.392] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.444] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.446] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.457] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.509] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.512] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.522] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.575] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.577] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.587] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.635] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.637] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.643] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.656] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:43.754] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:43.786] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:43.901] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:43.903] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:43.911] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:43.937] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:43.994] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.036] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.080] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:44.081] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:44.087] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:44.102] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.153] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.197] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.256] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-19 10:01:44.257] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-19 10:01:44.262] D/DarkIME: Synced composing: 'a'
+[2026-05-19 10:01:44.270] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:44.370] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:46.819] I/DarkIME: === onStartInput() mode=WEBVIEW reason=webview var=0 pkg=com.vivaldi.browser inputType=0 ===
+[2026-05-19 10:01:46.821] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:46.821] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:46.825] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:46.825] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:46.826] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:46.826] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:46.828] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:46.828] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:46.829] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:46.829] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.830] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:46.833] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:46.833] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:46.834] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:46.834] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:46.834] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:46.835] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:46.835] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:46.836] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:46.836] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:46.836] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:46.837] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:46.837] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:46.837] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:46.837] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.838] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:46.838] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:46.839] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:46.840] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:46.840] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:46.841] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:46.842] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:46.843] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:46.843] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:46.843] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:46.844] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:46.844] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:46.844] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:46.844] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:46.845] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.845] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:46.846] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:46.846] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:46.847] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:46.849] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:46.849] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:46.850] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:46.851] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:46.851] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:46.852] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:46.852] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:46.852] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:46.853] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:46.853] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:46.854] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.854] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:46.855] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:46.855] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:46.856] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:46.856] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:46.856] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:46.856] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:46.857] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:46.857] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:46.857] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:46.858] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:46.858] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:46.858] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:46.859] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:46.859] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.859] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:46.860] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:46.860] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:46.860] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:46.861] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:46.861] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:46.861] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:46.862] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:46.862] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:46.862] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:46.863] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:46.863] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:46.863] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:46.864] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:46.864] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:46.864] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:46.865] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:46.865] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:46.865] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:46.865] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:46.865] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:46.869] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:46.869] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:46.869] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:46.869] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:46.869] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:46.870] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:46.870] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:46.870] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:46.870] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:46.871] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:46.871] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:46.871] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:46.874] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:46.887] I/DarkIME: === onStartInput() mode=WEBVIEW reason=webview var=160 pkg=com.vivaldi.browser inputType=655521 ===
+[2026-05-19 10:01:46.887] D/DarkIME: EditorChanged: shouldAutocorrect=false shouldCompose=false
+[2026-05-19 10:01:46.888] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:46.889] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:46.889] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:46.889] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:46.889] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:46.889] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:46.890] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:46.890] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:46.890] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.891] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:46.894] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:46.894] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:46.894] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:46.895] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:46.895] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:46.895] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:46.896] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:46.896] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:46.896] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:46.896] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:46.897] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:46.897] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:46.897] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:46.897] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.897] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:46.898] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:46.898] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:46.898] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:46.898] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:46.899] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:46.899] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:46.899] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:46.900] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:46.900] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:46.900] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:46.900] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:46.902] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:46.903] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:46.903] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.903] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:46.904] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:46.904] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:46.904] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:46.904] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:46.905] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:46.905] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:46.905] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:46.905] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:46.906] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:46.906] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:46.906] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:46.906] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:46.907] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:46.907] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.907] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:46.909] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:46.910] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:46.910] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:46.910] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:46.911] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:46.911] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:46.911] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:46.912] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:46.912] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:46.912] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:46.912] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:46.912] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:46.913] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:46.913] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:46.916] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:46.917] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:46.917] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:46.917] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:46.918] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:46.918] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:46.918] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:46.919] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:46.920] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:46.920] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:46.920] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:46.920] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:46.921] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:46.921] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:46.921] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:46.921] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:46.922] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:46.922] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:46.922] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:46.922] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:46.922] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:46.922] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:46.923] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:46.923] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:46.923] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:46.923] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:46.924] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:46.924] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:46.924] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:46.926] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:46.926] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:46.926] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:46.927] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:46.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:47.319] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:47.836] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:47.986] D/DarkIME: STANDARD: pkg=com.miui.home variation=0
+[2026-05-19 10:01:47.987] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+[2026-05-19 10:01:47.987] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:47.988] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:47.988] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:47.989] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:47.989] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:47.989] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:47.989] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:47.990] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:47.990] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:47.990] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:47.991] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:47.991] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:47.991] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:47.992] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:47.992] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:47.992] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:47.992] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:47.993] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:47.993] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:47.993] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:47.993] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:47.994] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:47.994] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:47.994] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:47.994] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:47.995] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:47.995] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:47.995] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:47.995] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:47.996] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:47.996] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:47.996] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:47.996] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:47.997] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:47.997] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:47.997] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:47.997] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:47.998] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:47.998] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:47.998] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:47.998] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:47.999] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:47.999] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:47.999] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:48.000] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:48.000] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:48.001] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:48.001] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:48.001] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:48.001] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:48.002] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:48.002] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:48.002] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:48.002] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:48.002] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.003] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:48.003] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:48.003] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:48.004] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:48.004] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:48.005] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:48.005] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:48.005] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:48.006] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:48.007] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:48.007] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:48.007] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:48.007] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:48.008] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:48.008] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.008] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:48.008] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:48.009] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:48.009] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:48.010] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:48.010] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:48.010] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:48.011] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:48.011] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:48.011] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:48.011] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:48.011] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:48.012] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:48.012] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:48.012] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:48.012] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:48.012] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:48.013] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:48.013] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:48.014] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:48.014] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:48.014] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:48.014] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:48.015] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:48.015] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:48.015] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:48.015] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:48.016] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:48.016] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:48.016] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:48.016] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:48.016] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:48.017] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:48.017] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:48.722] D/DarkIME: STANDARD: pkg=org.dark.keyboard variation=0
+[2026-05-19 10:01:48.722] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+[2026-05-19 10:01:48.722] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:48.723] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:48.723] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:48.723] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:48.723] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:48.724] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:48.724] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:48.725] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:48.725] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:48.725] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.725] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:48.726] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:48.726] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:48.726] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:48.726] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:48.726] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:48.727] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:48.727] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:48.730] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:48.730] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:48.731] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:48.731] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:48.731] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:48.731] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:48.731] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.732] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:48.732] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:48.732] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:48.732] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:48.732] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:48.733] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:48.733] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:48.733] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:48.733] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:48.733] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:48.734] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:48.734] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:48.734] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:48.734] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:48.734] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.735] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:48.735] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:48.735] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:48.735] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:48.738] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:48.738] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:48.738] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:48.739] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:48.739] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:48.739] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:48.740] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:48.740] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:48.740] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:48.740] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:48.740] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.741] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:48.741] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:48.741] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:48.741] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:48.741] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:48.742] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:48.742] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:48.742] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:48.743] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:48.743] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:48.743] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:48.744] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:48.744] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:48.744] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:48.744] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:48.745] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:48.745] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:48.745] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:48.745] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:48.746] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:48.746] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:48.746] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:48.746] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:48.746] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:48.747] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:48.747] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:48.747] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:48.747] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:48.747] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:48.747] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:48.748] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:48.748] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:48.748] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:48.748] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:48.748] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:48.748] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:48.749] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:48.749] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:48.749] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:48.749] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:48.749] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:48.749] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:48.750] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:48.750] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:48.750] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:48.751] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:48.751] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:48.751] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:48.758] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:51.212] I/DarkIME: Log file shared: darkime_20260519_095950.log
+[2026-05-19 10:01:51.656] D/DarkIME: STANDARD: pkg=com.android.intentresolver variation=0
+[2026-05-19 10:01:51.656] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.android.intentresolver variation=0 inputType=0 ===
+[2026-05-19 10:01:51.656] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:51.657] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:51.657] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:51.657] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:51.657] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:51.657] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:51.658] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:51.658] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:51.658] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:51.658] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:51.659] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:51.659] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:51.659] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:51.659] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:51.660] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:51.660] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:51.660] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:51.660] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:51.661] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:51.661] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:51.661] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:51.661] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:51.662] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:51.662] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:51.662] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:51.662] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:51.662] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:51.663] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:51.663] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:51.663] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:51.663] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:51.664] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:51.664] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:51.664] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:51.664] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:51.665] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:51.665] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:51.665] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:51.665] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:51.665] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:51.666] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:51.666] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:51.666] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:51.667] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:51.667] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:51.667] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:51.668] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:51.668] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:51.668] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:51.669] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:51.669] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:51.669] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:51.669] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:51.670] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:51.670] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:51.670] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:51.670] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:51.671] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:51.671] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:51.671] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:51.672] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:51.672] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:51.672] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:51.672] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:51.673] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:51.673] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:51.673] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:51.673] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:51.673] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:51.674] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:51.674] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:51.674] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:51.675] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:51.675] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:51.675] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:51.675] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:51.676] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:51.676] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:51.676] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:51.676] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:51.676] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:51.677] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:51.677] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:51.677] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:51.677] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:51.677] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:51.678] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:51.678] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:51.678] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:51.678] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:51.679] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:51.679] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:51.679] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:51.679] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:51.680] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:51.680] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:51.680] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:51.680] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:51.680] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:51.681] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:51.681] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:51.681] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:51.682] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:51.688] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:55.480] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-19 10:01:55.480] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-19 10:01:55.480] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:55.481] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:55.481] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:55.481] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:55.481] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:55.482] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:55.482] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:55.482] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:55.483] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:55.483] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:55.483] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:55.483] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:55.484] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:55.484] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:55.484] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:55.485] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:55.485] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:55.485] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:55.485] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:55.486] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:55.486] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:55.486] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:55.486] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:55.486] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:55.487] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:55.487] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:55.487] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:55.488] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:55.488] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:55.488] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:55.488] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:55.489] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:55.489] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:55.489] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:55.489] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:55.490] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:55.490] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:55.490] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:55.490] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:55.490] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:55.491] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:55.491] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:55.491] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:55.492] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:55.492] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:55.492] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:55.492] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:55.493] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:55.493] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:55.493] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:55.493] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:55.494] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:55.494] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:55.494] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:55.494] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:55.495] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:55.495] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:55.495] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:55.496] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:55.496] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:55.496] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:55.496] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:55.497] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:55.497] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:55.497] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:55.498] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:55.498] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:55.498] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:55.498] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:55.498] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:55.499] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:55.499] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:55.499] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:55.500] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:55.500] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:55.500] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:55.500] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:55.501] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:55.501] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:55.501] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:55.501] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:55.502] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:55.502] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:55.502] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:55.502] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:55.502] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:55.503] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:55.503] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:55.503] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:55.503] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:55.504] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:55.504] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:55.504] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:55.504] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:55.504] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:55.505] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:55.505] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:55.505] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:55.505] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:55.506] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:55.506] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:55.507] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:55.507] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:55.510] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:56.486] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-19 10:01:56.486] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-19 10:01:56.487] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:56.487] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:56.487] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:56.487] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:56.487] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:56.488] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:56.488] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:56.488] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:56.488] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:56.488] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:56.489] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:56.489] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:56.489] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:56.490] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:56.491] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:56.491] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:56.491] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:56.491] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:56.491] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:56.491] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:56.492] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:56.492] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:56.492] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:56.492] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:56.492] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:56.493] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:56.493] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:56.493] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:56.493] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:56.493] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:56.494] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:56.494] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:56.494] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:56.494] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:56.494] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:56.494] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:56.495] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:56.495] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:56.495] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:56.495] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:56.496] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:56.496] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:56.496] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:56.496] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:56.496] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:56.497] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:56.497] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:56.497] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:56.497] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:56.497] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:56.498] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:56.498] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:56.498] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:56.499] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:56.499] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:56.499] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:56.500] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:56.500] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:56.500] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:56.500] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:56.500] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:56.501] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:56.501] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:56.501] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:56.501] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:56.501] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:56.502] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:56.502] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:56.502] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:56.502] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:56.503] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:56.503] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:56.503] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:56.503] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:56.503] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:56.503] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:56.504] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:56.504] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:56.504] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:56.504] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:56.505] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:56.505] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:56.505] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:56.505] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:56.506] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:56.506] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:56.506] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:56.506] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:56.506] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:56.506] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:56.507] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:56.507] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:56.507] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:56.507] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:56.507] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:56.508] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:56.508] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:56.508] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:56.509] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-19 10:01:57.647] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-19 10:01:57.647] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-19 10:01:57.647] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-19 10:01:57.647] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-19 10:01:57.648] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-19 10:01:57.648] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-19 10:01:57.648] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-19 10:01:57.648] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-19 10:01:57.648] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-19 10:01:57.648] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-19 10:01:57.649] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-19 10:01:57.649] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:57.649] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-19 10:01:57.649] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-19 10:01:57.650] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-19 10:01:57.651] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-19 10:01:57.651] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-19 10:01:57.651] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-19 10:01:57.651] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-19 10:01:57.652] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-19 10:01:57.652] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-19 10:01:57.652] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-19 10:01:57.652] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-19 10:01:57.652] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-19 10:01:57.653] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-19 10:01:57.653] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-19 10:01:57.653] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:57.653] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-19 10:01:57.653] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-19 10:01:57.653] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-19 10:01:57.654] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-19 10:01:57.654] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-19 10:01:57.654] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-19 10:01:57.654] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-19 10:01:57.654] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-19 10:01:57.655] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-19 10:01:57.655] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-19 10:01:57.655] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-19 10:01:57.655] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-19 10:01:57.656] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-19 10:01:57.656] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-19 10:01:57.656] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:57.656] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-19 10:01:57.656] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-19 10:01:57.657] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-19 10:01:57.657] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-19 10:01:57.657] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-19 10:01:57.657] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-19 10:01:57.658] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-19 10:01:57.658] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-19 10:01:57.658] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-19 10:01:57.658] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-19 10:01:57.658] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-19 10:01:57.658] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-19 10:01:57.659] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-19 10:01:57.659] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-19 10:01:57.659] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:57.659] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-19 10:01:57.659] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-19 10:01:57.660] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-19 10:01:57.660] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-19 10:01:57.660] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-19 10:01:57.660] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-19 10:01:57.661] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-19 10:01:57.661] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-19 10:01:57.661] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-19 10:01:57.661] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-19 10:01:57.661] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:57.662] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-19 10:01:57.662] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-19 10:01:57.662] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-19 10:01:57.662] D/DarkIME:   -> WILL CREATE row
+[2026-05-19 10:01:57.662] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-19 10:01:57.663] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-19 10:01:57.663] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-19 10:01:57.663] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-19 10:01:57.663] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-19 10:01:57.664] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-19 10:01:57.664] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-19 10:01:57.664] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-19 10:01:57.665] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-19 10:01:57.665] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-19 10:01:57.665] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-19 10:01:57.665] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-19 10:01:57.665] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-19 10:01:57.666] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-19 10:01:57.666] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-19 10:01:57.666] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-19 10:01:57.666] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-19 10:01:57.666] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-19 10:01:57.666] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-19 10:01:57.667] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-19 10:01:57.667] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-19 10:01:57.667] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-19 10:01:57.667] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-19 10:01:57.667] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-19 10:01:57.668] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-19 10:01:57.668] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-19 10:01:57.668] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-19 10:01:57.668] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-19 10:01:57.668] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-19 10:01:57.668] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-19 10:01:57.669] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:57.669] I/DarkIME: Keyboard reloaded
+[2026-05-19 10:01:57.669] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-19 10:01:57.674] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0

@@ -14,6 +14,14 @@ android {
         targetSdk = 35
         versionCode = 100
         versionName = "1.0.0"
+
+        // Solo incluir librerías nativas para arm64 (la mayoría de dispositivos modernos)
+        // Esto reduce el APK de ~126MB a ~30MB
+        ndk {
+            abiFilters += "arm64-v8a"
+            // Para debug en emulador x86, descomentar:
+            // abiFilters += "x86_64"
+        }
     }
 
     buildTypes {
@@ -48,11 +56,18 @@ android {
 }
 
 dependencies {
-    // TFLite — desactivado (Fase 3: re-ranker futuro)
-    // implementation("org.tensorflow:tensorflow-lite:2.16.1")
-    // implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
-    // implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
-    // implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1")
+    // TFLite — Fase 3: re-ranker contextual
+    implementation("org.tensorflow:tensorflow-lite:2.16.1")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.4.4")
+    // GPU delegate eliminado — causa crashes en algunos dispositivos con tflite 2.16
+    // NNAPI (disponible en Android 8.1+) se usa como acelerador si está disponible
+    // select-tf-ops para T5 (operaciones adicionales)
+    implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1")
+    // SentencePiece: se carga via reflexión desde TFLite support si está disponible
+
+    // Logging
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")

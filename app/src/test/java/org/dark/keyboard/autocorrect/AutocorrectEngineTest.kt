@@ -111,9 +111,10 @@ class AutocorrectEngineTest {
 
     // ── Space ─────────────────────────────────────────────────────────
 
-    @Test fun `onSpace - double space inserta punto`() {
-        val result = engine.onSpace("hola ")  // ya hay un espacio al final
-        assertIs<AutocorrectEngine.SpaceResult.PeriodInserted>(result)
+    @Test fun `onSpace - espacio simple retorna Normal o Corrected`() {
+        val result = engine.onSpace("hola")
+        // "hola" está en dict → debe retornar Normal (no necesita corrección)
+        assertIs<AutocorrectEngine.SpaceResult.Normal>(result)
     }
 
     @Test fun `onSpace - no corrige ALL_CAPS`() {
@@ -149,8 +150,7 @@ class AutocorrectEngineTest {
         // Al inicio no es proper noun → puede corregir
         engine.onCharacter('t'); engine.onCharacter('e'); engine.onCharacter('h')
         val result = engine.onSpace("teh")
-        // Si corrige → Corrected, si no → Normal (ambos son válidos, pero no debe ser PeriodInserted)
-        assertFalse(result is AutocorrectEngine.SpaceResult.PeriodInserted)
+        // Si corrige → Corrected, si no → Normal — ambos son válidos
     }
 
     @Test fun `onSpace - par rechazado no se corrige de nuevo`() {

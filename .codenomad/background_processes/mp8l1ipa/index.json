@@ -5,9 +5,12 @@
     "title": "ADB Logcat DarkKeyboard",
     "command": "export PATH=\"$PATH:/home/dark/Android/Sdk/platform-tools\" && adb logcat -c && adb logcat DarkIME2:I Autocorrect:D InputProfile:D WordDict:I *:S",
     "cwd": "/home/dark/Project/darkkeyboard",
-    "status": "running",
+    "status": "error",
     "pid": 3652089,
     "startedAt": "2026-05-16T22:55:30.691Z",
-    "outputSizeBytes": 0
+    "outputSizeBytes": 469899,
+    "terminalReason": "failed",
+    "exitCode": 255,
+    "stoppedAt": "2026-05-17T00:22:44.003Z"
   }
 ]
