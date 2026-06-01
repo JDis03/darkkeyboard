@@ -49,3 +49,4 @@ node_modules/
 # APK referencias (binarios grandes)
 referencia/
 
+ml_pipeline/output/
