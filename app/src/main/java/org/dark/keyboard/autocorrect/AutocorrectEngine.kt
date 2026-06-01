@@ -68,7 +68,7 @@ class AutocorrectEngine(
 
     // ── Estado ──────────────────────────────────────────────────────────
 
-    var isEnabled: Boolean = true
+    var isEnabled: Boolean = false  // Default OFF — set by initialize() from prefs
     var isTerminalApp: Boolean = false
     private var shouldAutocorrect: Boolean = true  // basado en EditorInfo
     private var shouldCompose: Boolean = true
@@ -126,7 +126,23 @@ class AutocorrectEngine(
     fun initialize() {
         val saved = prefs.getStringSet(PREFS_REJECTED, emptySet()) ?: emptySet()
         rejectedPairs.addAll(saved)
-        Timber.i("Init: ${rejectedPairs.size} rejected pairs loaded")
+        
+        // Leer preferencia de autocorrect (desactivado por defecto)
+        val globalPrefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
+        val prefValue = globalPrefs.getBoolean("autocorrect_enabled", false)
+        isEnabled = prefValue
+        
+        Timber.e("=== AutocorrectEngine.initialize() ===")
+        Timber.e("autocorrect_enabled pref = $prefValue, isEnabled = $isEnabled")
+    }
+    
+    /**
+     * Recargar preferencia de autocorrect (llamar cuando cambie en Settings)
+     */
+    fun reloadPreferences() {
+        val globalPrefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
+        isEnabled = globalPrefs.getBoolean("autocorrect_enabled", false)
+        Timber.i("Autocorrect preference reloaded: ${if (isEnabled) "ON" else "OFF"}")
     }
 
     /**
@@ -266,9 +282,22 @@ class AutocorrectEngine(
      */
     fun onSpace(textBeforeCursor: String, suggestionHint: String? = null): SpaceResult {
         Timber.d("onSpace called: textBeforeCursor='$textBeforeCursor', composingWord='$composingWord', skip=$skipCurrentWord")
-        val word = composingWord.ifEmpty {
-            textBeforeCursor.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
+        
+        // ── CRITICAL FIX: Solo autocorregir palabras que fueron COMPUESTAS ────
+        // Si composingWord está vacío, significa que:
+        //   - El desync fix commiteó directo (cursor movido o campo desincronizado)
+        //   - Selection safety commiteó directo (había texto seleccionado)
+        //   - El cursor se movió externamente
+        // En NINGUNO de esos casos debemos autocorregir — no tenemos certeza de qué
+        // palabra "pertenece" al usuario ni si deleteSurroundingText borrará correctamente.
+        // Bug reportado: "después de espacio empieza a borrar lo que quiero escribir"
+        if (composingWord.isEmpty()) {
+            Timber.d("onSpace: composing empty — skipping autocorrect (safety)")
+            lastWordBeforeSpace = textBeforeCursor.trimEnd().split(Regex("\\s+")).lastOrNull() ?: ""
+            return SpaceResult.Normal
         }
+        
+        val word = composingWord
         
         // Guardar palabra antes de limpiar (para restaurar si borra el espacio)
         lastWordBeforeSpace = word

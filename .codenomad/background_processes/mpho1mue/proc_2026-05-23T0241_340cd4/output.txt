@@ -1,0 +1,1560 @@
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:compileKotlinJs UP-TO-DATE
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:jsMainClasses UP-TO-DATE
+> Task :web-editor:compileDevelopmentExecutableKotlinJs UP-TO-DATE
+> Task :web-editor:jsDevelopmentExecutableCompileSync UP-TO-DATE
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 544ms
+24 actionable tasks: 2 executed, 22 up-to-date
+
+Waiting for changes to input files...
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:8080/
+<i> [webpack-dev-server] On Your Network (IPv4): http://192.168.50.45:8080/
+<i> [webpack-dev-server] Content not from webpack is served from 'kotlin, ../../../../web-editor/build/processedResources/js/main' directory
+webpack 5.93.0 compiled successfully in 689 ms
+webpack 5.93.0 compiled successfully in 66 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 42 ms
+webpack 5.93.0 compiled successfully in 43 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 604 ms
+new file: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:91:44 Smart cast to 'kotlin.String' is impossible, because 'shiftLabel' is a public API property declared in different module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 286ms
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 52 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/Main.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:91:44 Smart cast to 'kotlin.String' is impossible, because 'shiftLabel' is a public API property declared in different module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 271ms
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+new file: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt:59:32 None of the following candidates is applicable:
+fun addEventListener(type: String, callback: EventListener?, options: dynamic = ...): Unit
+fun addEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = ...): Unit
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt:62:36 None of the following candidates is applicable:
+fun removeEventListener(type: String, callback: EventListener?, options: dynamic = ...): Unit
+fun removeEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = ...): Unit
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:91:44 Smart cast to 'kotlin.String' is impossible, because 'shiftLabel' is a public API property declared in different module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> 
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 300ms
+webpack 5.93.0 compiled successfully in 41 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/Main.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt:59:32 None of the following candidates is applicable:
+fun addEventListener(type: String, callback: EventListener?, options: dynamic = ...): Unit
+fun addEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = ...): Unit
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt:62:36 None of the following candidates is applicable:
+fun removeEventListener(type: String, callback: EventListener?, options: dynamic = ...): Unit
+fun removeEventListener(type: String, callback: ((Event) -> Unit)?, options: dynamic = ...): Unit
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:91:44 Smart cast to 'kotlin.String' is impossible, because 'shiftLabel' is a public API property declared in different module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 294ms
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/KeyboardShortcuts.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:91:44 Smart cast to 'kotlin.String' is impossible, because 'shiftLabel' is a public API property declared in different module.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 450ms
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+webpack 5.93.0 compiled successfully in 592 ms
+webpack 5.93.0 compiled successfully in 73 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 992ms
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 54 ms
+webpack 5.93.0 compiled successfully in 47 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 35 ms
+new file: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/DragState.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+webpack 5.93.0 compiled successfully in 641 ms
+webpack 5.93.0 compiled successfully in 36 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 165 ms
+webpack 5.93.0 compiled successfully in 69 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt:106:17 No parameter with name 'displayX' found.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt:107:17 No parameter with name 'displayY' found.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt:110:17 No parameter with name 'isDragging' found.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt:111:17 No parameter with name 'editorState' found.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt:112:17 No parameter with name 'dragState' found.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+> Get more help at https://help.gradle.org.
+
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 285ms
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 54 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 261 ms
+webpack 5.93.0 compiled successfully in 41 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 935ms
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 31 ms
+webpack 5.93.0 compiled successfully in 30 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/CanvasArea.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 935ms
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 29 ms
+webpack 5.93.0 compiled successfully in 67 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+
+> Task :web-editor:compileKotlinJs FAILED
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:73:13 Unresolved reference 'KeyProperties'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:75:13 Unresolved reference 'NoSelection'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:117:9 Unresolved reference 'PropertyGroup'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:117:32 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:118:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:119:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:120:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:121:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:124:25 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:124:29 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:125:13 Unresolved reference 'PropertyGroup'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:125:36 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:126:17 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:131:13 Unresolved reference 'PropertyGroup'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:131:41 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:132:17 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:136:9 Unresolved reference 'PropertyGroup'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:136:36 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:137:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:138:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:139:13 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:143:13 Unresolved reference 'PropertyGroup'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:143:41 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:149:17 Unresolved reference 'PropertyRow'.
+e: file:///home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt:269:2 Syntax error: Expecting '}'.
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':web-editor:compileKotlinJs'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 282ms
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+21 actionable tasks: 2 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 52 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/PropertiesPanel.kt
+Change detected, executing build...
+
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1s
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 46 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/resources/index.html
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:compileKotlinJs UP-TO-DATE
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs UP-TO-DATE
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 167ms
+24 actionable tasks: 4 executed, 20 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 39 ms
+webpack 5.93.0 compiled successfully in 45 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/Main.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 838ms
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 37 ms
+webpack 5.93.0 compiled successfully in 31 ms
+modified: /home/dark/Project/darkkeyboard/web-editor/src/jsMain/kotlin/org/dark/keyboard/editor/Toolbar.kt
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella UP-TO-DATE
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:compileKotlinJs
+> Task :web-editor:jsMainClasses
+> Task :web-editor:compileDevelopmentExecutableKotlinJs
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 856ms
+24 actionable tasks: 5 executed, 19 up-to-date
+
+Waiting for changes to input files...
+webpack 5.93.0 compiled successfully in 30 ms
+webpack 5.93.0 compiled successfully in 220 ms
+modified: /home/dark/Project/darkkeyboard/build/js/packages/darkkeyboard-web-editor/kotlin/kotlin-kotlin-stdlib.js.map
+modified: /home/dark/Project/darkkeyboard/build/js/packages/darkkeyboard-web-editor/kotlin/kotlin-kotlin-stdlib.js
+modified: /home/dark/Project/darkkeyboard/build/js/packages/darkkeyboard-web-editor/kotlin/kotlin_org_jetbrains_kotlin_kotlin_dom_api_compat.js.map
+and some more changes
+Change detected, executing build...
+
+> Task :kotlinNodeJsSetup SKIPPED
+> Task :kotlinNpmCachesSetup
+> Task :kotlinRestorePackageLock UP-TO-DATE
+> Task :shared:jsPackageJson UP-TO-DATE
+> Task :shared:jsTestPackageJson UP-TO-DATE
+> Task :web-editor:jsPackageJson UP-TO-DATE
+> Task :web-editor:jsTestPackageJson UP-TO-DATE
+> Task :shared:jsPublicPackageJson UP-TO-DATE
+> Task :shared:jsTestPublicPackageJson UP-TO-DATE
+> Task :web-editor:jsPublicPackageJson
+> Task :web-editor:jsTestPublicPackageJson UP-TO-DATE
+> Task :packageJsonUmbrella
+> Task :rootPackageJson UP-TO-DATE
+> Task :kotlinNpmInstall UP-TO-DATE
+> Task :kotlinStorePackageLock UP-TO-DATE
+> Task :shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared:compileKotlinJs UP-TO-DATE
+> Task :shared:jsProcessResources NO-SOURCE
+> Task :shared:jsMainClasses UP-TO-DATE
+> Task :shared:jsJar UP-TO-DATE
+> Task :web-editor:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :web-editor:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForCommonMain SKIPPED
+> Task :web-editor:convertXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:copyNonXmlValueResourcesForJsMain NO-SOURCE
+> Task :web-editor:prepareComposeResourcesTaskForJsMain NO-SOURCE
+> Task :web-editor:generateResourceAccessorsForJsMain SKIPPED
+> Task :web-editor:generateActualResourceCollectorsForJsMain SKIPPED
+> Task :web-editor:generateComposeResClass SKIPPED
+> Task :web-editor:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :web-editor:compileKotlinJs UP-TO-DATE
+> Task :web-editor:jsResolveResourcesFromDependencies UP-TO-DATE
+> Task :web-editor:assembleJsMainResources UP-TO-DATE
+> Task :web-editor:jsResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :web-editor:jsAggregateResources UP-TO-DATE
+> Task :web-editor:unpackSkikoWasmRuntime SKIPPED
+> Task :web-editor:jsProcessResources UP-TO-DATE
+> Task :web-editor:jsMainClasses UP-TO-DATE
+> Task :web-editor:compileDevelopmentExecutableKotlinJs UP-TO-DATE
+<i> [webpack-dev-middleware] wait until bundle finished: /
+> Task :web-editor:jsDevelopmentExecutableCompileSync
+> Task :web-editor:jsBrowserDevelopmentRun
+
+[Incubating] Problems report is available at: file:///home/dark/Project/darkkeyboard/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 199ms
+24 actionable tasks: 4 executed, 20 up-to-date
+
+Waiting for changes to input files...
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+webpack 5.93.0 compiled successfully in 510 ms

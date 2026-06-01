@@ -63,17 +63,19 @@ class SimpleKeyboard(
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
             Timber.d("Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
-            val verticalGapPx = (6.0f * density).toInt()
-            val horizontalGapPx = (1.5f * density).toInt()
+            val verticalGapPx = (0.5f * density).toInt()
+            val horizontalGapPx = (0.5f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps
             // NO restar gaps del total - las filas usan su altura completa menos el gap individual
             val availableHeightForRows = keyboardHeight
             
-            // Distribución de altura disponible: 18%, 21%, 21%, 21%, 19%
-            val numberRowHeight = (availableHeightForRows * 0.18f).toInt()
+            // Distribución de altura disponible: 16%, 21%, 21%, 21%, 21%
+            // Todas las filas DEBEN sumar 100% o menos para caber en keyboardHeight
+            // Bottom row igual que middle rows - la mejora viene de mejor hit detection
+            val numberRowHeight = (availableHeightForRows * 0.16f).toInt()
             val rowHeight = (availableHeightForRows * 0.21f).toInt()  
-            val bottomRowHeight = (availableHeightForRows * 0.19f).toInt()
+            val bottomRowHeight = (availableHeightForRows * 0.21f).toInt()
             
             Timber.d("Height calc: keyboard=$keyboardHeight, available=$availableHeightForRows")
             Timber.d("Row heights: number=$numberRowHeight, normal=$rowHeight, bottom=$bottomRowHeight")
@@ -86,7 +88,7 @@ class SimpleKeyboard(
             var rowCount = 0
             var hasBottomRowWithMode = false  // Flag para solo tomar 1 row bottom con keyboardMode
             var keyboardDefaultWidth = defaultKeyWidth
-            var keyboardHorizontalGap = 0
+            var keyboardHorizontalGap = horizontalGapPx
             var keyboardKeyHeight = rowHeight
             var keyboardVerticalGap = verticalGapPx
 
@@ -154,7 +156,7 @@ class SimpleKeyboard(
                                             isExtension = isExtension,
                                             keyboardMode = 0,
                                             verticalGap = keyboardVerticalGap,
-                                            horizontalGap = horizontalGapPx
+                                            horizontalGap = keyboardHorizontalGap
                                         )
                                         currentX = 0
                                         val thisRowHeight = when {

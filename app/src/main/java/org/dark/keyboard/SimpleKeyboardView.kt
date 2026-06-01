@@ -100,7 +100,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
     private var touchDownX = 0f
     private var touchDownY = 0f
     private var touchMoved = false       // true si el dedo se movió más que el slop
-    private val touchNoiseTimeMs = 50L   // ignorar toques más cortos que 50ms
+    private val touchNoiseTimeMs = 0L    // DESACTIVADO - tus taps naturales son 2-7ms, cualquier threshold los bloquea
     private val touchSlopPx = 8f          // ignorar movimientos < 8px (jitter del panel)
     private var audioManager: AudioManager? = null
     private var prefs: SharedPreferences? = null
@@ -218,14 +218,14 @@ class SimpleKeyboardView @JvmOverloads constructor(
         hgap: Int = 0
     ) {
         val density = resources.displayMetrics.density
-        val pad = 1f * density
+        val padV = 1f * density  // padding vertical solamente
         val halfVGap = vgap / 2f
         val halfHGap = hgap / 2f
         val rect = RectF(
-            key.x.toFloat() + pad + halfHGap,
-            key.y.toFloat() + pad + halfVGap,
-            (key.x + key.width).toFloat() - pad - halfHGap,
-            (key.y + key.height).toFloat() - pad - halfVGap
+            key.x.toFloat() + halfHGap,
+            key.y.toFloat() + padV + halfVGap,
+            (key.x + key.width).toFloat() - halfHGap,
+            (key.y + key.height).toFloat() - padV - halfVGap
         )
 
         keyBgPaint.color = when {
@@ -461,6 +461,12 @@ class SimpleKeyboardView @JvmOverloads constructor(
                 
                 val key = findKey(event.x.toInt(), event.y.toInt())
                 pressedKey = key
+                
+                // Special logging for Tab key to debug
+                if (key?.code == Key.CODE_TAB) {
+                    Timber.e("🔵 TAB PRESSED at (${event.x.toInt()}, ${event.y.toInt()})")
+                }
+                
                 if (key != null) {
                     if (key.isRepeatable) {
                         scheduleRepeat(key)
@@ -510,11 +516,16 @@ class SimpleKeyboardView @JvmOverloads constructor(
                     popupPreview?.dismiss()
                     isPopupShowing = false
                     selectedPopupChar = null
-                } else if (!isNoise) {
+                 } else if (!isNoise) {
                     // Normal key press (noise filter passed)
+                    Timber.d("ACTION_UP: duration=${touchDuration}ms, key=${pressedKey?.label ?: pressedKey?.code}")
                     pressedKey?.let { key ->
                         handleKeyPress(key)
+                    } ?: run {
+                        Timber.w("ACTION_UP: pressedKey is NULL (touch at ${event.x.toInt()}, ${event.y.toInt()})")
                     }
+                } else {
+                    Timber.w("⚠️ NOISE FILTER: Touch TOO FAST (${touchDuration}ms < ${touchNoiseTimeMs}ms) - key IGNORED: ${pressedKey?.label ?: pressedKey?.code}")
                 }
                 
                 pressedKey = null
@@ -536,7 +547,32 @@ class SimpleKeyboardView @JvmOverloads constructor(
     }
 
     private fun findKey(x: Int, y: Int): Key? {
-        return keyboard?.allKeys?.find { it.contains(x, y) }
+        val candidates = keyboard?.allKeys?.filter { it.contains(x, y) } ?: return null
+        
+        if (candidates.isEmpty()) {
+            Timber.d("findKey($x, $y): NO candidates found")
+            return null
+        }
+        
+        if (candidates.size == 1) {
+            val key = candidates[0]
+            Timber.d("findKey($x, $y): Found '${key.label ?: key.code}' at [${key.x},${key.y}] size ${key.width}x${key.height}")
+            return key
+        }
+        
+        // Multiple candidates (overlapping hit zones): return closest to center
+        val candidateList = candidates.joinToString(", ") { "'${it.label ?: it.code}'" }
+        Timber.w("findKey($x, $y): ${candidates.size} OVERLAPPING keys: $candidateList")
+        
+        val selected = candidates.minByOrNull { key ->
+            val cx = key.x + key.width / 2
+            val cy = key.y + key.height / 2
+            val dx = x - cx
+            val dy = y - cy
+            dx * dx + dy * dy
+        }
+        Timber.d("  -> Selected '${selected?.label ?: selected?.code}' (closest to center)")
+        return selected
     }
 
     private fun handleKeyPress(key: Key) {
@@ -545,6 +581,11 @@ class SimpleKeyboardView @JvmOverloads constructor(
         val c = modifierState.isCtrlActive()
         val a = modifierState.isAltActive()
         val f = modifierState.isFnActive()
+        
+        if (key.code == Key.CODE_TAB) {
+            Timber.e("🟢 TAB HANDLED - sending to listener")
+        }
+        
         Timber.d("handleKeyPress: code=${key.code}, label=${key.label}")
         when (key.code) {
             Key.CODE_SHIFT -> { modifierState.toggleShift(); invalidate() }

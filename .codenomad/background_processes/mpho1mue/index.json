@@ -1,0 +1,27 @@
+[
+  {
+    "id": "proc_2026-05-23T0241_340cd4",
+    "workspaceId": "mpho1mue",
+    "title": "Web Editor Dev Server",
+    "command": "cd /home/dark/Project/darkkeyboard && ./gradlew :web-editor:jsBrowserDevelopmentRun --continuous",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "stopped",
+    "pid": 200071,
+    "startedAt": "2026-05-23T02:41:26.111Z",
+    "outputSizeBytes": 83429,
+    "terminalReason": "user_stopped",
+    "exitCode": 143,
+    "stoppedAt": "2026-05-23T03:00:07.360Z"
+  },
+  {
+    "id": "proc_2026-05-23T0300_8a3553",
+    "workspaceId": "mpho1mue",
+    "title": "Web Editor Dev Server (Fresh)",
+    "command": "cd /home/dark/Project/darkkeyboard && ./gradlew :web-editor:clean :web-editor:jsBrowserDevelopmentRun --continuous",
+    "cwd": "/home/dark/Project/darkkeyboard",
+    "status": "running",
+    "pid": 204489,
+    "startedAt": "2026-05-23T03:00:18.941Z",
+    "outputSizeBytes": 0
+  }
+]

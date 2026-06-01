@@ -1,0 +1,2204 @@
+================================================================================
+DarkIME Log Session Started
+Timestamp: 2026-05-21 09:39:12.329
+Android Version: 16 (API 36)
+Device: Xiaomi 25069PTEBG
+================================================================================
+
+[2026-05-21 09:39:12.332] E/DarkIME: === onCreate() CALLED ===
+[2026-05-21 09:39:12.333] I/DarkIME: DarkIME2 onCreate
+[2026-05-21 09:39:12.335] E/DarkIME: === AutocorrectEngine.initialize() ===
+[2026-05-21 09:39:12.336] E/DarkIME: autocorrect_enabled pref = false, isEnabled = false
+[2026-05-21 09:39:12.369] D/DarkIME: onComputeInsets: contentTop=125, visibleTop=125
+[2026-05-21 09:39:12.373] D/DarkIME: STANDARD: pkg=org.dark.keyboard variation=0
+[2026-05-21 09:39:12.373] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+[2026-05-21 09:39:12.373] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:39:12.374] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:39:12.374] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:39:12.375] D/DarkIME: onComputeInsets: contentTop=125, visibleTop=125
+[2026-05-21 09:39:12.377] D/DarkIME: onComputeInsets: contentTop=125, visibleTop=125
+[2026-05-21 09:39:12.426] I/DarkIME: Loaded: 8013 words (sorted text, binary search)
+[2026-05-21 09:39:12.427] I/DarkIME: Loaded: 0 words, 0 bigrams for es
+[2026-05-21 09:39:12.427] I/DarkIME: Switched to: es
+[2026-05-21 09:39:12.455] I/DarkIME: Loaded: 8013 words (sorted text, binary search)
+[2026-05-21 09:39:12.456] I/DarkIME: Loaded: 0 words, 0 bigrams for es
+[2026-05-21 09:39:12.521] I/DarkIME: Loaded 8013 words for 'es'
+[2026-05-21 09:39:12.523] I/DarkIME: Suggestion engine: Dict+Overlay (es)
+[2026-05-21 09:39:12.900] D/DarkIME: onComputeInsets: contentTop=125, visibleTop=125
+[2026-05-21 09:39:13.418] D/DarkIME: STANDARD: pkg=org.dark.keyboard variation=0
+[2026-05-21 09:39:13.418] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+[2026-05-21 09:39:13.418] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:39:13.419] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:39:13.419] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:39:18.133] I/DarkIME: Resolved URL: https://release-assets.githubusercontent.com/github-production-release-asset/1231574469/4228873f-600d-4319-951d-75dd86b799de?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-05-21T14%3A21%3A05Z&rscd=attachment%3B+filename%3Dspiece.model&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-05-21T13%3A20%3A09Z&ske=2026-05-21T14%3A21%3A05Z&sks=b&skv=2018-11-09&sig=zjfl7GKsscvF1f2RqUpUCNhkFv6abEnHTXKXfB0k8V8%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3OTM3MTA1OCwibmJmIjoxNzc5MzcwNzU4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.taYz4uQ9cAGtpm31hTdhj_bsTB8jOEhqJcuhL15ME00&response-content-disposition=attachment%3B%20filename%3Dspiece.model&response-content-type=application%2Foctet-stream
+[2026-05-21 09:39:18.187] I/DarkIME: Resolved URL: https://release-assets.githubusercontent.com/github-production-release-asset/1231574469/70defa31-d608-4508-a77a-c62a684ea549?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-05-21T14%3A16%3A31Z&rscd=attachment%3B+filename%3Dsuggestions_model.tflite&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-05-21T13%3A15%3A59Z&ske=2026-05-21T14%3A16%3A31Z&sks=b&skv=2018-11-09&sig=q2Pg7zP%2Fr%2FNuehHtq8uieD3ODAx5jfSXymSQTiiqbEc%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3OTM3MjU1OCwibmJmIjoxNzc5MzcwNzU4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.XzVH9tsgkNaJBEV4Jw_laOQz3GyL8G2pQ78Bb4ZEBds&response-content-disposition=attachment%3B%20filename%3Dsuggestions_model.tflite&response-content-type=application%2Foctet-stream
+[2026-05-21 09:39:18.214] I/DarkIME: Enqueued download: spiece.model (id=598)
+[2026-05-21 09:39:18.242] I/DarkIME: Enqueued download: suggestions_model.tflite (id=599)
+[2026-05-21 09:39:27.036] I/DarkIME: Preference 'autocorrect_enabled' changed, reloading autocorrect...
+[2026-05-21 09:39:27.041] I/DarkIME: Autocorrect preference reloaded: ON
+[2026-05-21 09:39:28.869] I/DarkIME: Preference 'autocorrect_enabled' changed, reloading autocorrect...
+[2026-05-21 09:39:28.872] I/DarkIME: Autocorrect preference reloaded: OFF
+[2026-05-21 09:39:32.591] D/DarkIME: STANDARD: pkg=com.miui.home variation=0
+[2026-05-21 09:39:32.592] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+[2026-05-21 09:39:32.592] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:39:32.592] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:39:32.592] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:39:33.445] D/DarkIME: STANDARD: pkg=com.socialnmobile.dictapps.notepad.color.note variation=0
+[2026-05-21 09:39:33.446] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.socialnmobile.dictapps.notepad.color.note variation=0 inputType=147457 ===
+[2026-05-21 09:39:33.446] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:39:33.447] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:39:33.448] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:39:33.448] E/DarkIME: === onEvaluateFullscreenMode() = false ===
+[2026-05-21 09:39:33.449] E/DarkIME: === onEvaluateFullscreenMode() = false ===
+[2026-05-21 09:39:33.450] E/DarkIME: === onCreateInputView CALLED ===
+[2026-05-21 09:39:33.465] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:39:33.465] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:39:33.467] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:39:33.467] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:39:33.467] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:39:33.470] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:39:33.470] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:39:33.471] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:39:33.472] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:39:33.472] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:39:33.473] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:39:33.473] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:39:33.474] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:39:33.474] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:39:33.474] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:39:33.475] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:39:33.475] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:39:33.475] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:39:33.475] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:39:33.476] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:39:33.476] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:39:33.476] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:39:33.476] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:39:33.476] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:39:33.477] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:39:33.477] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:39:33.477] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:39:33.477] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:39:33.478] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:39:33.478] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:39:33.478] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:39:33.478] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:39:33.478] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:39:33.479] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:39:33.479] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:39:33.479] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:39:33.479] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:39:33.479] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:39:33.480] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:39:33.480] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:39:33.480] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:39:33.481] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:39:33.481] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:39:33.481] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:39:33.481] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:39:33.482] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:39:33.482] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:39:33.482] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:39:33.482] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:39:33.482] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:39:33.483] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:39:33.483] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:39:33.483] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:39:33.483] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:39:33.484] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:39:33.484] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:39:33.484] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:39:33.485] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:39:33.485] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:39:33.485] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:39:33.486] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:39:33.486] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:39:33.486] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:39:33.487] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:39:33.487] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:39:33.487] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:39:33.487] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:39:33.487] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:39:33.488] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:39:33.488] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:39:33.488] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:39:33.489] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:39:33.489] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:39:33.489] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:39:33.489] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:39:33.490] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:39:33.490] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:39:33.490] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:39:33.490] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:39:33.490] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:39:33.491] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:39:33.491] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:39:33.491] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:39:33.491] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:39:33.491] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:39:33.492] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:39:33.492] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:39:33.492] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:39:33.492] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:39:33.492] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:39:33.492] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:39:33.493] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:39:33.493] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:39:33.493] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:39:33.493] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:39:33.493] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:39:33.493] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:39:33.494] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:39:33.494] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:39:33.494] I/DarkIME: Keyboard created
+[2026-05-21 09:39:33.514] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:33.626] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:35.901] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:35.991] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:35.992] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:35.995] D/DarkIME: onSpace called: textBeforeCursor='rlos colección irregular concepción hazlo ya hiciste la tarea colección carlo osea conclusión claro ', composingWord='', skip=false
+[2026-05-21 09:39:35.996] D/DarkIME: onSpace: composing empty — skipping autocorrect (safety)
+[2026-05-21 09:39:36.009] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.245] I/DarkIME: SentencePiece loaded: 32000 pieces from spiece.model
+[2026-05-21 09:39:36.246] I/DarkIME: SentencePiece ready: 32000 pieces
+[2026-05-21 09:39:36.279] I/DarkIME: Interpreter: inputs=2, outputs=1, delegate=XNNPack
+[2026-05-21 09:39:36.280] D/DarkIME: Input[0] 'serving_default_encoder_token_ids:0' shape=[1, 32] dtype=INT32
+[2026-05-21 09:39:36.280] D/DarkIME: Input[1] 'serving_default_encoder_padding_mask:0' shape=[1, 32] dtype=INT32
+[2026-05-21 09:39:36.281] I/DarkIME: T5 ReRanker ready | 34MB | SentencePieceTokenizer[ready=true, vocab=32000, file=true] | XNNPack | seq=32
+[2026-05-21 09:39:36.451] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.552] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:39:36.553] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:36.558] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:39:36.559] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:39:36.584] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.687] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:36.687] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:36.689] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:36.689] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:36.711] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.808] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.895] V/DarkIME: T5 'con' score=0.2673
+[2026-05-21 09:39:36.911] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:39:36.912] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:36.914] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:39:36.915] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:39:36.941] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:36.989] V/DarkIME: T5 'como' score=0.3773
+[2026-05-21 09:39:37.008] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:37.083] V/DarkIME: T5 'cuando' score=0.4101
+[2026-05-21 09:39:37.102] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:37.104] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:37.105] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:37.109] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:37.124] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:37.181] V/DarkIME: T5 'cómo' score=0.5303
+[2026-05-21 09:39:37.216] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:37.275] V/DarkIME: T5 'creo' score=0.3414
+[2026-05-21 09:39:37.276] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:37.277] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:37.278] D/DarkIME: onSpace called: textBeforeCursor='colección irregular concepción hazlo ya hiciste la tarea colección carlo osea conclusión claro  casa', composingWord='casa', skip=false
+[2026-05-21 09:39:37.279] D/DarkIME: No hint correction available for 'casa', skipping autocorrect
+[2026-05-21 09:39:37.286] D/DarkIME: External cursor move: 112 → 113, resetting composing
+[2026-05-21 09:39:37.291] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:37.371] V/DarkIME: T5 'casa' score=0.2681
+[2026-05-21 09:39:37.465] V/DarkIME: T5 'cosas' score=0.4058
+[2026-05-21 09:39:37.561] V/DarkIME: T5 'claro' score=0.3522
+[2026-05-21 09:39:37.656] V/DarkIME: T5 'cosa' score=0.3615
+[2026-05-21 09:39:37.749] V/DarkIME: T5 'crees' score=0.3990
+[2026-05-21 09:39:37.843] V/DarkIME: T5 'conmigo' score=0.4052
+[2026-05-21 09:39:37.941] V/DarkIME: T5 'cada' score=0.2869
+[2026-05-21 09:39:38.008] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.098] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:39:38.099] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:38.103] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:39:38.105] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:39:38.123] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.198] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:39:38.199] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:38.201] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:39:38.202] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:39:38.217] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.274] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.367] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:38.368] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:38.369] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:38.370] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:38.382] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.502] V/DarkIME: T5 'claro' score=0.3509
+[2026-05-21 09:39:38.515] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.602] V/DarkIME: T5 'clase' score=0.2875
+[2026-05-21 09:39:38.612] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:39:38.614] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:38.616] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:39:38.617] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:39:38.632] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.696] V/DarkIME: T5 'club' score=0.3034
+[2026-05-21 09:39:38.718] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:38.719] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:38.722] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:38.723] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:38.740] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:38.796] V/DarkIME: T5 'cliente' score=0.3835
+[2026-05-21 09:39:38.901] V/DarkIME: T5 'clientes' score=0.3908
+[2026-05-21 09:39:38.999] V/DarkIME: T5 'clases' score=0.3595
+[2026-05-21 09:39:39.092] V/DarkIME: T5 'claramente' score=0.3343
+[2026-05-21 09:39:39.123] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:39.174] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:39.184] V/DarkIME: T5 'clara' score=0.3209
+[2026-05-21 09:39:39.283] V/DarkIME: T5 'clark' score=0.3493
+[2026-05-21 09:39:39.379] V/DarkIME: T5 'claire' score=0.3969
+[2026-05-21 09:39:39.473] V/DarkIME: T5 'clave' score=0.3917
+[2026-05-21 09:39:39.567] V/DarkIME: T5 'clínica' score=0.5374
+[2026-05-21 09:39:39.814] V/DarkIME: T5 'caso' score=0.3605
+[2026-05-21 09:39:39.910] V/DarkIME: T5 'cara' score=0.3507
+[2026-05-21 09:39:39.989] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:40.002] V/DarkIME: T5 'clase' score=0.3022
+[2026-05-21 09:39:40.062] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:40.064] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:40.066] D/DarkIME: onSpace called: textBeforeCursor='ión irregular concepción hazlo ya hiciste la tarea colección carlo osea conclusión claro  casa claro', composingWord='claro', skip=false
+[2026-05-21 09:39:40.067] D/DarkIME: No hint correction available for 'claro', skipping autocorrect
+[2026-05-21 09:39:40.081] D/DarkIME: External cursor move: 118 → 119, resetting composing
+[2026-05-21 09:39:40.084] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:40.094] V/DarkIME: T5 'cuatro' score=0.4403
+[2026-05-21 09:39:40.184] V/DarkIME: T5 'cuarto' score=0.4086
+[2026-05-21 09:39:40.282] V/DarkIME: T5 'cargo' score=0.2064
+[2026-05-21 09:39:40.375] V/DarkIME: T5 'calor' score=0.3538
+[2026-05-21 09:39:40.471] V/DarkIME: T5 'cabo' score=0.3813
+[2026-05-21 09:39:40.570] V/DarkIME: T5 'clara' score=0.3347
+[2026-05-21 09:39:40.663] V/DarkIME: T5 'cero' score=0.4189
+[2026-05-21 09:39:40.848] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:40.940] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:40.941] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:40.945] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:40.947] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:40.972] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.043] D/DarkIME: handleKeyPress: code=117, label=u
+[2026-05-21 09:39:41.044] I/DarkIME: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:41.045] D/DarkIME: Letter 'u': autocorrect.isEnabled=true
+[2026-05-21 09:39:41.046] D/DarkIME: >>> COMPOSING 'u' (autocorrect ON)
+[2026-05-21 09:39:41.063] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.221] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.330] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-21 09:39:41.331] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:41.332] V/DarkIME: T5 'audiencia' score=0.5231
+[2026-05-21 09:39:41.332] D/DarkIME: Letter 't': autocorrect.isEnabled=true
+[2026-05-21 09:39:41.333] D/DarkIME: >>> COMPOSING 't' (autocorrect ON)
+[2026-05-21 09:39:41.346] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.421] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.434] V/DarkIME: T5 'aumento' score=0.4525
+[2026-05-21 09:39:41.498] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:39:41.498] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:41.500] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:39:41.500] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:39:41.512] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:41.532] V/DarkIME: T5 'audrey' score=0.4599
+[2026-05-21 09:39:41.629] V/DarkIME: T5 'audición' score=0.5002
+[2026-05-21 09:39:41.740] V/DarkIME: T5 'aumentar' score=0.4237
+[2026-05-21 09:39:41.832] V/DarkIME: T5 'aumenta' score=0.4152
+[2026-05-21 09:39:42.039] V/DarkIME: T5 'auto' score=0.2710
+[2026-05-21 09:39:42.132] V/DarkIME: T5 'alto' score=0.4046
+[2026-05-21 09:39:42.226] V/DarkIME: T5 'aqui' score=0.4346
+[2026-05-21 09:39:42.321] V/DarkIME: T5 'asi' score=0.3789
+[2026-05-21 09:39:42.346] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:42.401] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:39:42.403] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:42.416] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:42.426] V/DarkIME: T5 'aun' score=0.4296
+[2026-05-21 09:39:42.524] V/DarkIME: T5 'ante' score=0.3187
+[2026-05-21 09:39:42.536] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:42.591] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:42.592] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:42.594] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:42.595] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:42.611] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:42.625] V/DarkIME: T5 'alta' score=0.2748
+[2026-05-21 09:39:42.717] V/DarkIME: T5 'arte' score=0.3696
+[2026-05-21 09:39:42.814] V/DarkIME: T5 'ahi' score=0.4329
+[2026-05-21 09:39:42.910] V/DarkIME: T5 'acto' score=0.3505
+[2026-05-21 09:39:43.003] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:43.067] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:43.068] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:43.071] D/DarkIME: onSpace called: textBeforeCursor='rregular concepción hazlo ya hiciste la tarea colección carlo osea conclusión claro  casa claro auto', composingWord='auto', skip=false
+[2026-05-21 09:39:43.072] D/DarkIME: No hint correction available for 'auto', skipping autocorrect
+[2026-05-21 09:39:43.084] D/DarkIME: External cursor move: 123 → 124, resetting composing
+[2026-05-21 09:39:43.091] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:43.131] V/DarkIME: T5 'algo' score=0.3636
+[2026-05-21 09:39:43.231] V/DarkIME: T5 'año' score=0.5207
+[2026-05-21 09:39:43.326] V/DarkIME: T5 'amo' score=0.3784
+[2026-05-21 09:39:43.424] V/DarkIME: T5 'alto' score=0.4046
+[2026-05-21 09:39:43.527] V/DarkIME: T5 'asunto' score=0.4424
+[2026-05-21 09:39:43.624] V/DarkIME: T5 'aun' score=0.4296
+[2026-05-21 09:39:43.718] V/DarkIME: T5 'ante' score=0.3187
+[2026-05-21 09:39:43.736] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:43.814] V/DarkIME: T5 'alta' score=0.2748
+[2026-05-21 09:39:43.832] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:43.834] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:43.837] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:43.839] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:43.853] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:43.908] V/DarkIME: T5 'arte' score=0.3696
+[2026-05-21 09:39:43.999] V/DarkIME: T5 'santo' score=0.4446
+[2026-05-21 09:39:44.019] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.127] D/DarkIME: handleKeyPress: code=117, label=u
+[2026-05-21 09:39:44.129] I/DarkIME: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:44.131] D/DarkIME: Letter 'u': autocorrect.isEnabled=true
+[2026-05-21 09:39:44.132] D/DarkIME: >>> COMPOSING 'u' (autocorrect ON)
+[2026-05-21 09:39:44.152] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.194] V/DarkIME: T5 'abajo' score=0.3784
+[2026-05-21 09:39:44.295] V/DarkIME: T5 'acerca' score=0.4725
+[2026-05-21 09:39:44.344] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.389] V/DarkIME: T5 'acaba' score=0.4613
+[2026-05-21 09:39:44.456] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-21 09:39:44.458] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:44.460] D/DarkIME: Letter 't': autocorrect.isEnabled=true
+[2026-05-21 09:39:44.461] D/DarkIME: >>> COMPOSING 't' (autocorrect ON)
+[2026-05-21 09:39:44.477] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.487] V/DarkIME: T5 'acabo' score=0.4698
+[2026-05-21 09:39:44.578] V/DarkIME: T5 'abogado' score=0.4988
+[2026-05-21 09:39:44.585] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.670] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:44.670] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:44.672] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:44.672] V/DarkIME: T5 'accidente' score=0.3840
+[2026-05-21 09:39:44.672] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:44.685] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:44.769] V/DarkIME: T5 'abuela' score=0.4759
+[2026-05-21 09:39:44.863] V/DarkIME: T5 'acá' score=0.4933
+[2026-05-21 09:39:44.964] V/DarkIME: T5 'acabó' score=0.4750
+[2026-05-21 09:39:45.059] V/DarkIME: T5 'abuelo' score=0.5253
+[2026-05-21 09:39:45.152] V/DarkIME: T5 'abre' score=0.3950
+[2026-05-21 09:39:45.249] V/DarkIME: T5 'acción' score=0.5348
+[2026-05-21 09:39:45.461] V/DarkIME: T5 'algo' score=0.3609
+[2026-05-21 09:39:45.553] V/DarkIME: T5 'año' score=0.5158
+[2026-05-21 09:39:45.647] V/DarkIME: T5 'amo' score=0.3551
+[2026-05-21 09:39:45.740] V/DarkIME: T5 'alto' score=0.3995
+[2026-05-21 09:39:45.784] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:45.836] V/DarkIME: T5 'asunto' score=0.4261
+[2026-05-21 09:39:45.872] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:39:45.874] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:45.876] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:39:45.877] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:39:45.892] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:45.917] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:45.928] V/DarkIME: T5 'aun' score=0.4196
+[2026-05-21 09:39:45.977] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:45.978] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:45.980] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:45.981] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:46.001] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:46.025] V/DarkIME: T5 'ante' score=0.3178
+[2026-05-21 09:39:46.121] V/DarkIME: T5 'alta' score=0.2804
+[2026-05-21 09:39:46.216] V/DarkIME: T5 'arte' score=0.3692
+[2026-05-21 09:39:46.311] V/DarkIME: T5 'santo' score=0.4393
+[2026-05-21 09:39:46.529] V/DarkIME: T5 'auto' score=0.2739
+[2026-05-21 09:39:46.624] V/DarkIME: T5 'autos' score=0.3742
+[2026-05-21 09:39:46.728] V/DarkIME: T5 'autor' score=0.2675
+[2026-05-21 09:39:46.735] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:46.968] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.068] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:39:47.069] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:47.072] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:39:47.074] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:39:47.108] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.141] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.221] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.248] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:39:47.249] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:47.252] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:39:47.253] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:39:47.275] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.366] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:47.465] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:39:47.467] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:47.471] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:39:47.472] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:39:47.501] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:49.798] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:49.873] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:39:49.875] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:49.879] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:39:49.881] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:39:49.909] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:50.023] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:50.094] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:39:50.097] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:50.100] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:39:50.101] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:39:50.123] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:50.747] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:50.818] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:39:50.819] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:50.822] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:39:50.822] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:39:50.847] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:50.930] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:51.004] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:51.005] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:51.007] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:51.008] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:51.023] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:51.138] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:51.235] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-21 09:39:51.236] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:51.239] D/DarkIME: Letter 'n': autocorrect.isEnabled=true
+[2026-05-21 09:39:51.240] D/DarkIME: >>> COMPOSING 'n' (autocorrect ON)
+[2026-05-21 09:39:51.263] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:51.448] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:51.522] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:51.523] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:51.527] D/DarkIME: onSpace called: textBeforeCursor='ción hazlo ya hiciste la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion', composingWord='autocorreccion', skip=false
+[2026-05-21 09:39:51.529] D/DarkIME: Hint check: 'autocorreccion' → hint='autor' dist=9 typedInDict=false
+[2026-05-21 09:39:51.530] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (9 > 3)
+[2026-05-21 09:39:51.531] D/DarkIME: No hint correction available for 'autocorreccion', skipping autocorrect
+[2026-05-21 09:39:51.546] D/DarkIME: External cursor move: 138 → 139, resetting composing
+[2026-05-21 09:39:51.555] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:52.605] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:52.697] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:39:52.699] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:52.702] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:39:52.703] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:39:52.729] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:53.005] V/DarkIME: T5 'ella' score=0.2924
+[2026-05-21 09:39:53.099] V/DarkIME: T5 'entonces' score=0.3770
+[2026-05-21 09:39:53.194] V/DarkIME: T5 'ellos' score=0.3587
+[2026-05-21 09:39:53.298] V/DarkIME: T5 'entre' score=0.2291
+[2026-05-21 09:39:53.391] V/DarkIME: T5 'entiendo' score=0.4192
+[2026-05-21 09:39:53.488] V/DarkIME: T5 'encontrar' score=0.4163
+[2026-05-21 09:39:53.582] V/DarkIME: T5 'entrar' score=0.3824
+[2026-05-21 09:39:53.677] V/DarkIME: T5 'ello' score=0.2694
+[2026-05-21 09:39:53.772] V/DarkIME: T5 'empezar' score=0.3861
+[2026-05-21 09:39:53.836] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:53.860] V/DarkIME: T5 'entiendes' score=0.3740
+[2026-05-21 09:39:53.910] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:39:53.911] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:53.912] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:39:53.913] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:39:53.931] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:53.957] V/DarkIME: T5 'encontrado' score=0.4481
+[2026-05-21 09:39:53.978] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.049] V/DarkIME: T5 'encima' score=0.4459
+[2026-05-21 09:39:54.056] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:39:54.056] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:54.057] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:39:54.058] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:39:54.077] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.169] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.244] V/DarkIME: T5 'ella' score=0.2870
+[2026-05-21 09:39:54.246] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:54.247] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:54.248] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:54.249] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:54.269] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.346] V/DarkIME: T5 'ellos' score=0.3449
+[2026-05-21 09:39:54.402] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.439] V/DarkIME: T5 'ello' score=0.2577
+[2026-05-21 09:39:54.463] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:54.464] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:54.466] D/DarkIME: onSpace called: textBeforeCursor='hazlo ya hiciste la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella', composingWord='ella', skip=false
+[2026-05-21 09:39:54.467] D/DarkIME: Hint check: 'ella' → hint='autor' dist=5 typedInDict=true
+[2026-05-21 09:39:54.467] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (5 > 3)
+[2026-05-21 09:39:54.468] D/DarkIME: No hint correction available for 'ella', skipping autocorrect
+[2026-05-21 09:39:54.481] D/DarkIME: External cursor move: 143 → 144, resetting composing
+[2026-05-21 09:39:54.486] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:54.537] V/DarkIME: T5 'ellas' score=0.3735
+[2026-05-21 09:39:54.631] V/DarkIME: T5 'elección' score=0.4807
+[2026-05-21 09:39:54.726] V/DarkIME: T5 'elegir' score=0.3835
+[2026-05-21 09:39:54.822] V/DarkIME: T5 'elegido' score=0.4506
+[2026-05-21 09:39:54.914] V/DarkIME: T5 'elizabeth' score=0.4080
+[2026-05-21 09:39:54.977] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.014] V/DarkIME: T5 'elegante' score=0.3185
+[2026-05-21 09:39:55.075] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:39:55.076] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:55.078] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:39:55.078] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:39:55.093] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.101] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.108] V/DarkIME: T5 'elecciones' score=0.4719
+[2026-05-21 09:39:55.179] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:39:55.180] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:55.181] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:39:55.181] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:39:55.193] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.200] V/DarkIME: T5 'elena' score=0.4069
+[2026-05-21 09:39:55.300] V/DarkIME: T5 'electricidad' score=0.3609
+[2026-05-21 09:39:55.484] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.489] V/DarkIME: T5 'ella' score=0.2750
+[2026-05-21 09:39:55.564] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:55.565] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:55.567] D/DarkIME: onSpace called: textBeforeCursor='lo ya hiciste la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella el', composingWord='el', skip=false
+[2026-05-21 09:39:55.581] D/DarkIME: External cursor move: 146 → 147, resetting composing
+[2026-05-21 09:39:55.584] V/DarkIME: T5 'ellos' score=0.3535
+[2026-05-21 09:39:55.587] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:55.679] V/DarkIME: T5 'ello' score=0.2670
+[2026-05-21 09:39:55.774] V/DarkIME: T5 'ellas' score=0.3545
+[2026-05-21 09:39:55.869] V/DarkIME: T5 'elección' score=0.4677
+[2026-05-21 09:39:55.961] V/DarkIME: T5 'elegir' score=0.3787
+[2026-05-21 09:39:56.051] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.053] V/DarkIME: T5 'elegido' score=0.4279
+[2026-05-21 09:39:56.138] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:56.139] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:56.142] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:56.143] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:56.152] V/DarkIME: T5 'elizabeth' score=0.4065
+[2026-05-21 09:39:56.159] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.244] V/DarkIME: T5 'elegante' score=0.3028
+[2026-05-21 09:39:56.251] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.333] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-21 09:39:56.333] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:56.336] D/DarkIME: Letter 't': autocorrect.isEnabled=true
+[2026-05-21 09:39:56.336] D/DarkIME: >>> COMPOSING 't' (autocorrect ON)
+[2026-05-21 09:39:56.337] V/DarkIME: T5 'elecciones' score=0.4619
+[2026-05-21 09:39:56.351] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.432] V/DarkIME: T5 'elena' score=0.3954
+[2026-05-21 09:39:56.459] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.513] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:39:56.514] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:56.516] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:39:56.517] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:39:56.529] V/DarkIME: T5 'electricidad' score=0.3224
+[2026-05-21 09:39:56.534] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.584] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.636] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:56.637] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:56.641] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:56.642] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:56.659] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.804] V/DarkIME: T5 'otra' score=0.3895
+[2026-05-21 09:39:56.892] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.898] V/DarkIME: T5 'otro' score=0.3167
+[2026-05-21 09:39:56.946] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:56.947] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:56.948] D/DarkIME: onSpace called: textBeforeCursor=' hiciste la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro', composingWord='otro', skip=false
+[2026-05-21 09:39:56.949] D/DarkIME: Hint check: 'otro' → hint='autor' dist=3 typedInDict=true
+[2026-05-21 09:39:56.950] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: first letter not compatible
+[2026-05-21 09:39:56.951] D/DarkIME: No hint correction available for 'otro', skipping autocorrect
+[2026-05-21 09:39:56.963] D/DarkIME: External cursor move: 151 → 152, resetting composing
+[2026-05-21 09:39:56.967] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:56.997] V/DarkIME: T5 'otros' score=0.3697
+[2026-05-21 09:39:57.095] V/DarkIME: T5 'otras' score=0.4002
+[2026-05-21 09:39:57.509] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.567] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:39:57.569] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:57.573] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:39:57.575] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:39:57.600] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.683] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.743] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:39:57.744] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:57.745] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:39:57.746] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:39:57.766] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.774] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.843] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:39:57.843] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:57.844] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:39:57.845] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:39:57.857] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:57.873] V/DarkIME: T5 'abajo' score=0.3402
+[2026-05-21 09:39:57.977] V/DarkIME: T5 'acerca' score=0.4001
+[2026-05-21 09:39:58.068] V/DarkIME: T5 'acaba' score=0.3977
+[2026-05-21 09:39:58.099] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:58.155] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:58.156] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:58.158] D/DarkIME: onSpace called: textBeforeCursor='iste la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi', composingWord='asi', skip=false
+[2026-05-21 09:39:58.162] V/DarkIME: T5 'acabo' score=0.3962
+[2026-05-21 09:39:58.171] D/DarkIME: External cursor move: 155 → 156, resetting composing
+[2026-05-21 09:39:58.175] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:58.263] V/DarkIME: T5 'abogado' score=0.4064
+[2026-05-21 09:39:58.356] V/DarkIME: T5 'accidente' score=0.3422
+[2026-05-21 09:39:58.452] V/DarkIME: T5 'abuela' score=0.4114
+[2026-05-21 09:39:58.548] V/DarkIME: T5 'acá' score=0.4364
+[2026-05-21 09:39:58.642] V/DarkIME: T5 'acabó' score=0.4064
+[2026-05-21 09:39:58.734] V/DarkIME: T5 'abuelo' score=0.4467
+[2026-05-21 09:39:58.831] V/DarkIME: T5 'abre' score=0.3015
+[2026-05-21 09:39:58.840] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:58.923] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-21 09:39:58.924] V/DarkIME: T5 'acción' score=0.4870
+[2026-05-21 09:39:58.924] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:58.926] D/DarkIME: Letter 'n': autocorrect.isEnabled=true
+[2026-05-21 09:39:58.927] D/DarkIME: >>> COMPOSING 'n' (autocorrect ON)
+[2026-05-21 09:39:58.940] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.040] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.126] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:39:59.128] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:59.130] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:39:59.131] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:39:59.148] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.216] V/DarkIME: T5 'nos' score=0.2337
+[2026-05-21 09:39:59.311] V/DarkIME: T5 'nada' score=0.2781
+[2026-05-21 09:39:59.381] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.405] V/DarkIME: T5 'nunca' score=0.3349
+[2026-05-21 09:39:59.448] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:39:59.449] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:59.451] D/DarkIME: onSpace called: textBeforeCursor='e la tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi no', composingWord='no', skip=false
+[2026-05-21 09:39:59.461] D/DarkIME: External cursor move: 158 → 159, resetting composing
+[2026-05-21 09:39:59.468] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.502] V/DarkIME: T5 'noche' score=0.2885
+[2026-05-21 09:39:59.596] V/DarkIME: T5 'nosotros' score=0.3558
+[2026-05-21 09:39:59.690] V/DarkIME: T5 'nadie' score=0.4005
+[2026-05-21 09:39:59.785] V/DarkIME: T5 'nuevo' score=0.3865
+[2026-05-21 09:39:59.879] V/DarkIME: T5 'nuestro' score=0.3602
+[2026-05-21 09:39:59.898] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:39:59.968] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:39:59.970] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:39:59.972] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:39:59.973] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:39:59.977] V/DarkIME: T5 'necesito' score=0.3918
+[2026-05-21 09:39:59.989] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:00.047] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:00.078] V/DarkIME: T5 'nombre' score=0.2170
+[2026-05-21 09:40:00.116] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:00.117] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:00.118] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:00.119] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:00.139] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:00.176] V/DarkIME: T5 'nuestra' score=0.3922
+[2026-05-21 09:40:00.269] V/DarkIME: T5 'nueva' score=0.3501
+[2026-05-21 09:40:00.356] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:00.411] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:00.412] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:00.415] D/DarkIME: onSpace called: textBeforeCursor='a tarea colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi no si', composingWord='si', skip=false
+[2026-05-21 09:40:00.429] D/DarkIME: External cursor move: 161 → 162, resetting composing
+[2026-05-21 09:40:00.434] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:00.477] V/DarkIME: T5 'siento' score=0.3928
+[2026-05-21 09:40:00.572] V/DarkIME: T5 'siempre' score=0.3240
+[2026-05-21 09:40:00.666] V/DarkIME: T5 'sido' score=0.3602
+[2026-05-21 09:40:00.762] V/DarkIME: T5 'siendo' score=0.3937
+[2026-05-21 09:40:00.854] V/DarkIME: T5 'siente' score=0.3466
+[2026-05-21 09:40:00.946] V/DarkIME: T5 'sientes' score=0.4027
+[2026-05-21 09:40:01.005] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.035] V/DarkIME: T5 'siete' score=0.3211
+[2026-05-21 09:40:01.084] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:40:01.085] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:01.087] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:40:01.088] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:40:01.106] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.121] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.133] V/DarkIME: T5 'siéntate' score=0.4070
+[2026-05-21 09:40:01.206] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:01.208] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:01.209] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:01.210] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:01.221] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.230] V/DarkIME: T5 'siga' score=0.3530
+[2026-05-21 09:40:01.326] V/DarkIME: T5 'sienta' score=0.3725
+[2026-05-21 09:40:01.423] V/DarkIME: T5 'siéntese' score=0.4199
+[2026-05-21 09:40:01.438] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.504] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:01.505] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:01.507] D/DarkIME: onSpace called: textBeforeCursor='area colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi no si el', composingWord='el', skip=false
+[2026-05-21 09:40:01.516] D/DarkIME: External cursor move: 164 → 165, resetting composing
+[2026-05-21 09:40:01.521] V/DarkIME: T5 'sientas' score=0.3865
+[2026-05-21 09:40:01.522] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:01.938] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.022] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:40:02.023] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:02.026] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:40:02.027] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:40:02.047] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.109] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:02.114] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:02.117] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:02.117] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:02.129] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.195] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.265] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:02.267] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:02.269] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:02.271] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:02.287] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.412] V/DarkIME: T5 'ella' score=0.3401
+[2026-05-21 09:40:02.506] V/DarkIME: T5 'ellos' score=0.4001
+[2026-05-21 09:40:02.605] V/DarkIME: T5 'ello' score=0.3226
+[2026-05-21 09:40:02.697] V/DarkIME: T5 'ellas' score=0.3857
+[2026-05-21 09:40:02.745] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.791] V/DarkIME: T5 'elección' score=0.5040
+[2026-05-21 09:40:02.819] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:02.820] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:02.822] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:02.823] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:02.837] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:02.886] V/DarkIME: T5 'elegir' score=0.3953
+[2026-05-21 09:40:02.983] V/DarkIME: T5 'elegido' score=0.4403
+[2026-05-21 09:40:02.986] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.048] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:03.049] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:03.052] D/DarkIME: onSpace called: textBeforeCursor='colección carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi no si el ella', composingWord='ella', skip=false
+[2026-05-21 09:40:03.053] D/DarkIME: Hint check: 'ella' → hint='autor' dist=5 typedInDict=true
+[2026-05-21 09:40:03.054] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (5 > 3)
+[2026-05-21 09:40:03.054] D/DarkIME: No hint correction available for 'ella', skipping autocorrect
+[2026-05-21 09:40:03.070] D/DarkIME: External cursor move: 169 → 170, resetting composing
+[2026-05-21 09:40:03.078] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.079] V/DarkIME: T5 'elizabeth' score=0.3893
+[2026-05-21 09:40:03.174] V/DarkIME: T5 'elegante' score=0.3511
+[2026-05-21 09:40:03.276] V/DarkIME: T5 'elecciones' score=0.5003
+[2026-05-21 09:40:03.371] V/DarkIME: T5 'elena' score=0.4204
+[2026-05-21 09:40:03.468] V/DarkIME: T5 'electricidad' score=0.3736
+[2026-05-21 09:40:03.595] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.662] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-21 09:40:03.664] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:03.668] D/DarkIME: Letter 'n': autocorrect.isEnabled=true
+[2026-05-21 09:40:03.669] D/DarkIME: >>> COMPOSING 'n' (autocorrect ON)
+[2026-05-21 09:40:03.696] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.779] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.846] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:03.848] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:03.849] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:03.852] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:03.869] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.944] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:03.974] V/DarkIME: T5 'nos' score=0.2365
+[2026-05-21 09:40:04.022] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:04.023] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.024] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.026] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:04.044] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.070] V/DarkIME: T5 'nada' score=0.2898
+[2026-05-21 09:40:04.121] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:04.122] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.124] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.126] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:04.144] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.169] V/DarkIME: T5 'nunca' score=0.3486
+[2026-05-21 09:40:04.235] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.270] V/DarkIME: T5 'noche' score=0.2930
+[2026-05-21 09:40:04.323] D/DarkIME: handleKeyPress: code=116, label=t
+[2026-05-21 09:40:04.324] I/DarkIME: >>> handleKey: code=116 (t), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.327] D/DarkIME: Letter 't': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.328] D/DarkIME: >>> COMPOSING 't' (autocorrect ON)
+[2026-05-21 09:40:04.344] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.364] V/DarkIME: T5 'nosotros' score=0.3640
+[2026-05-21 09:40:04.402] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.461] V/DarkIME: T5 'nadie' score=0.4005
+[2026-05-21 09:40:04.489] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:40:04.491] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.492] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.494] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:40:04.512] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.566] V/DarkIME: T5 'nuevo' score=0.3786
+[2026-05-21 09:40:04.596] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:04.597] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.600] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.601] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:04.620] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.660] V/DarkIME: T5 'nuestro' score=0.3666
+[2026-05-21 09:40:04.702] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.755] V/DarkIME: T5 'necesito' score=0.3821
+[2026-05-21 09:40:04.771] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:04.772] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:04.774] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:04.775] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:04.793] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:04.851] V/DarkIME: T5 'nombre' score=0.2241
+[2026-05-21 09:40:04.943] V/DarkIME: T5 'nuestra' score=0.3878
+[2026-05-21 09:40:05.040] V/DarkIME: T5 'nueva' score=0.3369
+[2026-05-21 09:40:05.257] V/DarkIME: T5 'nosotros' score=0.3857
+[2026-05-21 09:40:05.355] V/DarkIME: T5 'nosotras' score=0.3858
+[2026-05-21 09:40:05.362] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:05.635] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:05.701] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:05.703] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:05.707] D/DarkIME: onSpace called: textBeforeCursor=' carlo osea conclusión claro  casa claro auto autocorreccion ella el otro asi no si el ella nositros', composingWord='nositros', skip=false
+[2026-05-21 09:40:05.708] D/DarkIME: Hint check: 'nositros' → hint='nosotras' dist=2 typedInDict=false
+[2026-05-21 09:40:05.710] D/DarkIME:   ✓ Hint looks like a correction (dist=2 ≤ 3, prefix OK)
+[2026-05-21 09:40:05.711] D/DarkIME:   Hint freq=21518, MIN=2000, typedInDict=false
+[2026-05-21 09:40:05.712] D/DarkIME:   ✓ USING HINT: 'nositros' → 'nosotras'
+[2026-05-21 09:40:05.733] I/DarkIME: Autocorrect: 'nositros' → 'nosotras'
+[2026-05-21 09:40:05.744] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:07.976] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.051] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:40:08.053] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:08.056] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:40:08.058] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:40:08.084] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.216] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.298] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:08.300] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:08.301] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:08.302] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:08.316] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.358] V/DarkIME: T5 'con' score=0.2937
+[2026-05-21 09:40:08.416] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.448] V/DarkIME: T5 'como' score=0.4034
+[2026-05-21 09:40:08.491] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:08.492] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:08.494] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:08.495] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:08.508] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.532] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.543] V/DarkIME: T5 'cuando' score=0.3943
+[2026-05-21 09:40:08.585] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:08.586] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:08.589] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:08.590] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:08.607] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.635] V/DarkIME: T5 'cómo' score=0.5215
+[2026-05-21 09:40:08.732] V/DarkIME: T5 'creo' score=0.3425
+[2026-05-21 09:40:08.826] V/DarkIME: T5 'casa' score=0.3014
+[2026-05-21 09:40:08.890] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:08.914] V/DarkIME: T5 'cosas' score=0.4276
+[2026-05-21 09:40:08.947] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:08.949] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:08.951] D/DarkIME: onSpace called: textBeforeCursor='o osea conclusión claro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi', composingWord='casi', skip=false
+[2026-05-21 09:40:08.952] D/DarkIME: Hint check: 'casi' → hint='nosotras' dist=7 typedInDict=true
+[2026-05-21 09:40:08.952] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (7 > 3)
+[2026-05-21 09:40:08.953] D/DarkIME: No hint correction available for 'casi', skipping autocorrect
+[2026-05-21 09:40:08.960] D/DarkIME: External cursor move: 183 → 184, resetting composing
+[2026-05-21 09:40:08.966] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:09.012] V/DarkIME: T5 'claro' score=0.4023
+[2026-05-21 09:40:09.111] V/DarkIME: T5 'cosa' score=0.4057
+[2026-05-21 09:40:09.206] V/DarkIME: T5 'crees' score=0.3747
+[2026-05-21 09:40:09.304] V/DarkIME: T5 'conmigo' score=0.4148
+[2026-05-21 09:40:09.398] V/DarkIME: T5 'cada' score=0.3105
+[2026-05-21 09:40:09.495] V/DarkIME: T5 'carlo' score=0.4353
+[2026-05-21 09:40:09.595] V/DarkIME: T5 'conclusión' score=0.4711
+[2026-05-21 09:40:09.865] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:09.957] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:40:09.959] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:09.968] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:40:09.969] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:40:09.981] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.056] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.133] D/DarkIME: handleKeyPress: code=117, label=u
+[2026-05-21 09:40:10.134] I/DarkIME: >>> handleKey: code=117 (u), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:10.136] D/DarkIME: Letter 'u': autocorrect.isEnabled=true
+[2026-05-21 09:40:10.137] D/DarkIME: >>> COMPOSING 'u' (autocorrect ON)
+[2026-05-21 09:40:10.156] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.198] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.269] V/DarkIME: T5 'con' score=0.2753
+[2026-05-21 09:40:10.283] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:10.284] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:10.286] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:10.286] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:10.306] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.347] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.366] V/DarkIME: T5 'como' score=0.3941
+[2026-05-21 09:40:10.418] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:10.419] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:10.422] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:10.424] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:10.439] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.467] V/DarkIME: T5 'cuando' score=0.3880
+[2026-05-21 09:40:10.560] V/DarkIME: T5 'cómo' score=0.5150
+[2026-05-21 09:40:10.655] V/DarkIME: T5 'creo' score=0.3439
+[2026-05-21 09:40:10.714] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.750] V/DarkIME: T5 'casa' score=0.2916
+[2026-05-21 09:40:10.765] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:10.845] V/DarkIME: T5 'cosas' score=0.4391
+[2026-05-21 09:40:10.939] V/DarkIME: T5 'claro' score=0.3891
+[2026-05-21 09:40:11.036] V/DarkIME: T5 'cosa' score=0.4221
+[2026-05-21 09:40:11.132] V/DarkIME: T5 'crees' score=0.3918
+[2026-05-21 09:40:11.225] V/DarkIME: T5 'conmigo' score=0.4058
+[2026-05-21 09:40:11.319] V/DarkIME: T5 'cada' score=0.2827
+[2026-05-21 09:40:11.412] V/DarkIME: T5 'carlo' score=0.4160
+[2026-05-21 09:40:11.446] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:11.516] V/DarkIME: T5 'conclusión' score=0.4778
+[2026-05-21 09:40:11.537] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:11.539] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:11.541] D/DarkIME: onSpace called: textBeforeCursor='a conclusión claro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual', composingWord='cual', skip=false
+[2026-05-21 09:40:11.542] D/DarkIME: Hint check: 'cual' → hint='nosotras' dist=7 typedInDict=true
+[2026-05-21 09:40:11.543] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (7 > 3)
+[2026-05-21 09:40:11.545] D/DarkIME: No hint correction available for 'cual', skipping autocorrect
+[2026-05-21 09:40:11.564] D/DarkIME: External cursor move: 188 → 189, resetting composing
+[2026-05-21 09:40:11.571] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:11.722] V/DarkIME: T5 'cuál' score=0.4263
+[2026-05-21 09:40:11.815] V/DarkIME: T5 'culo' score=0.4530
+[2026-05-21 09:40:11.910] V/DarkIME: T5 'cura' score=0.3606
+[2026-05-21 09:40:12.003] V/DarkIME: T5 'cae' score=0.3623
+[2026-05-21 09:40:12.100] V/DarkIME: T5 'carl' score=0.3897
+[2026-05-21 09:40:12.192] V/DarkIME: T5 'cola' score=0.3416
+[2026-05-21 09:40:12.283] V/DarkIME: T5 'canal' score=0.2458
+[2026-05-21 09:40:12.378] V/DarkIME: T5 'cruel' score=0.2309
+[2026-05-21 09:40:12.474] V/DarkIME: T5 'cia' score=0.3722
+[2026-05-21 09:40:12.568] V/DarkIME: T5 'cuán' score=0.3940
+[2026-05-21 09:40:13.812] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:13.896] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:13.898] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:13.901] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:13.903] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:13.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:13.952] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:14.014] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:14.015] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:14.017] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:14.017] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:14.036] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:14.205] V/DarkIME: T5 'abajo' score=0.3694
+[2026-05-21 09:40:14.297] V/DarkIME: T5 'acerca' score=0.4400
+[2026-05-21 09:40:14.390] V/DarkIME: T5 'acaba' score=0.4337
+[2026-05-21 09:40:14.483] V/DarkIME: T5 'acabo' score=0.4416
+[2026-05-21 09:40:14.578] V/DarkIME: T5 'abogado' score=0.4684
+[2026-05-21 09:40:14.671] V/DarkIME: T5 'accidente' score=0.3443
+[2026-05-21 09:40:14.766] V/DarkIME: T5 'abuela' score=0.4439
+[2026-05-21 09:40:14.864] V/DarkIME: T5 'acá' score=0.4719
+[2026-05-21 09:40:14.869] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:14.955] D/DarkIME: handleKeyPress: code=109, label=m
+[2026-05-21 09:40:14.957] I/DarkIME: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:14.959] D/DarkIME: Letter 'm': autocorrect.isEnabled=true
+[2026-05-21 09:40:14.959] V/DarkIME: T5 'acabó' score=0.4423
+[2026-05-21 09:40:14.959] D/DarkIME: >>> COMPOSING 'm' (autocorrect ON)
+[2026-05-21 09:40:14.976] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.060] V/DarkIME: T5 'abuelo' score=0.4854
+[2026-05-21 09:40:15.060] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.146] D/DarkIME: handleKeyPress: code=101, label=e
+[2026-05-21 09:40:15.147] I/DarkIME: >>> handleKey: code=101 (e), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:15.149] D/DarkIME: Letter 'e': autocorrect.isEnabled=true
+[2026-05-21 09:40:15.151] D/DarkIME: >>> COMPOSING 'e' (autocorrect ON)
+[2026-05-21 09:40:15.152] V/DarkIME: T5 'abre' score=0.3624
+[2026-05-21 09:40:15.169] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.220] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-21 09:40:15.222] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:15.223] D/DarkIME: Letter 'n': autocorrect.isEnabled=true
+[2026-05-21 09:40:15.225] D/DarkIME: >>> COMPOSING 'n' (autocorrect ON)
+[2026-05-21 09:40:15.243] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.257] V/DarkIME: T5 'acción' score=0.4973
+[2026-05-21 09:40:15.343] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.354] V/DarkIME: T5 'auto' score=0.2882
+[2026-05-21 09:40:15.430] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:15.431] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:15.433] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:15.434] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:15.452] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.458] V/DarkIME: T5 'autocorreccion' score=0.4799
+[2026-05-21 09:40:15.558] V/DarkIME: T5 'asi' score=0.3501
+[2026-05-21 09:40:15.594] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.652] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:15.718] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:15.719] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:15.723] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:15.724] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:15.751] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:16.135] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:16.193] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:16.194] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:16.197] D/DarkIME: onSpace called: textBeforeCursor='sión claro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenis', composingWord='almenis', skip=false
+[2026-05-21 09:40:16.199] D/DarkIME: Hint check: 'almenis' → hint='allen' dist=3 typedInDict=false
+[2026-05-21 09:40:16.200] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: prefix not compatible
+[2026-05-21 09:40:16.201] D/DarkIME: No hint correction available for 'almenis', skipping autocorrect
+[2026-05-21 09:40:16.213] D/DarkIME: External cursor move: 196 → 197, resetting composing
+[2026-05-21 09:40:16.219] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:16.975] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:17.060] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:17.062] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:17.068] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:17.175] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:17.241] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:17.242] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:17.250] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:17.542] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:17.625] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:17.626] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:17.634] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.050] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.117] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:18.118] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:18.121] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:18.123] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:18.152] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.199] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.269] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:18.270] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:18.271] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:18.274] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:18.291] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.408] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.442] V/DarkIME: T5 'alguno' score=0.4186
+[2026-05-21 09:40:18.476] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:18.477] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:18.478] D/DarkIME: onSpace called: textBeforeCursor='sión claro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos', composingWord='os', skip=false
+[2026-05-21 09:40:18.486] D/DarkIME: External cursor move: 196 → 197, resetting composing
+[2026-05-21 09:40:18.490] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:18.551] V/DarkIME: T5 'aliento' score=0.3347
+[2026-05-21 09:40:18.649] V/DarkIME: T5 'aumento' score=0.4150
+[2026-05-21 09:40:18.743] V/DarkIME: T5 'allen' score=0.2532
+[2026-05-21 09:40:18.836] V/DarkIME: T5 'alimento' score=0.3585
+[2026-05-21 09:40:18.931] V/DarkIME: T5 'alumno' score=0.4489
+[2026-05-21 09:40:20.581] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:20.666] D/DarkIME: handleKeyPress: code=49, label=1
+[2026-05-21 09:40:20.668] I/DarkIME: >>> handleKey: code=49 (1), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:20.683] D/DarkIME: External cursor move: 197 → 198, resetting composing
+[2026-05-21 09:40:20.691] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:20.780] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:20.837] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:20.839] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:20.841] D/DarkIME: onSpace called: textBeforeCursor='ón claro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1', composingWord='', skip=false
+[2026-05-21 09:40:20.842] D/DarkIME: onSpace: composing empty — skipping autocorrect (safety)
+[2026-05-21 09:40:20.849] D/DarkIME: External cursor move: 198 → 199, resetting composing
+[2026-05-21 09:40:20.856] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.397] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.463] D/DarkIME: handleKeyPress: code=100, label=d
+[2026-05-21 09:40:21.464] I/DarkIME: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:21.467] D/DarkIME: Letter 'd': autocorrect.isEnabled=true
+[2026-05-21 09:40:21.468] D/DarkIME: >>> COMPOSING 'd' (autocorrect ON)
+[2026-05-21 09:40:21.497] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.505] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.592] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:21.593] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:21.598] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:21.599] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:21.614] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.663] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.750] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:21.753] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:21.755] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:21.756] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:21.772] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:21.780] V/DarkIME: T5 'del' score=0.3546
+[2026-05-21 09:40:21.879] V/DarkIME: T5 'dos' score=0.3854
+[2026-05-21 09:40:21.972] V/DarkIME: T5 'dónde' score=0.4718
+[2026-05-21 09:40:21.996] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:22.065] V/DarkIME: T5 'decir' score=0.4071
+[2026-05-21 09:40:22.065] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:22.067] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:22.068] D/DarkIME: onSpace called: textBeforeCursor='laro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia', composingWord='dia', skip=false
+[2026-05-21 09:40:22.077] D/DarkIME: External cursor move: 202 → 203, resetting composing
+[2026-05-21 09:40:22.079] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:22.166] V/DarkIME: T5 'dios' score=0.3954
+[2026-05-21 09:40:22.260] V/DarkIME: T5 'día' score=0.4707
+[2026-05-21 09:40:22.361] V/DarkIME: T5 'dijo' score=0.3379
+[2026-05-21 09:40:22.455] V/DarkIME: T5 'después' score=0.3784
+[2026-05-21 09:40:22.550] V/DarkIME: T5 'desde' score=0.3309
+[2026-05-21 09:40:22.647] V/DarkIME: T5 'dinero' score=0.4507
+[2026-05-21 09:40:22.729] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:22.744] V/DarkIME: T5 'donde' score=0.3421
+[2026-05-21 09:40:22.816] D/DarkIME: handleKeyPress: code=50, label=2
+[2026-05-21 09:40:22.819] I/DarkIME: >>> handleKey: code=50 (2), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:22.825] D/DarkIME: External cursor move: 203 → 204, resetting composing
+[2026-05-21 09:40:22.832] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:22.841] V/DarkIME: T5 'días' score=0.5074
+[2026-05-21 09:40:23.013] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:23.088] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:23.090] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:23.093] D/DarkIME: onSpace called: textBeforeCursor='ro  casa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2', composingWord='', skip=false
+[2026-05-21 09:40:23.095] D/DarkIME: onSpace: composing empty — skipping autocorrect (safety)
+[2026-05-21 09:40:23.111] D/DarkIME: External cursor move: 204 → 205, resetting composing
+[2026-05-21 09:40:23.115] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:23.678] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:23.762] D/DarkIME: handleKeyPress: code=100, label=d
+[2026-05-21 09:40:23.763] I/DarkIME: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:23.767] D/DarkIME: Letter 'd': autocorrect.isEnabled=true
+[2026-05-21 09:40:23.769] D/DarkIME: >>> COMPOSING 'd' (autocorrect ON)
+[2026-05-21 09:40:23.790] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:23.811] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:23.907] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:23.907] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:23.909] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:23.910] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:23.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.022] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:24.023] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:24.025] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:24.025] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:24.044] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.080] V/DarkIME: T5 'del' score=0.3400
+[2026-05-21 09:40:24.136] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.169] V/DarkIME: T5 'dos' score=0.3666
+[2026-05-21 09:40:24.213] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:24.215] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:24.216] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:24.218] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:24.236] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.257] V/DarkIME: T5 'dónde' score=0.4460
+[2026-05-21 09:40:24.346] V/DarkIME: T5 'decir' score=0.3860
+[2026-05-21 09:40:24.353] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.398] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:24.399] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:24.402] D/DarkIME: onSpace called: textBeforeCursor='asa claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias', composingWord='dias', skip=false
+[2026-05-21 09:40:24.403] D/DarkIME: Hint check: 'dias' → hint='allen' dist=5 typedInDict=true
+[2026-05-21 09:40:24.404] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (5 > 3)
+[2026-05-21 09:40:24.405] D/DarkIME: No hint correction available for 'dias', skipping autocorrect
+[2026-05-21 09:40:24.414] D/DarkIME: External cursor move: 209 → 210, resetting composing
+[2026-05-21 09:40:24.419] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:24.451] V/DarkIME: T5 'dios' score=0.3912
+[2026-05-21 09:40:24.544] V/DarkIME: T5 'día' score=0.4512
+[2026-05-21 09:40:24.638] V/DarkIME: T5 'dijo' score=0.3307
+[2026-05-21 09:40:24.733] V/DarkIME: T5 'después' score=0.3596
+[2026-05-21 09:40:24.829] V/DarkIME: T5 'desde' score=0.3131
+[2026-05-21 09:40:24.922] V/DarkIME: T5 'dinero' score=0.4288
+[2026-05-21 09:40:25.017] V/DarkIME: T5 'donde' score=0.3184
+[2026-05-21 09:40:25.035] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.104] V/DarkIME: T5 'días' score=0.4892
+[2026-05-21 09:40:25.117] D/DarkIME: handleKeyPress: code=51, label=3
+[2026-05-21 09:40:25.119] I/DarkIME: >>> handleKey: code=51 (3), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:25.130] D/DarkIME: External cursor move: 210 → 211, resetting composing
+[2026-05-21 09:40:25.135] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.219] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.267] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:25.268] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:25.271] D/DarkIME: onSpace called: textBeforeCursor='a claro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3', composingWord='', skip=false
+[2026-05-21 09:40:25.272] D/DarkIME: onSpace: composing empty — skipping autocorrect (safety)
+[2026-05-21 09:40:25.281] D/DarkIME: External cursor move: 211 → 212, resetting composing
+[2026-05-21 09:40:25.287] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.835] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.907] D/DarkIME: handleKeyPress: code=100, label=d
+[2026-05-21 09:40:25.909] I/DarkIME: >>> handleKey: code=100 (d), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:25.911] D/DarkIME: Letter 'd': autocorrect.isEnabled=true
+[2026-05-21 09:40:25.912] D/DarkIME: >>> COMPOSING 'd' (autocorrect ON)
+[2026-05-21 09:40:25.935] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:25.976] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.071] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:26.072] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:26.073] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:26.074] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:26.095] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.179] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:26.180] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:26.181] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:26.182] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:26.201] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.215] V/DarkIME: T5 'del' score=0.3656
+[2026-05-21 09:40:26.313] V/DarkIME: T5 'dos' score=0.3996
+[2026-05-21 09:40:26.317] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.367] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.406] V/DarkIME: T5 'dónde' score=0.4570
+[2026-05-21 09:40:26.484] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.500] V/DarkIME: T5 'decir' score=0.4102
+[2026-05-21 09:40:26.529] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:26.530] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:26.532] D/DarkIME: onSpace called: textBeforeCursor='aro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dia', composingWord='dia', skip=false
+[2026-05-21 09:40:26.547] D/DarkIME: External cursor move: 215 → 216, resetting composing
+[2026-05-21 09:40:26.551] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:26.601] V/DarkIME: T5 'dios' score=0.4143
+[2026-05-21 09:40:26.696] V/DarkIME: T5 'día' score=0.4743
+[2026-05-21 09:40:26.790] V/DarkIME: T5 'dijo' score=0.3560
+[2026-05-21 09:40:26.886] V/DarkIME: T5 'después' score=0.4042
+[2026-05-21 09:40:26.982] V/DarkIME: T5 'desde' score=0.3498
+[2026-05-21 09:40:27.079] V/DarkIME: T5 'dinero' score=0.4493
+[2026-05-21 09:40:27.171] V/DarkIME: T5 'donde' score=0.3538
+[2026-05-21 09:40:27.269] V/DarkIME: T5 'días' score=0.5075
+[2026-05-21 09:40:28.091] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:28.167] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:28.169] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:28.176] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:28.541] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:28.600] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:28.601] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:28.605] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:28.606] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:28.633] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:28.824] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:28.903] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:28.904] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:28.907] D/DarkIME: onSpace called: textBeforeCursor='ro auto autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias', composingWord='s', skip=false
+[2026-05-21 09:40:28.920] D/DarkIME: External cursor move: 216 → 217, resetting composing
+[2026-05-21 09:40:28.920] V/DarkIME: T5 'dos' score=0.3849
+[2026-05-21 09:40:28.923] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:29.020] V/DarkIME: T5 'dios' score=0.4133
+[2026-05-21 09:40:29.117] V/DarkIME: T5 'día' score=0.4806
+[2026-05-21 09:40:29.210] V/DarkIME: T5 'dijo' score=0.3565
+[2026-05-21 09:40:29.305] V/DarkIME: T5 'días' score=0.5113
+[2026-05-21 09:40:29.398] V/DarkIME: T5 'dice' score=0.1802
+[2026-05-21 09:40:29.494] V/DarkIME: T5 'dije' score=0.3913
+[2026-05-21 09:40:29.586] V/DarkIME: T5 'digo' score=0.3543
+[2026-05-21 09:40:29.682] V/DarkIME: T5 'esas' score=0.4790
+[2026-05-21 09:40:29.779] V/DarkIME: T5 'dices' score=0.2321
+[2026-05-21 09:40:30.847] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:30.932] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:40:30.933] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:30.935] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:40:30.936] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:40:30.956] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:30.981] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.037] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:31.040] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:31.042] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:31.043] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:31.065] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.155] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.242] D/DarkIME: handleKeyPress: code=107, label=k
+[2026-05-21 09:40:31.243] I/DarkIME: >>> handleKey: code=107 (k), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:31.244] D/DarkIME: Letter 'k': autocorrect.isEnabled=true
+[2026-05-21 09:40:31.245] D/DarkIME: >>> COMPOSING 'k' (autocorrect ON)
+[2026-05-21 09:40:31.263] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.342] V/DarkIME: T5 'coche' score=0.2919
+[2026-05-21 09:40:31.347] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.433] V/DarkIME: T5 'cocina' score=0.3410
+[2026-05-21 09:40:31.433] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:31.434] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:31.435] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:31.436] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:31.447] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:31.531] V/DarkIME: T5 'cobarde' score=0.3695
+[2026-05-21 09:40:31.621] V/DarkIME: T5 'coches' score=0.2985
+[2026-05-21 09:40:31.711] V/DarkIME: T5 'cocinar' score=0.3914
+[2026-05-21 09:40:31.803] V/DarkIME: T5 'coartada' score=0.4300
+[2026-05-21 09:40:31.891] V/DarkIME: T5 'cocaína' score=0.5032
+[2026-05-21 09:40:31.986] V/DarkIME: T5 'cobrar' score=0.3625
+[2026-05-21 09:40:32.046] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.077] V/DarkIME: T5 'coca' score=0.3283
+[2026-05-21 09:40:32.128] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:32.129] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:32.140] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.170] V/DarkIME: T5 'cocinero' score=0.4321
+[2026-05-21 09:40:32.221] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.265] V/DarkIME: T5 'cobertura' score=0.3893
+[2026-05-21 09:40:32.290] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:32.291] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:32.304] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.355] V/DarkIME: T5 'cobra' score=0.3092
+[2026-05-21 09:40:32.421] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.448] V/DarkIME: T5 'conclusión' score=0.4030
+[2026-05-21 09:40:32.492] D/DarkIME: handleKeyPress: code=109, label=m
+[2026-05-21 09:40:32.492] I/DarkIME: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:32.495] D/DarkIME: Letter 'm': autocorrect.isEnabled=true
+[2026-05-21 09:40:32.496] D/DarkIME: >>> COMPOSING 'm' (autocorrect ON)
+[2026-05-21 09:40:32.512] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.596] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.643] V/DarkIME: T5 'coche' score=0.2919
+[2026-05-21 09:40:32.681] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:32.682] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:32.684] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:32.684] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:32.704] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:32.748] V/DarkIME: T5 'cocina' score=0.3410
+[2026-05-21 09:40:32.844] V/DarkIME: T5 'cobarde' score=0.3695
+[2026-05-21 09:40:32.937] V/DarkIME: T5 'coches' score=0.2985
+[2026-05-21 09:40:32.937] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:33.003] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:33.005] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:33.007] D/DarkIME: onSpace called: textBeforeCursor='to autocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como', composingWord='como', skip=false
+[2026-05-21 09:40:33.009] D/DarkIME: Hint check: 'como' → hint='allen' dist=5 typedInDict=true
+[2026-05-21 09:40:33.009] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (5 > 3)
+[2026-05-21 09:40:33.010] D/DarkIME: No hint correction available for 'como', skipping autocorrect
+[2026-05-21 09:40:33.024] D/DarkIME: External cursor move: 221 → 222, resetting composing
+[2026-05-21 09:40:33.029] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:33.031] V/DarkIME: T5 'cocinar' score=0.3914
+[2026-05-21 09:40:33.124] V/DarkIME: T5 'coartada' score=0.4300
+[2026-05-21 09:40:33.216] V/DarkIME: T5 'cocaína' score=0.5032
+[2026-05-21 09:40:33.310] V/DarkIME: T5 'cobrar' score=0.3625
+[2026-05-21 09:40:33.406] V/DarkIME: T5 'coca' score=0.3283
+[2026-05-21 09:40:33.499] V/DarkIME: T5 'cocinero' score=0.4321
+[2026-05-21 09:40:33.596] V/DarkIME: T5 'cobertura' score=0.3893
+[2026-05-21 09:40:33.653] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:33.693] V/DarkIME: T5 'cobra' score=0.3092
+[2026-05-21 09:40:33.749] D/DarkIME: handleKeyPress: code=99, label=c
+[2026-05-21 09:40:33.750] I/DarkIME: >>> handleKey: code=99 (c), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:33.753] D/DarkIME: Letter 'c': autocorrect.isEnabled=true
+[2026-05-21 09:40:33.754] D/DarkIME: >>> COMPOSING 'c' (autocorrect ON)
+[2026-05-21 09:40:33.769] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:33.793] V/DarkIME: T5 'conclusión' score=0.4030
+[2026-05-21 09:40:33.864] D/DarkIME: handleKeyPress: code=108, label=l
+[2026-05-21 09:40:33.865] I/DarkIME: >>> handleKey: code=108 (l), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:33.868] D/DarkIME: Letter 'l': autocorrect.isEnabled=true
+[2026-05-21 09:40:33.869] D/DarkIME: >>> COMPOSING 'l' (autocorrect ON)
+[2026-05-21 09:40:33.886] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:33.928] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.022] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:34.023] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:34.025] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:34.026] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:34.044] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.053] V/DarkIME: T5 'con' score=0.2501
+[2026-05-21 09:40:34.150] V/DarkIME: T5 'como' score=0.3747
+[2026-05-21 09:40:34.194] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.241] V/DarkIME: T5 'cuando' score=0.3908
+[2026-05-21 09:40:34.278] D/DarkIME: handleKeyPress: code=114, label=r
+[2026-05-21 09:40:34.280] I/DarkIME: >>> handleKey: code=114 (r), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:34.281] D/DarkIME: Letter 'r': autocorrect.isEnabled=true
+[2026-05-21 09:40:34.282] D/DarkIME: >>> COMPOSING 'r' (autocorrect ON)
+[2026-05-21 09:40:34.295] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.336] V/DarkIME: T5 'cómo' score=0.5163
+[2026-05-21 09:40:34.336] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.406] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:34.407] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:34.408] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:34.409] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:34.427] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.435] V/DarkIME: T5 'creo' score=0.2992
+[2026-05-21 09:40:34.527] V/DarkIME: T5 'casa' score=0.2792
+[2026-05-21 09:40:34.620] V/DarkIME: T5 'cosas' score=0.4299
+[2026-05-21 09:40:34.661] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.715] V/DarkIME: T5 'claro' score=0.3482
+[2026-05-21 09:40:34.726] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:34.728] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:34.730] D/DarkIME: onSpace called: textBeforeCursor='ocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como clari', composingWord='clari', skip=false
+[2026-05-21 09:40:34.731] D/DarkIME: Hint check: 'clari' → hint='allen' dist=4 typedInDict=false
+[2026-05-21 09:40:34.732] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (4 > 3)
+[2026-05-21 09:40:34.733] D/DarkIME: No hint correction available for 'clari', skipping autocorrect
+[2026-05-21 09:40:34.748] D/DarkIME: External cursor move: 227 → 228, resetting composing
+[2026-05-21 09:40:34.753] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:34.809] V/DarkIME: T5 'cosa' score=0.3788
+[2026-05-21 09:40:34.902] V/DarkIME: T5 'crees' score=0.3565
+[2026-05-21 09:40:34.995] V/DarkIME: T5 'conmigo' score=0.3996
+[2026-05-21 09:40:35.088] V/DarkIME: T5 'cada' score=0.2666
+[2026-05-21 09:40:35.152] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.180] V/DarkIME: T5 'carlo' score=0.4198
+[2026-05-21 09:40:35.243] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:35.244] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:35.253] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.274] V/DarkIME: T5 'conclusión' score=0.4298
+[2026-05-21 09:40:35.319] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.399] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:35.403] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:35.410] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.519] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.577] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:35.578] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:35.581] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:35.582] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:35.602] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.793] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.840] D/DarkIME: handleKeyPress: code=118, label=v
+[2026-05-21 09:40:35.842] I/DarkIME: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:35.844] D/DarkIME: Letter 'v': autocorrect.isEnabled=true
+[2026-05-21 09:40:35.845] D/DarkIME: >>> COMPOSING 'v' (autocorrect ON)
+[2026-05-21 09:40:35.860] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:35.905] V/DarkIME: T5 'caso' score=0.4124
+[2026-05-21 09:40:36.004] V/DarkIME: T5 'cara' score=0.3680
+[2026-05-21 09:40:36.098] V/DarkIME: T5 'clase' score=0.3196
+[2026-05-21 09:40:36.190] V/DarkIME: T5 'cuatro' score=0.4685
+[2026-05-21 09:40:36.286] V/DarkIME: T5 'cuarto' score=0.4278
+[2026-05-21 09:40:36.379] V/DarkIME: T5 'cargo' score=0.2174
+[2026-05-21 09:40:36.474] V/DarkIME: T5 'calor' score=0.3675
+[2026-05-21 09:40:36.559] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:36.570] V/DarkIME: T5 'cabo' score=0.3869
+[2026-05-21 09:40:36.624] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:36.625] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:36.643] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:36.662] V/DarkIME: T5 'clara' score=0.3433
+[2026-05-21 09:40:36.754] V/DarkIME: T5 'cero' score=0.4380
+[2026-05-21 09:40:36.875] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:36.956] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:36.957] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:36.959] D/DarkIME: onSpace called: textBeforeCursor='ocorreccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro', composingWord='o', skip=false
+[2026-05-21 09:40:36.967] V/DarkIME: T5 'caso' score=0.4124
+[2026-05-21 09:40:36.971] D/DarkIME: External cursor move: 227 → 228, resetting composing
+[2026-05-21 09:40:36.975] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.063] V/DarkIME: T5 'cara' score=0.3680
+[2026-05-21 09:40:37.160] V/DarkIME: T5 'clase' score=0.3196
+[2026-05-21 09:40:37.255] V/DarkIME: T5 'cuatro' score=0.4685
+[2026-05-21 09:40:37.350] V/DarkIME: T5 'cuarto' score=0.4278
+[2026-05-21 09:40:37.444] V/DarkIME: T5 'cargo' score=0.2174
+[2026-05-21 09:40:37.546] V/DarkIME: T5 'calor' score=0.3675
+[2026-05-21 09:40:37.583] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.635] V/DarkIME: T5 'cabo' score=0.3869
+[2026-05-21 09:40:37.656] D/DarkIME: handleKeyPress: code=118, label=v
+[2026-05-21 09:40:37.658] I/DarkIME: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:37.660] D/DarkIME: Letter 'v': autocorrect.isEnabled=true
+[2026-05-21 09:40:37.661] D/DarkIME: >>> COMPOSING 'v' (autocorrect ON)
+[2026-05-21 09:40:37.675] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.725] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.736] V/DarkIME: T5 'clara' score=0.3433
+[2026-05-21 09:40:37.810] D/DarkIME: handleKeyPress: code=97, label=a
+[2026-05-21 09:40:37.811] I/DarkIME: >>> handleKey: code=97 (a), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:37.813] D/DarkIME: Letter 'a': autocorrect.isEnabled=true
+[2026-05-21 09:40:37.815] D/DarkIME: >>> COMPOSING 'a' (autocorrect ON)
+[2026-05-21 09:40:37.831] V/DarkIME: T5 'cero' score=0.4380
+[2026-05-21 09:40:37.833] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.895] D/DarkIME: handleKeyPress: code=109, label=m
+[2026-05-21 09:40:37.895] I/DarkIME: >>> handleKey: code=109 (m), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:37.897] D/DarkIME: Letter 'm': autocorrect.isEnabled=true
+[2026-05-21 09:40:37.897] D/DarkIME: >>> COMPOSING 'm' (autocorrect ON)
+[2026-05-21 09:40:37.918] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:37.992] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.068] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:38.070] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:38.071] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:38.072] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:38.091] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.133] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.202] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:38.203] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:38.205] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:38.205] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:38.210] V/DarkIME: T5 'vamos' score=0.3706
+[2026-05-21 09:40:38.225] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.316] V/DarkIME: T5 'vez' score=0.3146
+[2026-05-21 09:40:38.374] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.408] V/DarkIME: T5 'voy' score=0.2722
+[2026-05-21 09:40:38.420] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:38.421] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:38.422] D/DarkIME: onSpace called: textBeforeCursor='ccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro vamis', composingWord='vamis', skip=false
+[2026-05-21 09:40:38.423] D/DarkIME: Hint check: 'vamis' → hint='allen' dist=5 typedInDict=false
+[2026-05-21 09:40:38.424] D/DarkIME:   ✗ Hint is likely a prediction, not a correction: distance too high (5 > 3)
+[2026-05-21 09:40:38.424] D/DarkIME: No hint correction available for 'vamis', skipping autocorrect
+[2026-05-21 09:40:38.437] D/DarkIME: External cursor move: 233 → 234, resetting composing
+[2026-05-21 09:40:38.444] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.513] V/DarkIME: T5 'ver' score=0.2688
+[2026-05-21 09:40:38.607] V/DarkIME: T5 'vas' score=0.2611
+[2026-05-21 09:40:38.702] V/DarkIME: T5 'vale' score=0.3588
+[2026-05-21 09:40:38.790] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.797] V/DarkIME: T5 'ven' score=0.2944
+[2026-05-21 09:40:38.882] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:38.883] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:38.890] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.895] V/DarkIME: T5 'vaya' score=0.4142
+[2026-05-21 09:40:38.966] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:38.982] V/DarkIME: T5 'veo' score=0.3974
+[2026-05-21 09:40:39.044] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:39.045] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:39.049] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.078] V/DarkIME: T5 'van' score=0.2187
+[2026-05-21 09:40:39.198] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.264] D/DarkIME: handleKeyPress: code=-5, label=⌫
+[2026-05-21 09:40:39.265] I/DarkIME: >>> handleKey: code=-5 (?), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:39.274] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.724] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.798] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:39.799] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:39.802] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:39.804] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:39.825] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.856] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:39.934] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:39.935] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:39.936] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:39.937] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:39.956] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:40.106] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:40.121] V/DarkIME: T5 'como' score=0.3942
+[2026-05-21 09:40:40.169] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:40.170] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:40.173] D/DarkIME: onSpace called: textBeforeCursor='ccion ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro vamos', composingWord='os', skip=false
+[2026-05-21 09:40:40.185] D/DarkIME: External cursor move: 233 → 234, resetting composing
+[2026-05-21 09:40:40.190] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:40.215] V/DarkIME: T5 'vamos' score=0.4037
+[2026-05-21 09:40:40.312] V/DarkIME: T5 'cómo' score=0.5417
+[2026-05-21 09:40:40.407] V/DarkIME: T5 'vas' score=0.3032
+[2026-05-21 09:40:40.498] V/DarkIME: T5 'vale' score=0.4007
+[2026-05-21 09:40:40.596] V/DarkIME: T5 'vaya' score=0.4369
+[2026-05-21 09:40:40.689] V/DarkIME: T5 'veo' score=0.4457
+[2026-05-21 09:40:40.783] V/DarkIME: T5 'van' score=0.2512
+[2026-05-21 09:40:40.879] V/DarkIME: T5 'caso' score=0.4074
+[2026-05-21 09:40:40.971] V/DarkIME: T5 'vino' score=0.3852
+[2026-05-21 09:40:40.997] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.073] D/DarkIME: handleKeyPress: code=118, label=v
+[2026-05-21 09:40:41.075] I/DarkIME: >>> handleKey: code=118 (v), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:41.079] D/DarkIME: Letter 'v': autocorrect.isEnabled=true
+[2026-05-21 09:40:41.080] D/DarkIME: >>> COMPOSING 'v' (autocorrect ON)
+[2026-05-21 09:40:41.106] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.247] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.369] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:41.370] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:41.372] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:41.373] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:41.381] V/DarkIME: T5 'vamos' score=0.3960
+[2026-05-21 09:40:41.388] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.475] V/DarkIME: T5 'vez' score=0.3485
+[2026-05-21 09:40:41.566] V/DarkIME: T5 'voy' score=0.2949
+[2026-05-21 09:40:41.588] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.661] V/DarkIME: T5 'verdad' score=0.3446
+[2026-05-21 09:40:41.695] D/DarkIME: handleKeyPress: code=121, label=y
+[2026-05-21 09:40:41.696] I/DarkIME: >>> handleKey: code=121 (y), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:41.699] D/DarkIME: Letter 'y': autocorrect.isEnabled=true
+[2026-05-21 09:40:41.700] D/DarkIME: >>> COMPOSING 'y' (autocorrect ON)
+[2026-05-21 09:40:41.713] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:41.759] V/DarkIME: T5 'ver' score=0.2937
+[2026-05-21 09:40:41.853] V/DarkIME: T5 'vida' score=0.4183
+[2026-05-21 09:40:41.946] V/DarkIME: T5 'vas' score=0.2953
+[2026-05-21 09:40:42.042] V/DarkIME: T5 'vale' score=0.3881
+[2026-05-21 09:40:42.063] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:42.134] V/DarkIME: T5 'visto' score=0.4001
+[2026-05-21 09:40:42.136] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:42.140] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:42.142] D/DarkIME: onSpace called: textBeforeCursor='n ella el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro vamos voy', composingWord='voy', skip=false
+[2026-05-21 09:40:42.151] D/DarkIME: External cursor move: 237 → 238, resetting composing
+[2026-05-21 09:40:42.157] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:42.231] V/DarkIME: T5 'veces' score=0.3890
+[2026-05-21 09:40:42.323] V/DarkIME: T5 'ven' score=0.3204
+[2026-05-21 09:40:42.418] V/DarkIME: T5 'vaya' score=0.4368
+[2026-05-21 09:40:44.769] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:44.853] D/DarkIME: handleKeyPress: code=115, label=s
+[2026-05-21 09:40:44.855] I/DarkIME: >>> handleKey: code=115 (s), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:44.859] D/DarkIME: Letter 's': autocorrect.isEnabled=true
+[2026-05-21 09:40:44.860] D/DarkIME: >>> COMPOSING 's' (autocorrect ON)
+[2026-05-21 09:40:44.887] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:44.902] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:44.974] D/DarkIME: handleKeyPress: code=105, label=i
+[2026-05-21 09:40:44.976] I/DarkIME: >>> handleKey: code=105 (i), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:44.977] D/DarkIME: Letter 'i': autocorrect.isEnabled=true
+[2026-05-21 09:40:44.978] D/DarkIME: >>> COMPOSING 'i' (autocorrect ON)
+[2026-05-21 09:40:44.995] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:45.270] V/DarkIME: T5 'siento' score=0.4514
+[2026-05-21 09:40:45.335] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:45.363] V/DarkIME: T5 'siempre' score=0.3700
+[2026-05-21 09:40:45.368] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:45.453] V/DarkIME: T5 'sido' score=0.4434
+[2026-05-21 09:40:45.546] V/DarkIME: T5 'siendo' score=0.4449
+[2026-05-21 09:40:45.641] V/DarkIME: T5 'siente' score=0.4012
+[2026-05-21 09:40:45.736] V/DarkIME: T5 'sientes' score=0.4620
+[2026-05-21 09:40:45.830] V/DarkIME: T5 'siete' score=0.4049
+[2026-05-21 09:40:45.923] V/DarkIME: T5 'siéntate' score=0.4743
+[2026-05-21 09:40:46.013] V/DarkIME: T5 'siga' score=0.4246
+[2026-05-21 09:40:46.051] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:46.108] V/DarkIME: T5 'sienta' score=0.4360
+[2026-05-21 09:40:46.132] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:46.133] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:46.141] D/DarkIME: onSpace called: textBeforeCursor='lla el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro vamos voy si', composingWord='si', skip=false
+[2026-05-21 09:40:46.155] D/DarkIME: External cursor move: 240 → 241, resetting composing
+[2026-05-21 09:40:46.160] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:46.202] V/DarkIME: T5 'siéntese' score=0.5032
+[2026-05-21 09:40:46.293] V/DarkIME: T5 'sientas' score=0.4665
+[2026-05-21 09:40:46.302] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:46.768] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:46.827] D/DarkIME: handleKeyPress: code=110, label=n
+[2026-05-21 09:40:46.828] I/DarkIME: >>> handleKey: code=110 (n), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:46.832] D/DarkIME: Letter 'n': autocorrect.isEnabled=true
+[2026-05-21 09:40:46.833] D/DarkIME: >>> COMPOSING 'n' (autocorrect ON)
+[2026-05-21 09:40:46.859] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:46.959] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:47.038] D/DarkIME: handleKeyPress: code=111, label=o
+[2026-05-21 09:40:47.039] I/DarkIME: >>> handleKey: code=111 (o), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:47.041] D/DarkIME: Letter 'o': autocorrect.isEnabled=true
+[2026-05-21 09:40:47.042] D/DarkIME: >>> COMPOSING 'o' (autocorrect ON)
+[2026-05-21 09:40:47.067] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:47.129] V/DarkIME: T5 'nos' score=0.2871
+[2026-05-21 09:40:47.223] V/DarkIME: T5 'nada' score=0.3055
+[2026-05-21 09:40:47.318] V/DarkIME: T5 'nunca' score=0.3864
+[2026-05-21 09:40:47.325] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:47.387] D/DarkIME: handleKeyPress: code=32, label= 
+[2026-05-21 09:40:47.389] I/DarkIME: >>> handleKey: code=32 ( ), shift=false, ctrl=false, alt=false, fn=false, metaState=0
+[2026-05-21 09:40:47.391] D/DarkIME: onSpace called: textBeforeCursor=' el otro asi no si el ella nosotras casi cual almenos 1 dia 2 dias 3 dias como claro vamos voy si no', composingWord='no', skip=false
+[2026-05-21 09:40:47.409] D/DarkIME: External cursor move: 243 → 244, resetting composing
+[2026-05-21 09:40:47.412] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:47.418] V/DarkIME: T5 'noche' score=0.3525
+[2026-05-21 09:40:47.513] V/DarkIME: T5 'nosotros' score=0.4453
+[2026-05-21 09:40:47.609] V/DarkIME: T5 'nadie' score=0.4843
+[2026-05-21 09:40:47.705] V/DarkIME: T5 'nuevo' score=0.4329
+[2026-05-21 09:40:47.896] V/DarkIME: T5 'nuestro' score=0.4204
+[2026-05-21 09:40:48.033] V/DarkIME: T5 'necesito' score=0.4484
+[2026-05-21 09:40:48.187] V/DarkIME: T5 'nombre' score=0.2437
+[2026-05-21 09:40:48.340] V/DarkIME: T5 'nuestra' score=0.4287
+[2026-05-21 09:40:48.479] V/DarkIME: T5 'nueva' score=0.3818
+[2026-05-21 09:40:48.617] V/DarkIME: T5 'no' score=0.3019
+[2026-05-21 09:40:48.753] V/DarkIME: T5 'nosotras' score=0.4581
+[2026-05-21 09:40:48.757] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:48.944] D/DarkIME: STANDARD: pkg=com.miui.home variation=0
+[2026-05-21 09:40:48.945] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.miui.home variation=0 inputType=0 ===
+[2026-05-21 09:40:48.945] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:40:48.945] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:40:48.946] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:40:48.948] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:40:48.949] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:40:48.949] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:40:48.949] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:40:48.952] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:40:48.953] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:40:48.953] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:48.953] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:40:48.954] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:40:48.954] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:40:48.955] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:40:48.956] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:40:48.956] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:40:48.956] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:40:48.957] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:40:48.959] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:40:48.959] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:40:48.959] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:40:48.960] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:40:48.960] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:40:48.960] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:40:48.960] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:48.961] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:40:48.961] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:40:48.961] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:40:48.964] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:40:48.964] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:40:48.965] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:40:48.965] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:40:48.967] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:40:48.968] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:40:48.969] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:40:48.969] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:40:48.969] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:40:48.970] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:40:48.970] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:40:48.970] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:48.970] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:40:48.971] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:40:48.971] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:40:48.971] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:40:48.972] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:40:48.973] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:40:48.973] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:40:48.973] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:40:48.973] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:40:48.974] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:40:48.974] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:40:48.974] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:40:48.974] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:40:48.974] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:40:48.974] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:48.975] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:40:48.975] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:40:48.975] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:40:48.975] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:40:48.975] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:40:48.976] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:40:48.976] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:40:48.976] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:40:48.977] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:40:48.977] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:40:48.977] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:48.978] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:40:48.978] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:40:48.979] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:40:48.979] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:48.981] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:40:48.982] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:40:48.982] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:40:48.983] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:40:48.983] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:40:48.984] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:40:48.984] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:40:48.984] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:48.984] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:40:48.985] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:40:48.985] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:40:48.986] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:40:48.987] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:40:48.987] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:40:48.987] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:40:48.988] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:40:48.988] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:40:48.988] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:40:48.989] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:40:48.989] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:40:48.989] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:40:48.989] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:40:48.989] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:40:48.989] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:40:48.990] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:40:48.991] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:40:48.991] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:40:48.991] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:40:48.991] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:40:48.991] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:40:48.991] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:48.992] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:40:48.992] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:48.994] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:49.009] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:49.395] D/DarkIME: STANDARD: pkg=org.dark.keyboard variation=0
+[2026-05-21 09:40:49.395] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=org.dark.keyboard variation=0 inputType=0 ===
+[2026-05-21 09:40:49.396] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:40:49.396] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:40:49.402] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:40:49.402] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:40:49.403] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:40:49.403] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:40:49.403] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:40:49.403] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:40:49.404] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:40:49.404] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:49.404] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:40:49.405] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:40:49.405] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:40:49.405] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:40:49.405] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:40:49.406] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:40:49.406] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:40:49.406] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:40:49.407] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:40:49.407] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:40:49.408] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:40:49.409] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:40:49.409] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:40:49.409] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:40:49.409] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:49.409] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:40:49.410] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:40:49.410] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:40:49.411] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:40:49.411] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:40:49.411] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:40:49.411] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:40:49.412] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:40:49.412] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:40:49.412] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:40:49.413] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:40:49.413] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:40:49.413] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:40:49.413] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:40:49.414] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:49.414] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:40:49.414] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:40:49.414] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:40:49.415] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:40:49.415] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:40:49.415] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:40:49.416] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:40:49.416] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:40:49.417] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:40:49.417] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:40:49.417] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:40:49.417] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:40:49.418] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:40:49.418] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:40:49.418] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:49.420] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:40:49.421] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:40:49.421] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:40:49.423] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:40:49.423] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:40:49.423] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:40:49.428] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:40:49.428] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:40:49.429] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:40:49.429] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:40:49.429] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:49.432] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:40:49.432] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:40:49.433] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:40:49.434] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:49.434] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:40:49.435] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:40:49.435] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:40:49.435] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:40:49.436] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:40:49.436] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:40:49.436] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:40:49.437] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:49.437] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:40:49.437] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:40:49.437] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:40:49.437] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:40:49.438] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:40:49.438] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:40:49.438] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:40:49.438] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:40:49.439] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:40:49.439] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:40:49.439] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:40:49.439] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:40:49.439] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:40:49.439] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:40:49.440] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:40:49.440] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:40:49.440] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:40:49.440] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:40:49.440] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:40:49.440] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:40:49.441] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:40:49.441] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:40:49.441] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:49.441] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:40:49.441] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:49.443] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:49.518] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:54.840] I/DarkIME: Log file shared: darkime_20260521_093912.log
+[2026-05-21 09:40:55.270] D/DarkIME: STANDARD: pkg=com.android.intentresolver variation=0
+[2026-05-21 09:40:55.270] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.android.intentresolver variation=0 inputType=0 ===
+[2026-05-21 09:40:55.270] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:40:55.271] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:40:55.271] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:40:55.271] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:40:55.272] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:40:55.272] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:40:55.272] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:40:55.272] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:40:55.273] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:40:55.273] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:55.273] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:40:55.273] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:40:55.274] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:40:55.274] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:40:55.274] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:40:55.275] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:40:55.275] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:40:55.275] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:40:55.276] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:40:55.276] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:40:55.276] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:40:55.276] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:40:55.277] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:40:55.277] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:40:55.277] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:55.277] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:40:55.277] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:40:55.278] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:40:55.278] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:40:55.278] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:40:55.278] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:40:55.279] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:40:55.279] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:40:55.279] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:40:55.279] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:40:55.280] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:40:55.280] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:40:55.280] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:40:55.280] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:40:55.281] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:55.281] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:40:55.281] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:40:55.281] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:40:55.282] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:40:55.282] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:40:55.282] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:40:55.283] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:40:55.283] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:40:55.283] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:40:55.283] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:40:55.284] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:40:55.284] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:40:55.284] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:40:55.284] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:40:55.284] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:55.285] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:40:55.285] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:40:55.285] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:40:55.286] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:40:55.286] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:40:55.286] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:40:55.287] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:40:55.287] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:40:55.287] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:40:55.287] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:40:55.288] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:55.288] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:40:55.288] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:40:55.288] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:40:55.288] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:55.289] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:40:55.289] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:40:55.289] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:40:55.290] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:40:55.290] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:40:55.290] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:40:55.290] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:40:55.291] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:55.291] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:40:55.291] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:40:55.291] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:40:55.292] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:40:55.292] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:40:55.292] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:40:55.292] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:40:55.292] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:40:55.293] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:40:55.293] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:40:55.293] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:40:55.293] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:40:55.293] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:40:55.294] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:40:55.294] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:40:55.294] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:40:55.294] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:40:55.294] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:40:55.295] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:40:55.295] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:40:55.295] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:40:55.295] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:40:55.296] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:55.296] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:40:55.296] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:55.297] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:57.352] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-21 09:40:57.353] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-21 09:40:57.354] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:40:57.354] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:40:57.355] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:40:57.355] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:40:57.355] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:40:57.355] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:40:57.355] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:40:57.356] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:40:57.356] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:40:57.356] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:57.357] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:40:57.357] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:40:57.357] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:40:57.357] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:40:57.358] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:40:57.358] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:40:57.358] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:40:57.359] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:40:57.359] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:40:57.359] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:40:57.359] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:40:57.360] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:40:57.360] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:40:57.360] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:40:57.360] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:57.360] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:40:57.361] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:40:57.362] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:40:57.362] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:40:57.362] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:40:57.362] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:40:57.362] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:40:57.363] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:40:57.364] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:40:57.364] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:40:57.364] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:40:57.364] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:40:57.365] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:40:57.365] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:40:57.365] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:57.366] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:40:57.366] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:40:57.366] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:40:57.367] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:40:57.367] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:40:57.368] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:40:57.368] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:40:57.368] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:40:57.368] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:40:57.369] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:40:57.369] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:40:57.370] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:40:57.370] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:40:57.371] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:40:57.375] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:57.376] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:40:57.377] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:40:57.377] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:40:57.377] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:40:57.377] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:40:57.378] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:40:57.380] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:40:57.380] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:40:57.381] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:40:57.381] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:40:57.381] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:57.382] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:40:57.382] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:40:57.382] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:40:57.382] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:57.383] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:40:57.383] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:40:57.384] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:40:57.384] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:40:57.384] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:40:57.385] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:40:57.385] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:40:57.385] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:57.385] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:40:57.385] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:40:57.386] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:40:57.386] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:40:57.386] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:40:57.386] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:40:57.386] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:40:57.387] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:40:57.387] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:40:57.387] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:40:57.387] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:40:57.387] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:40:57.388] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:40:57.388] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:40:57.388] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:40:57.388] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:40:57.388] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:40:57.389] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:40:57.389] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:40:57.389] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:40:57.392] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:40:57.392] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:40:57.393] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:57.393] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:40:57.394] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:57.400] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:40:58.209] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-21 09:40:58.210] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-21 09:40:58.210] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:40:58.211] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:40:58.211] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:40:58.211] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:40:58.211] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:40:58.212] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:40:58.212] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:40:58.213] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:40:58.213] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:40:58.213] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:58.214] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:40:58.214] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:40:58.214] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:40:58.214] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:40:58.215] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:40:58.215] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:40:58.215] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:40:58.215] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:40:58.216] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:40:58.216] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:40:58.216] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:40:58.216] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:40:58.217] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:40:58.217] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:40:58.217] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:58.218] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:40:58.218] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:40:58.218] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:40:58.219] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:40:58.219] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:40:58.219] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:40:58.220] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:40:58.220] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:40:58.220] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:40:58.220] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:40:58.220] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:40:58.221] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:40:58.221] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:40:58.221] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:40:58.221] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:58.222] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:40:58.222] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:40:58.222] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:40:58.223] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:40:58.223] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:40:58.223] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:40:58.223] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:40:58.224] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:40:58.224] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:40:58.225] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:40:58.225] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:40:58.225] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:40:58.225] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:40:58.225] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:40:58.225] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:58.226] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:40:58.226] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:40:58.226] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:40:58.226] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:40:58.226] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:40:58.227] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:40:58.227] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:40:58.227] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:40:58.227] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:40:58.227] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:40:58.228] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:58.228] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:40:58.228] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:40:58.228] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:40:58.228] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:40:58.228] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:40:58.229] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:40:58.229] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:40:58.229] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:40:58.230] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:40:58.230] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:40:58.230] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:40:58.230] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:40:58.230] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:40:58.231] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:40:58.231] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:40:58.231] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:40:58.231] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:40:58.231] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:40:58.231] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:40:58.232] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:40:58.232] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:40:58.232] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:40:58.232] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:40:58.232] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:40:58.233] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:40:58.233] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:40:58.233] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:40:58.233] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:40:58.234] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:40:58.234] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:40:58.234] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:40:58.234] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:40:58.234] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:40:58.234] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:40:58.235] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:58.235] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:40:58.235] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:40:58.242] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0
+[2026-05-21 09:41:04.145] D/DarkIME: STANDARD: pkg=com.alphainventor.filemanager variation=0
+[2026-05-21 09:41:04.145] I/DarkIME: === onStartInput() mode=STANDARD reason=pkg=com.alphainventor.filemanager variation=0 inputType=0 ===
+[2026-05-21 09:41:04.146] D/DarkIME: EditorChanged: shouldAutocorrect=true shouldCompose=true
+[2026-05-21 09:41:04.146] D/DarkIME: Profile override: shouldCompose=true shouldAutocorrect=true
+[2026-05-21 09:41:04.146] I/DarkIME: >>> getLayoutResourceId: layout preference = 'pc'
+[2026-05-21 09:41:04.146] I/DarkIME: >>> returning resource ID: kbd_pc
+[2026-05-21 09:41:04.147] D/DarkIME: Keyboard height: 710 px (273.0769 dp), screen: 2772 px
+[2026-05-21 09:41:04.147] D/DarkIME: Height calc: keyboard=710, available=710
+[2026-05-21 09:41:04.147] D/DarkIME: Row heights: number=127, normal=149, bottom=134
+[2026-05-21 09:41:04.147] D/DarkIME: Parser saw Row START_TAG #1
+[2026-05-21 09:41:04.148] D/DarkIME: ROW START: rowCount=0, hasKeyboardMode=false
+[2026-05-21 09:41:04.148] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:41:04.148] D/DarkIME: Added key: label=1, code=49, x=0, width=128
+[2026-05-21 09:41:04.149] D/DarkIME: Added key: label=2, code=50, x=128, width=128
+[2026-05-21 09:41:04.149] D/DarkIME: Added key: label=3, code=51, x=256, width=128
+[2026-05-21 09:41:04.149] D/DarkIME: Added key: label=4, code=52, x=384, width=128
+[2026-05-21 09:41:04.149] D/DarkIME: Added key: label=5, code=53, x=512, width=128
+[2026-05-21 09:41:04.150] D/DarkIME: Added key: label=6, code=54, x=640, width=128
+[2026-05-21 09:41:04.150] D/DarkIME: Added key: label=7, code=55, x=768, width=128
+[2026-05-21 09:41:04.150] D/DarkIME: Added key: label=8, code=56, x=896, width=128
+[2026-05-21 09:41:04.150] D/DarkIME: Added key: label=9, code=57, x=1024, width=128
+[2026-05-21 09:41:04.151] D/DarkIME: Added key: label=0, code=48, x=1152, width=128
+[2026-05-21 09:41:04.151] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=0
+[2026-05-21 09:41:04.151] D/DarkIME:   -> Added row #1 with 10 keys
+[2026-05-21 09:41:04.151] D/DarkIME: Parser saw Row START_TAG #2
+[2026-05-21 09:41:04.152] D/DarkIME: ROW START: rowCount=1, hasKeyboardMode=false
+[2026-05-21 09:41:04.152] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:41:04.152] D/DarkIME: Added key: label=q, code=113, x=0, width=128
+[2026-05-21 09:41:04.152] D/DarkIME: Added key: label=w, code=119, x=128, width=128
+[2026-05-21 09:41:04.153] D/DarkIME: Added key: label=e, code=101, x=256, width=128
+[2026-05-21 09:41:04.153] D/DarkIME: Added key: label=r, code=114, x=384, width=128
+[2026-05-21 09:41:04.153] D/DarkIME: Added key: label=t, code=116, x=512, width=128
+[2026-05-21 09:41:04.153] D/DarkIME: Added key: label=y, code=121, x=640, width=128
+[2026-05-21 09:41:04.154] D/DarkIME: Added key: label=u, code=117, x=768, width=128
+[2026-05-21 09:41:04.154] D/DarkIME: Added key: label=i, code=105, x=896, width=128
+[2026-05-21 09:41:04.154] D/DarkIME: Added key: label=o, code=111, x=1024, width=128
+[2026-05-21 09:41:04.155] D/DarkIME: Added key: label=p, code=112, x=1152, width=128
+[2026-05-21 09:41:04.155] D/DarkIME: Closing Row: keyboardMode=0, keys=10, rowCount=1
+[2026-05-21 09:41:04.155] D/DarkIME:   -> Added row #2 with 10 keys
+[2026-05-21 09:41:04.155] D/DarkIME: Parser saw Row START_TAG #3
+[2026-05-21 09:41:04.156] D/DarkIME: ROW START: rowCount=2, hasKeyboardMode=false
+[2026-05-21 09:41:04.156] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:41:04.156] D/DarkIME: Added key: label=a, code=97, x=0, width=128
+[2026-05-21 09:41:04.156] D/DarkIME: Added key: label=s, code=115, x=128, width=128
+[2026-05-21 09:41:04.157] D/DarkIME: Added key: label=d, code=100, x=256, width=128
+[2026-05-21 09:41:04.157] D/DarkIME: Added key: label=f, code=102, x=384, width=128
+[2026-05-21 09:41:04.157] D/DarkIME: Added key: label=g, code=103, x=512, width=128
+[2026-05-21 09:41:04.158] D/DarkIME: Added key: label=h, code=104, x=640, width=128
+[2026-05-21 09:41:04.159] D/DarkIME: Added key: label=j, code=106, x=768, width=128
+[2026-05-21 09:41:04.159] D/DarkIME: Added key: label=k, code=107, x=896, width=128
+[2026-05-21 09:41:04.159] D/DarkIME: Added key: label=l, code=108, x=1024, width=128
+[2026-05-21 09:41:04.160] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=2
+[2026-05-21 09:41:04.160] D/DarkIME:   -> Centering row: totalWidth=1152, offset=64
+[2026-05-21 09:41:04.160] D/DarkIME:   -> Added row #3 with 9 keys
+[2026-05-21 09:41:04.160] D/DarkIME: Parser saw Row START_TAG #4
+[2026-05-21 09:41:04.160] D/DarkIME: ROW START: rowCount=3, hasKeyboardMode=false
+[2026-05-21 09:41:04.161] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:41:04.161] D/DarkIME: Added key: label=⇧, code=-1, x=0, width=191
+[2026-05-21 09:41:04.161] D/DarkIME: Added key: label=z, code=122, x=191, width=128
+[2026-05-21 09:41:04.162] D/DarkIME: Added key: label=x, code=120, x=319, width=128
+[2026-05-21 09:41:04.163] D/DarkIME: Added key: label=c, code=99, x=447, width=128
+[2026-05-21 09:41:04.163] D/DarkIME: Added key: label=v, code=118, x=575, width=128
+[2026-05-21 09:41:04.164] D/DarkIME: Added key: label=b, code=98, x=703, width=128
+[2026-05-21 09:41:04.164] D/DarkIME: Added key: label=n, code=110, x=831, width=128
+[2026-05-21 09:41:04.164] D/DarkIME: Added key: label=m, code=109, x=959, width=128
+[2026-05-21 09:41:04.165] D/DarkIME: Added key: label=⌫, code=-5, x=1087, width=191
+[2026-05-21 09:41:04.165] D/DarkIME: Closing Row: keyboardMode=0, keys=9, rowCount=3
+[2026-05-21 09:41:04.165] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:41:04.165] D/DarkIME:   -> Added row #4 with 9 keys
+[2026-05-21 09:41:04.165] D/DarkIME: Parser saw Row START_TAG #5
+[2026-05-21 09:41:04.166] D/DarkIME: ROW START: rowCount=4, hasKeyboardMode=false
+[2026-05-21 09:41:04.166] D/DarkIME:   -> WILL CREATE row
+[2026-05-21 09:41:04.167] D/DarkIME: Added key: label=Ctrl, code=-113, x=0, width=153
+[2026-05-21 09:41:04.167] D/DarkIME: Added key: label=?123, code=-2, x=153, width=153
+[2026-05-21 09:41:04.168] D/DarkIME: Added key: label= , code=32, x=306, width=563
+[2026-05-21 09:41:04.168] D/DarkIME: Added key: label=., code=46, x=869, width=153
+[2026-05-21 09:41:04.168] D/DarkIME: Parsed special key: label=↵ code=10
+[2026-05-21 09:41:04.169] D/DarkIME: Added key: label=↵, code=10, x=1022, width=256
+[2026-05-21 09:41:04.169] D/DarkIME: Closing Row: keyboardMode=0, keys=5, rowCount=4
+[2026-05-21 09:41:04.170] D/DarkIME:   -> Centering row: totalWidth=1278, offset=1
+[2026-05-21 09:41:04.171] D/DarkIME:   -> Added row #5 with 5 keys
+[2026-05-21 09:41:04.171] E/DarkIME: === PARSED: 5 rows, 43 keys, height=783, width=1280 ===
+[2026-05-21 09:41:04.171] E/DarkIME:   Row[0]: 10 keys, y=0, height=127, isExtension=true
+[2026-05-21 09:41:04.171] E/DarkIME:     Key[0]: label='1' code=49 x=0 y=0 w=128 h=127
+[2026-05-21 09:41:04.172] E/DarkIME:     Key[1]: label='2' code=50 x=128 y=0 w=128 h=127
+[2026-05-21 09:41:04.172] E/DarkIME:     Key[2]: label='3' code=51 x=256 y=0 w=128 h=127
+[2026-05-21 09:41:04.172] E/DarkIME:   Row[1]: 10 keys, y=142, height=149, isExtension=false
+[2026-05-21 09:41:04.172] E/DarkIME:     Key[0]: label='q' code=113 x=0 y=142 w=128 h=149
+[2026-05-21 09:41:04.173] E/DarkIME:     Key[1]: label='w' code=119 x=128 y=142 w=128 h=149
+[2026-05-21 09:41:04.173] E/DarkIME:     Key[2]: label='e' code=101 x=256 y=142 w=128 h=149
+[2026-05-21 09:41:04.173] E/DarkIME:   Row[2]: 9 keys, y=306, height=149, isExtension=false
+[2026-05-21 09:41:04.173] E/DarkIME:     Key[0]: label='a' code=97 x=64 y=306 w=128 h=149
+[2026-05-21 09:41:04.174] E/DarkIME:     Key[1]: label='s' code=115 x=192 y=306 w=128 h=149
+[2026-05-21 09:41:04.174] E/DarkIME:     Key[2]: label='d' code=100 x=320 y=306 w=128 h=149
+[2026-05-21 09:41:04.174] E/DarkIME:   Row[3]: 9 keys, y=470, height=149, isExtension=false
+[2026-05-21 09:41:04.175] E/DarkIME:     Key[0]: label='⇧' code=-1 x=1 y=470 w=191 h=149
+[2026-05-21 09:41:04.175] E/DarkIME:     Key[1]: label='z' code=122 x=192 y=470 w=128 h=149
+[2026-05-21 09:41:04.175] E/DarkIME:     Key[2]: label='x' code=120 x=320 y=470 w=128 h=149
+[2026-05-21 09:41:04.175] E/DarkIME:   Row[4]: 5 keys, y=634, height=134, isExtension=false
+[2026-05-21 09:41:04.176] E/DarkIME:     Key[0]: label='Ctrl' code=-113 x=1 y=634 w=153 h=134
+[2026-05-21 09:41:04.176] E/DarkIME:     Key[1]: label='?123' code=-2 x=154 y=634 w=153 h=134
+[2026-05-21 09:41:04.176] E/DarkIME:     Key[2]: label=' ' code=32 x=307 y=634 w=563 h=134
+[2026-05-21 09:41:04.177] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:41:04.177] I/DarkIME: Keyboard reloaded
+[2026-05-21 09:41:04.177] I/DarkIME: Applied theme: Dark (Default)
+[2026-05-21 09:41:04.179] D/DarkIME: onComputeInsets: contentTop=0, visibleTop=0

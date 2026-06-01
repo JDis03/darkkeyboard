@@ -15,10 +15,13 @@ data class Key(
     val edgeFlags: Int = 0
 ) {
     fun contains(px: Int, py: Int): Boolean {
-        // Expand hit zone by 10% on each side (20% total horizontal, 20% total vertical)
-        // This matches modern keyboard behavior (Gboard/SwiftKey)
-        val expandH = (width * 0.10f).toInt()
-        val expandV = (height * 0.10f).toInt()
+        // Adaptive hit zone expansion:
+        // - Larger vertical expansion (15% vs 10%) for easier thumb reach
+        // - Minimum absolute expansion to help small keys (especially bottom row)
+        // - Matches modern keyboard behavior (Gboard/SwiftKey)
+        val minExpandPx = 8  // ~2-3dp on most devices
+        val expandH = kotlin.math.max((width * 0.10f).toInt(), minExpandPx)
+        val expandV = kotlin.math.max((height * 0.15f).toInt(), minExpandPx)
         
         return px >= x - expandH && px < x + width + expandH &&
                py >= y - expandV && py < y + height + expandV

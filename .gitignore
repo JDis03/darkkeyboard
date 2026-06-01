@@ -45,3 +45,7 @@ app/src/main/assets/*.tflite
 openspec/changes/*/
 !openspec/changes/archive/
 node_modules/
+
+# APK referencias (binarios grandes)
+referencia/
+

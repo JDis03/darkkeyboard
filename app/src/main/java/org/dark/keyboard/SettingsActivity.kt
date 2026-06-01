@@ -234,6 +234,28 @@ fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, o
 
              // AI Suggestions Section
              item { SectionHeader("AI Suggestions") }
+             
+             // Autocorrect toggle
+             item {
+                 var autocorrectEnabled by remember {
+                     mutableStateOf(prefs.getBoolean("autocorrect_enabled", false))
+                 }
+                 SettingCard {
+                     SettingSwitchItem(
+                         icon = Icons.Default.Spellcheck,
+                         title = "Autocorrect",
+                         subtitle = if (autocorrectEnabled) "Automatically correct typos on space" else "Disabled (suggestions only)",
+                         checked = autocorrectEnabled,
+                        onCheckedChange = { checked ->
+                            autocorrectEnabled = checked
+                            // Use commit() instead of apply() to ensure preference is written
+                            // before the listener fires in DarkIME2
+                            prefs.edit().putBoolean("autocorrect_enabled", checked).commit()
+                        }
+                     )
+                 }
+             }
+             
              item {
                  AiModelCard(context = context)
              }
