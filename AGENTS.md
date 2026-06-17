@@ -1,19 +1,57 @@
 # AGENTS.md
 
-Project harness for reliable agent-assisted development in a java-gradle codebase.
+DarkKeyboard — Modern Android IME with Gboard proportions and HeliBoard autocorrect
 
-## Startup Workflow
+## Quick Start
 
-Before writing code:
+```bash
+./init.sh                    # Verify environment + run tests
+memory start-session         # Load project context (decisions, learnings, TODOs)
+```
 
-1. **Confirm working directory** with `pwd`
-2. **Read this file** completely
-3. **Read project docs if present** (`docs/ARCHITECTURE.md`, `docs/PRODUCT.md`, README, or equivalent)
-4. **Run `./init.sh`** to verify environment is healthy
-5. **Read `feature_list.json`** to see current feature state
-6. **Review recent commits** with `git log --oneline -5`
+## Hard Constraints
 
-If baseline verification is failing, repair that first before adding new scope.
+- **One feature at a time** — Pick exactly ONE from `feature_list.json`
+- **Verification required** — Tests must pass before claiming done
+- **Always call `memory_start_session` first** — Loads project context
+- **Always call `memory_end_session` before finishing** — Saves session state
+- **Pass `cwd=` to all memory MCP tools** — Ensures correct project detection
+
+## Session Lifecycle
+
+Every session follows four phases with exact MCP tools:
+
+### START Phase (first action)
+- Call `memory_start_session()` — returns decisions, learnings, pending TODOs, last session
+- Read the `last_progress_entry` to see what the previous session left
+- Check for `warning` about unclosed sessions before proceeding
+- Run `./init.sh` to verify baseline health
+
+### SELECT Phase (choose ONE feature)
+- Call `memory_get_todos()` — list pending tasks ordered by priority
+- Or read `feature_list.json` — pick exactly one "not-started" or "in-progress" feature
+- NEVER work on multiple features simultaneously
+
+### EXECUTE Phase (implement)
+- Call `memory_add_decision(decision, rationale)` when choosing between approaches
+- Call `memory_add_learning(lesson, context)` when discovering something useful
+- Call `memory_add_todo(task, priority)` for out-of-scope work found during implementation
+- Call `memory_search(query)` to find existing code patterns before writing new code
+- Update feature status to "in-progress" in feature_list.json at start
+
+### WRAP UP Phase (mandatory before session close)
+1. Run `./init.sh` to verify clean state
+2. Update `feature_list.json` with new status and evidence
+3. Call `memory_end_session(summary, completed_todos=[], verified="ran init.sh")`
+4. Summary MUST be >20 chars and describe what was accomplished
+5. Include `verified=` to record what tests/checks were run
+
+## Topic Docs
+
+- **Session Lifecycle** (`docs/SESSION_LIFECYCLE.md`) — Required reading before starting work
+- **MCP Tools** (`docs/MCP_TOOLS.md`) — Reference when using memory tools
+- **Architecture** (`ARCHITECTURE.md`) — Read when making design decisions
+- **Project Status** (`PROJECT_STATUS.md`) — Current state and roadmap
 
 ## Working Rules
 
@@ -22,13 +60,6 @@ If baseline verification is failing, repair that first before adding new scope.
 - **Update artifacts**: Before ending session, update `progress.md` and `feature_list.json`
 - **Stay in scope**: Don't modify files unrelated to the current feature
 - **Leave clean state**: Next session must be able to run `./init.sh` immediately
-
-## Required Artifacts
-
-- `feature_list.json` — Feature state tracker (source of truth)
-- `progress.md` — Session continuity log
-- `init.sh` — Standard startup and verification path
-- `session-handoff.md` — Optional, for larger sessions
 
 ## Definition of Done
 
@@ -45,47 +76,10 @@ Before ending a session:
 
 1. Update `progress.md` with current state
 2. Update `feature_list.json` with new feature status
-3. Record any unresolved risks or blockers
-4. Commit with descriptive message once work is in safe state
-5. Leave repo clean enough for next session to run `./init.sh` immediately
-
-## MCP Tools — Memory & Context
-
-When working on this project in OpenCode, use these tools to track decisions and find patterns:
-
-| Tool | Phase | Purpose |
-|------|-------|---------|
-| `memory_start_session` | START | Get full project context (decisions, learnings, TODOs, last session) |
-| `memory_get_todos` | SELECT | List pending tasks by priority |
-| `memory_add_decision` | EXECUTE | Record technical decisions (alternatives considered, rationale) |
-| `memory_add_learning` | EXECUTE | Record lessons discovered (debugging insights, patterns found) |
-| `memory_add_todo` | EXECUTE | Add out-of-scope work to backlog (priority: high/medium/low) |
-| `memory_search` | EXECUTE | Find existing code patterns & decisions across projects |
-| `memory_complete_todo` | WRAP UP | Mark completed tasks before ending session |
-| `memory_end_session` | WRAP UP | Close session with summary (min 20 chars describing what was done) |
-
-**In OpenCode:** Press `ctrl+p` to view available tools, then select one above by name.
-
-**Session workflow:**
-```
-1. START:  memory_start_session      ← load context
-2. SELECT: memory_get_todos          ← pick ONE feature/task
-3. EXECUTE: memory_add_decision/learning/search  ← during development
-4. WRAP UP: memory_complete_todo → memory_end_session  ← before finishing
-```
-
-**Example:**
-```
-User: "What was our approach to autocorrect?"
-Tool: memory_search "autocorrect implementation" ← find patterns & decisions
-
-User: "Found a new bug pattern"
-Tool: memory_add_learning "Bug X happens when Y" "context/details"
-
-User: "Done with feature X, moving to Y"
-Tool: memory_complete_todo "Implement feature X"
-Tool: memory_end_session "Implemented feature X with Z tests passing"
-```
+3. Call `memory_end_session()` with summary and verification evidence
+4. Record any unresolved risks or blockers
+5. Commit with descriptive message once work is in safe state
+6. Leave repo clean enough for next session to run `./init.sh` immediately
 
 ## Verification Commands
 
@@ -93,9 +87,6 @@ Tool: memory_end_session "Implemented feature X with Z tests passing"
 # Full verification (recommended)
 ./init.sh
 ```
-
-Required checks:
-- `./gradlew test`
 
 ## Escalation
 
