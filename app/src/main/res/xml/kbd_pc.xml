@@ -6,7 +6,7 @@ Proporciones estilo Gboard móvil estándar
 <Keyboard
     xmlns:android="http://schemas.android.com/apk/res-auto"
     android:keyWidth="10%p"
-    android:horizontalGap="0.5dp"
+    android:horizontalGap="5dp"
     android:verticalGap="@dimen/key_bottom_gap">
 
     <!-- Row 1: Números 1-0 (extension row - opcional) -->
@@ -98,6 +98,7 @@ Proporciones estilo Gboard móvil estándar
             android:isModifier="true" />
         <Key
             android:keyLabel="."
+            android:popupCharacters=",\?!&quot;'@;()&amp;/:&lt;&gt;|\\"
             android:keyWidth="12%p" />
         <Key
             android:codes="@integer/key_return"

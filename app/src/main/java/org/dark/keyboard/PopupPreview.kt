@@ -11,13 +11,19 @@ import android.widget.PopupWindow
 import android.widget.TextView
 
 class PopupPreview(private val context: Context) {
-    
+
     private var popupWindow: PopupWindow? = null
-    
     private var currentOptions: List<Char> = emptyList()
     private var optionViews: MutableList<TextView> = mutableListOf()
+    private var selectedIndex: Int = 0
 
     companion object {
+        private const val MAX_PER_ROW = 8
+        private const val CELL_SIZE_DP = 40f
+        private const val TEXT_SIZE_SP = 18f
+        private const val PADDING_DP = 6f
+        private const val CORNER_DP = 10f
+
         private val numberSymbols: Map<Char, List<Char>> = mapOf(
             '1' to listOf('!', '`'),
             '2' to listOf('@', '~'),
@@ -31,23 +37,29 @@ class PopupPreview(private val context: Context) {
             '0' to listOf(')', ']')
         )
     }
-    
+
     fun showPunctuationPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         currentOptions = when {
-            !key.popupCharacters.isNullOrEmpty() -> key.popupCharacters!!.toList()
-            key.label == "." -> listOf('.', ',', '?', '!', ':', ';')
-            key.label == "," -> listOf(',', '.', '?', '!', ':', ';')
-            key.label == "?" -> listOf('?', '!', '.', ',', ':', ';')
-            key.label == "!" -> listOf('!', '?', '.', ',', ':', ';')
+            !key.popupCharacters.isNullOrEmpty() -> parsePopupChars(key.popupCharacters!!)
+            key.label == "." -> listOf(',', '?', '!', '"', '\'', '@', ';', '(', ')', '&', '/', ':', '<', '>', '|', '\\')
+            key.label == "," -> listOf('.', '?', '!', ';', ':', '"', '\'')
+            key.label == "?" -> listOf('!', '.', ',', ':', ';')
+            key.label == "!" -> listOf('?', '.', ',', ':', ';')
             key.label != null && key.label.length == 1 && key.label[0].isDigit() -> {
-                val syms = numberSymbols[key.label[0]] ?: return
-                syms
+                numberSymbols[key.label[0]] ?: return
             }
             else -> return
         }
 
+        selectedIndex = 0
         showPopup(anchorView, key, onCharSelected)
     }
+
+    /**
+     * Parse popup characters string, handling XML-unescaped chars.
+     * Each char in the string is a separate popup option.
+     */
+    private fun parsePopupChars(raw: String): List<Char> = raw.toList()
 
     private fun showPopup(anchorView: View, key: Key, onCharSelected: (Char) -> Unit) {
         dismiss()
@@ -59,81 +71,91 @@ class PopupPreview(private val context: Context) {
         }
 
         val density = context.resources.displayMetrics.density
-        
-        // Create popup layout
-        val paddingDp = (8 * density).toInt()
-        val layout = LinearLayout(context).apply {
-            orientation = LinearLayout.HORIZONTAL
-            setPadding(paddingDp, paddingDp, paddingDp, paddingDp)
-            background = createPopupBackground()
-            elevation = 8f * density
-        }
-        
-        // Add character options
-        val paddingH = (16 * density).toInt()
-        val paddingV = (12 * density).toInt()
-        
-        currentOptions.forEachIndexed { index, char ->
-            val textView = TextView(context).apply {
-                text = char.toString()
-                textSize = 24f
-                setTextColor(Color.WHITE)
-                setPadding(paddingH, paddingV, paddingH, paddingV)
-                gravity = Gravity.CENTER
-                minWidth = (48 * density).toInt()
-                
-                // Highlight if it's the main character
-                if (index == 0) {
-                    background = createSelectedBackground()
-                }
-                
-                setOnClickListener {
-                    onCharSelected(char)
-                    dismiss()
-                }
+        val cellPx = (CELL_SIZE_DP * density).toInt()
+        val padPx = (PADDING_DP * density).toInt()
+        val cornerPx = CORNER_DP * density
+
+        // Split into rows if more than MAX_PER_ROW
+        val rows = currentOptions.chunked(MAX_PER_ROW)
+
+        val container = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(padPx, padPx, padPx, padPx)
+            background = GradientDrawable().apply {
+                setColor(Color.parseColor("#2C2C2E"))
+                cornerRadius = cornerPx
             }
-            optionViews.add(textView)
-            layout.addView(textView)
+            elevation = 12f * density
         }
-        
-        // Measure popup to center it
-        layout.measure(
+
+        var flatIndex = 0
+        rows.forEach { rowChars ->
+            val rowLayout = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+            }
+            rowChars.forEach { char ->
+                val idx = flatIndex++
+                val tv = TextView(context).apply {
+                    text = char.toString()
+                    textSize = TEXT_SIZE_SP
+                    setTextColor(Color.WHITE)
+                    gravity = Gravity.CENTER
+                    minWidth = cellPx
+                    minHeight = cellPx
+                    setPadding(padPx, padPx, padPx, padPx)
+                    background = if (idx == 0) createSelectedBackground(density, cornerPx) else null
+                    setOnClickListener {
+                        onCharSelected(char)
+                        dismiss()
+                    }
+                }
+                optionViews.add(tv)
+                rowLayout.addView(tv)
+            }
+            container.addView(rowLayout)
+        }
+
+        container.measure(
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
-        
-        // Create and show popup
+
+        val popupWidth = container.measuredWidth
+        val popupHeight = container.measuredHeight
+
+        // Get anchorView position in window for correct absolute coordinates
+        val windowLocation = IntArray(2)
+        anchorView.getLocationInWindow(windowLocation)
+        val viewLeft = windowLocation[0]
+        val viewTop = windowLocation[1]
+
+        // Center popup above the key
+        val keyCenterX = viewLeft + key.x + key.width / 2
+        var popupX = keyCenterX - popupWidth / 2
+
+        // Clamp to screen edges
+        val screenWidth = context.resources.displayMetrics.widthPixels
+        popupX = popupX.coerceIn(0, (screenWidth - popupWidth).coerceAtLeast(0))
+
+        val popupY = viewTop + key.y - popupHeight - (4 * density).toInt()
+
         popupWindow = PopupWindow(
-            layout,
+            container,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
             false
         ).apply {
-            elevation = 8f * density
+            elevation = 12f * density
+            isClippingEnabled = false
             try {
-                // Calculate position to center popup above the key
-                val location = IntArray(2)
-                key.x.let { keyX ->
-                    key.y.let { keyY ->
-                        // Center popup horizontally on the key
-                        val popupWidth = layout.measuredWidth
-                        val keyWidth = key.width
-                        val x = keyX + (keyWidth - popupWidth) / 2
-
-                        // Position popup above the key with some margin
-                        val popupHeight = layout.measuredHeight
-                        val y = keyY - popupHeight - (8 * density).toInt()
-
-                        showAtLocation(anchorView, Gravity.NO_GRAVITY, x, y)
-                    }
-                }
+                showAtLocation(anchorView, Gravity.NO_GRAVITY, popupX, popupY)
             } catch (e: Exception) {
                 Timber.w(e, "Failed to show popup")
                 popupWindow = null
             }
         }
     }
-    
+
     fun handleMove(rawX: Float, rawY: Float): Char? {
         val popup = popupWindow ?: return null
         if (!popup.isShowing) return null
@@ -147,46 +169,48 @@ class PopupPreview(private val context: Context) {
         val popupTop = location[1].toFloat()
         val popupBottom = popupTop + contentView.height.toFloat()
 
-        // Generous vertical range — finger can be above popup and still swipe horizontally
-        val extendedTop = popupTop - contentView.height * 3f
-        val extendedBottom = popupBottom + contentView.height * 1.5f
+        // Extended vertical range — finger can slide down to key level
+        val extendedTop = popupTop - contentView.height * 2f
+        val extendedBottom = popupBottom + contentView.height * 2f
 
         if (rawX < popupLeft || rawX > popupRight) return null
         if (rawY < extendedTop || rawY > extendedBottom) return null
 
-        val slotWidth = contentView.width.toFloat() / currentOptions.size
-        val index = ((rawX - popupLeft) / slotWidth).toInt().coerceIn(0, currentOptions.size - 1)
+        // Figure out which row the finger is in
+        val rows = currentOptions.chunked(MAX_PER_ROW)
+        val rowHeight = contentView.height.toFloat() / rows.size
+        val rowIdx = ((rawY - popupTop) / rowHeight).toInt().coerceIn(0, rows.size - 1)
+        val row = rows[rowIdx]
 
-        optionViews.forEachIndexed { i, view ->
-            view.background = if (i == index) createSelectedBackground() else null
+        val rowOffset = rowIdx * MAX_PER_ROW
+        val slotWidth = contentView.width.toFloat() / row.size
+        val colIdx = ((rawX - popupLeft) / slotWidth).toInt().coerceIn(0, row.size - 1)
+        val newIndex = rowOffset + colIdx
+
+        if (newIndex != selectedIndex) {
+            selectedIndex = newIndex
+            val density = context.resources.displayMetrics.density
+            val cornerPx = CORNER_DP * density
+            optionViews.forEachIndexed { i, view ->
+                view.background = if (i == selectedIndex) createSelectedBackground(density, cornerPx) else null
+            }
         }
-        return currentOptions[index]
+        return currentOptions[selectedIndex]
     }
-    
+
     fun dismiss() {
         popupWindow?.dismiss()
         popupWindow = null
     }
-    
-    fun isShowing(): Boolean {
-        return popupWindow?.isShowing == true
-    }
+
+    fun isShowing(): Boolean = popupWindow?.isShowing == true
 
     fun getFirstOption(): Char? = currentOptions.firstOrNull()
-    
-    private fun createPopupBackground(): GradientDrawable {
-        val density = context.resources.displayMetrics.density
-        return GradientDrawable().apply {
-            setColor(Color.parseColor("#455A64"))
-            cornerRadius = 12f * density
-        }
-    }
-    
-    private fun createSelectedBackground(): GradientDrawable {
-        val density = context.resources.displayMetrics.density
+
+    private fun createSelectedBackground(density: Float, cornerPx: Float): GradientDrawable {
         return GradientDrawable().apply {
             setColor(Color.parseColor("#1565C0"))
-            cornerRadius = 8f * density
+            cornerRadius = cornerPx
         }
     }
 }

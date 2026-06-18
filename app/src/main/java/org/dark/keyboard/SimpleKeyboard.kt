@@ -63,7 +63,7 @@ class SimpleKeyboard(
             val keyboardHeight = min(defaultHeightPx, maxHeight).toInt()
             
             Timber.d("Keyboard height: $keyboardHeight px (${keyboardHeight / density} dp), screen: $screenHeight px")
-            val verticalGapPx = (0.5f * density).toInt()
+            val verticalGapPx = (5f * density).toInt()  // reducido para teclas más altas
             val horizontalGapPx = (0.5f * density).toInt()
 
             // Distribución: 5 filas + 4 gaps

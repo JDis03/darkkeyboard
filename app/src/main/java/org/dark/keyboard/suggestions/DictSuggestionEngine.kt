@@ -2,6 +2,9 @@ package org.dark.keyboard.suggestions
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.view.inputmethod.EditorInfo
+import org.dark.keyboard.autocorrect.AutocorrectGuards
+import org.dark.keyboard.autocorrect.PersonalDictionary
 import timber.log.Timber
 import kotlin.math.ln
 import kotlin.math.pow
@@ -22,10 +25,22 @@ import kotlin.math.pow
  *
  *   Persistencia: SharedPreferences por idioma
  */
-class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
+class DictSuggestionEngine(
+    private val context: Context,
+    private val personalDict: PersonalDictionary? = null
+) : SuggestionEngine {
 
     companion object {
 
+        // Autocorrect confidence scoring thresholds
+        const val AUTOCORRECT_SCORE_RATIO_CONSERVATIVE = 5.0f
+        const val AUTOCORRECT_SCORE_RATIO_BALANCED = 3.0f
+        const val AUTOCORRECT_SCORE_RATIO_AGGRESSIVE = 2.0f
+        const val AUTOCORRECT_MIN_FREQ = 5_000
+        const val AUTOCORRECT_MAX_EDIT_CONSERVATIVE = 1
+        const val AUTOCORRECT_MAX_EDIT_BALANCED = 2
+        const val AUTOCORRECT_MAX_EDIT_AGGRESSIVE = 3
+        const val AUTOCORRECT_MIN_WORD_LEN = 4
 
         // Pesos del scoring — Fase 2
         private const val W_CORPUS = 1.0f    // peso del corpus estático
@@ -57,6 +72,10 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
     private var trie        = CompactTrie(context)
     private val prefs: SharedPreferences =
         context.getSharedPreferences("dict_engine_prefs", Context.MODE_PRIVATE)
+
+    // Autocorrect aggressiveness settings (updated from DarkIME2 based on user preference)
+    var autocorrectScoreRatio = AUTOCORRECT_SCORE_RATIO_BALANCED
+    var autocorrectMaxEdit = AUTOCORRECT_MAX_EDIT_BALANCED
 
     // Fase 3: re-ranker opcional (lazy init — no bloquea constructor)
     private val reRanker: ReRanker by lazy {
@@ -330,6 +349,142 @@ class DictSuggestionEngine(private val context: Context) : SuggestionEngine {
 
     private fun userFreq() = userFreqByLang.getOrPut(currentLang) { mutableMapOf() }
     private fun bigrams()  = bigramsByLang.getOrPut(currentLang)  { mutableMapOf() }
+
+    // ---- Autocorrection Candidate ----
+
+    override fun getAutoCorrectionCandidate(typedWord: String, textBefore: String): AutoCorrectionCandidate {
+        if (!isReady || typedWord.length < AUTOCORRECT_MIN_WORD_LEN) {
+            return AutoCorrectionCandidate(typedWord, false, 0f)
+        }
+
+        val typed = typedWord.lowercase()
+        
+        // Get typed word frequency (0 if not in dict)
+        val typedFreq = trie.getFreq(typed)
+        
+        // If typed word is in dictionary with good frequency, don't correct
+        if (typedFreq >= AUTOCORRECT_MIN_FREQ) {
+            Timber.d("Autocorrect: '$typed' is in dict (freq=$typedFreq), no correction")
+            return AutoCorrectionCandidate(typedWord, false, 0f)
+        }
+
+        // Safety checks via AutocorrectGuards
+        personalDict?.let { pd ->
+            val context = AutocorrectGuards.AutocorrectContext(
+                isTerminalApp = false,  // DarkIME2 will handle terminal detection
+                shouldAutocorrect = true
+            )
+            if (AutocorrectGuards.shouldSkip(typedWord, context, pd)) {
+                Timber.d("Autocorrect: '$typed' skipped by safety guards")
+                return AutoCorrectionCandidate(typedWord, false, 0f)
+            }
+        }
+
+        // Get top suggestion candidates via edit distance
+        val candidates = trie.findByEditDistance(typed, maxDist = autocorrectMaxEdit, maxResults = 5)
+        
+        if (candidates.isEmpty()) {
+            Timber.d("Autocorrect: no candidates for '$typed'")
+            return AutoCorrectionCandidate(typedWord, false, 0f)
+        }
+
+        val topCandidate = candidates.first()
+        val suggestionFreq = topCandidate.freq
+        
+        // Apply confidence checks
+        val checks = mutableListOf<String>()
+        
+        // 1. Suggestion must be different from typed
+        if (topCandidate.word == typed) {
+            checks.add("same word")
+        }
+        
+        // 2. First letter must be compatible (same or adjacent QWERTY)
+        if (!firstLetterCompatible(typed, topCandidate.word)) {
+            checks.add("first letter incompatible")
+        }
+        
+        // 3. Suggestion must have minimum frequency
+        if (suggestionFreq < AUTOCORRECT_MIN_FREQ) {
+            checks.add("freq too low ($suggestionFreq < $AUTOCORRECT_MIN_FREQ)")
+        }
+        
+        // 4. Score ratio check: suggestion must be significantly better
+        // If typed word is not in dict (freq=0), any valid suggestion passes
+        // If typed word IS in dict, suggestion must score much higher
+        val scoreRatioPassed = if (typedFreq == 0) {
+            suggestionFreq >= AUTOCORRECT_MIN_FREQ
+        } else {
+            suggestionFreq.toFloat() / typedFreq.toFloat() >= autocorrectScoreRatio
+        }
+        
+        if (!scoreRatioPassed) {
+            checks.add("score ratio insufficient (${suggestionFreq}/${typedFreq} < $autocorrectScoreRatio)")
+        }
+        
+        // Compute confidence (0.0 - 1.0)
+        val confidence = if (typedFreq == 0) {
+            // Typed word not in dict: confidence based on suggestion frequency
+            (suggestionFreq.toFloat() / 100_000f).coerceIn(0f, 1f)
+        } else {
+            // Both in dict: confidence based on ratio
+            (suggestionFreq.toFloat() / (typedFreq.toFloat() * autocorrectScoreRatio)).coerceIn(0f, 1f)
+        }
+        
+        val shouldCorrect = checks.isEmpty()
+        
+        if (shouldCorrect) {
+            Timber.d("Autocorrect: '$typed' → '${topCandidate.word}' (confidence=${"%.2f".format(confidence)}, freq=$suggestionFreq)")
+        } else {
+            Timber.d("Autocorrect: '$typed' NOT corrected to '${topCandidate.word}': ${checks.joinToString(", ")}")
+        }
+        
+        return AutoCorrectionCandidate(
+            suggestion = topCandidate.word,
+            shouldAutoCorrect = shouldCorrect,
+            confidence = confidence
+        )
+    }
+
+    private fun firstLetterCompatible(typed: String, correction: String): Boolean {
+        if (typed.isEmpty() || correction.isEmpty()) return false
+        val t = typed[0].lowercaseChar()
+        val c = correction[0].lowercaseChar()
+        if (t == c) return true
+        
+        // QWERTY adjacency map
+        val adjacent = mapOf(
+            'q' to setOf('w', 'a'),
+            'w' to setOf('q', 'e', 'a', 's'),
+            'e' to setOf('w', 'r', 's', 'd'),
+            'r' to setOf('e', 't', 'd', 'f'),
+            't' to setOf('r', 'y', 'f', 'g'),
+            'y' to setOf('t', 'u', 'g', 'h'),
+            'u' to setOf('y', 'i', 'h', 'j'),
+            'i' to setOf('u', 'o', 'j', 'k'),
+            'o' to setOf('i', 'p', 'k', 'l'),
+            'p' to setOf('o', 'l', 'ñ'),
+            'a' to setOf('q', 'w', 's', 'z'),
+            's' to setOf('a', 'w', 'e', 'd', 'z', 'x'),
+            'd' to setOf('s', 'e', 'r', 'f', 'x', 'c'),
+            'f' to setOf('d', 'r', 't', 'g', 'c', 'v'),
+            'g' to setOf('f', 't', 'y', 'h', 'v', 'b'),
+            'h' to setOf('g', 'y', 'u', 'j', 'b', 'n'),
+            'j' to setOf('h', 'u', 'i', 'k', 'n', 'm'),
+            'k' to setOf('j', 'i', 'o', 'l', 'm'),
+            'l' to setOf('k', 'o', 'p', 'ñ'),
+            'ñ' to setOf('l', 'p'),
+            'z' to setOf('a', 's', 'x'),
+            'x' to setOf('z', 's', 'd', 'c'),
+            'c' to setOf('x', 'd', 'f', 'v'),
+            'v' to setOf('c', 'f', 'g', 'b'),
+            'b' to setOf('v', 'g', 'h', 'n'),
+            'n' to setOf('b', 'h', 'j', 'm'),
+            'm' to setOf('n', 'j', 'k')
+        )
+        
+        return adjacent[t]?.contains(c) == true
+    }
 
     override fun close() {
         savePersistedData(currentLang)

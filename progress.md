@@ -1,3 +1,9 @@
+## 2026-06-18 23:28 — DarkKeyboard
+**Summary**: Implemented suggestion-driven autocorrect feature for DarkKeyboard. Created AutoCorrectionCandidate data model, AutocorrectGuards safety utility, and confidence scoring in DictSuggestionEngine. Wired new autocorrect logic into DarkIME2 with undo support and session-based rejection memory. Added aggressiveness settings (conservative/balanced/aggressive). Deprecated old hint-based autocorrect. All existing tests pass, build successful.
+**Verified**: ./gradlew testDebugUnitTest (all tests pass), ./gradlew assembleDebug (build successful)
+**Completed**: none
+---
+---
 # Session Progress Log
 
 ## Current State

@@ -121,5 +121,10 @@ class SpanishDictEngine(private val context: Context) : SuggestionEngine {
         isReady = false
     }
 
+    override fun getAutoCorrectionCandidate(typedWord: String, textBefore: String): AutoCorrectionCandidate {
+        // SpanishDictEngine no implementa autocorrección — retorna sin corrección
+        return AutoCorrectionCandidate(typedWord, false, 0f)
+    }
+
     fun isReady() = isReady
 }

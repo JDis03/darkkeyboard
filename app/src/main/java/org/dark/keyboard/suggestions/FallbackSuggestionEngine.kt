@@ -97,6 +97,11 @@ class FallbackSuggestionEngine : SuggestionEngine {
         learnFromText("$context $suggestion")
     }
 
+    override fun getAutoCorrectionCandidate(typedWord: String, textBefore: String): AutoCorrectionCandidate {
+        // Fallback engine no implementa autocorrección — retorna sin corrección
+        return AutoCorrectionCandidate(typedWord, false, 0f)
+    }
+
     /**
      * Aprende de texto escrito por el usuario.
      * Llamar con el texto antes del cursor al hacer commit.

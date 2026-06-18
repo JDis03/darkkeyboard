@@ -218,14 +218,13 @@ class SimpleKeyboardView @JvmOverloads constructor(
         hgap: Int = 0
     ) {
         val density = resources.displayMetrics.density
-        val padV = 1f * density  // padding vertical solamente
-        val halfVGap = vgap / 2f
         val halfHGap = hgap / 2f
+        // Gboard style: todo el gap vertical va abajo (0dp arriba, vgap abajo)
         val rect = RectF(
             key.x.toFloat() + halfHGap,
-            key.y.toFloat() + padV + halfVGap,
+            key.y.toFloat(),
             (key.x + key.width).toFloat() - halfHGap,
-            (key.y + key.height).toFloat() - padV - halfVGap
+            (key.y + key.height).toFloat() - vgap
         )
 
         keyBgPaint.color = when {
@@ -234,7 +233,7 @@ class SimpleKeyboardView @JvmOverloads constructor(
             else -> keyboardTheme.keyNormal
         }
 
-        val radius = 4f * density
+        val radius = 8f * density  // Gboard M2 usa corners grandes
         canvas.drawRoundRect(rect, radius, radius, keyBgPaint)
         canvas.drawRoundRect(rect, radius, radius, keyBorderPaint)
 

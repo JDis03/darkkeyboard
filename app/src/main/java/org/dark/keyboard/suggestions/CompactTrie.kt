@@ -47,6 +47,18 @@ class CompactTrie(private val context: Context, private val file: String = "dict
     fun isReady() = isLoaded
 
     /**
+     * Obtiene la frecuencia de una palabra exacta.
+     * @return frecuencia (0 si no existe en el diccionario)
+     */
+    fun getFreq(word: String): Int {
+        if (!isLoaded || word.isEmpty()) return 0
+        val w = word.lowercase()
+        // Binary search para encontrar la palabra exacta
+        val idx = words.binarySearch { it.word.compareTo(w) }
+        return if (idx >= 0) words[idx].freq else 0
+    }
+
+    /**
      * Busca todas las palabras que empiezan con [prefix].
      */
     fun lookup(prefix: String, maxResults: Int = MAX_RESULTS): List<Entry> {
