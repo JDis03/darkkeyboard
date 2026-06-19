@@ -362,9 +362,10 @@ class DictSuggestionEngine(
         // Get typed word frequency (0 if not in dict)
         val typedFreq = trie.getFreq(typed)
         
-        // If typed word is in dictionary with good frequency, don't correct
-        if (typedFreq >= AUTOCORRECT_MIN_FREQ) {
-            Timber.d("Autocorrect: '$typed' is in dict (freq=$typedFreq), no correction")
+        // Si la palabra existe en el diccionario (cualquier frecuencia), NO corregir
+        // Solo corregir typos reales (palabras que NO existen en el diccionario)
+        if (typedFreq > 0) {
+            Timber.d("Autocorrect: '$typed' is valid word (freq=$typedFreq), no correction")
             return AutoCorrectionCandidate(typedWord, false, 0f)
         }
 

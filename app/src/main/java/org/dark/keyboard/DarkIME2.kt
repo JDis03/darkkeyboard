@@ -395,19 +395,31 @@ class DarkIME2 : InputMethodService() {
                     terminalBuffer.deleteCharAt(terminalBuffer.length - 1)
                 }
                 
-                // NEW: Undo suggestion-driven autocorrect
+                // NEW: Undo suggestion-driven autocorrect (patrón Gboard replaceText)
                 if (lastActionWasAutocorrect) {
+                    val originalCursor = expectedSelStart  // después de "sale "
+                    val startPos = (originalCursor - lastCorrectedWord.length - 1).coerceAtLeast(0)  // antes de "sale "
+                    val endPos = originalCursor
+                    val undoCursorPos = startPos + lastTypedWordBeforeCorrection.length
+                    expectedSelStart = undoCursorPos
+                    expectedSelEnd = undoCursorPos
+
                     ic.beginBatchEdit()
-                    ic.deleteSurroundingText(lastCorrectedWord.length + 1, 0)  // +1 for space
-                    ic.commitText(lastTypedWordBeforeCorrection, 1)
+                    ic.finishComposingText()
+                    if (android.os.Build.VERSION.SDK_INT >= 34) {
+                        // Reemplaza "sale " con "salte" — sin espacio al restaurar
+                        ic.replaceText(startPos, endPos, lastTypedWordBeforeCorrection, 1, null)
+                    } else {
+                        ic.setSelection(endPos, endPos)
+                        ic.deleteSurroundingText(endPos - startPos, 0)
+                        ic.commitText(lastTypedWordBeforeCorrection, 1)
+                    }
                     ic.endBatchEdit()
-                    
+
+                    autocorrect.onFinishComposing()
                     sessionRejectedAutocorrectPairs.add("$lastTypedWordBeforeCorrection→$lastCorrectedWord")
                     lastActionWasAutocorrect = false
-                    
-                    expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length ?: expectedSelStart
-                    expectedSelEnd = expectedSelStart
-                    
+
                     Timber.i("Autocorrect undo: '$lastCorrectedWord' → '$lastTypedWordBeforeCorrection'")
                     updateSuggestions()
                     return
@@ -517,64 +529,52 @@ class DarkIME2 : InputMethodService() {
                 val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
                 val composing = autocorrect.getComposing()
                 
-                // NEW: Suggestion-driven autocorrect
-                if (composing.length >= 4 && ::suggestionEngine.isInitialized) {
+                // NEW: Suggestion-driven autocorrect (guards handle length check)
+                if (composing.isNotEmpty() && ::suggestionEngine.isInitialized) {
                     val candidate = suggestionEngine.getAutoCorrectionCandidate(composing, textBefore)
                     val pairKey = "$composing→${candidate.suggestion}"
                     
                     if (candidate.shouldAutoCorrect && !sessionRejectedAutocorrectPairs.contains(pairKey)) {
-                        // Apply correction via batchEdit
+                        // Patrón Gboard: siempre finishComposing antes de cualquier reemplazo
+                        autocorrect.onFinishComposing()
+
+                        val originalCursor = expectedSelStart
+                        val startPos = (originalCursor - composing.length).coerceAtLeast(0)
+                        val endPos = originalCursor
+                        val correctionCursorPos = startPos + candidate.suggestion.length + 1
+                        expectedSelStart = correctionCursorPos
+                        expectedSelEnd = correctionCursorPos
+
                         ic.beginBatchEdit()
-                        ic.deleteSurroundingText(composing.length, 0)
-                        ic.commitText(candidate.suggestion + " ", 1)
+                        ic.finishComposingText()     // 1. commit composing → texto normal
+                        if (android.os.Build.VERSION.SDK_INT >= 34) {
+                            // API 34+: replaceText atómico (Gboard z5=true path)
+                            ic.replaceText(startPos, endPos, candidate.suggestion + " ", 1, null)
+                        } else {
+                            // Gboard WebView path (z6=true): setSelection → delete → commitText
+                            ic.setSelection(endPos, endPos)  // 2. cursor al final
+                            ic.deleteSurroundingText(endPos - startPos, 0)  // 3. borra la región
+                            ic.commitText(candidate.suggestion + " ", 1)    // 4. inserta corrección
+                        }
                         ic.endBatchEdit()
-                        
+
                         lastTypedWordBeforeCorrection = composing
                         lastCorrectedWord = candidate.suggestion
                         lastActionWasAutocorrect = true
-                        
-                        expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length ?: expectedSelStart
-                        expectedSelEnd = expectedSelStart
-                        
-                        // Learning engine
+
                         val cleanContext = textBefore.trimEnd().removeSuffix(composing).trimEnd()
                         suggestionEngine.onSuggestionAccepted(candidate.suggestion, cleanContext)
-                        
-                        Timber.i("Suggestion-driven autocorrect: '$composing' → '${candidate.suggestion}' (confidence=${candidate.confidence})")
-                        autocorrect.onFinishComposing()
+
+                        Timber.i("Autocorrect: '$composing' → '${candidate.suggestion}' (confidence=${candidate.confidence})")
                         updateSuggestions()
                         return
                     }
                 }
                 
-                // OLD: Fallback to hint-based autocorrect (deprecated)
-                val topSuggestion = suggestionBarView?.getTopSuggestion()
-                when (val result = autocorrect.onSpace(textBefore, topSuggestion)) {
-                    is AutocorrectEngine.SpaceResult.Corrected -> {
-                        // Reemplazar composing con la corrección, luego commit
-                        ic.beginBatchEdit()
-                        ic.setComposingText(result.corrected, 1)
-                        ic.finishComposingText()
-                        ic.commitText(" ", 1)
-                        ic.endBatchEdit()
-                        
-                        expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length ?: expectedSelStart
-                        expectedSelEnd = expectedSelStart
-                        
-                        // Learning engine
-                        if (::suggestionEngine.isInitialized) {
-                            val cleanContext = textBefore.trimEnd()
-                                .removeSuffix(result.original).trimEnd()
-                            suggestionEngine.onSuggestionAccepted(result.corrected, cleanContext)
-                        }
-                        
-                        Timber.i("Hint-based autocorrect: '${result.original}' → '${result.corrected}'")
-                    }
-                    AutocorrectEngine.SpaceResult.Normal -> {
-                        ic.finishComposingText()
-                        ic.commitText(" ", 1)
-                    }
-                }
+                // No correction applied — commit space normally
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
+                ic.commitText(" ", 1)
                 updateSuggestions()
             }
 
