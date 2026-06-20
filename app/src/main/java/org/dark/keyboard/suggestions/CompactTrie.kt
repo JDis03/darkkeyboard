@@ -111,7 +111,11 @@ class CompactTrie(private val context: Context, private val file: String = "dict
         val results = mutableListOf<Entry>()
         val window = maxOf(3, t.length - 2)..(t.length + 2)
 
+        var evaluated = 0
+        val maxEvaluations = 2000  // Limit to first 2000 words (performance optimization)
+
         for (entry in words) {
+            if (evaluated++ > maxEvaluations) break  // Early exit to prevent lag
             if (entry.word.length !in window) continue
             if (entry.word == t) continue
             if (!firstLetterCompat(t, entry.word)) continue

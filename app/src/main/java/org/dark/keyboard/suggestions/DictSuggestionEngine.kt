@@ -94,6 +94,13 @@ class DictSuggestionEngine(
     // timestamp de último decay por idioma
     private val lastDecayByLang = mutableMapOf<String, Long>()
 
+    // Autocorrect cache (LRU, max 100 entries) - evita recalcular correcciones
+    private val autocorrectCache = object : LinkedHashMap<String, AutoCorrectionCandidate>(100, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, AutoCorrectionCandidate>?): Boolean {
+            return size > 100
+        }
+    }
+
     private var isReady = false
 
     override fun initialize() {
@@ -359,6 +366,12 @@ class DictSuggestionEngine(
 
         val typed = typedWord.lowercase()
         
+        // Check cache first (avoid expensive edit distance search)
+        autocorrectCache[typed]?.let {
+            Timber.v("Autocorrect: cache hit for '$typed'")
+            return it
+        }
+        
         // Get typed word frequency (0 if not in dict)
         val typedFreq = trie.getFreq(typed)
         
@@ -366,7 +379,9 @@ class DictSuggestionEngine(
         // Solo corregir typos reales (palabras que NO existen en el diccionario)
         if (typedFreq > 0) {
             Timber.d("Autocorrect: '$typed' is valid word (freq=$typedFreq), no correction")
-            return AutoCorrectionCandidate(typedWord, false, 0f)
+            val result = AutoCorrectionCandidate(typedWord, false, 0f)
+            autocorrectCache[typed] = result
+            return result
         }
 
         // Safety checks via AutocorrectGuards
@@ -377,7 +392,9 @@ class DictSuggestionEngine(
             )
             if (AutocorrectGuards.shouldSkip(typedWord, context, pd)) {
                 Timber.d("Autocorrect: '$typed' skipped by safety guards")
-                return AutoCorrectionCandidate(typedWord, false, 0f)
+                val result = AutoCorrectionCandidate(typedWord, false, 0f)
+                autocorrectCache[typed] = result
+                return result
             }
         }
 
@@ -386,7 +403,9 @@ class DictSuggestionEngine(
         
         if (candidates.isEmpty()) {
             Timber.d("Autocorrect: no candidates for '$typed'")
-            return AutoCorrectionCandidate(typedWord, false, 0f)
+            val result = AutoCorrectionCandidate(typedWord, false, 0f)
+            autocorrectCache[typed] = result
+            return result
         }
 
         val topCandidate = candidates.first()
@@ -440,11 +459,13 @@ class DictSuggestionEngine(
             Timber.d("Autocorrect: '$typed' NOT corrected to '${topCandidate.word}': ${checks.joinToString(", ")}")
         }
         
-        return AutoCorrectionCandidate(
+        val result = AutoCorrectionCandidate(
             suggestion = topCandidate.word,
             shouldAutoCorrect = shouldCorrect,
             confidence = confidence
         )
+        autocorrectCache[typed] = result
+        return result
     }
 
     private fun firstLetterCompatible(typed: String, correction: String): Boolean {
