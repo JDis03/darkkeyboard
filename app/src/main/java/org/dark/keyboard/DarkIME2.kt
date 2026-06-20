@@ -761,11 +761,16 @@ class DarkIME2 : InputMethodService() {
                             }
                         } else {
                             // Puntuación — finaliza composing
+                            // FIX: NO llamar finishComposingText() por separado en WebView
+                            // (puede borrar el composing). Usar commitText(composing + char)
+                            // que reemplaza el composing region atómicamente.
+                            val composingWord = autocorrect.getComposing()
                             autocorrect.onFinishComposing()
-                            ic.finishComposingText()
-                            var char = c.toString()
-                            if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
-                            ic.commitText(char, 1)
+                            val char = c.toString()
+                            val textToCommit = if (composingWord.isNotEmpty()) composingWord + char else char
+                            ic.commitText(textToCommit, 1)
+                            expectedSelStart += char.length
+                            expectedSelEnd = expectedSelStart
                             if (isTerminalMode) terminalBuffer.clear()
                         }
                         updateSuggestions()
