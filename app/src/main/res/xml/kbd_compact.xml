@@ -9,19 +9,19 @@ Esc + números en fila superior, todas las letras @ 10%p, auto-centering
     android:horizontalGap="5dp"
     android:verticalGap="@dimen/key_bottom_gap">
 
-    <!-- Row 1: Esc + Numbers 1-9,0 + Delete (Esc 10% + 10x7% + Del 10% = 90%, auto-centrado) -->
+    <!-- Row 1: Esc + Numbers 1-9,0 + Delete (Esc 10% + 10x8% + Del 10% = 100%) -->
     <Row android:rowEdgeFlags="top">
         <Key android:codes="@integer/key_escape" android:keyLabel="Esc" android:keyWidth="10%p" android:isModifier="true" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="7%p" />
-        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="7%p" />
-        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="7%p" />
-        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="7%p" />
-        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="7%p" />
-        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="7%p" />
-        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="7%p" />
-        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="7%p" />
-        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="7%p" />
-        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="7%p" />
+        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="8%p" />
+        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="8%p" />
+        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="8%p" />
+        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="8%p" />
+        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="8%p" />
+        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="8%p" />
+        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="8%p" />
+        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="8%p" />
+        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="8%p" />
+        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="8%p" />
         <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="10%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
