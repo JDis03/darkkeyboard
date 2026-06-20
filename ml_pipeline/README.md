@@ -42,27 +42,34 @@ output/
 
 ```bash
 # Crear release
-gh release create v1.1.0-models \
+gh release create v1.2.0-models \
   output/suggestions_model.tflite \
-  ../app/src/main/assets/bpe_vocab.json \
-  ../app/src/main/assets/bpe_merges.txt \
-  --title "AI Models v1.1.0" \
-  --notes "GPT-2 small TFLite model for suggestions re-ranking"
+  output/spiece.model \
+  --title "AI Models v1.2.0" \
+  --notes "T5 encoder (t5_small_multi) TFLite model for contextual re-ranking"
 ```
 
 ## Arquitectura del modelo
 
-- **Base**: GPT-2 small (124M params)
-- **Input**: 5 token IDs (contexto previo)
-- **Output**: logits del vocabulario (50257) para next-word prediction
+**Current (v1.2.0+):**
+- **Base**: T5 encoder (t5_small_multi)
+- **Input**: encoder_token_ids [1,32] int32 + encoder_padding_mask [1,32] int32
+- **Output**: embeddings [1,512] float32 (mean-pooled encoder output)
+- **Tokenizer**: SentencePiece (spiece.model, ~800KB)
 - **Quantization**: INT8 weights + float32 output
-- **Tamaño**: ~12MB (vs 500MB original)
-- **Latencia**: ~30ms en mid-range Android
+- **Tamaño**: ~34MB
+- **Latencia**: ~30-50ms en mid-range Android
+
+**Previous (v1.1.x):**
+- **Base**: GPT-2 small (124M params)
+- **Output**: logits del vocabulario (50257) para next-word prediction
+- **Tamaño**: ~12MB
+- **Deprecated**: Replaced by T5 encoder for better multilingual support
 
 ## Integración Android
 
 El modelo se usa en `TFLiteReRanker.kt`:
 1. `DictSuggestionEngine` genera top-20 candidatos (trie + bigrams)
-2. `TFLiteReRanker` scorea cada candidato con GPT-2
-3. Score final = 0.4 * trie_score + 0.6 * gpt2_score
-4. Retorna top-3 re-ordenados
+2. `TFLiteReRanker` genera embeddings para contexto y cada candidato
+3. Score = cosine_similarity(context_emb, candidate_emb)
+4. Retorna top-3 re-ordenados por similarity
