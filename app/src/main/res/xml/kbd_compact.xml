@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-PC Compact Layout - 6 rows con utilidad avanzada
-Todas las letras @ 10%p, auto-centering para rows incompletas
+PC Compact Layout - 5 rows con utilidad avanzada
+Esc + números en fila superior, todas las letras @ 10%p, auto-centering
 -->
 <Keyboard
     xmlns:android="http://schemas.android.com/apk/res-auto"
@@ -9,37 +9,23 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
     android:horizontalGap="5dp"
     android:verticalGap="@dimen/key_bottom_gap">
 
-    <!-- Row 1: Always visible utility row -->
+    <!-- Row 1: Esc + Numbers 1-9,0 + Delete (Esc 8% + 10x8% + Del 12% = 100%) -->
     <Row android:rowEdgeFlags="top">
-        <Key android:codes="@integer/key_escape" android:keyLabel="Esc" android:isModifier="true" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="\`" android:shiftLabel="~" />
-        <Key android:keyLabel="-" android:shiftLabel="_" />
-        <Key android:keyLabel="\\" android:shiftLabel="|" />
-        <Key android:keyLabel=";" android:shiftLabel=":" />
-        <Key android:keyLabel="=" android:shiftLabel="+" />
-        <Key android:keyLabel="[" android:shiftLabel="{" />
-        <Key android:keyLabel="]" android:shiftLabel="}" />
-        <Key android:codes="@integer/key_home" android:keyLabel="Home" android:isModifier="true" />
-        <Key android:codes="@integer/key_end" android:keyLabel="End" android:isModifier="true" />
-        <Key android:codes="@integer/key_forward_del" android:keyLabel="Del" android:isModifier="true" android:keyEdgeFlags="right" />
+        <Key android:codes="@integer/key_escape" android:keyLabel="Esc" android:keyWidth="8%p" android:isModifier="true" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="8%p" />
+        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="8%p" />
+        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="8%p" />
+        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="8%p" />
+        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="8%p" />
+        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="8%p" />
+        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="8%p" />
+        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="8%p" />
+        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="8%p" />
+        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="8%p" />
+        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="12%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 2: Numbers 0-9 + Delete -->
-    <Row>
-        <Key android:keyLabel="1" android:popupCharacters="!\`" android:keyWidth="8.5%p" android:keyEdgeFlags="left" />
-        <Key android:keyLabel="2" android:popupCharacters="@~" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="3" android:popupCharacters="#-" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="4" android:popupCharacters="$_" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="5" android:popupCharacters="%=" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="6" android:popupCharacters="^+" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="7" android:popupCharacters="{&amp;" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="8" android:popupCharacters="}*" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="9" android:popupCharacters="([" android:keyWidth="8.5%p" />
-        <Key android:keyLabel="0" android:popupCharacters=")]" android:keyWidth="8.5%p" />
-        <Key android:codes="@integer/key_delete" android:keyLabel="⌫" android:keyWidth="10%p" android:isModifier="true" android:isRepeatable="true" android:keyEdgeFlags="right" />
-    </Row>
-
-    <!-- Row 3: QWERTY (10 letras @ 10% = 100%, ocupa todo el ancho) -->
+    <!-- Row 2: QWERTY (10 letras @ 10% = 100%, ocupa todo el ancho) -->
     <Row>
         <Key android:keyLabel="q" android:keyEdgeFlags="left" />
         <Key android:keyLabel="w" />
@@ -53,7 +39,7 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:keyLabel="p" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 4: ASDFGHJKL (9 letras @ 10% = 90%, auto-centrado con 5% padding) -->
+    <!-- Row 3: ASDFGHJKL (9 letras @ 10% = 90%, auto-centrado con 5% padding) -->
     <Row>
         <Key android:keyLabel="a" android:keyEdgeFlags="left" />
         <Key android:keyLabel="s" />
@@ -66,7 +52,7 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:keyLabel="l" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 5: Shift + ZXCVBNM + ↑ + Enter -->
+    <!-- Row 4: Shift + ZXCVBNM + ↑ + Enter -->
     <Row>
         <Key android:codes="@integer/key_shift" android:keyLabel="⇧" android:isModifier="true" android:isSticky="true" android:keyEdgeFlags="left" />
         <Key android:keyLabel="z" />
@@ -80,7 +66,7 @@ Todas las letras @ 10%p, auto-centering para rows incompletas
         <Key android:codes="@integer/key_return" android:keyLabel="↵" android:isModifier="true" android:keyEdgeFlags="right" />
     </Row>
 
-    <!-- Row 6: Bottom (Space dominante - full 100%) -->
+    <!-- Row 5: Bottom (Space dominante - full 100%) -->
     <!-- Tab 10% + Ctrl 10% + Sym 10% + Space 34% + . 8% + left 9% + down 10% + right 9% = 100% -->
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="@integer/key_tab" android:keyLabel="Tab" android:keyWidth="10%p" android:isModifier="true" android:keyEdgeFlags="left" />
