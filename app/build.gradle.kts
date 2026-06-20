@@ -12,8 +12,8 @@ android {
         applicationId = "org.dark.keyboard"
         minSdk = 21
         targetSdk = 35
-        versionCode = 100
-        versionName = "1.0.0"
+        versionCode = 120
+        versionName = "1.2.0"
 
         // Solo incluir librerías nativas para arm64 (la mayoría de dispositivos modernos)
         // Esto reduce el APK de ~126MB a ~30MB
