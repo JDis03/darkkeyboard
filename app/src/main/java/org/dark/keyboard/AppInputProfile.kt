@@ -117,11 +117,11 @@ object AppInputProfile {
         val isWebView = variation == InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT
 
         if (isWebView || isBrowserPkg) {
-            // Composing + autocorrect: usamos composingWord como fuente primaria,
-            // NO getTextBeforeCursor (que es poco fiable en WebView).
-            // La corrección en onSpace() usa composingWord.ifEmpty { textBefore }
-            // así que WebView es seguro siempre que haya composing activo.
-            return Profile(Mode.WEBVIEW, true, true, true, "webview var=$variation pkg=$pkg")
+            // WebView: autocorrect ON pero composing OFF (commit directo, sin subrayado)
+            // El engine rastrea la palabra internamente sin setComposingText() en el IC.
+            // Esto evita: subrayado permanente, finishComposingText() que borra texto,
+            // deleteSurroundingText() que borra chars incorrectos en WebView.
+            return Profile(Mode.WEBVIEW, false, true, true, "webview var=$variation pkg=$pkg")
         }
 
         // ── 5. Campos de persona/dirección → sin autocorrect ──────────

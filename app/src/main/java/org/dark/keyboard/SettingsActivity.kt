@@ -256,6 +256,72 @@ fun SettingsScreen(prefs: SharedPreferences, context: android.content.Context, o
                  }
              }
              
+             // Autocorrect aggressiveness
+             item {
+                 var autocorrectAggressiveness by remember {
+                     mutableStateOf(prefs.getString("autocorrect_aggressiveness", "balanced") ?: "balanced")
+                 }
+                 var showAggressivenessDialog by remember { mutableStateOf(false) }
+                 
+                 SettingCard {
+                     SettingItem(
+                         icon = Icons.Default.TrendingUp,
+                         title = "Autocorrect Aggressiveness",
+                         subtitle = when (autocorrectAggressiveness) {
+                             "conservative" -> "Conservative (fewer corrections, higher confidence)"
+                             "balanced" -> "Balanced (recommended)"
+                             "aggressive" -> "Aggressive (more corrections, lower confidence)"
+                             else -> "Balanced"
+                         },
+                         onClick = { showAggressivenessDialog = true }
+                     )
+                 }
+                 
+                 if (showAggressivenessDialog) {
+                     AlertDialog(
+                         onDismissRequest = { showAggressivenessDialog = false },
+                         title = { Text("Autocorrect Aggressiveness") },
+                         text = {
+                             Column {
+                                 listOf(
+                                     "conservative" to "Conservative",
+                                     "balanced" to "Balanced",
+                                     "aggressive" to "Aggressive"
+                                 ).forEach { (value, label) ->
+                                     Row(
+                                         modifier = Modifier
+                                             .fillMaxWidth()
+                                             .clickable {
+                                                 autocorrectAggressiveness = value
+                                                 prefs.edit().putString("autocorrect_aggressiveness", value).commit()
+                                                 showAggressivenessDialog = false
+                                             }
+                                             .padding(vertical = 12.dp),
+                                         verticalAlignment = Alignment.CenterVertically
+                                     ) {
+                                         RadioButton(
+                                             selected = autocorrectAggressiveness == value,
+                                             onClick = {
+                                                 autocorrectAggressiveness = value
+                                                 prefs.edit().putString("autocorrect_aggressiveness", value).commit()
+                                                 showAggressivenessDialog = false
+                                             }
+                                         )
+                                         Spacer(modifier = Modifier.width(8.dp))
+                                         Text(label)
+                                     }
+                                 }
+                             }
+                         },
+                         confirmButton = {
+                             TextButton(onClick = { showAggressivenessDialog = false }) {
+                                 Text("Close")
+                             }
+                         }
+                     )
+                 }
+             }
+             
              item {
                  AiModelCard(context = context)
              }

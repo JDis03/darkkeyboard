@@ -20,8 +20,10 @@ class CompactTrie(private val context: Context, private val file: String = "dict
 
     data class Entry(val word: String, val freq: Int)
 
-    // Array de palabras ordenadas alfabéticamente + frecuencias
+    // Array de palabras ordenadas alfabéticamente + frecuencias (para binary search)
     private val words = mutableListOf<Entry>()
+    // HashMap para lookup exacto O(1) — el array se carga en orden de frecuencia, no alfabético
+    private val freqMap = HashMap<String, Int>(12000)
     private var isLoaded = false
 
     fun load() {
@@ -33,18 +35,33 @@ class CompactTrie(private val context: Context, private val file: String = "dict
                 if (parts.size == 2) {
                     val word = parts[0]
                     val freq = parts[1].toIntOrNull() ?: 0
-                    if (word.length >= 2) words.add(Entry(word, freq))
+                    if (word.length >= 2) {
+                        words.add(Entry(word, freq))
+                        freqMap[word] = freq
+                    }
                 }
             }
             reader.close()
+            // Ordenar alfabéticamente para que binary search funcione en lookup() y findByEditDistance()
+            words.sortBy { it.word }
             isLoaded = true
-            Timber.i("Loaded: ${words.size} words (sorted text, binary search)")
+            Timber.i("Loaded: ${words.size} words (sorted alphabetically, binary search)")
         } catch (e: Exception) {
             Timber.e("Failed to load dictionary: ${e.message}")
         }
     }
 
     fun isReady() = isLoaded
+
+    /**
+     * Obtiene la frecuencia de una palabra exacta.
+     * @return frecuencia (0 si no existe en el diccionario)
+     */
+    fun getFreq(word: String): Int {
+        if (!isLoaded || word.isEmpty()) return 0
+        // HashMap O(1) — más confiable que binary search sobre array cargado por frecuencia
+        return freqMap[word.lowercase()] ?: 0
+    }
 
     /**
      * Busca todas las palabras que empiezan con [prefix].

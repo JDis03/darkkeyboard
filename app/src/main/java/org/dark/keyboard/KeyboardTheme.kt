@@ -17,14 +17,14 @@ data class KeyboardTheme(
     companion object {
         val DARK = KeyboardTheme(
             name = "Dark (Default)",
-            background = Color.parseColor("#263238"),
-            keyNormal = Color.parseColor("#455A64"),
-            keyModifier = Color.parseColor("#37474F"),
+            background = Color.parseColor("#1B1B1B"),   // Gboard: fondo casi negro
+            keyNormal = Color.parseColor("#2C2C2E"),    // Gboard: letras gris oscuro
+            keyModifier = Color.parseColor("#3D3D40"),  // Gboard: modifiers más claros
             keyPressed = Color.parseColor("#1565C0"),
             keyActive = Color.parseColor("#1565C0"),
-            keyBorder = Color.parseColor("#37474F"),
+            keyBorder = Color.TRANSPARENT,              // Gboard: sin borde visible
             textNormal = Color.WHITE,
-            textModifier = Color.parseColor("#B0BEC5"),
+            textModifier = Color.WHITE,
             textActive = Color.WHITE
         )
 

@@ -66,6 +66,13 @@ class DarkIME2 : InputMethodService() {
     private lateinit var wordDict: WordDictionary
     private lateinit var personalDict: PersonalDictionary
     private lateinit var autocorrect: AutocorrectEngine
+    
+    // Suggestion-driven autocorrect state
+    private var lastTypedWordBeforeCorrection: String = ""
+    private var lastCorrectedWord: String = ""
+    private var lastActionWasAutocorrect: Boolean = false
+    private val sessionRejectedAutocorrectPairs: MutableSet<String> = mutableSetOf()
+    
     private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         when (key) {
             "keyboard_layout", "show_number_row", "custom_layout_name" -> {
@@ -92,6 +99,11 @@ class DarkIME2 : InputMethodService() {
                     autocorrect.onFinishComposing()
                     currentInputConnection?.finishComposingText()
                 }
+            }
+            "autocorrect_aggressiveness" -> {
+                val level = prefs.getString("autocorrect_aggressiveness", "balanced") ?: "balanced"
+                Timber.i("Preference 'autocorrect_aggressiveness' changed to: $level")
+                applyAutocorrectAggressiveness(level)
             }
         }
     }
@@ -125,7 +137,7 @@ class DarkIME2 : InputMethodService() {
 
         // Inicializar motor de sugerencias multi-idioma en background
         imeScope.launch(Dispatchers.IO) {
-            val engine = DictSuggestionEngine(this@DarkIME2)
+            val engine = DictSuggestionEngine(this@DarkIME2, personalDict)
             val savedLang = prefs.getString("suggestion_language", "es") ?: "es"
             engine.switchLanguage(savedLang)
             engine.initialize()
@@ -133,6 +145,11 @@ class DarkIME2 : InputMethodService() {
             // Compartir el mismo diccionario con autocorrect para eficiencia
             wordDict.load(savedLang)
             autocorrect.isTerminalApp = false
+            
+            // Apply autocorrect aggressiveness from settings
+            val aggressiveness = prefs.getString("autocorrect_aggressiveness", "balanced") ?: "balanced"
+            applyAutocorrectAggressiveness(aggressiveness)
+            
             val label = DictSuggestionEngine.LANGUAGE_NAMES[savedLang] ?: savedLang.uppercase()
             launch(Dispatchers.Main) {
                 suggestionBarView?.setLanguageLabel(label)
@@ -377,6 +394,37 @@ class DarkIME2 : InputMethodService() {
                 if (isTerminalMode && terminalBuffer.isNotEmpty()) {
                     terminalBuffer.deleteCharAt(terminalBuffer.length - 1)
                 }
+                
+                // NEW: Undo suggestion-driven autocorrect (patrón Gboard replaceText)
+                if (lastActionWasAutocorrect) {
+                    val originalCursor = expectedSelStart  // después de "sale "
+                    val startPos = (originalCursor - lastCorrectedWord.length - 1).coerceAtLeast(0)  // antes de "sale "
+                    val endPos = originalCursor
+                    val undoCursorPos = startPos + lastTypedWordBeforeCorrection.length
+                    expectedSelStart = undoCursorPos
+                    expectedSelEnd = undoCursorPos
+
+                    ic.beginBatchEdit()
+                    ic.finishComposingText()
+                    if (android.os.Build.VERSION.SDK_INT >= 34) {
+                        // Reemplaza "sale " con "salte" — sin espacio al restaurar
+                        ic.replaceText(startPos, endPos, lastTypedWordBeforeCorrection, 1, null)
+                    } else {
+                        ic.setSelection(endPos, endPos)
+                        ic.deleteSurroundingText(endPos - startPos, 0)
+                        ic.commitText(lastTypedWordBeforeCorrection, 1)
+                    }
+                    ic.endBatchEdit()
+
+                    autocorrect.onFinishComposing()
+                    sessionRejectedAutocorrectPairs.add("$lastTypedWordBeforeCorrection→$lastCorrectedWord")
+                    lastActionWasAutocorrect = false
+
+                    Timber.i("Autocorrect undo: '$lastCorrectedWord' → '$lastTypedWordBeforeCorrection'")
+                    updateSuggestions()
+                    return
+                }
+                
                 if (ctrl) {
                     autocorrect.onFinishComposing()
                     ic.finishComposingText()
@@ -468,7 +516,7 @@ class DarkIME2 : InputMethodService() {
             }
 
             // ══════════════════════════════════════════════════════════════
-            // SPACE HANDLER — HeliBoard/Gboard pattern (simplified)
+            // SPACE HANDLER — Suggestion-driven autocorrect (Gboard pattern)
             // ══════════════════════════════════════════════════════════════
             ' '.code -> {
                 // Autocorrect OFF: just insert space
@@ -479,34 +527,54 @@ class DarkIME2 : InputMethodService() {
                 }
                 
                 val textBefore = ic.getTextBeforeCursor(100, 0)?.toString() ?: ""
-                val topSuggestion = suggestionBarView?.getTopSuggestion()
+                val composing = autocorrect.getComposing()
+                
+                // NEW: Suggestion-driven autocorrect (guards handle length check)
+                if (composing.isNotEmpty() && ::suggestionEngine.isInitialized) {
+                    val candidate = suggestionEngine.getAutoCorrectionCandidate(composing, textBefore)
+                    val pairKey = "$composing→${candidate.suggestion}"
+                    
+                    if (candidate.shouldAutoCorrect && !sessionRejectedAutocorrectPairs.contains(pairKey)) {
+                        // Patrón Gboard: siempre finishComposing antes de cualquier reemplazo
+                        autocorrect.onFinishComposing()
 
-                when (val result = autocorrect.onSpace(textBefore, topSuggestion)) {
-                    is AutocorrectEngine.SpaceResult.Corrected -> {
-                        // Reemplazar composing con la corrección, luego commit
+                        val originalCursor = expectedSelStart
+                        val startPos = (originalCursor - composing.length).coerceAtLeast(0)
+                        val endPos = originalCursor
+                        val correctionCursorPos = startPos + candidate.suggestion.length + 1
+                        expectedSelStart = correctionCursorPos
+                        expectedSelEnd = correctionCursorPos
+
                         ic.beginBatchEdit()
-                        ic.setComposingText(result.corrected, 1)
-                        ic.finishComposingText()
-                        ic.commitText(" ", 1)
-                        ic.endBatchEdit()
-                        
-                        expectedSelStart = ic.getTextBeforeCursor(1000, 0)?.length ?: expectedSelStart
-                        expectedSelEnd = expectedSelStart
-                        
-                        // Learning engine
-                        if (::suggestionEngine.isInitialized) {
-                            val cleanContext = textBefore.trimEnd()
-                                .removeSuffix(result.original).trimEnd()
-                            suggestionEngine.onSuggestionAccepted(result.corrected, cleanContext)
+                        ic.finishComposingText()     // 1. commit composing → texto normal
+                        if (android.os.Build.VERSION.SDK_INT >= 34) {
+                            // API 34+: replaceText atómico (Gboard z5=true path)
+                            ic.replaceText(startPos, endPos, candidate.suggestion + " ", 1, null)
+                        } else {
+                            // Gboard WebView path (z6=true): setSelection → delete → commitText
+                            ic.setSelection(endPos, endPos)  // 2. cursor al final
+                            ic.deleteSurroundingText(endPos - startPos, 0)  // 3. borra la región
+                            ic.commitText(candidate.suggestion + " ", 1)    // 4. inserta corrección
                         }
-                        
-                        Timber.i("Autocorrect: '${result.original}' → '${result.corrected}'")
-                    }
-                    AutocorrectEngine.SpaceResult.Normal -> {
-                        ic.finishComposingText()
-                        ic.commitText(" ", 1)
+                        ic.endBatchEdit()
+
+                        lastTypedWordBeforeCorrection = composing
+                        lastCorrectedWord = candidate.suggestion
+                        lastActionWasAutocorrect = true
+
+                        val cleanContext = textBefore.trimEnd().removeSuffix(composing).trimEnd()
+                        suggestionEngine.onSuggestionAccepted(candidate.suggestion, cleanContext)
+
+                        Timber.i("Autocorrect: '$composing' → '${candidate.suggestion}' (confidence=${candidate.confidence})")
+                        updateSuggestions()
+                        return
                     }
                 }
+                
+                // No correction applied — commit space normally
+                autocorrect.onFinishComposing()
+                ic.finishComposingText()
+                ic.commitText(" ", 1)
                 updateSuggestions()
             }
 
@@ -515,10 +583,12 @@ class DarkIME2 : InputMethodService() {
             Key.CODE_CTRL_LEFT -> { }
             Key.CODE_ALT_LEFT -> { }
             Key.CODE_MODE_CHANGE -> {
+                lastActionWasAutocorrect = false
                 autocorrect.onFinishComposing(); ic.finishComposingText()
                 switchLayout()
             }
             KEYCODE_ENTER -> {
+                lastActionWasAutocorrect = false
                 autocorrect.onFinishComposing(); ic.finishComposingText()
                 terminalBuffer.clear()
                 learnFromCurrentText()
@@ -609,6 +679,9 @@ class DarkIME2 : InputMethodService() {
                         // ══════════════════════════════════════════════════════════
                         val c = code.toChar()
                         if (c.isLetter()) {
+                            // Reset autocorrect undo window when typing new letter
+                            lastActionWasAutocorrect = false
+                            
                             var char = c.toString()
                             if (shift) char = char.uppercase()
 
@@ -688,11 +761,16 @@ class DarkIME2 : InputMethodService() {
                             }
                         } else {
                             // Puntuación — finaliza composing
+                            // FIX: NO llamar finishComposingText() por separado en WebView
+                            // (puede borrar el composing). Usar commitText(composing + char)
+                            // que reemplaza el composing region atómicamente.
+                            val composingWord = autocorrect.getComposing()
                             autocorrect.onFinishComposing()
-                            ic.finishComposingText()
-                            var char = c.toString()
-                            if (shift && code in 'a'.code..'z'.code) char = char.uppercase()
-                            ic.commitText(char, 1)
+                            val char = c.toString()
+                            val textToCommit = if (composingWord.isNotEmpty()) composingWord + char else char
+                            ic.commitText(textToCommit, 1)
+                            expectedSelStart += char.length
+                            expectedSelEnd = expectedSelStart
                             if (isTerminalMode) terminalBuffer.clear()
                         }
                         updateSuggestions()
@@ -1004,6 +1082,37 @@ class DarkIME2 : InputMethodService() {
         } else {
             Timber.w("Custom layout '$name' not found, using built-in")
             SimpleKeyboard.fromXml(this, fallbackId, screenWidth, screenHeight, showNumberRow)
+        }
+    }
+
+    private fun applyAutocorrectAggressiveness(level: String) {
+        val engine = suggestionEngine
+        if (engine !is DictSuggestionEngine) {
+            Timber.w("Cannot apply aggressiveness: engine is not DictSuggestionEngine")
+            return
+        }
+        
+        when (level) {
+            "conservative" -> {
+                engine.autocorrectScoreRatio = DictSuggestionEngine.AUTOCORRECT_SCORE_RATIO_CONSERVATIVE
+                engine.autocorrectMaxEdit = DictSuggestionEngine.AUTOCORRECT_MAX_EDIT_CONSERVATIVE
+                Timber.i("Autocorrect aggressiveness: CONSERVATIVE (ratio=5.0, maxEdit=1)")
+            }
+            "balanced" -> {
+                engine.autocorrectScoreRatio = DictSuggestionEngine.AUTOCORRECT_SCORE_RATIO_BALANCED
+                engine.autocorrectMaxEdit = DictSuggestionEngine.AUTOCORRECT_MAX_EDIT_BALANCED
+                Timber.i("Autocorrect aggressiveness: BALANCED (ratio=3.0, maxEdit=2)")
+            }
+            "aggressive" -> {
+                engine.autocorrectScoreRatio = DictSuggestionEngine.AUTOCORRECT_SCORE_RATIO_AGGRESSIVE
+                engine.autocorrectMaxEdit = DictSuggestionEngine.AUTOCORRECT_MAX_EDIT_AGGRESSIVE
+                Timber.i("Autocorrect aggressiveness: AGGRESSIVE (ratio=2.0, maxEdit=3)")
+            }
+            else -> {
+                Timber.w("Unknown aggressiveness level: $level, using balanced")
+                engine.autocorrectScoreRatio = DictSuggestionEngine.AUTOCORRECT_SCORE_RATIO_BALANCED
+                engine.autocorrectMaxEdit = DictSuggestionEngine.AUTOCORRECT_MAX_EDIT_BALANCED
+            }
         }
     }
 }

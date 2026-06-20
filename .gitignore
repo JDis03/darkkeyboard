@@ -1,52 +1,91 @@
-# Built application files
+# ══════════════════════════════════════════════════════════════
+# Android Build
+# ══════════════════════════════════════════════════════════════
 *.apk
-*.ap_
 *.aab
-
-# Files for the ART/Dalvik VM
+*.ap_
 *.dex
-
-# Java class files
 *.class
-
-# Generated files
 bin/
 gen/
 out/
 build/
 .gradle/
-gradle/
-gradlew
-gradlew.bat
+.kotlin/
+captures/
+*.hprof
 
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Android Studio
+# ══════════════════════════════════════════════════════════════
+# Android Studio / IntelliJ
+# ══════════════════════════════════════════════════════════════
 .idea/
 *.iml
 .externalNativeBuild
 .cxx/
-*.hprof
+local.properties
 
-# Keystore files
+# ══════════════════════════════════════════════════════════════
+# Python / ML Pipeline
+# ══════════════════════════════════════════════════════════════
+ml_pipeline/.venv/
+ml_pipeline/output/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+*.egg
+
+# ══════════════════════════════════════════════════════════════
+# Models (large binaries)
+# ══════════════════════════════════════════════════════════════
+*.tflite
+*.onnx
+*.h5
+*.pb
+app/src/main/assets/*.tflite
+
+# ══════════════════════════════════════════════════════════════
+# Logs & Temporary Files
+# ══════════════════════════════════════════════════════════════
+logs/
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ══════════════════════════════════════════════════════════════
+# Node.js (web-editor)
+# ══════════════════════════════════════════════════════════════
+node_modules/
+.npm/
+.yarn/
+
+# ══════════════════════════════════════════════════════════════
+# Keystore (security)
+# ══════════════════════════════════════════════════════════════
 *.jks
 *.keystore
 
-# OS files
+# ══════════════════════════════════════════════════════════════
+# OS Files
+# ══════════════════════════════════════════════════════════════
 .DS_Store
-*~
-*.tflite
-*.onnx
-_dormant/*.tflite
-app/src/main/assets/*.tflite
+Thumbs.db
 
-# OpenSpec - only commit completed changes
-openspec/changes/*/
-!openspec/changes/archive/
-node_modules/
-
-# APK referencias (binarios grandes)
+# ══════════════════════════════════════════════════════════════
+# Reference APKs (large binaries)
+# ══════════════════════════════════════════════════════════════
 referencia/
 
-ml_pipeline/output/
+# ══════════════════════════════════════════════════════════════
+# OpenSpec (only commit archived changes)
+# ══════════════════════════════════════════════════════════════
+openspec/changes/*/
+!openspec/changes/archive/

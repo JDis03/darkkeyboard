@@ -1,14 +1,41 @@
 # DarkKeyboard ⌨️
 
-**A modern Android IME with Gboard-style proportions and PC functionality**
+**Modern Android IME with neural autocorrect, next-word prediction, and PC functionality**
 
-Mobile-optimized keyboard layouts with consistent letter sizes, smart auto-centering, sticky modifiers, and modern Material Design 3 settings - the perfect balance between mobile usability and desktop power.
+Mobile keyboard with T5 neural suggestions, smart autocorrect, multi-language support (ES/EN), Gboard-style UI, and developer-friendly features. Privacy-first with local ML models.
 
 ---
 
 ## ✨ Features
 
-### 🎯 Enhanced Precision (v1.1.0)
+### 🤖 Smart Typing & AI
+
+**Neural Autocorrect**
+- T5 encoder model (34MB TFLite INT8) for contextual re-ranking
+- Confidence-based correction (conservative/balanced/aggressive modes)
+- Safety guards: no correction for ALL_CAPS, digits, personal dictionary words
+- Undo with backspace (session-based rejection memory)
+- Only corrects words NOT in dictionary (typedFreq > 0 → skip)
+
+**Next-Word Prediction**
+- Bigram-based prediction with automatic user learning
+- Frequency overlay (learns from your typing patterns)
+- Forgetting curve (like AOSP UserHistoryDictionary)
+- Privacy-first: all local, no cloud sync, no telemetry
+
+**Multi-Language Support**
+- Spanish + English dictionaries (8K+ words each)
+- Per-language user frequency tracking
+- Easy language switching in settings
+- Separate autocorrect settings per language
+
+**App-Specific Behavior (AppInputProfile)**
+- **WebView** (Chrome/Vivaldi): no IC composing (fixes underline bug), autocorrect ON
+- **Terminal** (Termux): autocorrect OFF, composing OFF
+- **Password fields**: all features OFF (security)
+- **Standard apps**: full autocorrect + suggestions + composing
+
+### 🎯 Enhanced Precision
 
 **Hit Zone Expansion**
 - Touch detection area 20% larger than visual bounds
@@ -127,12 +154,24 @@ Or install the APK manually via ADB or file manager.
 
 | File | Lines | Purpose |
 |------|-------|---------|
-| **DarkIME2.kt** | ~380 | InputMethodService - lifecycle, RDP compatibility, error handling |
-| **SimpleKeyboard.kt** | ~355 | XML parser with gap calculation and auto-centering |
+| **DictSuggestionEngine.kt** | ~500 | Multi-lang suggestions with frequency overlay + bigram learning |
+| **TFLiteReRanker.kt** | ~180 | T5 neural re-ranking (contextual scoring with embeddings) |
+| **CompactTrie.kt** | ~200 | Trie with O(1) freq lookup + edit distance search |
+| **AutocorrectEngine.kt** | ~650 | Autocorrect state machine + safety guards + undo |
+| **DarkIME2.kt** | ~1100 | InputMethodService + autocorrect integration + AppInputProfile |
 | **SimpleKeyboardView.kt** | ~570 | Custom View - rendering with hit expansion + touch detection |
-| **Key.kt** | ~60 | Data class - key properties with expanded hit zones |
-| **SettingsActivity.kt** | ~680 | Compose settings with layout editor |
+| **SimpleKeyboard.kt** | ~355 | XML parser with gap calculation and auto-centering |
+| **SettingsActivity.kt** | ~680 | Compose settings with layout editor + autocorrect config |
 | **PopupPreview.kt** | ~185 | Punctuation popup with swipe selection |
+
+### ML Pipeline
+
+| File | Purpose |
+|------|---------|
+| **ml_pipeline/train_model.py** | T5 encoder training + TFLite INT8 export |
+| **suggestions_model.tflite** | 34MB quantized model (downloaded separately) |
+| **spiece.model** | SentencePiece tokenizer (~800KB) |
+| **dict_es.txt / dict_en.txt** | Spanish/English dictionaries (8K-10K words) |
 
 ### Keyboard Layouts (XML)
 
@@ -249,11 +288,14 @@ DarkKeyboard (2026) - Modern Kotlin rewrite
 
 ## 📊 Stats
 
-- **Total code:** ~2,000 lines (Kotlin + XML)
-- **Core files:** 10+ Kotlin files
-- **Build time:** ~5-10 seconds (clean build)
-- **APK size:** ~800KB (debug build)
+- **Total code:** ~5,000+ lines (Kotlin + Python ML pipeline)
+- **Core files:** 15+ Kotlin files + ML pipeline
+- **Build time:** ~10-15 seconds (clean build)
+- **APK size:** ~45MB (with TFLite model) / ~2MB (without model)
+- **Model size:** 34MB (T5 encoder INT8 quantized)
+- **Dictionaries:** 2 languages (ES: 8K words, EN: 10K words)
 - **Supported layouts:** 3 (QWERTY Standard, PC Compact, Symbols)
+- **Autocorrect modes:** 3 (conservative/balanced/aggressive)
 - **Hit zone expansion:** 20% beyond visual bounds
 - **Vertical gap:** 6dp between rows
 
@@ -263,43 +305,37 @@ DarkKeyboard (2026) - Modern Kotlin rewrite
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed version history and full feature list.
 
-### v1.1.0 (Next Release)
-- [ ] Theme system (dark/light/custom colors)
-- [ ] Improved symbol layout with more punctuation
-- [ ] Emoji keyboard
-- [ ] Clipboard manager integration
-- [ ] Haptic feedback settings
-- [ ] Sound on keypress option
-
-### v1.2.0
-- [ ] Word suggestions/autocorrect
-- [ ] Swipe typing
-- [ ] Custom keyboard height slider
-- [ ] Customizable key colors per row
-- [ ] Export/import settings
-
-### v2.0.0 (Major Release)
-- [ ] Full customization system
-- [ ] User-defined layouts (XML editor)
-- [ ] Cloud sync for settings
-- [ ] Multi-language support
-- [ ] Advanced gesture controls
-
-**Completed Features (v1.0.0 + improvements):**
-- ✅ QWERTY Standard layout with Gboard proportions
-- ✅ PC Compact layout with 6 rows + arrows
-- ✅ Auto-centering system
-- ✅ Number row toggle
+### ✅ Completed (v1.2.0)
+- ✅ **Neural autocorrect** with T5 encoder (34MB TFLite)
+- ✅ **Next-word prediction** with bigram learning
+- ✅ **Multi-language support** (Spanish + English)
+- ✅ **Frequency overlay** (learns from user typing)
+- ✅ **App-specific behavior** (WebView/Terminal/Password profiles)
+- ✅ **Undo autocorrect** with backspace
+- ✅ QWERTY Standard + PC Compact layouts
+- ✅ Hit zone expansion (+20%)
+- ✅ Sticky modifiers + visual status bar
 - ✅ Punctuation popup with swipe
-- ✅ Sticky modifiers with visual status bar
 - ✅ Modern Compose settings UI
-- ✅ Consistent 10% letter sizes
-- ✅ **Hit zone expansion (+20%)** - Enhanced precision
-- ✅ **Optimized gaps (6dp)** - Reduced row confusion
-- ✅ **RDP compatibility** - Physical KeyEvents for Ctrl+V, etc.
-- ✅ **Live layout editor** - Create custom XML layouts in-app
-- ✅ **Memory leak fixes** - Proper listener cleanup
-- ✅ **Crash resistance** - try-catch on InputConnection ops
+- ✅ RDP compatibility (physical KeyEvents)
+- ✅ Live layout editor
+
+### 🚧 In Progress (v1.3.0)
+- [ ] **Smart typing features** (auto-cap, double-space→period, smart punctuation)
+- [ ] Clipboard manager with history
+- [ ] Cursor control (swipe spacebar to move cursor)
+- [ ] Theme system (light/dark/custom colors)
+- [ ] Improved symbol layout
+
+### 🔮 Future (v2.0.0+)
+- [ ] **Glide typing** (swipe to type) - HIGH PRIORITY
+- [ ] Trigramas (3-word context for better prediction)
+- [ ] Voice typing integration
+- [ ] Emoji/GIF search
+- [ ] Floating/one-handed mode
+- [ ] Custom keyboard height slider
+- [ ] Haptic feedback + sound settings
+- [ ] Export/import settings
 
 ---
 

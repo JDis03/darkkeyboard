@@ -23,6 +23,16 @@ interface SuggestionEngine {
     fun getSuggestions(textBeforeCursor: String, maxResults: Int = 3): List<String>
 
     /**
+     * Evalúa si la palabra tecleada debe ser autocorregida.
+     * Retorna un candidato con flag shouldAutoCorrect=true si la confianza es suficiente.
+     *
+     * @param typedWord La palabra que el usuario está escribiendo
+     * @param textBefore Contexto antes de la palabra (para scoring contextual)
+     * @return Candidato de autocorrección con nivel de confianza
+     */
+    fun getAutoCorrectionCandidate(typedWord: String, textBefore: String): AutoCorrectionCandidate
+
+    /**
      * Notifica al motor que el usuario aceptó una sugerencia.
      * Usado para aprendizaje on-device (Nivel 3+).
      */

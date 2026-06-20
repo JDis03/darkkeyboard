@@ -34,7 +34,10 @@ class AutocorrectRealScenariosTest {
         ctx = ApplicationProvider.getApplicationContext()
         dict = WordDictionary(ctx).also { it.load("es") }
         personalDict = PersonalDictionary(ctx)
-        engine = AutocorrectEngine(ctx, dict, personalDict).also { it.initialize() }
+        engine = AutocorrectEngine(ctx, dict, personalDict).also { 
+            it.initialize()
+            it.isEnabled = true
+        }
     }
 
     // ═══════════════════════════════════════════════════════════════════

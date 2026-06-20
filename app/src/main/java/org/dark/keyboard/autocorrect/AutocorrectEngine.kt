@@ -412,6 +412,7 @@ class AutocorrectEngine(
 
     // ── Corrección ───────────────────────────────────────────────────────
 
+    @Deprecated("Use suggestion-driven autocorrect via DictSuggestionEngine.getAutoCorrectionCandidate() instead")
     private fun findCorrection(typed: String, contextText: String, hint: String? = null): String? {
         val t = typed.lowercase()
 
