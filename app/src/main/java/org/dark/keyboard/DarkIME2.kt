@@ -538,18 +538,20 @@ class DarkIME2 : InputMethodService() {
                         // Patrón Gboard: siempre finishComposing antes de cualquier reemplazo
                         autocorrect.onFinishComposing()
 
-                        // Usar getTextBeforeCursor para obtener posición real del cursor
-                        // (expectedSelStart puede estar desincronizado)
-                        val textBeforeCursor = ic.getTextBeforeCursor(1000, 0)?.toString() ?: ""
-                        val cursorPos = textBeforeCursor.length
+                        ic.beginBatchEdit()
+                        ic.finishComposingText()     // 1. commit composing → texto normal
+                        
+                        // DESPUÉS de finishComposingText, obtener posición real del cursor
+                        val textAfterFinish = ic.getTextBeforeCursor(1000, 0)?.toString() ?: ""
+                        val cursorPos = textAfterFinish.length
                         val startPos = (cursorPos - composing.length).coerceAtLeast(0)
                         val endPos = cursorPos
                         
                         // Validar que startPos y endPos son válidos
-                        if (startPos < 0 || endPos < startPos) {
-                            Timber.w("Autocorrect: invalid positions (start=$startPos, end=$endPos), skipping")
-                            ic.finishComposingText()
+                        if (startPos < 0 || endPos < startPos || composing.length > cursorPos) {
+                            Timber.w("Autocorrect: invalid positions (start=$startPos, end=$endPos, composing=${composing.length}, cursor=$cursorPos), skipping")
                             ic.commitText(" ", 1)
+                            ic.endBatchEdit()
                             return
                         }
                         
@@ -557,16 +559,14 @@ class DarkIME2 : InputMethodService() {
                         expectedSelStart = correctionCursorPos
                         expectedSelEnd = correctionCursorPos
 
-                        ic.beginBatchEdit()
-                        ic.finishComposingText()     // 1. commit composing → texto normal
                         if (android.os.Build.VERSION.SDK_INT >= 34) {
                             // API 34+: replaceText atómico (Gboard z5=true path)
                             ic.replaceText(startPos, endPos, candidate.suggestion + " ", 1, null)
                         } else {
-                            // Gboard WebView path (z6=true): setSelection → delete → commitText
-                            ic.setSelection(endPos, endPos)  // 2. cursor al final
-                            ic.deleteSurroundingText(endPos - startPos, 0)  // 3. borra la región
-                            ic.commitText(candidate.suggestion + " ", 1)    // 4. inserta corrección
+                            // Usar deleteSurroundingText con offset RELATIVO al cursor
+                            // beforeLength = cuántos chars borrar ANTES del cursor
+                            ic.deleteSurroundingText(composing.length, 0)  // Borra composing.length chars antes del cursor
+                            ic.commitText(candidate.suggestion + " ", 1)    // Inserta corrección + espacio
                         }
                         ic.endBatchEdit()
 
@@ -773,15 +773,20 @@ class DarkIME2 : InputMethodService() {
                             }
                         } else {
                             // Puntuación — finaliza composing
-                            // FIX: NO llamar finishComposingText() por separado en WebView
-                            // (puede borrar el composing). Usar commitText(composing + char)
-                            // que reemplaza el composing region atómicamente.
+                            // FIX: Llamar finishComposingText() ANTES de commitText()
+                            // para evitar que el composing quede activo y cause subrayado/borrado
                             val composingWord = autocorrect.getComposing()
                             autocorrect.onFinishComposing()
+                            
+                            ic.beginBatchEdit()
+                            ic.finishComposingText()  // Finish composing FIRST
+                            
                             val char = c.toString()
                             val textToCommit = if (composingWord.isNotEmpty()) composingWord + char else char
                             ic.commitText(textToCommit, 1)
-                            expectedSelStart += char.length
+                            ic.endBatchEdit()
+                            
+                            expectedSelStart += textToCommit.length  // FIX: suma longitud completa, no solo char
                             expectedSelEnd = expectedSelStart
                             if (isTerminalMode) terminalBuffer.clear()
                         }
