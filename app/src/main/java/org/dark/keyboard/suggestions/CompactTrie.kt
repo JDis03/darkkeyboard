@@ -23,7 +23,7 @@ class CompactTrie(private val context: Context, private val file: String = "dict
     // Array de palabras ordenadas alfabéticamente + frecuencias (para binary search)
     private val words = mutableListOf<Entry>()
     // HashMap para lookup exacto O(1) — el array se carga en orden de frecuencia, no alfabético
-    private val freqMap = HashMap<String, Int>(12000)
+    private val freqMap = HashMap<String, Int>(8013)  // Exact size for dict_es.txt (avoids rehashing)
     private var isLoaded = false
 
     fun load() {

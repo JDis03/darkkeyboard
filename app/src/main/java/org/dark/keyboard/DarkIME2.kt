@@ -47,7 +47,7 @@ class DarkIME2 : InputMethodService() {
         suggestionBarView?.clearSuggestions()
     }
     private val CLEAR_DELAY_MS    = 3000L  // 3s sin escribir → limpiar
-    private val DEBOUNCE_MS       = 80L    // esperar 80ms antes de inferir
+    private val DEBOUNCE_MS       = 50L    // esperar 50ms antes de inferir (optimizado para responsiveness)
     private val MIN_TEXT_LENGTH   = 2      // mínimo 2 chars antes de sugerir
 
     // Dispatcher single-thread para TFLite (evita race condition XNNPACK)
@@ -1040,15 +1040,29 @@ class DarkIME2 : InputMethodService() {
     }
 
     override fun onDestroy() {
+        // Clear listeners to prevent memory leaks
+        suggestionBarView?.listener = null
+        keyboardView?.onKeyListener = null
+        
+        // Clear handler callbacks
         mainHandler.removeCallbacks(clearSuggestionsRunnable)
-        // Guardar historial del DictSuggestionEngine
+        
+        // Cancel coroutines
+        suggestionJob?.cancel()
+        imeScope.cancel()
+        
+        // Save and close suggestion engine
         if (::suggestionEngine.isInitialized) {
             (suggestionEngine as? DictSuggestionEngine)?.savePersistedData()
             suggestionEngine.close()
         }
+        
+        // Unregister preference listener
         prefs.unregisterOnSharedPreferenceChangeListener(prefsListener)
-        imeScope.cancel()
+        
+        // Close file logging
         fileLoggingTree?.close()
+        
         super.onDestroy()
     }
     
