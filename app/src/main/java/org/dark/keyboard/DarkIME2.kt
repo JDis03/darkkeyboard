@@ -538,9 +538,21 @@ class DarkIME2 : InputMethodService() {
                         // Patrón Gboard: siempre finishComposing antes de cualquier reemplazo
                         autocorrect.onFinishComposing()
 
-                        val originalCursor = expectedSelStart
-                        val startPos = (originalCursor - composing.length).coerceAtLeast(0)
-                        val endPos = originalCursor
+                        // Usar getTextBeforeCursor para obtener posición real del cursor
+                        // (expectedSelStart puede estar desincronizado)
+                        val textBeforeCursor = ic.getTextBeforeCursor(1000, 0)?.toString() ?: ""
+                        val cursorPos = textBeforeCursor.length
+                        val startPos = (cursorPos - composing.length).coerceAtLeast(0)
+                        val endPos = cursorPos
+                        
+                        // Validar que startPos y endPos son válidos
+                        if (startPos < 0 || endPos < startPos) {
+                            Timber.w("Autocorrect: invalid positions (start=$startPos, end=$endPos), skipping")
+                            ic.finishComposingText()
+                            ic.commitText(" ", 1)
+                            return
+                        }
+                        
                         val correctionCursorPos = startPos + candidate.suggestion.length + 1
                         expectedSelStart = correctionCursorPos
                         expectedSelEnd = correctionCursorPos
